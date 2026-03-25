@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="dark">
 <head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MQLCBXX8SN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MQLCBXX8SN');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -2466,10 +2474,10 @@ VIEWS['cefalea'] = `
 
 // MÓDULO: SEPSIS
 VIEWS['sepsis'] = `
-<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Cada hora sin antibióticos aumenta la mortalidad ~7%</span>Bundle 1h: hemocultivos → lactato → antibióticos → volemización</div></div>
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Cada hora sin tratamiento aumenta la mortalidad</span>Tres pilares en paralelo — no en secuencia. Iniciar todo dentro de la primera hora.</div></div>
 <div class="tabs">
   <div class="tab on" data-tab-grp="sep" onclick="switchTab(this,'sep','sep-dx')">🔍 Diagnóstico</div>
-  <div class="tab" data-tab-grp="sep" onclick="switchTab(this,'sep','sep-bundle')">⏱️ Bundle 1h</div>
+  <div class="tab" data-tab-grp="sep" onclick="switchTab(this,'sep','sep-bundle')">⏱️ 3 Pilares</div>
   <div class="tab" data-tab-grp="sep" onclick="switchTab(this,'sep','sep-atb')">💊 Antibióticos</div>
 </div>
 <div id="sep-dx" class="tab-pane on">
@@ -2492,26 +2500,26 @@ VIEWS['sepsis'] = `
 </div>
 <div id="sep-bundle" class="tab-pane">
   <div class="card"><div class="card-body">
-    <div class="algo">
-      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Hemocultivos × 2 ANTES de antibióticos</div><div class="step-body">Sin retrasar antibióticos más de 5 min. Hemocultivo aerobio + anaerobio, sitios distintos.</div></div></div>
-      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Lactato sérico</div><div class="step-body">
-        Lactato &gt;2 mmol/L = hipoperfusión tisular<br>
-        Lactato &gt;4 mmol/L = shock séptico por definición aunque no haya hipotensión<br>
-        Repetir a las 2h para evaluar respuesta a volemización
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">SSC 2021 — Los 3 pilares se inician en paralelo, no en secuencia</span>Eliminó los bundles rígidos de 3h y 6h. Todo arranca en la primera hora.</div></div>
+    <div class="algo mt-12">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Reposición de fluidos — &lt;30 min si hipoperfusión</div><div class="step-body">
+        Bolo inicial y evaluar respuesta dinámica con cada bolo<br>
+        <span class="drug">SF 0,9%</span> o <span class="drug">Ringer lactato</span> — no 30 ml/kg automáticos para todos<br>
+        <strong>SSC 2021: guiar por respuesta dinámica al volumen, no por volumen fijo</strong><br>
+        Si PAM &lt;65 refractaria → <span class="drug">Noradrenalina</span> <span class="dose">0,01–3 mcg/kg/min IV</span><br>
+        Shock refractario: <span class="drug">Hidrocortisona</span> <span class="dose">200 mg/día IV</span> en infusión continua
       </div></div></div>
-      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Antibióticos — dentro de la 1ª hora</div><div class="step-body">Ver tab de antibióticos. Empírico de amplio espectro, cubriendo foco probable.</div></div></div>
-      <div class="step"><div class="step-n crit">4</div><div class="step-c"><div class="step-title">Volemización cristaloide</div><div class="step-body">
-        <span class="drug">SF 0,9%</span> o <span class="drug">Ringer lactato</span> <span class="dose">30 ml/kg IV en 3h</span> como punto de partida · <strong>SSC 2021: evaluar respuesta dinámica — no administrar en forma fija</strong><br>
-        Reevaluar respuesta con cada bolo (volumen responsividad, signos de sobrecarga)<br>
-        Objetivo PAM ≥65 mmHg
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">ATB empíricos — &lt;1 hora desde el reconocimiento</div><div class="step-body">
+        Amplio espectro según foco sospechado — ver tab de antibióticos<br>
+        <strong>Hemocultivos × 2 antes del ATB</strong> — sin demorar más de 5 minutos<br>
+        Lactato sérico: &gt;2 mmol/L = hipoperfusión · &gt;4 mmol/L = shock aunque no haya hipotensión<br>
+        Repetir lactato a las 2h para evaluar respuesta
       </div></div></div>
-      <div class="step"><div class="step-n crit">5</div><div class="step-c"><div class="step-title">Vasopresores si PAM &lt;65 pese a volemización</div><div class="step-body">
-        <span class="drug">Noradrenalina</span> <span class="dose">0,01–3 mcg/kg/min IV</span> — vasopresora de elección<br>
-        Por vía central preferible; puede usarse por vía periférica como puente<br>
-        <span class="drug">Vasopresina</span> <span class="dose">0,03–0,04 UI/min IV</span> como segundo agente si persiste<br>
-          Shock refractario: <span class="drug">Hidrocortisona</span> <span class="dose">200 mg/día IV</span> en infusión continua — Surviving Sepsis 2021
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Control de la fuente — &lt;6–12 horas</div><div class="step-body">
+        Identificar y eliminar el foco infeccioso tan pronto como sea posible<br>
+        Retirar catéteres infectados · Drenar abscesos · Desbridar tejido necrótico<br>
+        Cirugía si el foco lo requiere — no demorar por estabilización
       </div></div></div>
-      <div class="step"><div class="step-n">6</div><div class="step-c"><div class="step-title">Control de foco infeccioso</div><div class="step-body">Drenaje de abscesos · Retirar catéteres infectados · Cirugía si necesario. Dentro de las primeras 6–12h.</div></div></div>
     </div>
   </div></div>
 </div>
