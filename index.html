@@ -980,20 +980,34 @@ ul.bullets li strong { color: var(--text); }
 
     <div class="sb-div"></div>
     <div class="sb-section">
-      <div class="sb-section-lbl">🧬 Psiquiátrico</div>
-
-      <div class="sb-item" data-view="agitacion" onclick="nav(this)">
-        <span class="sb-item-ico">🌀</span>
-        <div class="sb-item-txt"><div class="sb-item-name">Agitación psicomotriz</div></div>
+      <div class="sb-section-lbl">🤰 Ginecobstétrico</div>
+      <div class="sb-item" data-view="ginecoobs" onclick="nav(this)">
+        <span class="sb-item-ico">🤰</span>
+        <div class="sb-item-txt"><div class="sb-item-name">Emergencias ginecobstétricas</div></div>
         <span class="sb-badge b-crit">CRIT</span>
       </div>
-      <div class="sb-item" data-view="intoxicaciones" onclick="nav(this)">
-        <span class="sb-item-ico">☠️</span>
-        <div class="sb-item-txt"><div class="sb-item-name">Intoxicaciones</div></div>
+      <div class="sb-item" data-view="hta-gestacional" onclick="nav(this)">
+        <span class="sb-item-ico">📈</span>
+        <div class="sb-item-txt"><div class="sb-item-name">HTA gestacional</div></div>
+        <span class="sb-badge b-crit">CRIT</span>
       </div>
-      <div class="sb-item" data-view="panico" onclick="nav(this)">
-        <span class="sb-item-ico">😰</span>
-        <div class="sb-item-txt"><div class="sb-item-name">Crisis de pánico</div></div>
+      <div class="sb-item" data-view="rpm-puerperal" onclick="nav(this)">
+        <span class="sb-item-ico">🫧</span>
+        <div class="sb-item-txt"><div class="sb-item-name">RPM y patología puerperal</div></div>
+        <span class="sb-badge b-crit">CRIT</span>
+      </div>
+      <div class="sb-item" data-view="hepato-embarazo" onclick="nav(this)">
+        <span class="sb-item-ico">🫀</span>
+        <div class="sb-item-txt"><div class="sb-item-name">Hepatopatías del embarazo</div></div>
+      </div>
+      <div class="sb-item" data-view="abuso-sexual" onclick="nav(this)">
+        <span class="sb-item-ico">⚖️</span>
+        <div class="sb-item-txt"><div class="sb-item-name">Abuso sexual — Protocolo</div></div>
+        <span class="sb-badge b-crit">CRIT</span>
+      </div>
+      <div class="sb-item" data-view="gineco-infecciones" onclick="nav(this)">
+        <span class="sb-item-ico">🔬</span>
+        <div class="sb-item-txt"><div class="sb-item-name">Infecciones genitales / EPI</div></div>
       </div>
     </div>
 
@@ -1027,6 +1041,22 @@ ul.bullets li strong { color: var(--text); }
       </div>
     </div>
 
+    <div class="sb-div"></div>
+    <div class="sb-section">
+      <div class="sb-section-lbl">🧬 Psiquiátrico / Toxicología</div>
+      <div class="sb-item" data-view="agitacion" onclick="nav(this)">
+        <span class="sb-item-ico">🌀</span>
+        <div class="sb-item-txt"><div class="sb-item-name">Agitación psicomotriz</div></div>
+      </div>
+      <div class="sb-item" data-view="intoxicaciones" onclick="nav(this)">
+        <span class="sb-item-ico">☠️</span>
+        <div class="sb-item-txt"><div class="sb-item-name">Intoxicaciones</div></div>
+      </div>
+      <div class="sb-item" data-view="panico" onclick="nav(this)">
+        <span class="sb-item-ico">😰</span>
+        <div class="sb-item-txt"><div class="sb-item-name">Crisis de pánico</div></div>
+      </div>
+    </div>
     <div class="sb-div"></div>
     <div class="sb-section">
       <div class="sb-section-lbl">🧮 Calculadoras</div>
@@ -1407,9 +1437,9 @@ VIEWS['home'] = `
     <h1><span style="color:var(--text)">El Libro </span><em>de Guardia</em></h1>
     <p class="hero-desc">Guía clínica de manejo rápido en guardia de las patologías más prevalentes y su tratamiento efectivo.</p>
     <div class="hero-stats">
-      <div><div class="h-stat-n">45+</div><div class="h-stat-l">Módulos clínicos</div></div>
+      <div><div class="h-stat-n">64</div><div class="h-stat-l">Módulos clínicos</div></div>
       <div><div class="h-stat-n">11</div><div class="h-stat-l">Calculadoras</div></div>
-      <div><div class="h-stat-n">98</div><div class="h-stat-l">Fármacos con dosis</div></div>
+      <div><div class="h-stat-n">100+</div><div class="h-stat-l">Fármacos con dosis</div></div>
     </div>
   </div>
 
@@ -1819,7 +1849,7 @@ VIEWS['arritmias'] = `
   </div>
 
 </div>
-`
+`;
 VIEWS['ic-aguda'] = `
 <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Evaluar inmediatamente</span>SpO₂, FR, PA, FC, estado de consciencia. Decidir si necesita soporte respiratorio urgente.</div></div>
 
@@ -2127,53 +2157,90 @@ VIEWS['epoc'] = `
 
 // MÓDULO: ASMA SEVERA
 VIEWS['asma'] = `
-<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Asma casi fatal — IOT inmediata si</span>SpO₂ &lt;88% pese a tratamiento · Cianosis · Silencio auscultatorio · Alteración del sensorio · PCO₂ normal o elevada en crisis = agotamiento inminente</div></div>
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Crisis asmática grave puede ser fatal — tratar agresivamente desde el inicio</span></div></div>
 <div class="tabs">
-  <div class="tab on" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-sev')">📊 Severidad</div>
+  <div class="tab on" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-clas')">📊 Clasificación</div>
   <div class="tab" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-tto')">💊 Tratamiento</div>
+  <div class="tab" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-intern')">🏥 Internación / Alta</div>
+  <div class="tab" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-riesgo')">⚠️ Alto riesgo</div>
 </div>
-<div id="asma-sev" class="tab-pane on">
+<div id="asma-clas" class="tab-pane on">
   <div class="card"><div class="card-body">
-    <div class="tbl-wrap"><table class="tbl">
-      <thead><tr><th>Parámetro</th><th><span class="tag t-g">Leve</span></th><th><span class="tag t-a">Moderada</span></th><th><span class="tag t-r">Severa</span></th></tr></thead>
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Clasificar ANTES de tratar — GINA 2024</span></div></div>
+    <div class="tbl-wrap mt-8"><table class="tbl">
+      <thead><tr><th>Parámetro</th><th><span class="tag t-g">Leve</span></th><th><span class="tag t-a">Moderada</span></th><th><span class="tag t-r">Grave</span></th><th><span class="tag t-r">Riesgo vital</span></th></tr></thead>
       <tbody>
-        <tr><td>Disnea</td><td>Al caminar</td><td>Al hablar</td><td>En reposo</td></tr>
-        <tr><td>Habla</td><td>Frases completas</td><td>Frases cortas</td><td>Palabras sueltas</td></tr>
-        <tr><td>Consciencia</td><td>Normal</td><td>Agitado</td><td>Confuso / Somnoliento</td></tr>
-        <tr><td>FR</td><td>&lt;20</td><td>20–30</td><td>&gt;30</td></tr>
-        <tr><td>FC</td><td>&lt;100</td><td>100–120</td><td>&gt;120</td></tr>
-        <tr><td>SpO₂ (aire)</td><td>&gt;95%</td><td>91–95%</td><td>&lt;90%</td></tr>
-        <tr><td>PEF (pred.)</td><td>&gt;70%</td><td>40–69%</td><td>&lt;40%</td></tr>
+        <tr><td><strong>Disnea</strong></td><td>Al caminar</td><td>Al hablar</td><td>En reposo</td><td>Tórax silencioso</td></tr>
+        <tr><td><strong>Habla</strong></td><td>Frases completas</td><td>Frases cortas</td><td>Palabras sueltas</td><td>No puede hablar</td></tr>
+        <tr><td><strong>Conciencia</strong></td><td>Normal</td><td>Agitado</td><td>Muy agitado</td><td>Somnoliento/Confuso</td></tr>
+        <tr><td><strong>FR</strong></td><td>&lt;20 rpm</td><td>20-30 rpm</td><td>&gt;30 rpm</td><td>Bradipnea (fatiga)</td></tr>
+        <tr><td><strong>SatO₂</strong></td><td>&gt;95%</td><td>91-95%</td><td>&lt;90%</td><td>&lt;90% con O₂</td></tr>
+        <tr><td><strong>PEF</strong></td><td>&gt;70%</td><td>40-69%</td><td>&lt;40%</td><td>No puede</td></tr>
+        <tr><td><strong>Destino</strong></td><td>Ambulatorio</td><td>Urgencias</td><td>Internación</td><td>UCI</td></tr>
       </tbody>
     </table></div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Tórax silencioso = alarma máxima</span>Sin sibilancias en crisis grave = obstrucción casi total, NO mejoría. UCI inmediata.</div></div>
   </div></div>
 </div>
 <div id="asma-tto" class="tab-pane">
   <div class="card"><div class="card-body">
+    <div class="sec-hd"><div class="sec-hd-lbl">Leve a moderada — primera hora (GINA 2024)</div><div class="sec-hd-line"></div></div>
     <div class="algo">
-      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">SABA nebulizado — cada 20 minutos × 3 (1a hora)</div><div class="step-body">
-        <span class="drug">Salbutamol</span> <span class="dose">5 mg nebulizado c/20 min × 3</span><br>
-        + <span class="drug">Ipratropio</span> <span class="dose">0,5 mg nebulizado c/20 min × 3</span> (solo en severa/moderada)<br>
-        O: Salbutamol en inhalador <span class="dose">4–8 puff c/20 min</span> (con espaciador, misma eficacia)
-      </div></div></div>
-      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Corticoides sistémicos — INMEDIATOS</div><div class="step-body">
-        <span class="drug">Metilprednisolona</span> <span class="dose">125 mg IV (o 1–2 mg/kg)</span> en moderada/severa<br>
-        O <span class="drug">Prednisona</span> <span class="dose">40–60 mg VO</span> si tolera oral (leve/moderada)<br>
-        Efecto comienza a las 4–6h — No demorar
-      </div></div></div>
-      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">O₂ para mantener SpO₂ ≥92%</div><div class="step-body">Máscara con reservorio o Venturi. En asma no hay riesgo de hipercapnia por O₂ (a diferencia del EPOC).</div></div></div>
-      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Si no responde — Sulfato de Magnesio</div><div class="step-body">
-        <span class="drug">Sulfato de Magnesio</span> <span class="dose">2 g IV en 20 min</span><br>
-        Relajante de músculo liso bronquial. Evidencia moderada pero seguro.
-      </div></div></div>
-      <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">Crisis refractaria — Considerar</div><div class="step-body">
-        <span class="drug">Adrenalina</span> <span class="dose">0,3–0,5 mg SC/IM</span> (1:1000) o nebulizada<br>
-        <span class="drug">Heliox</span> (mezcla He/O₂) si disponible<br>
-        Ventilación con PEEP mínima — riesgo de hiperinsuflación dinámica
-      </div></div></div>
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">SABA</div><div class="step-body"><span class="drug">Salbutamol</span> <span class="dose">4-8 puffs c/20 min × 3</span> con aerocámara · O nebulizado <span class="dose">2,5-5 mg c/20 min × 3</span></div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Ipratropio — agregar en moderada/grave</div><div class="step-body"><span class="drug">Ipratropio</span> <span class="dose">4-8 puffs c/20 min</span> o <span class="dose">0,5 mg nebulizado</span> · Reduce hospitalizaciones</div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Corticoides — iniciar en 1ª hora</div><div class="step-body"><span class="drug">Prednisona</span> <span class="dose">40-60 mg VO</span> · o <span class="drug">Hidrocortisona</span> <span class="dose">200 mg IV</span> · o <span class="drug">Metilprednisolona</span> <span class="dose">125 mg IV</span></div></div></div>
+      <div class="step"><div class="step-n crit">4</div><div class="step-c"><div class="step-title">O₂ — objetivo SatO₂ 93-95%</div><div class="step-body">No dar 100% de rutina — evitar hipercapnia silenciosa</div></div></div>
     </div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Grave — sin respuesta al tratamiento inicial</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Sulfato de magnesio IV — GINA 2024</div><div class="step-body"><span class="drug">Sulfato de magnesio</span> <span class="dose">2 g IV en 20 min</span> · Si no responde en 1ª hora · <strong>GINA 2025: NO usar forma nebulizada</strong></div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Adrenalina — solo compromiso vital</div><div class="step-body"><span class="drug">Adrenalina 1:1000</span> <span class="dose">0,3-0,5 mg SC/IM</span></div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Ventilación mecánica</div><div class="step-body">IOT si: coma · paro respiratorio · fatiga sin mejoría · Llamar UCI</div></div></div>
+    </div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">NO usar en crisis aguda</span>Sedantes · Mucolíticos · ATB (salvo infección documentada)</div></div>
   </div></div>
-</div>`;
+</div>
+<div id="asma-intern" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="sec-hd"><div class="sec-hd-lbl">Criterios de internación — GINA 2024</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>SatO₂ &lt;90% persistente con O₂</li>
+      <li>PEF &lt;40% tras 1h de tratamiento</li>
+      <li>Sin mejoría tras 1-3 dosis de SABA</li>
+      <li>Antecedente de intubación por asma</li>
+    </ul>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Criterios de UCI</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Tórax silencioso · Cianosis · Compromiso de conciencia</li>
+      <li>PaCO₂ &gt;45 mmHg (falla ventilatoria)</li>
+    </ul>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Al alta — GINA 2024</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><span class="drug">Prednisona</span> <span class="dose">40-60 mg/día VO × 5-7 días</span></li>
+      <li>Revisar técnica de inhalador + aerocámara</li>
+      <li><strong>Iniciar corticoide inhalado antes del alta — NO enviar sin CI</strong></li>
+      <li>Derivar en 1-2 semanas · Plan de acción escrito</li>
+    </ul>
+  </div></div>
+</div>
+<div id="asma-riesgo" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="sec-hd"><div class="sec-hd-lbl">Factores de riesgo de asma fatal — GINA 2024</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Antecedente de intubación o UCI por asma</li>
+      <li>≥1 crisis grave en el último año</li>
+      <li>Uso excesivo de SABA (&gt;1 canister/mes)</li>
+      <li>Sin corticoides inhalados · Mala adherencia</li>
+    </ul>
+    <div class="cl cl-b mt-8"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">GINA 2024 — SABA solo ya NO es primera línea</span>Preferir budesonida/formoterol a demanda (AIR therapy).<br>En guardia: SABA + iniciar CI al alta siempre.</div></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Asma en embarazo</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Tratar igual — hipoxia fetal supera el riesgo del tratamiento</li>
+      <li>Objetivo SatO₂ &gt;95% · Salbutamol · Corticoides · MgSO₄: seguros</li>
+    </ul>
+  </div></div>
+</div>
+`;
 
 // MÓDULO: CRISIS HTA
 VIEWS['crisis-hta'] = `
@@ -3765,6 +3832,980 @@ VIEWS['hiponatremia'] = `
 </div></div></div>
 `;
 
+// MÓDULO: EMERGENCIAS GINECOBSTÉTRICAS
+VIEWS['ginecoobs'] = `
+<div class="tabs">
+  <div class="tab on" data-tab-grp="gob" onclick="switchTab(this,'gob','gob-orient')">🧭 Orientación</div>
+  <div class="tab" data-tab-grp="gob" onclick="switchTab(this,'gob','gob-1mit')">1ª Mitad</div>
+  <div class="tab" data-tab-grp="gob" onclick="switchTab(this,'gob','gob-2mit')">2ª Mitad</div>
+  <div class="tab" data-tab-grp="gob" onclick="navId('hta-gestacional')">📈 HTA →</div>
+  <div class="tab" data-tab-grp="gob" onclick="switchTab(this,'gob','gob-estudios')">🔬 Estudios</div>
+</div>
+
+<!-- TAB 1: ORIENTACIÓN + CALCULADORA FUM -->
+<div id="gob-orient" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Llegó una paciente embarazada — seguí estos pasos</span>Tranquilo. Un paso a la vez.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Calculadora de edad gestacional por FUM</div><div class="sec-hd-line"></div></div>
+    <div style="background:var(--bg3);border-radius:var(--r);padding:14px;margin-bottom:12px">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <div>
+          <div style="font-size:11px;color:var(--text3);margin-bottom:4px">Fecha Última Menstruación (FUM)</div>
+          <input type="date" id="fum-input" style="padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:13px" onchange="calcEG()">
+        </div>
+        <div style="flex:1;min-width:160px">
+          <div style="font-size:11px;color:var(--text3);margin-bottom:4px">Edad gestacional</div>
+          <div id="eg-result" style="font-size:15px;font-weight:700;color:var(--acc);padding:6px 10px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">Ingresá la FUM</div>
+        </div>
+      </div>
+      <div id="eg-trimestre" style="font-size:12px;color:var(--text3);margin-top:8px"></div>
+    </div>
+
+    <div class="sec-hd"><div class="sec-hd-lbl">Tres preguntas clave</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">¿Cuántas semanas?</div><div class="step-body">
+        Usá la calculadora o la eco confirmada<br>
+        <strong>&lt;20 semanas</strong> → ir a tab "1ª Mitad"<br>
+        <strong>≥20 semanas</strong> → ir a tab "2ª Mitad"
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">¿Hay sangrado?</div><div class="step-body">
+        Si sangra → ¿hay dolor asociado?<br>
+        <strong>Sin dolor</strong>: aborto, placenta previa, mola<br>
+        <strong>Con dolor</strong>: ectópico (1ª mitad), DPPNI (2ª mitad)<br>
+        Postparto: hemorragia postparto — actuar de inmediato
+      </div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">¿Cuál es la TA?</div><div class="step-body">
+        Tomar TA <strong>siempre</strong> en toda embarazada<br>
+        PAS ≥140 o PAD ≥90 → tab HTA gestacional<br>
+        PAS ≥160 o PAD ≥110 → emergencia — actuar ya
+      </div></div></div>
+    </div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Siempre en toda embarazada que consulta</span>BHCG · Grupo y factor RH · ECG si HTA · Ver tab Estudios para laboratorio completo</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 2: PRIMERA MITAD -->
+<div id="gob-1mit" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Primera mitad — &lt;20 semanas</span>La clave es: ¿hay dolor? Orienta hacia ectópico vs aborto vs mola.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Sangrado SIN dolor — pensar aborto o mola</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Tipo</th><th>Eco / cuello</th><th>Conducta</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-a">Amenaza</span></td><td>Embrión vivo · Cuello cerrado</td><td>Reposo · Control ambulatorio</td></tr>
+        <tr><td><span class="tag t-a">Inevitable</span></td><td>Cuello abierto · Saco íntegro</td><td>Internación · Misoprostol o expectante</td></tr>
+        <tr><td><span class="tag t-a">Incompleto</span></td><td>Restos en cavidad · Cuello abierto</td><td>AMEU o legrado · Oxitocina si sangra</td></tr>
+        <tr><td><span class="tag t-g">Completo</span></td><td>Cavidad vacía · Cuello cerrado</td><td>Control ambulatorio · Eco de confirmación</td></tr>
+        <tr><td><span class="tag t-a">Retenido</span></td><td>Sin latido · Cuello cerrado</td><td>Misoprostol 800 mcg vaginal o AMEU</td></tr>
+        <tr><td><span class="tag t-r">Séptico</span></td><td>Variable · Flujo fétido · Fiebre</td><td>ATB + legrado urgente · Ver abajo</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Aborto séptico — antibióticos</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><span class="drug">Ampicilina-sulbactam</span> <span class="dose">3 g c/6h IV</span> + <span class="drug">Metronidazol</span> <span class="dose">500 mg c/8h IV</span></li>
+      <li>Si shock séptico: agregar <span class="drug">Gentamicina</span> <span class="dose">5 mg/kg/día IV</span></li>
+      <li>Legrado dentro de las 6h de iniciados los ATB — es el control de la fuente</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Sangrado CON dolor — pensar embarazo ectópico</div><div class="sec-hd-line"></div></div>
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">BHCG+ sin saco intrauterino en eco = ectópico hasta demostrar lo contrario</span>Puede no haber sangrado externo visible. Riesgo de shock hemorrágico si roto.</div></div>
+    <div class="algo mt-8">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">¿Hemodinámicamente estable?</div><div class="step-body">
+        <strong>Inestable</strong> → cirugía urgente (laparoscopia de elección / laparotomía si inestable)<br>
+        <strong>Estable</strong> → evaluar criterios para MTX
+      </div></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Criterios para Metotrexato (ACOG)</div><div class="step-body">
+        ✓ Estable hemodinámicamente<br>
+        ✓ BHCG &lt;5000 mUI/ml<br>
+        ✓ Masa &lt;3,5 cm sin actividad cardíaca fetal<br>
+        ✓ Sin sangrado libre significativo en eco<br>
+        ✓ Función renal, hepática y hemograma normales<br>
+        ✓ Paciente confiable para seguimiento
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">MTX — protocolo dosis única</div><div class="step-body">
+        <span class="drug">Metotrexato</span> <span class="dose">50 mg/m² IM dosis única</span><br>
+        Control BHCG días 4 y 7 — debe descender ≥15% entre día 4 y 7<br>
+        Si no desciende → segunda dosis o cirugía
+      </div></div></div>
+    </div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Enfermedad trofoblástica gestacional — Mola hidatiforme</div><div class="sec-hd-line"></div></div>
+    <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Sospechar si: HTA antes de 20 semanas + BHCG muy elevada + útero grande para la EG</span></div></div>
+    <div class="tbl-wrap mt-8"><table class="tbl">
+      <thead><tr><th>Clínica</th><th>Eco</th><th>Conducta</th></tr></thead>
+      <tbody>
+        <tr><td>Sangrado irregular · Náuseas intensas · Útero mayor que EG · HTA precoz · Sin latido fetal</td><td>Imagen en "copos de nieve" o panal · Sin embrión (mola completa) · BHCG muy elevada (&gt;100.000)</td><td>Internación · AMEU o legrado por aspiración · NO oxitocina antes del legrado · Seguimiento con BHCG hasta negativizar</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-b mt-8"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">HTA en &lt;20 semanas → pensar mola, NO preeclampsia</span>Preeclampsia prácticamente no ocurre antes de las 20 semanas salvo en mola o embarazo múltiple.</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 3: SEGUNDA MITAD -->
+<div id="gob-2mit" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Segunda mitad — ≥20 semanas</span>La clave es: ¿sangra? ¿hay dolor? ¿cuál es la TA? Las tres juntas definen el diagnóstico.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Hemorragia — dolor orienta el diagnóstico</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th></th><th>Placenta previa</th><th>DPPNI</th><th>Rotura uterina</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sangrado</strong></td><td>Rojo brillante · Indoloro · Espontáneo</td><td>Oscuro · Con dolor intenso</td><td>Puede cesar bruscamente</td></tr>
+        <tr><td><strong>Dolor</strong></td><td>Ausente</td><td>Intenso · Útero en tabla</td><td>Súbito y muy intenso → alivio</td></tr>
+        <tr><td><strong>Útero</strong></td><td>Blando · Relajado</td><td>Hipertónico · Tenso · No se relaja</td><td>Feto palpable fuera del útero</td></tr>
+        <tr><td><strong>Feto</strong></td><td>Puede estar bien</td><td>Sufrimiento fetal</td><td>FCF ausente o alterada</td></tr>
+        <tr><td><strong>Urgencia</strong></td><td>Alta</td><td>Emergencia</td><td>Emergencia absoluta</td></tr>
+        <tr><td><strong>Conducta</strong></td><td><strong>NO tacto vaginal</strong> · Eco · Cesárea si &gt;28 sem</td><td>Cesárea urgente · 2 vías · Hemoderivados</td><td>Laparotomía inmediata</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">HTA en ≥20 semanas → ir al tab HTA gestacional</div><div class="sec-hd-line"></div></div>
+    <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body">PAS ≥140 o PAD ≥90 en embarazada ≥20 sem → abrir tab HTA. PAS ≥160 → emergencia, no esperar.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Hemorragia postparto — FIGO 2022</div><div class="sec-hd-line"></div></div>
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Definición: &gt;500 ml en parto vaginal · &gt;1000 ml en cesárea · O con repercusión hemodinámica</span>Causa más frecuente: atonía uterina (70–80%) · Regla de las 4T: Tono · Tejido · Trauma · Trombina</div></div>
+    <div class="algo mt-8">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Oxitocina — primera línea (FIGO 2022)</div><div class="step-body">
+        <span class="drug">Oxitocina</span> <span class="dose">10 UI IM o IV lento</span> inmediato<br>
+        Infusión: <span class="drug">Oxitocina</span> <span class="dose">20–40 UI en 500 ml SF a 500 ml/h</span><br>
+        Masaje uterino bimanual · Vaciar vejiga
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Ácido tranexámico — siempre en HPP (FIGO 2022)</div><div class="step-body">
+        <span class="drug">Ácido tranexámico</span> <span class="dose">1 g IV en 10–20 min</span> — cuanto antes mejor<br>
+        Repetir 1 g a los 30 min si persiste · Reduce mortalidad 20–30% (estudio WOMAN)
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Segunda línea si persiste</div><div class="step-body">
+        <span class="drug">Ergometrina</span> <span class="dose">0,2 mg IM</span> — contraindicada en HTA<br>
+        <span class="drug">Misoprostol</span> <span class="dose">600–800 mcg rectal o sublingual</span><br>
+        Llamar obstetricia urgente · Hemoderivados · 2 vías gruesas
+      </div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- TAB 4: HTA GESTACIONAL -->
+<div id="gob-hta" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Diagnóstico</th><th>Criterios</th><th>Conducta</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-a">HTA gestacional</span></td><td>PAS ≥140 o PAD ≥90 · ≥20 sem · Sin proteinuria · Sin daño órgano blanco</td><td>Internación · Control materno-fetal</td></tr>
+        <tr><td><span class="tag t-a">Preeclampsia</span></td><td>HTA + proteinuria ≥300 mg/24h o cociente prot/creat ≥0,3</td><td>Internación · Sulfato Mg si criterios severidad</td></tr>
+        <tr><td><span class="tag t-r">Preeclampsia severa</span></td><td>PAS ≥160 o PAD ≥110 · O: creatinina &gt;1,1 · plaquetas &lt;100.000 · TGO/TGP &gt;2x · edema pulmonar · síntomas neurológicos/visuales</td><td>Sulfato Mg YA · Antihipertensivo IV · Terminación</td></tr>
+        <tr><td><span class="tag t-r">Eclampsia</span></td><td>Convulsiones en paciente con preeclampsia</td><td>Sulfato Mg YA · Posición lateral · O₂ · UCI</td></tr>
+        <tr><td><span class="tag t-r">HELLP</span></td><td>Hemólisis (LDH &gt;600) + TGO/TGP elevadas + Plaquetas &lt;100.000</td><td>UCI · Corticoides · Terminación urgente</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Sulfato de magnesio — Esquema de Zuspan (ACOG 2020)</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Dosis de carga</div><div class="step-body">
+        <span class="drug">Sulfato de magnesio</span> <span class="dose">4 g IV en 20 min</span><br>
+        Diluir: 20 ml SO₄Mg 20% en 80 ml SF → pasar en 20 min
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Mantenimiento</div><div class="step-body">
+        <span class="drug">Sulfato de magnesio</span> <span class="dose">2 g/h IV infusión continua</span><br>
+        Continuar 24h postparto o 24h después de la última convulsión
+      </div></div></div>
+      <div class="step"><div class="step-n">!</div><div class="step-c"><div class="step-title">Monitoreo — controlar cada hora</div><div class="step-body">
+        Reflejo rotuliano presente · FR ≥12 rpm · Diuresis ≥25 ml/h<br>
+        <strong>Antídoto toxicidad:</strong> <span class="drug">Gluconato de Ca²⁺ 10%</span> <span class="dose">10 ml IV lento</span>
+      </div></div></div>
+    </div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Crisis hipertensiva — antihipertensivos (ACOG 2020)</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Fármaco</th><th>Dosis</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td><span class="drug">Nifedipina</span></td><td><span class="dose">10–20 mg VO · Repetir c/20–30 min</span></td><td>1ª línea oral · No sublingual</td></tr>
+        <tr><td><span class="drug">Labetalol</span></td><td><span class="dose">20 mg IV · Doblar c/10 min · Máx 300 mg</span></td><td>1ª línea IV · Evitar en asma</td></tr>
+        <tr><td><span class="drug">Hidralazina</span></td><td><span class="dose">5–10 mg IV c/20 min · Máx 30 mg</span></td><td>Alternativa</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body">Objetivo: PAS 140–155 / PAD 90–105. No bajar demasiado rápido — riesgo hipoperfusión fetal.</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 5: ESTUDIOS -->
+<div id="gob-estudios" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Lo que NO puede faltar en toda embarazada que consulta a guardia</span></div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Laboratorio básico — siempre</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Estudio</th><th>¿Para qué?</th></tr></thead>
+      <tbody>
+        <tr><td><strong>BHCG cuantitativa</strong></td><td>Confirmar embarazo · Sospecha ectópico · Seguimiento mola · Si baja &lt;48h = aborto probable</td></tr>
+        <tr><td><strong>Grupo y factor RH</strong></td><td>Si Rh negativo → inmunoglobulina anti-D 300 mcg IM dentro de 72h ante cualquier sangrado</td></tr>
+        <tr><td><strong>Hemograma completo</strong></td><td>Anemia por sangrado · Leucocitosis en séptico · Plaquetas en HELLP</td></tr>
+        <tr><td><strong>Coagulación (KPTT · TP · Fibrinógeno)</strong></td><td>DPPNI · HPP · HELLP — coagulopatía de consumo</td></tr>
+        <tr><td><strong>Hepatograma + LDH</strong></td><td>HELLP (TGO/TGP &gt;2x, LDH &gt;600) · Daño hepático en preeclampsia severa</td></tr>
+        <tr><td><strong>Función renal + ionograma</strong></td><td>Daño renal en preeclampsia · Creatinina &gt;1,1 = criterio severidad</td></tr>
+        <tr><td><strong>Proteinuria en orina</strong></td><td>Diagnóstico de preeclampsia · Cociente prot/creat ≥0,3 = proteinuria significativa</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Ecografía obstétrica — qué buscar según situación</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Hallazgo ecográfico</th><th>Qué descarta / confirma</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Localización del saco gestacional</strong></td><td>Saco fuera del útero o ausente con BHCG+ → ectópico</td></tr>
+        <tr><td><strong>Vitalidad fetal (latido)</strong></td><td>Ausente → aborto retenido o muerte fetal</td></tr>
+        <tr><td><strong>Localización de placenta</strong></td><td>Placenta previa (ocluye OCE) · Inserción baja</td></tr>
+        <tr><td><strong>Hematoma retroplacentario</strong></td><td>Confirma DPPNI</td></tr>
+        <tr><td><strong>Imagen en copos de nieve / panal</strong></td><td>Mola hidatiforme · Sin embrión en mola completa</td></tr>
+        <tr><td><strong>Líquido libre en Douglas / abdomen</strong></td><td>Hemoperitoneo → ectópico roto · DPPNI con rotura</td></tr>
+        <tr><td><strong>Longitud cervical</strong></td><td>&lt;25 mm → riesgo parto pretérmino · Cuello abierto = aborto inevitable</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="cl cl-b mt-12"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Laboratorio según sospecha clínica</span>
+    HTA/Preeclampsia: agregar ácido úrico y LDH · HPP: agregar fibrinógeno urgente · Aborto séptico: hemocultivos × 2 antes de ATB · Mola: BHCG cuantitativa seriada</div></div>
+  </div></div>
+</div>
+`;
+
+// MÓDULO: HTA GESTACIONAL
+VIEWS['hta-gestacional'] = `
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">PAS ≥160 o PAD ≥110 en embarazada = emergencia — actuar de inmediato</span></div></div>
+<div class="tabs">
+  <div class="tab on" data-tab-grp="htag" onclick="switchTab(this,'htag','htag-clas')">📊 Clasificación</div>
+  <div class="tab" data-tab-grp="htag" onclick="switchTab(this,'htag','htag-mgso4')">💊 Sulfato Mg</div>
+  <div class="tab" data-tab-grp="htag" onclick="switchTab(this,'htag','htag-anti')">💊 Antihipertensivos</div>
+</div>
+
+<div id="htag-clas" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Diagnóstico</th><th>Criterios</th><th>Conducta</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-a">HTA gestacional</span></td><td>PAS ≥140 o PAD ≥90 · ≥20 sem · Sin proteinuria · Sin daño órgano blanco</td><td>Internación · Control materno-fetal · Antihipertensivos si PAS ≥160</td></tr>
+        <tr><td><span class="tag t-a">Preeclampsia</span></td><td>HTA + proteinuria ≥300 mg/24h o cociente prot/creat ≥0,3 · O daño órgano blanco sin proteinuria</td><td>Internación · Sulfato Mg si criterios severidad · Evaluar terminación</td></tr>
+        <tr><td><span class="tag t-r">Preeclampsia severa</span></td><td>PAS ≥160 o PAD ≥110 · O: creatinina &gt;1,1 · plaquetas &lt;100.000 · TGO/TGP &gt;2x normal · edema pulmonar · síntomas neurológicos o visuales</td><td>Sulfato Mg YA · Antihipertensivo IV · Terminación embarazo</td></tr>
+        <tr><td><span class="tag t-r">Eclampsia</span></td><td>Convulsiones en paciente con preeclampsia · Puede ocurrir sin HTA previa</td><td>Sulfato Mg YA · Posición lateral · O₂ · No sujetar · UCI</td></tr>
+        <tr><td><span class="tag t-r">HELLP</span></td><td>Hemólisis (LDH &gt;600 · esquistocitos) + TGO/TGP &gt;2x normal + Plaquetas &lt;100.000</td><td>UCI · Corticoides · Terminación urgente independiente de EG</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-b mt-12"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">HTA en &lt;20 semanas → pensar mola hidatiforme o HTA crónica</span>Preeclampsia prácticamente no ocurre antes de las 20 semanas salvo en mola o embarazo múltiple.</div></div>
+  </div></div>
+</div>
+
+<div id="htag-mgso4" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Esquema de Zuspan — estándar de oro (ACOG 2020)</span>Indicado en preeclampsia con criterios de severidad, eclampsia y HELLP.</div></div>
+    <div class="algo mt-12">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Dosis de carga</div><div class="step-body">
+        <span class="drug">Sulfato de magnesio</span> <span class="dose">4 g IV en 20 min</span><br>
+        Dilución: 20 ml de SO₄Mg al 20% + 80 ml SF → pasar en 20 min
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Mantenimiento</div><div class="step-body">
+        <span class="drug">Sulfato de magnesio</span> <span class="dose">2 g/h IV infusión continua</span><br>
+        Continuar durante el trabajo de parto y <strong>24h postparto</strong><br>
+        O 24h después de la última convulsión en eclampsia
+      </div></div></div>
+      <div class="step"><div class="step-n">!</div><div class="step-c"><div class="step-title">Monitoreo obligatorio cada hora</div><div class="step-body">
+        ✓ Reflejo rotuliano presente (primera señal de toxicidad: arreflexia)<br>
+        ✓ FR ≥12 rpm<br>
+        ✓ Diuresis ≥25 ml/h<br>
+        ✓ Ajustar dosis en insuficiencia renal<br>
+        <strong>Antídoto:</strong> <span class="drug">Gluconato de Ca²⁺ 10%</span> <span class="dose">10 ml IV lento</span> si toxicidad
+      </div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<div id="htag-anti" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Objetivo: PAS 140–155 / PAD 90–105 mmHg</span>No bajar demasiado rápido — riesgo de hipoperfusión fetal.</div></div>
+    <div class="tbl-wrap mt-12"><table class="tbl">
+      <thead><tr><th>Fármaco</th><th>Dosis</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td><span class="drug">Nifedipina</span></td><td><span class="dose">10–20 mg VO · Repetir c/20–30 min · Máx 60 mg</span></td><td>1ª línea oral · Comprimido de liberación inmediata · NO sublingual</td></tr>
+        <tr><td><span class="drug">Labetalol</span></td><td><span class="dose">20 mg IV · Doblar dosis c/10 min · Máx 300 mg</span></td><td>1ª línea IV · Contraindicado en asma y bloqueo cardíaco</td></tr>
+        <tr><td><span class="drug">Hidralazina</span></td><td><span class="dose">5–10 mg IV c/20 min · Máx 30 mg</span></td><td>Alternativa IV · Mayor hipotensión refleja</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-a mt-12"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Contraindicados en embarazo</span>IECA · ARA II · Atenolol · Nitroprusiato (uso corto si refractaria)</div></div>
+  </div></div>
+</div>
+`;
+
+// MÓDULO: RPM Y PATOLOGÍA PUERPERAL
+VIEWS['rpm-puerperal'] = `
+<div class="tabs">
+  <div class="tab on" data-tab-grp="rpm" onclick="switchTab(this,'rpm','rpm-dx')">🔍 RPM Diagnóstico</div>
+  <div class="tab" data-tab-grp="rpm" onclick="switchTab(this,'rpm','rpm-tto')">💊 RPM Tratamiento</div>
+  <div class="tab" data-tab-grp="rpm" onclick="switchTab(this,'rpm','rpm-corio')">🦠 Corioamnionitis</div>
+  <div class="tab" data-tab-grp="rpm" onclick="switchTab(this,'rpm','rpm-endo')">🩸 Endometritis</div>
+  <div class="tab" data-tab-grp="rpm" onclick="switchTab(this,'rpm','rpm-mastitis')">🤱 Mastitis</div>
+</div>
+
+<!-- TAB 1: RPM DIAGNÓSTICO -->
+<div id="rpm-dx" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">RPM — Rotura prematura de membranas</span>Solución de continuidad de las membranas ovulares antes del inicio del trabajo de parto. Pretérmino si ocurre antes de las 37 semanas.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Presentación clínica</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Pérdida de líquido por vagina — en chorro o continua, diferente al flujo habitual</li>
+      <li>Líquido claro, amarillento o verdoso (meconio)</li>
+      <li>Puede ser intermitente si la rotura es alta</li>
+      <li><strong>No siempre es obvio</strong> — confirmar siempre con estudios</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Confirmación diagnóstica</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Método</th><th>Hallazgo positivo</th><th>Sensibilidad</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Visualización directa</strong></td><td>Líquido saliendo del orificio cervical en especuloscopia</td><td>Alta</td></tr>
+        <tr><td><strong>Test de nitrazina (pH)</strong></td><td>Papel pH vira a azul — pH &gt;6,5 (líquido amniótico es alcalino)</td><td>90%</td></tr>
+        <tr><td><strong>Cristalización en helecho</strong></td><td>Muestra seca en vidrio forma patrón de helecho</td><td>85–90%</td></tr>
+        <tr><td><strong>Pool en ecografía</strong></td><td>Oligoamnios o ausencia de líquido amniótico</td><td>Complementario</td></tr>
+        <tr><td><strong>PAMG-1 (AmniSure®)</strong></td><td>Proteína placentaria α-microglobulina positiva</td><td>&gt;99% — gold standard si disponible</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Diagnóstico diferencial</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><strong>Flujo vaginal aumentado</strong> — sin pérdida en chorro, pH normal</li>
+      <li><strong>Incontinencia urinaria</strong> — frecuente en embarazo, pH ácido</li>
+      <li><strong>Tapón mucoso</strong> — mucoso, espeso, sangrado leve asociado</li>
+      <li><strong>Rotura de quiste vaginal</strong> — raro</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Factores de riesgo</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Vaginosis bacteriana · ITU no tratada</li>
+      <li>Embarazo múltiple · Polihidramnios</li>
+      <li>Miomas uterinos · Malformaciones uterinas</li>
+      <li>Hemorragias del embarazo (DPPNI, placenta previa)</li>
+      <li>Corioamnionitis previa · RPM en embarazo anterior</li>
+      <li>Tabaquismo · Bajo nivel socioeconómico · Déficit de vitamina C</li>
+    </ul>
+  </div></div>
+</div>
+
+<!-- TAB 2: RPM TRATAMIENTO -->
+<div id="rpm-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Fiebre + RPM = Corioamnionitis → FINALIZAR EL EMBARAZO independientemente de la EG</span>No esperar. Ver tab Corioamnionitis.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Conducta según edad gestacional</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">&lt;24 semanas — zona de viabilidad límite</div><div class="step-body">
+        Pronóstico neonatal muy reservado · Decisión individualizada<br>
+        Informar a la familia · Interconsulta con obstetricia y neonatología urgente<br>
+        Manejo expectante o interrupción según contexto clínico y decisión familiar
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">24–34 semanas — manejo expectante con controles estrictos</div><div class="step-body">
+        <strong>Internar siempre · Llamar a obstetra</strong><br>
+        <span class="drug">Betametasona</span> <span class="dose">12 mg IM c/24h × 2 dosis</span> — maduración pulmonar fetal<br>
+        <span class="drug">Ampicilina</span> <span class="dose">2 g IV c/6h × 48h → Amoxicilina 500 mg VO c/8h × 5 días</span><br>
+        Control estricto: temperatura c/4h · FCF · Signos de corioamnionitis<br>
+        NO amoxicilina-clavulánico (asociado a enterocolitis necrotizante neonatal)
+      </div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">34–36+6 semanas — considerar finalización</div><div class="step-body">
+        <strong>Internar · Llamar a obstetra</strong><br>
+        Corticoides si &lt;35 semanas (<span class="drug">Betametasona</span> <span class="dose">12 mg IM c/24h × 2 dosis</span>)<br>
+        Discutir finalización vs manejo expectante breve según condiciones<br>
+        ATB profiláctico para SGB si cultivo positivo o desconocido
+      </div></div></div>
+      <div class="step"><div class="step-n crit">4</div><div class="step-c"><div class="step-title">≥37 semanas — finalizar embarazo</div><div class="step-body">
+        <strong>Internar · Llamar a obstetra</strong><br>
+        Inducción del trabajo de parto o cesárea según condiciones obstétricas<br>
+        Profilaxis ATB para SGB si indicado<br>
+        No hay beneficio de manejo expectante más allá de 12–24h
+      </div></div></div>
+    </div>
+    <div class="cl cl-b mt-8"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">En todos los casos</span>NO realizar tacto vaginal salvo trabajo de parto establecido — aumenta riesgo de infección · Monitoreo fetal · Eco para evaluar líquido amniótico y presentación</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 3: CORIOAMNIONITIS -->
+<div id="rpm-corio" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Corioamnionitis = finalizar el embarazo. Independientemente de la edad gestacional.</span></div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Criterios de Gibbs (clásicos)</div><div class="sec-hd-line"></div></div>
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Diagnóstico: Fiebre materna ≥38°C + uno o más de los siguientes</span></div></div>
+    <ul class="bullets mt-8">
+      <li>Taquicardia materna &gt;100 lpm</li>
+      <li>Taquicardia fetal &gt;160 lpm</li>
+      <li>Dolor uterino a la palpación</li>
+      <li>Líquido amniótico fétido o purulento</li>
+      <li>Leucocitosis materna &gt;15.000/mm³</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento — iniciar de inmediato</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Antibióticos IV — antes del parto</div><div class="step-body">
+        <span class="drug">Ampicilina</span> <span class="dose">2 g IV c/6h</span> + <span class="drug">Gentamicina</span> <span class="dose">5 mg/kg/día IV</span><br>
+        Si cesárea: agregar <span class="drug">Metronidazol</span> <span class="dose">500 mg IV c/8h</span> o <span class="drug">Clindamicina</span> <span class="dose">900 mg IV c/8h</span>
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Finalizar el embarazo</div><div class="step-body">
+        Independientemente de la edad gestacional<br>
+        Vía de parto según condiciones obstétricas — no es indicación absoluta de cesárea<br>
+        Neonatología presente en el parto
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Continuar ATB postparto</div><div class="step-body">
+        Hasta 48h afebril y asintomática<br>
+        Hemocultivos × 2 antes de iniciar ATB si hay inestabilidad
+      </div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- TAB 4: ENDOMETRITIS -->
+<div id="rpm-endo" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Endometritis puerperal — infección puerperal más frecuente</span>Aparece 2–3 días postparto (o postcesárea). Más frecuente tras cesárea (10–30%) que parto vaginal (1–3%).</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Triada clínica</div><div class="sec-hd-line"></div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px">
+      <div style="background:var(--bg3);border-radius:var(--r);padding:12px;text-align:center;border-top:3px solid var(--red)">
+        <div style="font-size:22px;margin-bottom:6px">🌡️</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text)">Fiebre</div>
+        <div style="font-size:11px;color:var(--text3)">&gt;38°C · 2–3 días postparto</div>
+      </div>
+      <div style="background:var(--bg3);border-radius:var(--r);padding:12px;text-align:center;border-top:3px solid var(--red)">
+        <div style="font-size:22px;margin-bottom:6px">🫁</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text)">Subinvolución uterina</div>
+        <div style="font-size:11px;color:var(--text3)">Útero blando · Mayor de lo esperado · Doloroso</div>
+      </div>
+      <div style="background:var(--bg3);border-radius:var(--r);padding:12px;text-align:center;border-top:3px solid var(--red)">
+        <div style="font-size:22px;margin-bottom:6px">💧</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text)">Loquios fétidos</div>
+        <div style="font-size:11px;color:var(--text3)">Mal olor · Purulentos · Abundantes</div>
+      </div>
+    </div>
+
+    <div class="sec-hd"><div class="sec-hd-lbl">Tratamiento — ACOG</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Esquema estándar — primera línea</div><div class="step-body">
+        <span class="drug">Clindamicina</span> <span class="dose">900 mg IV c/8h</span> + <span class="drug">Gentamicina</span> <span class="dose">5 mg/kg/día IV</span><br>
+        Continuar hasta 48h afebril y asintomática · No requiere ATB oral posterior
+      </div></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Alternativa — si enterococo sospechado</div><div class="step-body">
+        Agregar <span class="drug">Ampicilina</span> <span class="dose">2 g IV c/6h</span> al esquema anterior<br>
+        Sospechar enterococo si no responde en 48–72h al esquema estándar
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Si no mejora en 48–72h</div><div class="step-body">
+        Descartar: hematoma de herida · Absceso pélvico · Tromboflebitis pélvica séptica<br>
+        Eco abdominal/pélvica · TAC si sospecha de absceso
+      </div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- TAB 5: MASTITIS -->
+<div id="rpm-mastitis" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Mastitis — inflamación de la glándula mamaria en el puerperio</span>Dos tipos con conductas muy diferentes: congestiva vs infecciosa.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Diagnóstico diferencial rápido</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th></th><th>Congestiva</th><th>Infecciosa</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Momento</strong></td><td>1ª–2ª semana postparto</td><td>2ª–4ª semana postparto</td></tr>
+        <tr><td><strong>Lateralidad</strong></td><td>Bilateral</td><td>Unilateral (clave)</td></tr>
+        <tr><td><strong>Fiebre</strong></td><td>Ausente o leve</td><td>Presente · &gt;38°C</td></tr>
+        <tr><td><strong>Local</strong></td><td>Tensión · Ingurgitación</td><td>Flogosis · Calor · Eritema · Dolor intenso</td></tr>
+        <tr><td><strong>Agente</strong></td><td>No infeccioso</td><td>S. aureus (más frecuente)</td></tr>
+        <tr><td><strong>Lactancia</strong></td><td>Continuar — ayuda a drenar</td><td>Continuar de esa mama salvo absceso</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">Mastitis congestiva — medidas físicas</div><div class="step-body">
+        Vaciamiento frecuente (lactancia o extracción) · Frío local · AINEs<br>
+        <span class="drug">Ibuprofeno</span> <span class="dose">400–600 mg c/8h VO</span><br>
+        No requiere antibióticos
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Mastitis infecciosa — antibióticos</div><div class="step-body">
+        <span class="drug">Dicloxacilina</span> <span class="dose">500 mg c/6h VO × 10–14 días</span> (1ª línea — cubre S. aureus)<br>
+        O <span class="drug">Cefalexina</span> <span class="dose">500 mg c/6h VO × 10–14 días</span><br>
+        Si alergia a penicilina: <span class="drug">Eritromicina</span> <span class="dose">500 mg c/6h VO</span><br>
+        Continuar lactancia de esa mama — no suspender salvo absceso
+      </div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Masa fluctuante → absceso mamario</div><div class="step-body">
+        <strong>Suspender lactancia de esa mama</strong><br>
+        Drenaje quirúrgico urgente · ATB IV: <span class="drug">Cefalotina</span> <span class="dose">1 g IV c/6h</span> o <span class="drug">Clindamicina</span> <span class="dose">600 mg IV c/8h</span><br>
+        Si S. aureus resistente (SAMR): <span class="drug">Vancomicina</span> <span class="dose">15–20 mg/kg IV c/12h</span><br>
+        Se puede continuar lactancia del otro pecho
+      </div></div></div>
+    </div>
+  </div></div>
+</div>
+`;
+
+// MÓDULO: HEPATOPATÍAS DEL EMBARAZO
+VIEWS['hepato-embarazo'] = `
+<div class="cl cl-r"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Las hepatopatías del embarazo pueden ser emergencias que amenazan la vida materna y fetal</span></div></div>
+<div class="tabs">
+  <div class="tab on" data-tab-grp="hep" onclick="switchTab(this,'hep','hep-col')">🟡 Colestasis</div>
+  <div class="tab" data-tab-grp="hep" onclick="switchTab(this,'hep','hep-eha')">🔴 Esteatosis</div>
+  <div class="tab" data-tab-grp="hep" onclick="switchTab(this,'hep','hep-hiper')">🤢 Hiperemesis</div>
+</div>
+
+<!-- TAB 1: COLESTASIS -->
+<div id="hep-col" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Colestasis intrahepática del embarazo (CIE)</span>Hepatopatía más frecuente del embarazo. Aparece típicamente en el 3er trimestre. Riesgo de muerte fetal súbita.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Clínica</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><strong>Prurito intenso</strong> — palmas y plantas primero, luego generalizado · Peor de noche</li>
+      <li>Sin lesiones cutáneas primarias (el rash es por rascado)</li>
+      <li>Ictericia leve en casos severos (20–60%)</li>
+      <li>Náuseas, anorexia, esteatatorrea leve</li>
+      <li><strong>Desaparece sola dentro de las 2–4 semanas postparto</strong></li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Laboratorio</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><strong>Ácidos biliares totales &gt;10 µmol/L</strong> — diagnóstico. Severa si &gt;40 µmol/L</li>
+      <li>Bilirrubina directa elevada (leve-moderada)</li>
+      <li>TGO/TGP elevadas (2–10x)</li>
+      <li>Fosfatasa alcalina: no útil en embarazo (elevada fisiológicamente)</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Ácido ursodesoxicólico — primera línea</div><div class="step-body">
+        <span class="drug">AUDC</span> <span class="dose">10–15 mg/kg/día VO dividido en 2–3 dosis</span><br>
+        Reduce prurito y niveles de ácidos biliares · Seguro en embarazo
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Vigilancia fetal estricta</div><div class="step-body">
+        Monitoreo fetal semanal · NST · Perfil biofísico<br>
+        Riesgo de muerte fetal súbita aumentado especialmente con ácidos biliares &gt;40 µmol/L
+      </div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Finalización del embarazo</div><div class="step-body">
+        <strong>≥37 semanas</strong> → finalizar<br>
+        CIE severa (AB &gt;40) → finalizar a las 36 semanas<br>
+        Llamar a obstetricia · No manejar de forma ambulatoria
+      </div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- TAB 2: ESTEATOSIS HEPÁTICA AGUDA -->
+<div id="hep-eha" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Esteatosis hepática aguda del embarazo (EHAE) — emergencia obstétrica · Mortalidad materna 10–20%</span>3er trimestre · Diagnóstico clínico y de laboratorio · Requiere internación y terminación urgente.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Clínica — sospecha clínica en 3er trimestre</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Náuseas, vómitos, dolor abdominal (epigástrico o CSD)</li>
+      <li>Anorexia, astenia, malestar general 1–2 semanas antes</li>
+      <li>Ictericia progresiva</li>
+      <li>Encefalopatía hepática en casos avanzados</li>
+      <li>Puede coexistir con preeclampsia / HELLP</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Laboratorio — criterios de Swansea (≥6 de los siguientes)</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Parámetro</th><th>Valor diagnóstico</th></tr></thead>
+      <tbody>
+        <tr><td>Vómitos</td><td>Presentes</td></tr>
+        <tr><td>Dolor abdominal</td><td>Presente</td></tr>
+        <tr><td>Polidipsia / poliuria</td><td>Presentes</td></tr>
+        <tr><td>Encefalopatía</td><td>Presente</td></tr>
+        <tr><td>Bilirrubina</td><td>&gt;0,8 mg/dl</td></tr>
+        <tr><td>Hipoglucemia</td><td>&lt;72 mg/dl</td></tr>
+        <tr><td>Ácido úrico</td><td>&gt;5,7 mg/dl</td></tr>
+        <tr><td>Leucocitosis</td><td>&gt;11.000/mm³</td></tr>
+        <tr><td>TGO/TGP</td><td>&gt;3x normal</td></tr>
+        <tr><td>Creatinina</td><td>&gt;1,7 mg/dl</td></tr>
+        <tr><td>Coagulopatía (TP)</td><td>&gt;14 seg</td></tr>
+        <tr><td>Eco: hígado hiperecogénico</td><td>Presente</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Conducta</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Internación inmediata — UCI o UTI obstétrica</div><div class="step-body">
+        Soporte: glucosa IV (hipoglucemia frecuente) · Corrección de coagulopatía · PFC si necesario<br>
+        Hepatología + obstetricia urgente
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Terminar el embarazo — único tratamiento definitivo</div><div class="step-body">
+        Independientemente de la edad gestacional<br>
+        Vía de parto según condiciones obstétricas<br>
+        El hígado se recupera tras el parto en la mayoría de los casos
+      </div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- TAB 3: HIPEREMESIS GRAVÍDICA -->
+<div id="hep-hiper" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Hiperemesis gravídica — náuseas y vómitos severos del embarazo</span>Afecta 0,3–3% de los embarazos. Pico entre semanas 8–12. Generalmente mejora a las 20 semanas.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Criterios diagnósticos</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Vómitos persistentes que no responden a tratamiento ambulatorio</li>
+      <li><strong>Pérdida de peso &gt;5% del peso pregestacional</strong></li>
+      <li>Deshidratación · Cetonuria · Alteraciones electrolíticas</li>
+      <li>TGO/TGP elevadas (hasta 200 UI/L) — en 50% de los casos</li>
+      <li>Bilirrubina levemente elevada</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Diagnóstico diferencial — descartar siempre</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Embarazo molar — BHCG muy elevada</li>
+      <li>Embarazo múltiple</li>
+      <li>Gastroenteritis · Úlcera péptica · Pancreatitis</li>
+      <li>Hepatitis · Pielonefritis · Patología tiroidea (TSH)</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Hidratación IV + corrección electrolítica</div><div class="step-body">
+        <span class="drug">SF 0,9%</span> o <span class="drug">Ringer lactato</span> <span class="dose">1–2 L IV</span> con reposición de potasio<br>
+        <strong>Tiamina primero</strong>: <span class="drug">Vitamina B1</span> <span class="dose">100 mg IV</span> antes de glucosa — previene encefalopatía de Wernicke
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Antieméticos</div><div class="step-body">
+        <span class="drug">Metoclopramida</span> <span class="dose">10 mg IV c/8h</span> — primera línea<br>
+        <span class="drug">Ondansetrón</span> <span class="dose">4–8 mg IV c/8h</span> — segunda línea (evitar &lt;10 semanas si posible)<br>
+        <span class="drug">Prometazina</span> <span class="dose">12,5–25 mg IV/IM c/6h</span> — alternativa
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Criterios de internación</div><div class="step-body">
+        Vómitos incoercibles que no responden a tto ambulatorio<br>
+        Deshidratación severa · Pérdida de peso &gt;5% · Alteraciones electrolíticas<br>
+        Imposibilidad de tolerar líquidos 24h
+      </div></div></div>
+    </div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Siempre dar Tiamina ANTES de soluciones glucosadas</span>El déficit de tiamina en hiperemesis + glucosa sin B1 puede precipitar encefalopatía de Wernicke.</div></div>
+  </div></div>
+</div>
+`;
+
+// MÓDULO: ABUSO SEXUAL — PROTOCOLO ARGENTINA (Res. 2003/2021)
+VIEWS['abuso-sexual'] = `
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Protocolo obligatorio en todas las instituciones de salud · Res. Ministerial 2003/2021</span>La atención en urgencias NO puede supeditarse a una derivación. Actuar siempre.</div></div>
+<div class="tabs">
+  <div class="tab on" data-tab-grp="abu" onclick="switchTab(this,'abu','abu-legal')">⚖️ Marco legal</div>
+  <div class="tab" data-tab-grp="abu" onclick="switchTab(this,'abu','abu-pasos')">📋 Paso a paso</div>
+  <div class="tab" data-tab-grp="abu" onclick="switchTab(this,'abu','abu-tto')">💊 Tratamiento</div>
+  <div class="tab" data-tab-grp="abu" onclick="switchTab(this,'abu','abu-hiv')">🛡️ Profilaxis HIV</div>
+</div>
+
+<!-- TAB 1: MARCO LEGAL -->
+<div id="abu-legal" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Código Penal Argentino — Art. 119 y siguientes</span></div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Definiciones</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Figura</th><th>Definición</th><th>Pena</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-a">Abuso sexual simple</span></td><td>Contacto sexual sin acceso carnal · Sin consentimiento de la víctima · Sin importar el sexo</td><td>6 meses a 4 años</td></tr>
+        <tr><td><span class="tag t-r">Abuso sexual agravado</span></td><td>Con acceso carnal (penetración) por cualquier vía · O cuando víctima es menor de 13 años · O con violencia, amenaza, abuso coactivo · O víctima privada de sentido</td><td>6 a 15 años (violación)</td></tr>
+        <tr><td><span class="tag t-a">Estupro</span></td><td>Acceso carnal con persona entre 13 y 16 años · Aprovechándose de la inmadurez sexual de la víctima</td><td>3 a 6 años</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Menores de edad — protocolo especial</div><div class="sec-hd-line"></div></div>
+    <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">NNA (menores de 18 años) — requieren abordaje especializado diferente</span>
+    <ul class="bullets mt-8">
+      <li>Derivar a equipo especializado en violencia infanto-juvenil</li>
+      <li>No realizar entrevista testimonial al menor — puede contaminar la prueba judicial</li>
+      <li>Comunicar al juez, fiscal o defensor de menores según corresponda</li>
+      <li>Si los padres/tutores no realizan la denuncia → comunicar al defensor</li>
+      <li>Examen forense con Cámara Gesell si disponible</li>
+    </ul></div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Denuncia</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><strong>Adultos:</strong> la denuncia es optativa — respetar la autonomía de la víctima</li>
+      <li><strong>Menores de edad:</strong> denuncia obligatoria por parte del equipo de salud</li>
+      <li>El equipo de salud puede y debe documentar todo independientemente de la decisión de denunciar</li>
+    </ul>
+  </div></div>
+</div>
+
+<!-- TAB 2: PASO A PASO -->
+<div id="abu-pasos" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">El tiempo importa — la mayoría de los tratamientos son efectivos dentro de las 72h del episodio</span>Tratar primero, investigar después.</div></div>
+
+    <div class="algo mt-12">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Recepción — trato digno y privado</div><div class="step-body">
+        Escuchar con respeto, empatía y sin juicio<br>
+        Ambiente privado · Persona de apoyo si la víctima lo desea<br>
+        No emitir juicios de valor · No interrogar — escuchar<br>
+        Reducir la ansiedad de la víctima
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Historia clínica completa + consentimiento informado</div><div class="step-body">
+        HC diseñada específicamente para este fin · Foliada · Confidencial<br>
+        Consentimiento informado para cada procedimiento<br>
+        Registrar: fecha y hora del episodio · Tipo de contacto · Última relación sexual previa consensuada<br>
+        ¿Baño, ducha o lavado genital desde el episodio? → afecta recolección de muestras
+      </div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Examen físico — con médico de tribunales si disponible</div><div class="step-body">
+        <strong>El examen se realiza idealmente CON el médico de tribunales presente</strong><br>
+        Si no está disponible → documentar lesiones y tomar muestras · El médico forense completa luego<br>
+        Examen general completo · Lesiones extragenitales (cuello, muñecas, etc.)<br>
+        Examen genital y anal · Documentar con fotos si la víctima consiente<br>
+        <strong>Un examen físico normal NO descarta el abuso sexual</strong>
+      </div></div></div>
+      <div class="step"><div class="step-n crit">4</div><div class="step-c"><div class="step-title">Toma de muestras — con custodia policial si hay denuncia</div><div class="step-body">
+        <strong>Si hay denuncia → muestras con cadena de custodia policial</strong><br>
+        Hisopado vaginal/anal/oral para extendido en fresco y cultivo<br>
+        Hisopado con medio de Stuart para cultivo de flujo<br>
+        Hisopado específico para Chlamydia trachomatis y N. gonorrhoeae<br>
+        Guardar ropa interior en bolsa de papel (no plástico) — evidencia forense
+      </div></div></div>
+      <div class="step"><div class="step-n crit">5</div><div class="step-c"><div class="step-title">Laboratorio</div><div class="step-body">
+        BHCG cuantitativa (si posmenárquica) · Hemograma · Glucemia<br>
+        Serología: VIH, VDRL, Hepatitis B (HBsAg, anti-HBc), Hepatitis C<br>
+        Urocultivo · EAO<br>
+        Guardar muestra de sangre adicional (puede usarse como referencia forense)
+      </div></div></div>
+      <div class="step"><div class="step-n">6</div><div class="step-c"><div class="step-title">Decisión sobre denuncia — respetar a la víctima</div><div class="step-body">
+        Informar derechos · No presionar<br>
+        Si decide denunciar → articular con cadena de custodia<br>
+        Si no denuncia → documentar todo igualmente · Tratamiento obligatorio igual
+      </div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- TAB 3: TRATAMIENTO -->
+<div id="abu-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Todo el tratamiento debe iniciarse dentro de las 72h del episodio</span>No esperar resultados de laboratorio para iniciar.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Prevención de ETS — ATB empíricos</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Microorganismo</th><th>Tratamiento</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gonorrea</strong></td><td><span class="drug">Ceftriaxona</span> <span class="dose">500 mg IM dosis única</span></td></tr>
+        <tr><td><strong>Tricomonas + Vaginosis</strong></td><td><span class="drug">Metronidazol</span> <span class="dose">2 g VO dosis única</span></td></tr>
+        <tr><td><strong>Chlamydia</strong></td><td><span class="drug">Doxiciclina</span> <span class="dose">100 mg c/12h VO × 7 días</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Vacunación</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><span class="drug">Vacuna antitetánica</span> + <span class="drug">Gammaglobulina antitetánica</span> — si no está vacunada o vacunación incompleta</li>
+      <li><span class="drug">Vacuna Hepatitis B</span> — si no tiene esquema completo · 3 dosis (0, 1, 6 meses)</li>
+      <li><span class="drug">Vacuna HPV</span> — si corresponde por edad y esquema</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Prevención del embarazo</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Anticoncepción de emergencia — dentro de las 120h</div><div class="step-body">
+        <span class="drug">Levonorgestrel</span> <span class="dose">1,5 mg VO dosis única</span> — cuanto antes, más efectivo<br>
+        O <span class="drug">DIU de cobre</span> — más efectivo, hasta 5 días post episodio (efectividad &gt;99%)<br>
+        IMC ≥30: considerar doble dosis de LNG o DIU de cobre directamente
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">IVE — Ley 27.610 (Argentina)</div><div class="step-body">
+        La interrupción voluntaria del embarazo es un <strong>derecho legal</strong> en Argentina hasta las 14 semanas<br>
+        Después de 14 semanas: derecho garantizado en caso de violación (Art. 86 CP)<br>
+        El sistema de salud está obligado a garantizar el acceso — no puede negarse<br>
+        Informar a la víctima sobre este derecho de forma clara y sin juicio
+      </div></div></div>
+    </div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Salud mental</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Contención inmediata por el equipo de salud</li>
+      <li>Derivación a salud mental — seguimiento ambulatorio</li>
+      <li>Informar sobre recursos de apoyo disponibles</li>
+      <li>Línea 137 — Atención a víctimas de violencia familiar y sexual (gratuita, 24h)</li>
+    </ul>
+  </div></div>
+</div>
+
+<!-- TAB 4: PROFILAXIS HIV -->
+<div id="abu-hiv" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Profilaxis post-exposición (PPE) HIV — iniciar dentro de las 72h · Máxima efectividad cuanto antes</span>Después de 72h no se recomienda — sí control clínico y seguimiento serológico.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Evaluación del riesgo</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Exposición</th><th>Riesgo</th><th>PPE</th></tr></thead>
+      <tbody>
+        <tr><td>Sexo vaginal o anal receptivo</td><td>Alto</td><td><span class="tag t-r">Tratamiento ampliado</span></td></tr>
+        <tr><td>Sexo vaginal o anal insertivo</td><td>Moderado</td><td><span class="tag t-a">Tratamiento básico</span></td></tr>
+        <tr><td>Sexo oral receptivo con eyaculación</td><td>Bajo</td><td><span class="tag t-a">Tratamiento básico</span></td></tr>
+        <tr><td>Sexo oral sin eyaculación</td><td>Muy bajo</td><td>Evaluar individualmente</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Esquemas — Dirección de SIDA y ETS, Ministerio de Salud Argentina</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Tratamiento básico — 2 INTR</div><div class="step-body">
+        <span class="drug">Tenofovir/Emtricitabina</span> <span class="dose">300/200 mg 1 comp/día VO × 28 días</span><br>
+        O <span class="drug">Zidovudina/Lamivudina</span> <span class="dose">300/150 mg c/12h VO × 28 días</span>
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Tratamiento ampliado — 2 INTR + 1 INNTR o 1 IP</div><div class="step-body">
+        Base: <span class="drug">Tenofovir/Emtricitabina</span> <span class="dose">300/200 mg 1 comp/día</span><br>
+        + <span class="drug">Raltegravir</span> <span class="dose">400 mg c/12h VO</span> (preferido — mejor tolerancia)<br>
+        O + <span class="drug">Lopinavir/ritonavir</span> <span class="dose">400/100 mg c/12h VO</span><br>
+        Duración: <strong>28 días</strong>
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Seguimiento serológico</div><div class="step-body">
+        Test HIV basal · A las 4–6 semanas · A los 3 meses<br>
+        VDRL basal y a los 3 meses<br>
+        Hepatitis B y C: basal y a los 3 meses<br>
+        Si concurre luego de 72h → no dar PPE · Control clínico y serología igual
+      </div></div></div>
+    </div>
+    <div class="cl cl-b mt-8"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Medicación gratuita y disponible en todos los hospitales públicos</span>Línea 0800-333-3444 — Dirección de SIDA y ETS · Gratuita · 24 horas</div></div>
+  </div></div>
+</div>
+`;
+
+// MÓDULO: GINECOLOGÍA — INFECCIONES GENITALES
+VIEWS['gineco-infecciones'] = `
+<div class="tabs">
+  <div class="tab on" data-tab-grp="gin" onclick="switchTab(this,'gin','gin-dx')">🔍 Dx diferencial</div>
+  <div class="tab" data-tab-grp="gin" onclick="switchTab(this,'gin','gin-vag')">🦠 Vaginosis/Vaginitis</div>
+  <div class="tab" data-tab-grp="gin" onclick="switchTab(this,'gin','gin-cerv')">🔬 Cervicitis</div>
+  <div class="tab" data-tab-grp="gin" onclick="switchTab(this,'gin','gin-epi')">🚨 EPI</div>
+</div>
+
+<!-- TAB 1: DX DIFERENCIAL -->
+<div id="gin-dx" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Tres preguntas clave: ¿cómo es el flujo? ¿hay olor? ¿hay prurito?</span>Solo la tricomoniasis es estrictamente una ITS — VB y candidiasis no lo son.</div></div>
+    <div class="tbl-wrap mt-12"><table class="tbl">
+      <thead><tr><th></th><th>Vaginosis bacteriana</th><th>Candidiasis</th><th>Tricomoniasis</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Flujo</strong></td><td>Grisáceo · Homogéneo · Adherente a paredes</td><td>Blanco grumoso · "Cottage cheese"</td><td>Verde-amarillento · Espumoso · Abundante</td></tr>
+        <tr><td><strong>Olor</strong></td><td>Pescado (aminas) · Peor post coito</td><td>Sin olor o levemente ácido</td><td>Fétido</td></tr>
+        <tr><td><strong>Prurito</strong></td><td>Leve o ausente</td><td>Intenso · Principal síntoma</td><td>Variable · Ardor</td></tr>
+        <tr><td><strong>pH vaginal</strong></td><td>&gt;4,5</td><td>&lt;4,5 (normal)</td><td>&gt;4,5</td></tr>
+        <tr><td><strong>Test aminas (KOH)</strong></td><td>Positivo ✓</td><td>Negativo</td><td>Puede ser positivo</td></tr>
+        <tr><td><strong>Microscopía</strong></td><td>Clue cells (células guía)</td><td>Hifas y esporas</td><td>Tricomonas móviles</td></tr>
+        <tr><td><strong>Agente</strong></td><td>Gardnerella + anaerobios</td><td>Candida albicans (90%)</td><td>Trichomonas vaginalis</td></tr>
+        <tr><td><strong>ITS</strong></td><td>No</td><td>No</td><td>Sí — tratar pareja</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Cervicitis y EPI → ver tabs siguientes</span>Si hay dolor pélvico, fiebre o flujo mucopurulento cervical → pensar cervicitis o EPI, no solo vaginitis.</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 2: VAGINOSIS / VAGINITIS -->
+<div id="gin-vag" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="sec-hd"><div class="sec-hd-lbl">Vaginosis bacteriana — Criterios de Amsel (≥3 de 4)</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Flujo vaginal homogéneo grisáceo adherente a paredes</li>
+      <li>pH vaginal &gt;4,5</li>
+      <li>Test de aminas positivo — olor a pescado al agregar KOH 10% (Whiff test)</li>
+      <li>Células guía (clue cells) en microscopía en fresco — &gt;20% de células epiteliales</li>
+    </ul>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">VB en embarazo — tratar siempre</span>Asociada a RPM, parto prematuro, corioamnionitis e infecciones puerperales.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento — SADI 2025 / Ministerio Salud Argentina</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Diagnóstico</th><th>Primera línea</th><th>Alternativa</th><th>Pareja</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Vaginosis bacteriana</strong></td><td><span class="drug">Metronidazol</span> <span class="dose">500 mg c/12h VO × 7 días</span><br>O <span class="drug">Metronidazol gel 0,75%</span> <span class="dose">1 aplicador vaginal/noche × 5 días</span></td><td><span class="drug">Clindamicina crema 2%</span> <span class="dose">1 aplicador vaginal/noche × 7 días</span></td><td>No tratar de rutina</td></tr>
+        <tr><td><strong>Candidiasis vulvovaginal</strong></td><td><span class="drug">Fluconazol</span> <span class="dose">150 mg VO dosis única</span></td><td><span class="drug">Clotrimazol óvulos</span> <span class="dose">500 mg vaginal dosis única</span><br>O <span class="drug">Miconazol crema 2%</span> <span class="dose">× 7 días</span></td><td>No tratar salvo síntomas</td></tr>
+        <tr><td><strong>Tricomoniasis</strong></td><td><span class="drug">Metronidazol</span> <span class="dose">2 g VO dosis única</span><br>O <span class="drug">Tinidazol</span> <span class="dose">2 g VO dosis única</span></td><td><span class="drug">Metronidazol</span> <span class="dose">500 mg c/12h × 7 días</span></td><td><strong>Tratar siempre</strong></td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-b mt-8"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Candidiasis recurrente (≥4 episodios/año)</span>Descartar diabetes, HIV, inmunosupresión. Tratar con Fluconazol 150 mg semanal × 6 meses (mantenimiento). Derivar a ginecología.</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 3: CERVICITIS -->
+<div id="gin-cerv" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Cervicitis — inflamación del cuello uterino</span>Agentes principales: N. gonorrhoeae + C. trachomatis. Tratar ambos empíricamente siempre — la coinfección es frecuente.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Clínica</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Flujo mucopurulento endocervical (amarillo-verdoso)</li>
+      <li>Cuello uterino friable — sangra fácilmente al contacto</li>
+      <li>Puede ser asintomática (50% de los casos de clamidia)</li>
+      <li>Dolor pélvico leve · Dispareunia · Spotting postcoital</li>
+      <li>Si hay dolor a la movilización cervical → sospechar EPI</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Diagnóstico</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Hisopado endocervical para cultivo de gonococo y PCR de Chlamydia</li>
+      <li>VDRL · VIH · Hepatitis B · Tricomonas (ITS asociadas frecuentes)</li>
+      <li>Embarazo: BHCG siempre</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento empírico — SADI 2025 / CDC 2024</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Cubrir gonorrea + clamidia siempre</div><div class="step-body">
+        <span class="drug">Ceftriaxona</span> <span class="dose">500 mg IM dosis única</span> — gonorrea<br>
+        + <span class="drug">Doxiciclina</span> <span class="dose">100 mg c/12h VO × 7 días</span> — clamidia<br>
+        O <span class="drug">Azitromicina</span> <span class="dose">1 g VO dosis única</span> si adherencia es problema
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Tratar pareja sexual — siempre</div><div class="step-body">
+        Misma conducta empírica · Abstinencia hasta completar tratamiento · Estudio de ITS completo
+      </div></div></div>
+    </div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Gonococo — resistencia creciente a quinolonas en Argentina</span>No usar ciprofloxacina ni azitromicina como monoterapia para gonorrea. Ceftriaxona sigue siendo primera línea.</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 4: EPI -->
+<div id="gin-epi" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">EPI — umbral diagnóstico bajo. Si hay criterios mínimos: tratar. El retraso aumenta el riesgo de infertilidad, ectópico y dolor pélvico crónico.</span></div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Criterios diagnósticos — CDC 2024</div><div class="sec-hd-line"></div></div>
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Criterios mínimos — iniciar tratamiento si UNO o más están presentes en mujer sexualmente activa con dolor pélvico</span></div></div>
+    <ul class="bullets mt-8">
+      <li><strong>Dolor a la movilización cervical</strong> (Chandelier sign)</li>
+      <li><strong>Dolor uterino a la palpación</strong></li>
+      <li><strong>Dolor anexial bilateral</strong></li>
+    </ul>
+    <div class="sec-hd mt-4"><div class="sec-hd-lbl">Criterios adicionales — aumentan la especificidad</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Fiebre &gt;38,3°C · Leucocitosis</li>
+      <li>Flujo mucopurulento cervical o vaginal</li>
+      <li>Leucocitos en preparado en fresco de flujo vaginal</li>
+      <li>PCR/NAAT positiva para gonorrea o clamidia</li>
+      <li>Eco: líquido en fondo de saco, absceso tubo-ovárico</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento — guía europea IUSTI 2024 / CDC 2024</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th></th><th>Ambulatorio (leve-moderada)</th><th>Internación (grave)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Esquema</strong></td><td>
+          <span class="drug">Ceftriaxona</span> <span class="dose">500 mg IM dosis única</span><br>
+          + <span class="drug">Doxiciclina</span> <span class="dose">100 mg c/12h VO × 14 días</span><br>
+          + <span class="drug">Metronidazol</span> <span class="dose">500 mg c/12h VO × 14 días</span>
+        </td><td>
+          <span class="drug">Cefoxitina</span> <span class="dose">2 g IV c/6h</span><br>
+          + <span class="drug">Doxiciclina</span> <span class="dose">100 mg IV/VO c/12h</span><br>
+          O <span class="drug">Clindamicina</span> <span class="dose">900 mg IV c/8h</span><br>
+          + <span class="drug">Gentamicina</span> <span class="dose">5 mg/kg/día IV</span>
+        </td></tr>
+        <tr><td><strong>Duración</strong></td><td>14 días</td><td>IV hasta 24h de mejoría → oral hasta 14 días</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Criterios de internación</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Absceso tubo-ovárico</li>
+      <li>No respuesta a tto oral en 72h</li>
+      <li>Embarazo</li>
+      <li>Imposibilidad de descartar urgencia quirúrgica</li>
+      <li>Intolerancia oral · Inmunosupresión</li>
+    </ul>
+
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Síndrome de Fitz-Hugh-Curtis</span>Perihepatitis por extensión de EPI — dolor en CSD que puede confundirse con colecistitis. Dolor a la palpación hepática + antecedente de flujo/dolor pélvico. Mismo tratamiento que EPI.</div></div>
+  </div></div>
+</div>
+`;
+
 VIEWS['hiperkalemia'] = `
 <div class="cl cl-r"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">K⁺ &gt;6,5 mEq/L con cambios en ECG = emergencia. Actuar antes de tener el resultado completo.</span></div></div>
 
@@ -4887,6 +5928,27 @@ if ('serviceWorker' in navigator) {
     .then(() => console.log('SW: El Libro de Guardia registrado'))
     .catch(e => console.warn('SW no disponible (normal en file://):', e.message));
 }
+
+// Calculadora EG por FUM
+function calcEG() {
+  const fum = document.getElementById('fum-input');
+  if (!fum || !fum.value) return;
+  const fumDate = new Date(fum.value);
+  const today = new Date();
+  const diffMs = today - fumDate;
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  if (diffDays < 0 || diffDays > 294) {
+    document.getElementById('eg-result').textContent = 'Fecha inválida';
+    return;
+  }
+  const weeks = Math.floor(diffDays / 7);
+  const days = diffDays % 7;
+  document.getElementById('eg-result').textContent = weeks + ' sem + ' + days + ' días';
+  const tri = weeks < 14 ? '1er trimestre' : weeks < 28 ? '2do trimestre' : '3er trimestre';
+  const mitad = weeks < 20 ? '→ Primera mitad del embarazo' : '→ Segunda mitad del embarazo';
+  document.getElementById('eg-trimestre').textContent = tri + ' · ' + mitad;
+}
+
 </script>
 </body>
 </html>
