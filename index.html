@@ -10,6 +10,21 @@
   gtag('config', 'G-MQLCBXX8SN');
 </script>
 <meta charset="UTF-8">
+  <!-- ═══════════════════════════════════════
+       PROPIEDAD INTELECTUAL / COPYRIGHT
+       ═══════════════════════════════════════ -->
+  
+  <meta name="disclaimer" content="El Libro de Guardia es una herramienta de referencia clínica. No reemplaza el juicio médico profesional. Las decisiones clínicas son responsabilidad exclusiva del profesional de la salud.">
+  <meta name="author" content="Di Fonzo Lautaro">
+  <meta name="copyright" content="© 2026 Di Fonzo Lautaro. Todos los derechos reservados.">
+  <meta name="description" content="El Libro de Guardia — Guía clínica de manejo rápido para residentes. Creado por Di Fonzo Lautaro.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="El Libro de Guardia">
+  <meta property="og:description" content="Guía clínica offline para guardia médica. © 2026 Di Fonzo Lautaro">
+  <meta property="og:site_name" content="El Libro de Guardia">
+  <!-- Fecha de creación registrada -->
+  <meta name="creation-date" content="2026">
+  <meta name="last-modified" content="2026-03-29">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="El Libro">
@@ -722,9 +737,27 @@ ul.bullets li strong { color: var(--text); }
 .green { color: var(--green); }
 .amber { color: var(--amber); }
 .acc { color: var(--acc); }
+
+/* ── COPYRIGHT NOTICE ── */
+#copyright-notice {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2px 8px;
+  font-size: 9px;
+  color: var(--text3, #444);
+  text-align: center;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.4;
+  user-select: none;
+  -webkit-user-select: none;
+}
 </style>
 </head>
 <body>
+<div id="copyright-notice">© 2026 Di Fonzo Lautaro · El Libro de Guardia · Todos los derechos reservados</div>
 
 <!-- FAB SCROLL TOP -->
 <button id="fab-top" onclick="scrollTop()" title="Volver arriba">↑</button>
@@ -1152,6 +1185,14 @@ ul.bullets li strong { color: var(--text); }
 //  VIEWS REGISTRY
 // ══════════════════════════════════════════════
 const VIEWS = {};
+// ═══════════════════════════════════════════════════════
+// AVISO LEGAL: El contenido de esta aplicación es una
+// herramienta de referencia para profesionales de la salud.
+// No reemplaza el juicio clínico profesional.
+// Toda decisión clínica es responsabilidad del médico tratante.
+// © 2026 Di Fonzo Lautaro — Ley 11.723 Argentina
+// ═══════════════════════════════════════════════════════
+
 
 // ══════════════════════════════════════════════
 //  VIEW META (breadcrumb + search)
@@ -1440,6 +1481,17 @@ VIEWS['home'] = `
       <div><div class="h-stat-n">64</div><div class="h-stat-l">Módulos clínicos</div></div>
       <div><div class="h-stat-n">11</div><div class="h-stat-l">Calculadoras</div></div>
       <div><div class="h-stat-n">100+</div><div class="h-stat-l">Fármacos con dosis</div></div>
+    </div>
+  </div>
+
+
+  <!-- DISCLAIMER LEGAL -->
+  <div style="margin:12px 0 16px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber,#f59e0b);border-radius:8px;padding:10px 13px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber,#f59e0b);margin-bottom:4px">⚠️ Aviso importante</div>
+    <div style="font-size:11.5px;color:var(--text2);line-height:1.55">
+      Esta guía es una <strong style="color:var(--text)">herramienta de referencia rápida</strong> para profesionales de la salud. 
+      <strong style="color:var(--text)">No reemplaza el juicio clínico</strong>, la evaluación individual del paciente ni la consulta de fuentes primarias. 
+      La <strong style="color:var(--text)">responsabilidad de toda decisión clínica</strong> recae exclusivamente en el profesional tratante.
     </div>
   </div>
 
@@ -2989,7 +3041,7 @@ VIEWS['cad'] = `
         K⁺ &gt;5,5: No reponer, controlar cada 2h<br>
         Monitoreo de K cada 2–4h durante las primeras 12h
       </div></div></div>
-      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Bicarbonato — solo si pH &lt;7,0 (ADA 2024)</div><div class="step-body">
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Bicarbonato — solo si pH &lt;7,0 (ADA 2026)</div><div class="step-body">
         <span class="drug">NaHCO₃ 8,4%</span> <span class="dose">100 mEq en 400 ml de agua destilada IV en 2h</span><br>
         No dar rutinariamente (empeora hipopotasemia, alcalosis paradójica cerebral)
       </div></div></div>
@@ -4738,7 +4790,7 @@ VIEWS['gineco-infecciones'] = `
       <li>Embarazo: BHCG siempre</li>
     </ul>
 
-    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento empírico — SADI 2025 / CDC 2024</div><div class="sec-hd-line"></div></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento empírico — SADI 2025 / CDC 2026</div><div class="sec-hd-line"></div></div>
     <div class="algo">
       <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Cubrir gonorrea + clamidia siempre</div><div class="step-body">
         <span class="drug">Ceftriaxona</span> <span class="dose">500 mg IM dosis única</span> — gonorrea<br>
@@ -4758,7 +4810,7 @@ VIEWS['gineco-infecciones'] = `
   <div class="card"><div class="card-body">
     <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">EPI — umbral diagnóstico bajo. Si hay criterios mínimos: tratar. El retraso aumenta el riesgo de infertilidad, ectópico y dolor pélvico crónico.</span></div></div>
 
-    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Criterios diagnósticos — CDC 2024</div><div class="sec-hd-line"></div></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Criterios diagnósticos — CDC 2026</div><div class="sec-hd-line"></div></div>
     <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Criterios mínimos — iniciar tratamiento si UNO o más están presentes en mujer sexualmente activa con dolor pélvico</span></div></div>
     <ul class="bullets mt-8">
       <li><strong>Dolor a la movilización cervical</strong> (Chandelier sign)</li>
@@ -4774,7 +4826,7 @@ VIEWS['gineco-infecciones'] = `
       <li>Eco: líquido en fondo de saco, absceso tubo-ovárico</li>
     </ul>
 
-    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento — guía europea IUSTI 2024 / CDC 2024</div><div class="sec-hd-line"></div></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento — guía europea IUSTI 2026 / CDC 2026</div><div class="sec-hd-line"></div></div>
     <div class="tbl-wrap"><table class="tbl">
       <thead><tr><th></th><th>Ambulatorio (leve-moderada)</th><th>Internación (grave)</th></tr></thead>
       <tbody>
@@ -5950,5 +6002,15 @@ function calcEG() {
 }
 
 </script>
+
+<!-- ═══════════════════════════════════════════════════════════
+     AVISO DE PROPIEDAD INTELECTUAL — NO ELIMINAR
+     © 2026 Di Fonzo Lautaro · El Libro de Guardia
+     Todos los derechos reservados.
+     Prohibida la reproducción, distribución o modificación
+     total o parcial sin autorización expresa del autor.
+     Registro DNDA Argentina en trámite.
+     Contacto: @ellibro.deguardia · lautarodifonzofasta.github.io/ellibrodeguardia/
+     ═══════════════════════════════════════════════════════════ -->
 </body>
 </html>
