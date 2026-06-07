@@ -932,9 +932,9 @@ ul.bullets li strong { color: var(--text); }
         <span class="sb-badge b-crit">CRIT</span>
       </div>
       <div class="sb-item" data-view="herpes-zoster" onclick="nav(this)">
-  <span class="sb-item-ico">🧬</span>
-  <div class="sb-item-txt"><div class="sb-item-name">Herpes Zóster</div><div class="sb-item-sub">Diagnóstico · Antiviral · Neuralgia</div></div>
-</div>
+        <span class="sb-item-ico">🧬</span>
+        <div class="sb-item-txt"><div class="sb-item-name">Herpes Zóster</div><div class="sb-item-sub">Diagnóstico · Antiviral · Neuralgia</div></div>
+      </div>
       <div class="sb-item" data-view="itu" onclick="nav(this)">
         <span class="sb-item-ico">💧</span>
         <div class="sb-item-txt"><div class="sb-item-name">ITU / Pielonefritis</div></div>
@@ -1249,7 +1249,7 @@ const META = {
   'higado-descompensado': { name:'Hígado descompensado', cat:'Hepatología', ico:'🟡' },
   'delirium':             { name:'Delirium', cat:'Neurología', ico:'🧠' },
   'celulitis':            { name:'Celulitis / Erisipela', cat:'Infectología', ico:'🦵' },
-  'herpes-zoster': { name:'Herpes Zóster', cat:'Infectología', ico:'🧬' },
+  'herpes-zoster':        { name:'Herpes Zóster', cat:'Infectología', ico:'🧬' },
   'tvp':                  { name:'TVP', cat:'Cardiovascular', ico:'🩸' },
   'anafilaxia':           { name:'Anafilaxia', cat:'Emergencias', ico:'🚨' },
   'calc-wells-tvp':       { name:'Wells TVP', cat:'Calculadoras', ico:'🧮' },
@@ -1384,6 +1384,17 @@ function switchTab(btn, grp, pane) {
     if (el) el.classList.add('on');
   }
 }
+function switchHZ(btn, pane){
+  document.querySelectorAll('#tabs-hz .tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  ['hz-dx','hz-tto','hz-comp','hz-esp','hz-vac'].forEach(p=>{
+    const el=document.getElementById(p);
+    if(el) el.classList.remove('on');
+  });
+  const target=document.getElementById(pane);
+  if(target) target.classList.add('on');
+}
+
 
 // ══════════════════════════════════════════════
 //  CALCULATOR INIT (dispatcher)
@@ -5937,6 +5948,7 @@ VIEWS['pancreatitis'] = `
   </div></div>
 </div>`;
 
+
 VIEWS['herpes-zoster'] = `
 <div class="cl cl-b"><div class="cl-ico">🧬</div><div class="cl-body"><span class="cl-title">Herpes Zóster — reactivación del VVZ</span>El tratamiento antiviral es más eficaz cuanto más precoz. Iniciar idealmente dentro de las 72h del inicio de lesiones.</div></div>
 
@@ -6145,20 +6157,7 @@ VIEWS['herpes-zoster'] = `
     </div>
   </div>
 </div>
-
-<script>
-function switchHZ(btn, pane){
-  document.querySelectorAll('#tabs-hz .tab').forEach(t=>t.classList.remove('on'));
-  btn.classList.add('on');
-  ['hz-dx','hz-tto','hz-comp','hz-esp','hz-vac'].forEach(p=>{
-    const el=document.getElementById(p);
-    if(el) el.classList.remove('on');
-  });
-  const target=document.getElementById(pane);
-  if(target) target.classList.add('on');
-}
-<\/script>
-\`;
+`;
  // ══════════════════════════════════════════════
 //  BOOT
 // ══════════════════════════════════════════════
