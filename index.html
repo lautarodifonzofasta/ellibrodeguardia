@@ -931,6 +931,10 @@ ul.bullets li strong { color: var(--text); }
         <div class="sb-item-txt"><div class="sb-item-name">Celulitis / Erisipela</div></div>
         <span class="sb-badge b-crit">CRIT</span>
       </div>
+      <div class="sb-item" data-view="herpes-zoster" onclick="nav(this)">
+  <span class="sb-item-ico">🧬</span>
+  <div class="sb-item-txt"><div class="sb-item-name">Herpes Zóster</div><div class="sb-item-sub">Diagnóstico · Antiviral · Neuralgia</div></div>
+</div>
       <div class="sb-item" data-view="itu" onclick="nav(this)">
         <span class="sb-item-ico">💧</span>
         <div class="sb-item-txt"><div class="sb-item-name">ITU / Pielonefritis</div></div>
@@ -1245,6 +1249,7 @@ const META = {
   'higado-descompensado': { name:'Hígado descompensado', cat:'Hepatología', ico:'🟡' },
   'delirium':             { name:'Delirium', cat:'Neurología', ico:'🧠' },
   'celulitis':            { name:'Celulitis / Erisipela', cat:'Infectología', ico:'🦵' },
+  'herpes-zoster': { name:'Herpes Zóster', cat:'Infectología', ico:'🧬' },
   'tvp':                  { name:'TVP', cat:'Cardiovascular', ico:'🩸' },
   'anafilaxia':           { name:'Anafilaxia', cat:'Emergencias', ico:'🚨' },
   'calc-wells-tvp':       { name:'Wells TVP', cat:'Calculadoras', ico:'🧮' },
@@ -1523,6 +1528,7 @@ VIEWS['home'] = `
     <div class="mod-card" onclick="navSb('alt-sensorio')"><span class="mod-card-ico">😶‍🌫️</span><div><div class="mod-card-name">Alt. del sensorio</div><div class="mod-card-sub">AEIOU TIPS</div></div></div>
     <div class="mod-card" onclick="navSb('fiebre')"><span class="mod-card-ico">🌡️</span><div><div class="mod-card-name">Fiebre sin foco</div><div class="mod-card-sub">Adulto · Inmunodeprimido</div></div></div>
     <div class="mod-card" onclick="navSb('meningitis')"><span class="mod-card-ico">🧬</span><div><div class="mod-card-name">Meningitis</div><div class="mod-card-sub">Triada · LCR · ATB</div></div></div>
+    <div class="mod-card" onclick="navSb('herpes-zoster')"><span class="mod-card-ico">🧬</span><div><div class="mod-card-name">Herpes Zóster</div><div class="mod-card-sub">Antiviral · Neuralgia postherpética</div></div></div>
     <div class="mod-card" onclick="navSb('itu')"><span class="mod-card-ico">💧</span><div><div class="mod-card-name">ITU / Pielonefritis</div><div class="mod-card-sub">Criterios · ATB</div></div></div>
     <div class="mod-card" onclick="navSb('faringoamig')"><span class="mod-card-ico">🤒</span><div><div class="mod-card-name">Faringoamigdalitis</div><div class="mod-card-sub">Centor · ATB si bacteriana</div></div></div>
     <div class="mod-card" onclick="navSb('dolor-abdominal')"><span class="mod-card-ico">🤢</span><div><div class="mod-card-name">Dolor abdominal</div><div class="mod-card-sub">Algoritmo por cuadrante</div></div></div>
@@ -5934,7 +5940,229 @@ VIEWS['pancreatitis'] = `
 // ══════════════════════════════════════════════
 //  BOOT
 // ══════════════════════════════════════════════
-// PWA Install prompt
+VIEWS['herpes-zoster'] = `
+<div class="cl cl-b"><div class="cl-ico">🧬</div><div class="cl-body"><span class="cl-title">Herpes Zóster — reactivación del VVZ</span>El tratamiento antiviral es más eficaz cuanto más precoz. Iniciar idealmente dentro de las 72h del inicio de lesiones.</div></div>
+
+<div class="tabs" id="tabs-hz">
+  <div class="tab on" onclick="switchHZ(this,'hz-dx')">🔍 Diagnóstico</div>
+  <div class="tab" onclick="switchHZ(this,'hz-tto')">💊 Tratamiento</div>
+  <div class="tab" onclick="switchHZ(this,'hz-comp')">⚠️ Complicaciones</div>
+  <div class="tab" onclick="switchHZ(this,'hz-esp')">🔴 Situaciones especiales</div>
+  <div class="tab" onclick="switchHZ(this,'hz-vac')">💉 Vacuna (SADI 2023)</div>
+</div>
+
+<div id="hz-dx" class="tab-pane on">
+  <div class="card">
+    <div class="card-header"><div class="card-ico ico-blue">🔍</div><div class="card-header-text"><div class="card-title">Diagnóstico clínico — no requiere laboratorio en presentación típica</div><div class="card-sub">Pródromo doloroso → erupción vesicular dermatomérica unilateral</div></div></div>
+    <div class="card-body">
+      <div class="sec-hd"><div class="sec-hd-lbl">Fases clínicas</div><div class="sec-hd-line"></div></div>
+      <div class="algo">
+        <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">Pródromo — 2 a 4 días previos al exantema</div><div class="step-body">Dolor, ardor o prurito intenso en el dermatoma afectado antes de las lesiones visibles. Puede haber fiebre, cefalea y malestar general.<br><strong>Diagnóstico diferencial en pródromo:</strong> IAM (si torácico), cólico renal o biliar, pleuritis.</div></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Erupción activa — días 3 a 21</div><div class="step-body">Máculas eritematosas → vesículas con contenido claro → pústulas → costras.<br><strong>Unilateral — no cruza la línea media</strong> (si cruza: diseminado).<br>Distribución: torácico 50–60% · cervical 15–20% · trigeminal 10–15% · lumbar y sacro 10%.</div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Resolución — costras caen en 2–4 semanas</div><div class="step-body">Puede quedar hipopigmentación o cicatriz.<br><strong>Zóster sine herpete:</strong> dolor dermatomérico sin lesiones cutáneas → confirmar con PCR VVZ.</div></div></div>
+      </div>
+      <div class="sec-hd mt-12"><div class="sec-hd-lbl">Diagnóstico diferencial</div><div class="sec-hd-line"></div></div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Diagnóstico</th><th>Diferencia clave</th></tr></thead>
+        <tbody>
+          <tr><td class="tbl-name">Herpes simple</td><td>Lesiones más pequeñas, recurrente, sin distribución dermatomérica, menos doloroso</td></tr>
+          <tr><td class="tbl-name">Dermatitis de contacto</td><td>Bilateral, ligada a exposición a alérgeno, prurito predomina sobre el dolor</td></tr>
+          <tr><td class="tbl-name">Impétigo bulloso</td><td>Ampollas grandes, costras melicéricas, bilateral, afebril</td></tr>
+          <tr><td class="tbl-name">Quemadura o irritación química</td><td>Historia de exposición, no sigue distribución nerviosa</td></tr>
+        </tbody>
+      </table></div>
+      <div class="sec-hd mt-12"><div class="sec-hd-lbl">Confirmación diagnóstica — cuándo pedirla</div><div class="sec-hd-line"></div></div>
+      <ul class="bullets">
+        <li><strong>PCR VVZ en lesión cutánea:</strong> gold standard · útil en presentación atípica o zóster sine herpete</li>
+        <li><strong>PCR VVZ en LCR:</strong> sospecha de encefalitis o meningitis por VVZ</li>
+        <li><strong>Prueba de Tzanck:</strong> células gigantes multinucleadas en raspado de vesícula — útil pero no diferencia de HSV</li>
+      </ul>
+      <div class="sec-hd mt-12"><div class="sec-hd-lbl">Factores de riesgo de reactivación</div><div class="sec-hd-line"></div></div>
+      <ul class="bullets">
+        <li>Edad ≥50 años (principal factor)</li>
+        <li>Inmunosupresión: corticoides crónicos, quimioterapia, trasplante, VIH, neoplasias hematológicas</li>
+        <li>Diabetes mellitus · Enfermedad renal crónica · Estrés físico o emocional significativo</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="hz-tto" class="tab-pane">
+  <div class="card">
+    <div class="card-header"><div class="card-ico ico-red">⏱️</div><div class="card-header-text"><div class="card-title">Iniciar antiviral dentro de las 72h del inicio de las lesiones</div><div class="card-sub">Después de 72h puede seguir siendo útil si hay lesiones activas nuevas, inmunocompromiso o localización de alto riesgo</div></div></div>
+    <div class="card-body">
+      <div class="sec-hd"><div class="sec-hd-lbl">Indicaciones de antiviral (SADI 2023)</div><div class="sec-hd-line"></div></div>
+      <ul class="bullets">
+        <li>Edad ≥50 años</li>
+        <li>Cualquier edad con dolor moderado a severo o erupción extensa</li>
+        <li>Localización no troncular: oftálmica, ótica (Ramsay Hunt), facial, cervical alta</li>
+        <li>Inmunocompromiso de cualquier grado</li>
+        <li>Inicio &lt;72h, o lesiones activas nuevas después de 72h</li>
+      </ul>
+      <div class="cl cl-g mt-8"><div class="cl-ico">✓</div><div class="cl-body">Paciente joven, inmunocompetente, erupción troncular leve y &lt;72h: antiviral recomendado igual.</div></div>
+      <div class="sec-hd mt-12"><div class="sec-hd-lbl">Antivirales orales — paciente inmunocompetente</div><div class="sec-hd-line"></div></div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Fármaco</th><th>Dosis</th><th>Duración</th><th>Ventaja</th></tr></thead>
+        <tbody>
+          <tr><td class="tbl-name">Valaciclovir (1ª elección)</td><td><span class="drug">Valaciclovir</span> <span class="dose">1000 mg c/8h VO</span></td><td>7 días</td><td>Mejor biodisponibilidad · 3 tomas/día</td></tr>
+          <tr><td class="tbl-name">Famciclovir (alternativa)</td><td><span class="drug">Famciclovir</span> <span class="dose">500 mg c/8h VO</span></td><td>7 días</td><td>Eficacia equivalente a valaciclovir</td></tr>
+          <tr><td class="tbl-name">Aciclovir (si no hay otros)</td><td><span class="drug">Aciclovir</span> <span class="dose">800 mg 5 veces/día VO</span></td><td>7–10 días</td><td>Más económico · 5 tomas/día</td></tr>
+        </tbody>
+      </table></div>
+      <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Ajuste en insuficiencia renal</span>Todos los antivirales requieren ajuste de dosis según clearance de creatinina.</div></div>
+      <div class="sec-hd mt-12"><div class="sec-hd-lbl">Analgesia — escalonada desde el inicio</div><div class="sec-hd-line"></div></div>
+      <div class="algo">
+        <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">Analgesia básica</div><div class="step-body"><span class="drug">Paracetamol</span> <span class="dose">1g c/6h VO</span> + <span class="drug">Ibuprofeno</span> <span class="dose">400–600 mg c/8h VO</span> si función renal OK</div></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Neuromoduladores — si dolor moderado a severo</div><div class="step-body"><span class="drug">Gabapentina</span> <span class="dose">300 mg c/8h VO</span> (titular hasta 900–3600 mg/día)<br>O <span class="drug">Pregabalina</span> <span class="dose">75 mg c/12h VO</span> → hasta 300 mg/día<br>Iniciar en fase aguda reduce el riesgo de neuralgia postherpética.</div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Opioides — si dolor refractario</div><div class="step-body"><span class="drug">Tramadol</span> <span class="dose">50–100 mg c/8h VO</span></div></div></div>
+        <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Corticoides — rol limitado</div><div class="step-body"><span class="drug">Prednisona</span> <span class="dose">40–60 mg/día × 7 días → descenso progresivo</span><br>Considerarlos en dolor severo en fase aguda, paciente inmunocompetente ≥50 años.<br><strong>No previenen la neuralgia postherpética · Contraindicados en inmunocomprometidos.</strong></div></div></div>
+      </div>
+      <div class="sec-hd mt-12"><div class="sec-hd-lbl">Cuidados locales</div><div class="sec-hd-line"></div></div>
+      <ul class="bullets">
+        <li>Lavado con agua y jabón. Lesiones abiertas: mantener limpias y secas.</li>
+        <li>Compresas húmedas frías para alivio local del prurito y dolor</li>
+        <li>No reventar vesículas — riesgo de sobreinfección bacteriana</li>
+        <li>Sobreinfección bacteriana: <span class="drug">Cefalexina</span> <span class="dose">500 mg c/6h × 7 días</span></li>
+        <li><strong>No usar aciclovir tópico en crema — no es eficaz en zóster</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="hz-comp" class="tab-pane">
+  <div class="card">
+    <div class="card-header"><div class="card-ico ico-amber">⚠️</div><div class="card-header-text"><div class="card-title">Neuralgia postherpética — complicación más frecuente</div><div class="card-sub">Dolor persistente &gt;3 meses desde el inicio del exantema · Afecta 10–30% de los pacientes</div></div></div>
+    <div class="card-body">
+      <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body">Riesgo aumentado con: edad &gt;60 años · dolor severo en fase aguda · inicio tardío del antiviral · localización oftálmica · inmunocompromiso.</div></div>
+      <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento de la neuralgia postherpética</div><div class="sec-hd-line"></div></div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Fármaco</th><th>Dosis</th><th>Evidencia</th></tr></thead>
+        <tbody>
+          <tr><td class="tbl-name">Gabapentina (1ª línea)</td><td><span class="drug">Gabapentina</span> <span class="dose">300 mg c/8h → hasta 3600 mg/día</span></td><td>Alta</td></tr>
+          <tr><td class="tbl-name">Pregabalina (1ª línea)</td><td><span class="drug">Pregabalina</span> <span class="dose">75–150 mg c/12h → hasta 600 mg/día</span></td><td>Alta</td></tr>
+          <tr><td class="tbl-name">Amitriptilina (1ª línea)</td><td><span class="drug">Amitriptilina</span> <span class="dose">10–25 mg/noche → hasta 75–150 mg/día</span></td><td>Alta · Bajo costo</td></tr>
+          <tr><td class="tbl-name">Duloxetina</td><td><span class="drug">Duloxetina</span> <span class="dose">30–60 mg/día VO</span></td><td>Moderada</td></tr>
+          <tr><td class="tbl-name">Tramadol / Opioides</td><td><span class="drug">Tramadol</span> <span class="dose">50–100 mg c/8h VO</span></td><td>Moderada · Uso controlado</td></tr>
+          <tr><td class="tbl-name">Parche de lidocaína 5%</td><td>Aplicar sobre área dolorosa × 12h/día</td><td>Moderada</td></tr>
+          <tr><td class="tbl-name">Capsaicina tópica</td><td>0,025–0,075% · 3–4 veces/día</td><td>Moderada</td></tr>
+        </tbody>
+      </table></div>
+      <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body">Derivar a clínica del dolor si el tratamiento ambulatorio no controla los síntomas en 4–6 semanas.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-ico ico-red">🔴</div><div class="card-header-text"><div class="card-title">Otras complicaciones — reconocerlas a tiempo</div></div></div>
+    <div class="card-body">
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Complicación</th><th>Presentación</th><th>Conducta urgente</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag t-r">Zóster oftálmico</span></td><td>Lesiones en V1, punta de nariz (signo de Hutchinson), ojo rojo, fotofobia</td><td>Antiviral IV + Oftalmología urgente</td></tr>
+          <tr><td><span class="tag t-r">Síndrome de Ramsay Hunt</span></td><td>Vesículas en pabellón auricular + parálisis facial periférica + otalgia</td><td>Antiviral IV + corticoide + ORL urgente</td></tr>
+          <tr><td><span class="tag t-a">Encefalitis/Meningitis</span></td><td>Cefalea, fiebre, meningismo, alteración del sensorio</td><td>Aciclovir IV + PL urgente</td></tr>
+          <tr><td><span class="tag t-a">Zóster diseminado</span></td><td>Lesiones en &gt;3 dermatomas o compromiso visceral</td><td>Aciclovir IV + internación</td></tr>
+          <tr><td><span class="tag t-a">Mielitis transversa</span></td><td>Déficit motor/sensitivo + disfunción esfinteriana</td><td>Aciclovir IV + corticoides + Neurología</td></tr>
+          <tr><td><span class="tag t-g">Sobreinfección bacteriana</span></td><td>Pus, celulitis, fiebre secundaria</td><td>Cefalexina o amoxicilina-clavulánico VO</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+
+<div id="hz-esp" class="tab-pane">
+  <div class="card">
+    <div class="card-header"><div class="card-ico ico-red">👁️</div><div class="card-header-text"><div class="card-title">Zóster oftálmico — emergencia oftalmológica</div><div class="card-sub">Rama V1 del trigémino · Riesgo de ceguera si no se trata a tiempo</div></div></div>
+    <div class="card-body">
+      <div class="cl cl-r"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Signo de Hutchinson</span>Lesión en punta o lado lateral de la nariz = rama nasociliar comprometida → riesgo alto de afectación ocular. Derivación oftalmológica urgente sin esperar síntomas oculares.</div></div>
+      <div class="algo mt-8">
+        <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Antiviral de elección</div><div class="step-body"><span class="drug">Aciclovir</span> <span class="dose">10 mg/kg IV c/8h × 7–10 días</span><br>O <span class="drug">Valaciclovir</span> <span class="dose">1000 mg c/8h VO × 7–10 días</span> si presentación leve sin compromiso ocular confirmado</div></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Corticoide tópico ocular</div><div class="step-body">Solo bajo prescripción oftalmológica — puede empeorar queratitis herpética si se usa sin diagnóstico ocular certero.</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-ico ico-red">👂</div><div class="card-header-text"><div class="card-title">Síndrome de Ramsay Hunt — zóster ótico</div><div class="card-sub">Reactivación en ganglio geniculado · Compromiso de pares craneales VII y VIII</div></div></div>
+    <div class="card-body">
+      <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Triada clásica</span>Vesículas en pabellón auricular o conducto auditivo externo + parálisis facial periférica aguda + otalgia intensa.<br>Puede asociarse: hipoacusia, tinnitus, vértigo.</div></div>
+      <div class="algo mt-8">
+        <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Antiviral + corticoide — combinación obligatoria</div><div class="step-body"><span class="drug">Valaciclovir</span> <span class="dose">1000 mg c/8h VO × 7 días</span><br>+ <span class="drug">Prednisona</span> <span class="dose">60 mg/día × 7 días → descenso en 7 días más</span><br>La combinación mejora la tasa de recuperación de la parálisis facial.</div></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Proteger el ojo si hay lagoftalmos</div><div class="step-body">Lágrimas artificiales frecuentes + oclusión ocular nocturna → previene queratitis por exposición.</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card" style="margin-bottom:0">
+      <div class="card-header"><div class="card-ico ico-amber">🛡️</div><div class="card-header-text"><div class="card-title">Inmunocomprometido</div></div></div>
+      <div class="card-body">
+        <div class="cl cl-r" style="margin-bottom:10px"><div class="cl-ico">⚠️</div><div class="cl-body">Mayor riesgo de diseminación, compromiso visceral y recurrencia. Umbral de internación y tratamiento IV más bajo.</div></div>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>Situación</th><th>Tratamiento</th></tr></thead>
+          <tbody>
+            <tr><td>Localizado leve</td><td><span class="drug">Valaciclovir</span> <span class="dose">1000 mg c/8h × 7–10 días</span> VO + monitoreo estrecho</td></tr>
+            <tr><td>Extenso / diseminado / visceral</td><td><span class="drug">Aciclovir</span> <span class="dose">10–15 mg/kg IV c/8h × 10–14 días</span> + internación</td></tr>
+            <tr><td>Resistencia a aciclovir</td><td><span class="drug">Foscarnet</span> <span class="dose">40 mg/kg c/8h IV</span> · Interconsulta infectología</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <div class="card-header"><div class="card-ico ico-green">🤰</div><div class="card-header-text"><div class="card-title">Embarazo</div></div></div>
+      <div class="card-body">
+        <ul class="bullets">
+          <li>Raro en embarazadas por inmunidad previa de varicela</li>
+          <li><strong>Aciclovir es el antiviral de elección — seguro en los tres trimestres</strong></li>
+          <li><span class="drug">Aciclovir</span> <span class="dose">800 mg 5 veces/día × 7 días VO</span>, o IV si grave</li>
+          <li>Evitar valaciclovir y famciclovir — menor experiencia en embarazo</li>
+          <li>No es indicación de cesárea salvo compromiso fetal directo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="hz-vac" class="tab-pane">
+  <div class="card">
+    <div class="card-header"><div class="card-ico ico-blue">💉</div><div class="card-header-text"><div class="card-title">Vacuna contra el herpes zóster — SADI 2023</div><div class="card-sub">Reduce incidencia de HZ y severidad de la neuralgia postherpética</div></div></div>
+    <div class="card-body">
+      <div class="sec-hd"><div class="sec-hd-lbl">Comparación de vacunas disponibles</div><div class="sec-hd-line"></div></div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th></th><th>VVZ atenuada (Zostavax®)</th><th>Recombinante adyuvantada (Shingrix®)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tipo</strong></td><td>Virus vivo atenuado</td><td>Subunidad recombinante — no viva</td></tr>
+          <tr><td><strong>Esquema</strong></td><td>1 dosis SC</td><td>2 dosis IM (0 y 2–6 meses)</td></tr>
+          <tr><td><strong>Eficacia ≥50 años</strong></td><td>~51%</td><td>~97%</td></tr>
+          <tr><td><strong>Inmunocomprometidos</strong></td><td><span class="tag t-r">Contraindicada</span></td><td><span class="tag t-g">Segura y recomendada</span></td></tr>
+          <tr><td><strong>Disponibilidad Argentina</strong></td><td>Limitada</td><td>Disponible sector privado</td></tr>
+        </tbody>
+      </table></div>
+      <div class="sec-hd mt-12"><div class="sec-hd-lbl">¿Quién debe vacunarse? — SADI 2023</div><div class="sec-hd-line"></div></div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Grupo</th><th>Recomendación</th><th>Vacuna</th></tr></thead>
+        <tbody>
+          <tr><td>≥50 años inmunocompetentes</td><td><span class="tag t-g">Recomendada</span></td><td>Shingrix (preferida) o Zostavax</td></tr>
+          <tr><td>≥18 años inmunocomprometidos</td><td><span class="tag t-r">Especialmente recomendada</span></td><td><strong>Solo Shingrix</strong> — Zostavax contraindicada</td></tr>
+          <tr><td>Episodio previo de HZ</td><td><span class="tag t-a">Recomendada</span></td><td>Esperar ≥12 meses del episodio agudo</td></tr>
+          <tr><td>Vacunados previamente con Zostavax</td><td><span class="tag t-a">Recomendada</span></td><td>Revacunar con Shingrix — mayor eficacia</td></tr>
+        </tbody>
+      </table></div>
+      <div class="cl cl-r mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">No vacunar durante el episodio agudo</span>Esperar resolución completa. La vacuna es preventiva de futuros episodios — no trata el cuadro activo.</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchHZ(btn, pane){
+  document.querySelectorAll('#tabs-hz .tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  ['hz-dx','hz-tto','hz-comp','hz-esp','hz-vac'].forEach(p=>{
+    const el=document.getElementById(p);
+    if(el) el.classList.remove('on');
+  });
+  const target=document.getElementById(pane);
+  if(target) target.classList.add('on');
+}
+<\/script>
+\`;
+  // PWA Install prompt
 let deferredPrompt = null;
 window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault();
