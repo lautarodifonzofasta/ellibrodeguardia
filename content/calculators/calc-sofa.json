@@ -85,5 +85,11 @@
     "initialScore": 0,
     "initialLabel": "Seleccioná todas las categorías",
     "note": "Máximo 24 puntos. Cada sistema: 0–4 puntos."
+  },
+  "results": {
+    "critical": { "label": "Falla orgánica grave", "detail": "Mortalidad >95%. UCI inmediata." },
+    "severe": { "label": "Falla orgánica grave", "detail": "Mortalidad 50-70%. UCI urgente." },
+    "dysfunction": { "label": "Disfunción orgánica", "detail": "Mortalidad 20-40%. Monitoreo estricto." },
+    "none": { "label": "Sin disfunción significativa", "detail": "Mortalidad <10%." }
   }
 }

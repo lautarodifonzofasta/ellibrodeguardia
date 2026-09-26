@@ -1,0 +1,49 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="epoc" onclick="switchTab(this,'epoc','epoc-dx')">🔍 Diagnóstico</div>
+  <div class="tab" data-tab-grp="epoc" onclick="switchTab(this,'epoc','epoc-tto')">💊 Tratamento</div>
+</div>
+<div id="epoc-dx" class="tab-pane on">
+  <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Sinais de exacerbação grave — internação urgente</span>
+  SpO₂ &lt;88% · pH &lt;7.35 · FR &gt;25 · Uso de musculatura acessória · Cianose · Alteração do sensório · Cor pulmonale descompensado</div></div>
+  <div class="card"><div class="card-body">
+    <div class="sec-hd"><div class="sec-hd-lbl">Classificação de gravidade</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Grau</th><th>Critérios</th><th>Manejo</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-g">Leve</span></td><td>Responde a broncodilatadores, sem hipoxemia grave</td><td>Ambulatorial</td></tr>
+        <tr><td><span class="tag t-a">Moderado</span></td><td>Necessita ATB/corticoide ou piora</td><td>Emergência / Internação</td></tr>
+        <tr><td><span class="tag t-r">Grave</span></td><td>Falência respiratória (pO₂&lt;60 ou pCO₂&gt;45 acima do basal normal)</td><td>UTI / VNI</td></tr>
+      </tbody>
+    </table></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Diagnósticos diferenciais</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets"><li>IC esquerda (o mais importante — pode coexistir)</li><li>Pneumonia · TEP · Pneumotórax</li><li>Arritmia supraventricular · Refluxo gastroesofágico</li></ul>
+  </div></div>
+</div>
+<div id="epoc-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">O₂ controlado — META SpO₂ 88–92%</div><div class="step-body">Não administrar O₂ em alto fluxo sem controle → risco de hipercapnia por abolição do drive hipóxico.<br>Iniciar com cateter nasal 1–2 L/min ou Venturi 24–28%. Titular pela gasometria.</div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Broncodilatadores nebulizados</div><div class="step-body">
+        <span class="drug">Salbutamol</span> <span class="dose">2,5 mg (1 amp.) nebulizado a cada 20 min × 3 → depois a cada 4–6h</span><br>
+        + <span class="drug">Ipratrópio</span> <span class="dose">0,5 mg nebulizado a cada 6h</span><br>
+        Alternativa: inaladores com espaçador (mesma eficácia se técnica correta)
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Corticoides sistêmicos</div><div class="step-body">
+        <span class="drug">Metilprednisolona</span> <span class="dose">40 mg IV a cada 12–24h × 5 dias</span><br>
+        Ou <span class="drug">Prednisona</span> <span class="dose">40 mg/dia VO × 5 dias</span> (equivalente, se tolera via oral)
+      </div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Antibióticos (se indicados)</div><div class="step-body">
+        Indicar se: ≥2 de 3 critérios de Anthonisen (aumento de dispneia, volume e purulência do escarro)<br>
+        <span class="drug">Amoxicilina-clavulanato</span> <span class="dose">875/125 mg a cada 8h VO × 5–7 dias</span><br>
+        Ou <span class="drug">Levofloxacino</span> <span class="dose">750 mg/dia × 5 dias</span> (se risco de P. aeruginosa)<br>
+        Ou <span class="drug">Azitromicina</span> <span class="dose">500 mg/dia × 5 dias</span> (se leve, sem fator de risco)
+      </div></div></div>
+      <div class="step"><div class="step-n crit">5</div><div class="step-c"><div class="step-title">VNI se pH &lt;7.35 + pCO₂ &gt;45 mmHg</div><div class="step-body">
+        BiPAP: IPAP 10–20 cmH₂O / EPAP 4–6 cmH₂O<br>
+        Reduz a necessidade de IOT e a mortalidade. Iniciar precocemente.<br>
+        IOT se: VNI falha, piora neurológica, apneia, intolerância absoluta
+      </div></div></div>
+    </div>
+  </div></div>
+</div>

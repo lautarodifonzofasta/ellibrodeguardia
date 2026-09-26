@@ -1,0 +1,91 @@
+
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">TEMPO = NEURÔNIOS — 1,9 milhões de neurônios morrem por minuto sem tratamento</span>Ativar o protocolo de AVC imediatamente. Meta: TC em ≤25 min, decisão de trombólise em ≤60 min.</div></div>
+<div class="tabs">
+  <div class="tab on" data-tab-grp="acv" onclick="switchTab(this,'acv','acv-flags')">🚩 Reconhecimento</div>
+  <div class="tab" data-tab-grp="acv" onclick="switchTab(this,'acv','acv-algo')">🔍 Algoritmo</div>
+  <div class="tab" data-tab-grp="acv" onclick="switchTab(this,'acv','acv-tto')">💊 Tratamento</div>
+</div>
+<div id="acv-flags" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="sec-hd"><div class="sec-hd-lbl">Escala FAST (reconhecimento pré-hospitalar)</div><div class="sec-hd-line"></div></div>
+    <div class="g2 mt-8">
+      <div class="cl cl-r"><div class="cl-ico">😶</div><div class="cl-body"><strong>F</strong>ace — Assimetria facial</div></div>
+      <div class="cl cl-r"><div class="cl-ico">💪</div><div class="cl-body"><strong>A</strong>rm — Fraqueza no braço</div></div>
+      <div class="cl cl-r"><div class="cl-ico">🗣️</div><div class="cl-body"><strong>S</strong>peech — Dificuldade na fala</div></div>
+      <div class="cl cl-r"><div class="cl-ico">⏰</div><div class="cl-body"><strong>T</strong>ime — Horário de início</div></div>
+    </div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Diagnóstico diferencial do AVC</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><strong>Hipoglicemia</strong> → sempre glicemia capilar antes da TC</li>
+      <li>Enxaqueca com aura · Crise epiléptica (paralisia de Todd)</li>
+      <li>Tumor cerebral com sangramento · Abscesso cerebral</li>
+      <li>Encefalopatia hipertensiva · Hematoma subdural</li>
+      <li>Paralisia de Bell (apenas facial periférica, sem outros sintomas)</li>
+    </ul>
+  </div></div>
+</div>
+<div id="acv-algo" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Horário de início — estabelecer EXATAMENTE</div><div class="step-body">Tempo desde a última vez visto bem (last-seen-well). Se acordou com os sintomas: última vez visto normal = ao deitar. Esse horário define a janela terapêutica.</div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">TC de crânio SEM contraste URGENTE</div><div class="step-body">Objetivo: descartar hemorragia (hiperdensa) antes de anticoagulação ou trombólise.<br>TC normal não descarta isquemia precoce (alterações em 24–48h).</div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Exames urgentes</div><div class="step-body">Glicemia · Hemograma · Coagulograma (TTPA, RNI) · Plaquetas · Íons · Função renal<br>Troponina + ECG (FA como causa embólica)</div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">NIHSS — quantificar o déficit</div><div class="step-body">NIHSS ≥4 → considerar trombólise se dentro da janela. NIHSS &gt;25 → risco elevado de hemorragia. Ver calculadora NIHSS no app.</div></div></div>
+      <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">Decisão de reperfusão</div><div class="step-body">
+        <strong>tPA IV:</strong> ≤4,5h desde o início + TC sem hemorragia + critérios de inclusão<br>
+        <strong>Trombectomia mecânica:</strong> até 24h se TC-perfusão mostrar tecido recuperável (oclusão de grande vaso)
+      </div></div></div>
+    </div>
+  </div></div>
+</div>
+<div id="acv-tto" class="tab-pane">
+  <div class="tabs" style="margin-bottom:14px">
+    <div class="tab on" data-tab-grp="acv2" onclick="switchTab(this,'acv2','acv-tromb')">Trombólise IV</div>
+    <div class="tab" data-tab-grp="acv2" onclick="switchTab(this,'acv2','acv-gen')">Medidas gerais</div>
+    <div class="tab" data-tab-grp="acv2" onclick="switchTab(this,'acv2','acv-hemo')">AVC Hemorrágico</div>
+  </div>
+  <div id="acv-tromb" class="tab-pane on">
+    <div class="card"><div class="card-body">
+      <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Critérios de inclusão (simplificados)</span>Déficit neurológico mensurável · Início &lt;4,5h · TC sem hemorragia · Idade ≥18 · PA ≤185/110 antes da infusão</div></div>
+      <div class="cl cl-r mt-8"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Contraindicações absolutas mais importantes</span>Hemorragia intracraniana prévia · AVC isquêmico &lt;3m · TCE grave &lt;3m · Cirurgia intracraniana ou espinal &lt;3m · Plaquetas &lt;100.000 · Anticoagulação ativa (RNI&gt;1.7 ou DOAC recente) · Glicemia &lt;50 ou &gt;400 mg/dl</div></div>
+      <div class="algo mt-12">
+        <div class="step"><div class="step-n crit">→</div><div class="step-c"><div class="step-title">Alteplase (rtPA) — dose para AVC</div><div class="step-body">
+          <span class="drug">Alteplase</span> <span class="dose">0,9 mg/kg IV (máx 90 mg)</span><br>
+          <strong>10% em bolus IV em 1 min</strong> → <strong>90% restante em infusão IV em 60 min</strong><br>
+          Ex.: 70 kg → 63 mg → 6,3 mg bolus + 56,7 mg em 60 min
+        </div></div></div>
+        <div class="step"><div class="step-n">!</div><div class="step-c"><div class="step-title">Pós-trombólise — primeiras 24h</div><div class="step-body">
+          NÃO usar antiagregantes NEM anticoagulantes nas primeiras 24h<br>
+          Monitorização neurológica horária · PA &lt;180/105 mmHg<br>
+          TC de controle em 24h antes de iniciar antiagregação
+        </div></div></div>
+      </div>
+    </div></div>
+  </div>
+  <div id="acv-gen" class="tab-pane">
+    <div class="card"><div class="card-body">
+      <div class="algo">
+        <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">Pressão arterial — não reduzir a menos que</div><div class="step-body">
+          Não candidato à trombólise: não tratar se PA &lt;220/120 (autorregulação cerebral)<br>
+          Candidato à trombólise: PA &lt;185/110 antes de iniciar. Usar <span class="drug">Labetalol</span> <span class="dose">10–20 mg IV</span> ou <span class="drug">Nicardipina</span> se não houver labetalol.
+        </div></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Glicemia — meta 140–180 mg/dl</div><div class="step-body">Hipoglicemia e hiperglicemia pioram o infarto. Insulina regular se &gt;180 mg/dl. Glicose 50% se &lt;60 mg/dl.</div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Temperatura — tratar se &gt;37.5°C</div><div class="step-body"><span class="drug">Paracetamol</span> <span class="dose">1g a cada 6h IV ou VO</span>. A febre piora a penumbra isquêmica.</div></div></div>
+        <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Antiagregação — em 24h (se não trombolisado)</div><div class="step-body"><span class="drug">AAS</span> <span class="dose">100–300 mg/dia</span>. Iniciar dentro de 48h se não foi trombolisado.<br>AVC cardioembólico (FA) → anticoagulação diferida por 2–14 dias conforme o tamanho do infarto.</div></div></div>
+      </div>
+    </div></div>
+  </div>
+  <div id="acv-hemo" class="tab-pane">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">AVC hemorrágico — não trombolisar</span>Neurocirurgia de urgência se: sangramento cerebelar &gt;3cm, hidrocefalia, piora neurológica rápida</div></div>
+    <div class="card"><div class="card-body">
+      <div class="algo">
+        <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">PA — meta PAS &lt;140 mmHg (primeiras 6h)</div><div class="step-body"><span class="drug">Labetalol</span> <span class="dose">10–20 mg IV a cada 10 min</span> ou <span class="drug">Nicardipina</span> <span class="dose">5–15 mg/h IV</span></div></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Reverter a anticoagulação</div><div class="step-body">
+          AVK (Varfarina): <span class="drug">Vitamina K</span> <span class="dose">10 mg IV</span> + <span class="drug">CCP 4F</span> (complexo protrombínico) <span class="dose">25–50 UI/kg</span><br>
+          DOAC: consultar o antídoto específico (Andexanet alfa para anti-Xa, Idarucizumabe para dabigatrana)
+        </div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Prevenir hipertensão intracraniana</div><div class="step-body">Cabeceira a 30° · Analgosedação · Evitar hiponatremia · Manitol se edema significativo<br>UTI para monitorização estrita</div></div></div>
+      </div>
+    </div></div>
+  </div>
+</div>

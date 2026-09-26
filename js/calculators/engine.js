@@ -61,10 +61,11 @@ export function renderScoredCalculator(container, definition, interpret) {
       score += parseFloat(el.dataset.points);
     });
     const r = interpret(score);
+    const text = definition.results[r.resultId];
     resultEl.className = `calc-result show-${{ red: 'r', amber: 'a', green: 'g' }[r.severity]}`;
     resultEl.querySelector('.cr-score').textContent = score;
-    resultEl.querySelector('.cr-label').textContent = r.label;
-    resultEl.querySelector('.cr-detail').textContent = r.detail;
+    resultEl.querySelector('.cr-label').textContent = text.label;
+    resultEl.querySelector('.cr-detail').textContent = text.detail;
   }
 
   container.addEventListener('click', e => {
@@ -109,12 +110,13 @@ export function renderInputCalculator(container, definition, compute) {
     for (const id of ids) values[id] = parseFloat(container.querySelector(`#${id}`).value);
     const r = compute({ actual: values['na-actual'], target: values['na-obj'], weightKg: values['na-peso'], sexFactor: values['na-sexo'] });
     if (!r) return;
+    const o = definition.output;
     out.innerHTML =
-      `<strong>ACT estimada:</strong> ${r.act.toFixed(1)} L<br>` +
-      `<strong>Déficit de Na⁺:</strong> ${r.deficit} mEq<br>` +
-      `<strong>Volumen SF 3%:</strong> ${r.volumeMl} ml totales<br>` +
-      `<strong>Velocidad:</strong> ${r.rateMlPerHour} ml/h × 24h<br>` +
-      `<span style="color:var(--red)">⚠ Controlar Na⁺ cada 4–6h. No superar +10 mEq/L en 24h.</span>`;
+      `<strong>${o.actLabel}</strong> ${r.act.toFixed(1)} ${o.actUnit}<br>` +
+      `<strong>${o.deficitLabel}</strong> ${r.deficit} ${o.deficitUnit}<br>` +
+      `<strong>${o.volumeLabel}</strong> ${r.volumeMl} ${o.volumeUnit}<br>` +
+      `<strong>${o.rateLabel}</strong> ${r.rateMlPerHour} ${o.rateUnit}<br>` +
+      `<span style="color:var(--red)">${o.warning}</span>`;
   }
 
   container.addEventListener('input', recompute);

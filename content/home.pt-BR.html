@@ -1,0 +1,78 @@
+
+<div style="padding:0">
+  <div class="hero">
+    <div class="hero-tag">Di Fonzo Lautaro · Para Residentes · Offline</div>
+    <div style="display:flex;justify-content:center;margin-bottom:16px"><img src="icons/logo.png" style="width:72px;height:72px;object-fit:contain"></div>
+    <h1><span style="color:var(--text)">El Libro </span><em>de Guardia</em></h1>
+    <p class="hero-desc">Guia clínico de manejo rápido no plantão das patologias mais prevalentes e seu tratamento eficaz.</p>
+    <div class="hero-stats">
+      <div><div class="h-stat-n">64</div><div class="h-stat-l">Módulos clínicos</div></div>
+      <div><div class="h-stat-n">11</div><div class="h-stat-l">Calculadoras</div></div>
+      <div><div class="h-stat-n">100+</div><div class="h-stat-l">Medicamentos com doses</div></div>
+    </div>
+  </div>
+
+
+  <!-- DISCLAIMER LEGAL -->
+  <div style="margin:12px 0 16px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber,#f59e0b);border-radius:8px;padding:10px 13px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber,#f59e0b);margin-bottom:4px">⚠️ Aviso importante</div>
+    <div style="font-size:11.5px;color:var(--text2);line-height:1.55">
+      Este guia é uma <strong style="color:var(--text)">ferramenta de referência rápida</strong> para profissionais de saúde.
+      <strong style="color:var(--text)">Não substitui o julgamento clínico</strong>, a avaliação individual do paciente nem a consulta a fontes primárias.
+      A <strong style="color:var(--text)">responsabilidade por toda decisão clínica</strong> recai exclusivamente sobre o profissional responsável.
+    </div>
+  </div>
+
+  <!-- AVISO DE TRADUÇÃO -->
+  <div style="margin:0 0 16px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--acc);border-radius:8px;padding:10px 13px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin-bottom:4px">🌐 Sobre esta tradução</div>
+    <div style="font-size:11.5px;color:var(--text2);line-height:1.55">
+      O conteúdo original foi escrito em espanhol por um médico argentino. Esta versão em português foi traduzida com auxílio de IA e <strong style="color:var(--text)">ainda não foi revisada por um profissional de saúde brasileiro</strong>. Nomes comerciais de medicamentos e algumas condutas podem não corresponder à prática ou à disponibilidade no Brasil — confirme sempre em fontes locais antes de aplicar clinicamente.
+    </div>
+  </div>
+
+  <div class="sec-hd" style="margin-bottom:12px"><div class="sec-hd-lbl">🚨 Emergências críticas — acesso rápido</div><div class="sec-hd-line"></div></div>
+  <div class="mod-grid" style="margin-bottom:20px">
+    <div class="mod-card" onclick="navSb('dolor-toracico')"><span class="mod-card-ico">❤️</span><div><div class="mod-card-name">Dor torácica</div><div class="mod-card-sub">IAM · TEP · Aorta</div></div></div>
+    <div class="mod-card" onclick="navSb('disnea')"><span class="mod-card-ico">🫁</span><div><div class="mod-card-name">Dispneia aguda</div><div class="mod-card-sub">Algoritmo diferencial</div></div></div>
+    <div class="mod-card" onclick="navSb('acv')"><span class="mod-card-ico">🧠</span><div><div class="mod-card-name">AVC / AIT</div><div class="mod-card-sub">Primeiros 60 minutos</div></div></div>
+    <div class="mod-card" onclick="navSb('sepsis')"><span class="mod-card-ico">🦠</span><div><div class="mod-card-name">Sepse</div><div class="mod-card-sub">Pacote 1h · Antibióticos</div></div></div>
+    <div class="mod-card" onclick="navSb('convulsiones')"><span class="mod-card-ico">⚡</span><div><div class="mod-card-name">Convulsões</div><div class="mod-card-sub">Estado de mal epiléptico</div></div></div>
+    <div class="mod-card" onclick="navSb('pcr')"><span class="mod-card-ico">💓</span><div><div class="mod-card-name">PCR / RCP</div><div class="mod-card-sub">BLS · ALS · Pós-RCE</div></div></div>
+    <div class="mod-card" onclick="navSb('shock')"><span class="mod-card-ico">🩸</span><div><div class="mod-card-name">Choque</div><div class="mod-card-sub">Anafilaxia · Pneumotórax</div></div></div>
+    <div class="mod-card" onclick="navSb('cad')"><span class="mod-card-ico">🍬</span><div><div class="mod-card-name">CAD / EHHNC</div><div class="mod-card-sub">Cetoacidose diabética</div></div></div>
+    <div class="mod-card" onclick="navSb('hipoglucemia')"><span class="mod-card-ico">📉</span><div><div class="mod-card-name">Hipoglicemia</div><div class="mod-card-sub">Diagnóstico e correção</div></div></div>
+    <div class="mod-card" onclick="navSb('agitacion')"><span class="mod-card-ico">🌀</span><div><div class="mod-card-name">Agitação</div><div class="mod-card-sub">Sedação · Contenção</div></div></div>
+  </div>
+
+  <div class="sec-hd" style="margin-bottom:12px"><div class="sec-hd-lbl">📋 Todos os sistemas</div><div class="sec-hd-line"></div></div>
+  <div class="mod-grid">
+    <div class="mod-card" onclick="navSb('arritmias')"><span class="mod-card-ico">⚡</span><div><div class="mod-card-name">Arritmias</div><div class="mod-card-sub">FA · TV · TSV</div></div></div>
+    <div class="mod-card" onclick="navSb('ic-aguda')"><span class="mod-card-ico">💙</span><div><div class="mod-card-name">IC aguda</div><div class="mod-card-sub">EAP · Forrester</div></div></div>
+    <div class="mod-card" onclick="navSb('crisis-hta')"><span class="mod-card-ico">📈</span><div><div class="mod-card-name">Crise HAS</div><div class="mod-card-sub">Emergência vs urgência</div></div></div>
+    <div class="mod-card" onclick="navSb('sincope')"><span class="mod-card-ico">😵</span><div><div class="mod-card-name">Síncope</div><div class="mod-card-sub">Cardiogênico · Vasovagal</div></div></div>
+    <div class="mod-card" onclick="navSb('tep')"><span class="mod-card-ico">🩸</span><div><div class="mod-card-name">TEP</div><div class="mod-card-sub">Wells · D-dímero · TC</div></div></div>
+    <div class="mod-card" onclick="navSb('neumonia')"><span class="mod-card-ico">🦠</span><div><div class="mod-card-name">Pneumonia</div><div class="mod-card-sub">CURB-65 · ATB</div></div></div>
+    <div class="mod-card" onclick="navSb('epoc')"><span class="mod-card-ico">💨</span><div><div class="mod-card-name">DPOC exacerbada</div><div class="mod-card-sub">Broncodilatadores · VNI</div></div></div>
+    <div class="mod-card" onclick="navSb('asma')"><span class="mod-card-ico">🌬️</span><div><div class="mod-card-name">Asma grave</div><div class="mod-card-sub">SABA · Corticoides · MgSO₄</div></div></div>
+    <div class="mod-card" onclick="navSb('cefalea')"><span class="mod-card-ico">🤕</span><div><div class="mod-card-name">Cefaleia</div><div class="mod-card-sub">Sinal de alarme · HSA · Enxaqueca</div></div></div>
+    <div class="mod-card" onclick="navSb('alt-sensorio')"><span class="mod-card-ico">😶‍🌫️</span><div><div class="mod-card-name">Alt. do sensório</div><div class="mod-card-sub">AEIOU TIPS</div></div></div>
+    <div class="mod-card" onclick="navSb('fiebre')"><span class="mod-card-ico">🌡️</span><div><div class="mod-card-name">Febre sem foco</div><div class="mod-card-sub">Adulto · Imunossuprimido</div></div></div>
+    <div class="mod-card" onclick="navSb('meningitis')"><span class="mod-card-ico">🧬</span><div><div class="mod-card-name">Meningite</div><div class="mod-card-sub">Tríade · LCR · ATB</div></div></div>
+    <div class="mod-card" onclick="navSb('herpes-zoster')"><span class="mod-card-ico">🧬</span><div><div class="mod-card-name">Herpes Zóster</div><div class="mod-card-sub">Antiviral · Neuralgia pós-herpética</div></div></div>
+    <div class="mod-card" onclick="navSb('itu')"><span class="mod-card-ico">💧</span><div><div class="mod-card-name">ITU / Pielonefrite</div><div class="mod-card-sub">Critérios · ATB</div></div></div>
+    <div class="mod-card" onclick="navSb('faringoamig')"><span class="mod-card-ico">🤒</span><div><div class="mod-card-name">Faringoamigdalite</div><div class="mod-card-sub">Centor · ATB se bacteriana</div></div></div>
+    <div class="mod-card" onclick="navSb('dolor-abdominal')"><span class="mod-card-ico">🤢</span><div><div class="mod-card-name">Dor abdominal</div><div class="mod-card-sub">Algoritmo por quadrante</div></div></div>
+    <div class="mod-card" onclick="navSb('colico-renal')"><span class="mod-card-ico">💎</span><div><div class="mod-card-name">Cólica renal</div><div class="mod-card-sub">Analgesia · Investigação</div></div></div>
+    <div class="mod-card" onclick="navSb('colico-biliar')"><span class="mod-card-ico">🫐</span><div><div class="mod-card-name">Cólica biliar</div><div class="mod-card-sub">Colecistite · Critérios cirúrgicos</div></div></div>
+    <div class="mod-card" onclick="navSb('tiroides')"><span class="mod-card-ico">🦋</span><div><div class="mod-card-name">Tempestade tireoidiana</div><div class="mod-card-sub">Crise tireotóxica · Escore de Burch-Wartofsky</div></div></div>
+    <div class="mod-card" onclick="navSb('pancreatitis')"><span class="mod-card-ico">🔥</span><div><div class="mod-card-name">Pancreatite aguda</div><div class="mod-card-sub">Atlanta · BISAP · ATB</div></div></div>
+    <div class="mod-card" onclick="navSb('intoxicaciones')"><span class="mod-card-ico">☠️</span><div><div class="mod-card-name">Intoxicações</div><div class="mod-card-sub">Antídotos · Toxíndromes</div></div></div>
+    <div class="mod-card" onclick="navSb('panico')"><span class="mod-card-ico">😰</span><div><div class="mod-card-name">Crise de pânico</div><div class="mod-card-sub">Dx diferencial · Manejo</div></div></div>
+    <div class="mod-card" onclick="navSb('vertigo')"><span class="mod-card-ico">🌀</span><div><div class="mod-card-name">Vertigem</div><div class="mod-card-sub">Central vs periférica</div></div></div>
+    <div class="mod-card" onclick="navSb('otitis')"><span class="mod-card-ico">👂</span><div><div class="mod-card-name">Otite</div><div class="mod-card-sub">OMA · OEA · OE</div></div></div>
+    <div class="mod-card" onclick="navSb('sinusitis')"><span class="mod-card-ico">👃</span><div><div class="mod-card-name">Sinusite</div><div class="mod-card-sub">Critérios · ATB</div></div></div>
+    <div class="mod-card" onclick="navSb('ojo-rojo')"><span class="mod-card-ico">👁️</span><div><div class="mod-card-name">Olho vermelho</div><div class="mod-card-sub">Glaucoma · Conjuntivite</div></div></div>
+    <div class="mod-card" onclick="navSb('lumbalgia')"><span class="mod-card-ico">🦴</span><div><div class="mod-card-name">Lombalgia</div><div class="mod-card-sub">Sinais de alarme · Crônica</div></div></div>
+  </div>
+</div>

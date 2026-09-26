@@ -1,0 +1,37 @@
+{
+  "id": "calc-chads",
+  "title": "CHA₂DS₂-VASc",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "CHA₂DS₂-VASc — risco tromboembólico na fibrilação atrial não valvar",
+    "text": "Score ≥2 (homem) ou ≥3 (mulher) → anticoagulação recomendada."
+  },
+  "groups": [
+    {
+      "id": "chads",
+      "label": null,
+      "type": "multi",
+      "options": [
+        { "label": "<strong>C</strong> — Insuficiência Cardíaca / FEVE <40%", "points": 1, "badge": "+1" },
+        { "label": "<strong>H</strong> — Hipertensão arterial", "points": 1, "badge": "+1" },
+        { "label": "<strong>A₂</strong> — Idade ≥75 anos", "points": 2, "badge": "+2" },
+        { "label": "<strong>D</strong> — Diabetes mellitus", "points": 1, "badge": "+1" },
+        { "label": "<strong>S₂</strong> — AVC / AIT / Tromboembolismo prévio", "points": 2, "badge": "+2" },
+        { "label": "<strong>V</strong> — Doença vascular (IAM, arteriopatia periférica, placa de Ao)", "points": 1, "badge": "+1" },
+        { "label": "<strong>A</strong> — Idade 65–74 anos", "points": 1, "badge": "+1" },
+        { "label": "<strong>Sc</strong> — Sexo feminino", "points": 1, "badge": "+1" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 0,
+    "initialLabel": "Selecione os critérios presentes",
+    "note": "0 (H) / 0–1 (M): não anticoagular · ≥2 (H) / ≥3 (M): anticoagular"
+  },
+  "results": {
+    "veryHigh": { "label": "Risco muito alto", "detail": "Anticoagulação oral obrigatória (DOAC preferencial)." },
+    "moderate": { "label": "Risco moderado", "detail": "Anticoagulação oral recomendada." },
+    "low": { "label": "Risco baixo", "detail": "Sem necessidade de anticoagulação (s=0) ou avaliar (s=1)." }
+  }
+}

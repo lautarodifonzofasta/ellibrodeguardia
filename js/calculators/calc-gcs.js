@@ -1,8 +1,13 @@
-/** @typedef {{severity: 'red'|'amber'|'green', label: string, detail: string}} Interpretation */
+/**
+ * @typedef {{severity: 'red'|'amber'|'green', resultId: string}} Interpretation
+ * resultId keys into content/calculators/calc-gcs*.json's "results" map,
+ * which carries the actual (per-language) label/detail text — keeping the
+ * scoring thresholds here language-neutral and single-sourced.
+ */
 
 /** @param {number} score @returns {Interpretation} */
 export function interpret(score) {
-  if (score <= 8) return { severity: 'red', label: 'Coma severo', detail: 'IOT inmediata. GCS ≤ 8 = vía aérea comprometida.' };
-  if (score <= 12) return { severity: 'amber', label: 'Coma moderado', detail: 'Vigilancia estrecha. Considerar IOT si deterioro.' };
-  return { severity: 'green', label: 'Normal o leve', detail: 'GCS 15 = normal. Reevaluar si contexto clínico cambia.' };
+  if (score <= 8) return { severity: 'red', resultId: 'severe' };
+  if (score <= 12) return { severity: 'amber', resultId: 'moderate' };
+  return { severity: 'green', resultId: 'normal' };
 }

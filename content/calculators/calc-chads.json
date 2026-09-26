@@ -28,5 +28,10 @@
     "initialScore": 0,
     "initialLabel": "Seleccioná los criterios presentes",
     "note": "0 (H) / 0–1 (M): no anticoagular · ≥2 (H) / ≥3 (M): anticoagular"
+  },
+  "results": {
+    "veryHigh": { "label": "Riesgo muy alto", "detail": "Anticoagulación oral obligatoria (NACO preferido)." },
+    "moderate": { "label": "Riesgo moderado", "detail": "Anticoagulación oral recomendada." },
+    "low": { "label": "Riesgo bajo", "detail": "Sin anticoagulación necesaria (s=0) o evaluación (s=1)." }
   }
 }

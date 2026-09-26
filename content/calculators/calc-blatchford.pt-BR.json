@@ -1,0 +1,78 @@
+{
+  "id": "calc-blatchford",
+  "title": "Escore de Blatchford",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "Escore de Blatchford — risco na hemorragia digestiva alta",
+    "text": "Score 0: manejo ambulatorial pode ser considerado. >6: endoscopia urgente."
+  },
+  "groups": [
+    {
+      "id": "bu",
+      "label": "Ureia sanguínea (mmol/L)",
+      "type": "single",
+      "options": [
+        { "label": "<6,5", "points": 0 },
+        { "label": "6,5–8,0", "points": 2 },
+        { "label": "8,0–10,0", "points": 3 },
+        { "label": "10,0–25,0", "points": 4 },
+        { "label": ">25,0", "points": 6 }
+      ]
+    },
+    {
+      "id": "hbm",
+      "label": "Hemoglobina no homem (g/dl)",
+      "type": "single",
+      "options": [
+        { "label": "≥13", "points": 0 },
+        { "label": "12–12,9", "points": 1 },
+        { "label": "10–11,9", "points": 3 },
+        { "label": "<10", "points": 6 }
+      ]
+    },
+    {
+      "id": "hbf",
+      "label": "Hemoglobina na mulher (g/dl)",
+      "type": "single",
+      "options": [
+        { "label": "≥12", "points": 0 },
+        { "label": "10–11,9", "points": 1 },
+        { "label": "<10", "points": 6 }
+      ]
+    },
+    {
+      "id": "pas",
+      "label": "PAS (mmHg)",
+      "type": "single",
+      "options": [
+        { "label": "≥110", "points": 0 },
+        { "label": "100–109", "points": 1 },
+        { "label": "90–99", "points": 2 },
+        { "label": "<90", "points": 3 }
+      ]
+    },
+    {
+      "id": "blatchford-extra",
+      "label": null,
+      "type": "multi",
+      "options": [
+        { "label": "FC ≥100 bpm", "points": 1, "badge": "+1" },
+        { "label": "Melena na admissão", "points": 1, "badge": "+1" },
+        { "label": "Síncope", "points": 2, "badge": "+2" },
+        { "label": "Hepatopatia conhecida", "points": 2, "badge": "+2" },
+        { "label": "Insuficiência cardíaca", "points": 2, "badge": "+2" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 0,
+    "initialLabel": "Complete ureia, hemoglobina e PAS",
+    "note": "0: ambulatorial · 1–6: internar · >6: endoscopia urgente"
+  },
+  "results": {
+    "zero": { "label": "Score 0 — baixo risco", "detail": "Manejo ambulatorial pode ser considerado." },
+    "lowModerate": { "label": "Score baixo-moderado", "detail": "Internar para observação e endoscopia programada." },
+    "high": { "label": "Score alto", "detail": "Internação urgente. Endoscopia em <12–24h." }
+  }
+}

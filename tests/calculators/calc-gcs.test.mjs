@@ -11,8 +11,8 @@ test('GCS boundaries', () => {
   assert.equal(interpret(15).severity, 'green');
 });
 
-test('GCS labels match legacy text verbatim', () => {
-  assert.equal(interpret(8).label, 'Coma severo');
-  assert.equal(interpret(12).label, 'Coma moderado');
-  assert.equal(interpret(15).label, 'Normal o leve');
+test('GCS resultId matches severity band', () => {
+  assert.equal(interpret(8).resultId, 'severe');
+  assert.equal(interpret(12).resultId, 'moderate');
+  assert.equal(interpret(15).resultId, 'normal');
 });

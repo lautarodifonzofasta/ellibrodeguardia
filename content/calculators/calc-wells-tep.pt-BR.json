@@ -1,0 +1,36 @@
+{
+  "id": "calc-wells-tep",
+  "title": "Wells TEP",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "Escore de Wells para TEP",
+    "text": "Usar quando a suspeita clínica existe mas não é definitiva. Orienta o uso de D-dímero e AngioTC."
+  },
+  "groups": [
+    {
+      "id": "wells",
+      "label": null,
+      "type": "multi",
+      "options": [
+        { "label": "Sinais ou sintomas de TVP", "points": 3, "badge": "+3" },
+        { "label": "Diagnóstico alternativo menos provável que TEP", "points": 3, "badge": "+3" },
+        { "label": "FC >100 bpm", "points": 1, "badge": "+1.5" },
+        { "label": "Imobilização ou cirurgia nas últimas 4 semanas", "points": 1, "badge": "+1.5" },
+        { "label": "TEP ou TVP prévios documentados", "points": 1, "badge": "+1.5" },
+        { "label": "Hemoptise", "points": 1, "badge": "+1" },
+        { "label": "Câncer ativo ou tratado nos últimos 6 meses", "points": 1, "badge": "+1" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 0,
+    "initialLabel": "Selecione os critérios presentes",
+    "note": "≤1: baixa prob. → D-dímero · 2–6: moderada → D-dímero ou AngioTC · >6: alta → AngioTC direto"
+  },
+  "results": {
+    "high": { "label": "Alta probabilidade de TEP", "detail": "AngioTC direta ou trombólise se instável." },
+    "moderate": { "label": "Probabilidade moderada", "detail": "D-dímero ou AngioTC conforme disponibilidade." },
+    "low": { "label": "Probabilidade baixa", "detail": "D-dímero. Se negativo: descarta TEP." }
+  }
+}

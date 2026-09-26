@@ -1,0 +1,48 @@
+{
+  "id": "resp",
+  "label": "🫁 Respiratório",
+  "columns": [
+    "Medicamento",
+    "Indicação",
+    "Dose",
+    "Precaução"
+  ],
+  "drugs": [
+    {
+      "name": "Salbutamol",
+      "indication": "Asma, DPOC",
+      "dose": "Nebulização: 2,5–5 mg a cada 20 min · Spray: 4–8 jatos · IV: 0,5 mcg/kg/min",
+      "caution": "Taquicardia, hipopotassemia"
+    },
+    {
+      "name": "Ipratrópio",
+      "indication": "DPOC, asma (associado)",
+      "dose": "Nebulização: 0,5 mg a cada 6–8h · Spray: 2 jatos a cada 6h",
+      "caution": "Retenção urinária, glaucoma"
+    },
+    {
+      "name": "Metilprednisolona",
+      "indication": "Asma grave, DPOC, IC, alergia",
+      "dose": "Asma: 125 mg IV · DPOC: 40 mg IV a cada 12h",
+      "caution": "Hiperglicemia, infecção"
+    },
+    {
+      "name": "Sulfato de magnésio",
+      "indication": "Asma refratária, Torsades, eclâmpsia",
+      "dose": "Asma: 2g IV em 20 min · Eclâmpsia: 4g em 20 min → 1–2 g/h",
+      "caution": "Hipotensão, bloqueio neuromuscular (se muito elevado)"
+    },
+    {
+      "name": "Aminofilina (Teofilina)",
+      "indication": "DPOC/Asma refratária (2ª linha)",
+      "dose": "6 mg/kg IV em 30 min (se não fazia uso prévio) → 0,5 mg/kg/h",
+      "caution": "Taquiarritmias, convulsões se acima do nível terapêutico"
+    },
+    {
+      "name": "Cetamina",
+      "indication": "IOT em sequência rápida, asma refratária",
+      "dose": "1–2 mg/kg IV · Asma: 0,5–1 mg/kg IV",
+      "caution": "Alucinações, aumento da PIO/PIC"
+    }
+  ]
+}

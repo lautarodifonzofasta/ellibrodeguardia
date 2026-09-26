@@ -25,5 +25,10 @@
     "initialScore": 0,
     "initialLabel": "Seleccioná los criterios presentes",
     "note": "0–1: ambulatorio · 2: internación sala · 3–5: UCI"
+  },
+  "results": {
+    "severe": { "label": "Neumonía grave", "detail": "Internación en UTI/AR. Mortalidad >20%." },
+    "moderate": { "label": "Neumonía moderada", "detail": "Internación en sala general." },
+    "mild": { "label": "Neumonía leve", "detail": "Tratamiento ambulatorio posible." }
   }
 }

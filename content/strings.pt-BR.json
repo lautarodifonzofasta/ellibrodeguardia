@@ -1,0 +1,23 @@
+{
+  "app.searchPlaceholder": "Buscar patologia, sintoma, medicamento...",
+  "app.sidebarFilterPlaceholder": "🔍  Buscar módulo...",
+  "app.themeToggleTitle": "Mudar tema",
+  "app.langToggleTitle": "Mudar idioma",
+  "app.installTitle": "Instalar como app",
+  "app.installLabel": "⬇ Instalar",
+  "app.searchButtonTitle": "Buscar (Ctrl+K)",
+  "app.searchButtonAriaLabel": "Buscar",
+  "app.scrollTopTitle": "Voltar ao topo",
+  "search.noResults": "Nenhum resultado para \"{query}\"",
+  "notFound.title": "Módulo em construção",
+  "notFound.detail": "Disponível na próxima atualização.",
+  "notTranslated.notice": "🌐 Este conteúdo ainda não foi traduzido — exibindo em espanhol.",
+  "gestationalAge.enterFum": "Informe a DUM",
+  "gestationalAge.invalidDate": "Data inválida",
+  "gestationalAge.weeksAndDays": "{weeks} sem + {days} dias",
+  "gestationalAge.trimester1": "1º trimestre",
+  "gestationalAge.trimester2": "2º trimestre",
+  "gestationalAge.trimester3": "3º trimestre",
+  "gestationalAge.half1": "→ Primeira metade da gravidez",
+  "gestationalAge.half2": "→ Segunda metade da gravidez"
+}

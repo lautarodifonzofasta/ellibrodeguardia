@@ -1,0 +1,38 @@
+{
+  "id": "calc-wells-tvp",
+  "title": "Wells TVP",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "Wells TVP — probabilidade pré-teste de trombose venosa profunda",
+    "text": ""
+  },
+  "groups": [
+    {
+      "id": "wells-tvp",
+      "label": null,
+      "type": "multi",
+      "options": [
+        { "label": "Câncer ativo", "points": 1, "badge": "+1" },
+        { "label": "Paralisia ou imobilização recente de MMII", "points": 1, "badge": "+1" },
+        { "label": "Cirurgia de grande porte ou repouso no leito >3 dias (últimas 12 semanas)", "points": 1, "badge": "+1" },
+        { "label": "Dor localizada no trajeto venoso profundo", "points": 1, "badge": "+1" },
+        { "label": "Edema de todo o membro inferior", "points": 1, "badge": "+1" },
+        { "label": "Edema com cacifo >3 cm em relação ao contralateral", "points": 1, "badge": "+1" },
+        { "label": "Edema com cacifo apenas no membro sintomático", "points": 1, "badge": "+1" },
+        { "label": "Veias superficiais colaterais (não varicosas)", "points": 1, "badge": "+1" },
+        { "label": "Diagnóstico alternativo tão ou mais provável", "points": -2, "badge": "−2" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 0,
+    "initialLabel": "Selecione os critérios presentes",
+    "note": "≤1: baixa → D-dímero · 2–6: moderada · >6: alta → eco direto"
+  },
+  "results": {
+    "low": { "label": "Probabilidade baixa", "detail": "D-dímero. Se negativo: descarta TVP." },
+    "moderate": { "label": "Probabilidade moderada", "detail": "D-dímero + eco Doppler." },
+    "high": { "label": "Probabilidade alta", "detail": "Eco Doppler direto. Anticoagular enquanto aguarda." }
+  }
+}

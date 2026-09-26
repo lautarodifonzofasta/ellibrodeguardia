@@ -1,6 +1,7 @@
 // Search modal — same Ctrl/Cmd+K substring-match UX as the legacy doSearch(),
 // but built from meta.json so it covers every module (fixing the 8-module
 // gap) instead of the old hand-maintained META object.
+import { t } from './i18n.js';
 
 export function buildSearchIndex(meta) {
   return Object.entries(meta)
@@ -8,7 +9,7 @@ export function buildSearchIndex(meta) {
     .map(([id, m]) => ({ id, title: m.title, category: m.category, icon: m.icon }));
 }
 
-export function initSearch({ modal, input, results, openBtn, kbdHint, index, onNavigate }) {
+export function initSearch({ modal, input, results, openBtn, kbdHint, index, strings, onNavigate }) {
   function open() {
     modal.classList.add('open');
     setTimeout(() => input.focus(), 50);
@@ -24,7 +25,7 @@ export function initSearch({ modal, input, results, openBtn, kbdHint, index, onN
       ? index.filter(m => m.title.toLowerCase().includes(q) || m.category.toLowerCase().includes(q) || m.id.toLowerCase().includes(q))
       : index;
     if (!items.length) {
-      results.innerHTML = `<div class="s-empty">Sin resultados para "${query}"</div>`;
+      results.innerHTML = `<div class="s-empty">${t(strings, 'search.noResults', { query })}</div>`;
       return;
     }
     results.innerHTML = items.slice(0, 12).map(m =>

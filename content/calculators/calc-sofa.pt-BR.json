@@ -1,0 +1,95 @@
+{
+  "id": "calc-sofa",
+  "title": "SOFA Score",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "SOFA Score — avaliação de disfunção orgânica",
+    "text": "Sepse = SOFA ≥2 acima do basal. Mortalidade estimada conforme o score total."
+  },
+  "groups": [
+    {
+      "id": "sofa-R",
+      "label": "Respiração — PaO₂/FiO₂",
+      "type": "single",
+      "options": [
+        { "label": "≥400 mmHg", "points": 0 },
+        { "label": "300–399", "points": 1 },
+        { "label": "200–299 (com suporte)", "points": 2 },
+        { "label": "100–199 (com suporte)", "points": 3 },
+        { "label": "<100 (com suporte)", "points": 4 }
+      ]
+    },
+    {
+      "id": "sofa-C",
+      "label": "Coagulação — Plaquetas (×10³/mm³)",
+      "type": "single",
+      "options": [
+        { "label": "≥150", "points": 0 },
+        { "label": "100–149", "points": 1 },
+        { "label": "50–99", "points": 2 },
+        { "label": "20–49", "points": 3 },
+        { "label": "<20", "points": 4 }
+      ]
+    },
+    {
+      "id": "sofa-H",
+      "label": "Hepático — Bilirrubina (mg/dl)",
+      "type": "single",
+      "options": [
+        { "label": "<1,2", "points": 0 },
+        { "label": "1,2–1,9", "points": 1 },
+        { "label": "2,0–5,9", "points": 2 },
+        { "label": "6,0–11,9", "points": 3 },
+        { "label": "≥12,0", "points": 4 }
+      ]
+    },
+    {
+      "id": "sofa-V",
+      "label": "Cardiovascular — PAM ou vasopressores",
+      "type": "single",
+      "options": [
+        { "label": "PAM ≥70 mmHg", "points": 0 },
+        { "label": "PAM <70 mmHg", "points": 1 },
+        { "label": "Dopamina ≤5 ou Dobut.", "points": 2 },
+        { "label": "Dopa >5 ou NA/Adr ≤0,1", "points": 3 },
+        { "label": "Dopa >15 ou NA >0,1", "points": 4 }
+      ]
+    },
+    {
+      "id": "sofa-N",
+      "label": "Neurológico — GCS",
+      "type": "single",
+      "options": [
+        { "label": "GCS 15", "points": 0 },
+        { "label": "GCS 13–14", "points": 1 },
+        { "label": "GCS 10–12", "points": 2 },
+        { "label": "GCS 6–9", "points": 3 },
+        { "label": "GCS <6", "points": 4 }
+      ]
+    },
+    {
+      "id": "sofa-Re",
+      "label": "Renal — Creatinina (mg/dl) ou diurese",
+      "type": "single",
+      "options": [
+        { "label": "<1,2", "points": 0 },
+        { "label": "1,2–1,9", "points": 1 },
+        { "label": "2,0–3,4", "points": 2 },
+        { "label": "3,5–4,9 ou <500 ml/dia", "points": 3 },
+        { "label": "≥5 ou <200 ml/dia", "points": 4 }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 0,
+    "initialLabel": "Selecione todas as categorias",
+    "note": "Máximo 24 pontos. Cada sistema: 0–4 pontos."
+  },
+  "results": {
+    "critical": { "label": "Falência orgânica grave", "detail": "Mortalidade >95%. UTI imediata." },
+    "severe": { "label": "Falência orgânica grave", "detail": "Mortalidade 50-70%. UTI urgente." },
+    "dysfunction": { "label": "Disfunção orgânica", "detail": "Mortalidade 20-40%. Monitorização estrita." },
+    "none": { "label": "Sem disfunção significativa", "detail": "Mortalidade <10%." }
+  }
+}

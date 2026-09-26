@@ -1,0 +1,9 @@
+{
+  "intro": {
+    "kind": "b",
+    "icon": "💊",
+    "title": "Referência rápida de medicamentos de emergência",
+    "text": "Doses em adultos. Nomes genéricos (DCB/DCI) — nomes comerciais variam por país e não estão incluídos nesta tradução. Ajustar em IR/IH."
+  },
+  "categories": ["cardio", "neuro", "resp", "atb", "analgesia"]
+}

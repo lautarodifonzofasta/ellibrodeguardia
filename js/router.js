@@ -6,9 +6,10 @@ import { SCORED_CALCULATORS } from './calculators/index.js';
 import { compute as computeSodio } from './calculators/calc-sodio.js';
 import { renderDrugReference } from './drugs.js';
 import { setActiveSidebarItem } from './sidebar.js';
+import { fetchLocalizedJson, fetchLocalizedText, t } from './i18n.js';
 
-const NOT_FOUND_HTML = `<div class="view active"><div style="padding:40px;text-align:center;color:var(--text3)"><div style="font-size:32px;margin-bottom:12px">🔧</div><div style="font-size:15px;font-weight:600;margin-bottom:6px">Módulo en construcción</div><div style="font-size:13px">Disponible en la próxima actualización.</div></div></div>`;
-
+let lang = 'es';
+let strings = {};
 let meta = null;
 let sidebarEl = null;
 let screen = null;
@@ -17,13 +18,22 @@ let bcSep = null;
 let onNavigateCallback = null;
 let drugsCache = null;
 
-export function initRouter({ meta: metaData, sidebarEl: sb, screenEl, bcCurEl, bcSepEl, onNavigate }) {
-  meta = metaData;
-  sidebarEl = sb;
-  screen = screenEl;
-  bcCur = bcCurEl;
-  bcSep = bcSepEl;
-  onNavigateCallback = onNavigate;
+function notFoundHtml() {
+  return `<div class="view active"><div style="padding:40px;text-align:center;color:var(--text3)"><div style="font-size:32px;margin-bottom:12px">🔧</div><div style="font-size:15px;font-weight:600;margin-bottom:6px">${t(strings, 'notFound.title')}</div><div style="font-size:13px">${t(strings, 'notFound.detail')}</div></div></div>`;
+}
+function fallbackNoticeHtml() {
+  return `<div class="cl cl-gray mb-12">${t(strings, 'notTranslated.notice')}</div>`;
+}
+
+export function initRouter(opts) {
+  lang = opts.lang;
+  strings = opts.strings;
+  meta = opts.meta;
+  sidebarEl = opts.sidebarEl;
+  screen = opts.screenEl;
+  bcCur = opts.bcCurEl;
+  bcSep = opts.bcSepEl;
+  onNavigateCallback = opts.onNavigate;
   window.addEventListener('hashchange', () => navigate(currentId()));
   navigate(currentId());
 }
@@ -52,7 +62,7 @@ async function navigate(id) {
     await render(id, wrapper);
   } catch (err) {
     console.error(`Failed to render view "${id}":`, err);
-    screen.innerHTML = NOT_FOUND_HTML;
+    screen.innerHTML = notFoundHtml();
   }
   screen.scrollTop = 0;
   if (onNavigateCallback) onNavigateCallback(id);
@@ -71,44 +81,44 @@ function updateBreadcrumb(id) {
 
 async function render(id, container) {
   if (id === 'home') {
-    container.innerHTML = await fetchText('content/home.html');
+    const { data, usedFallback } = await fetchLocalizedText('content/home.html', lang);
+    container.innerHTML = (usedFallback ? fallbackNoticeHtml() : '') + data;
     return;
   }
   const m = meta[id];
   if (m?.type === 'calculator') {
-    const def = await fetchJson(`content/calculators/${id}.json`);
+    const { data: def, usedFallback } = await fetchLocalizedJson(`content/calculators/${id}.json`, lang);
+    if (usedFallback) container.insertAdjacentHTML('beforeend', fallbackNoticeHtml());
+    const target = document.createElement('div');
+    container.appendChild(target);
     if (def.groups) {
-      renderScoredCalculator(container, def, SCORED_CALCULATORS[id]);
+      renderScoredCalculator(target, def, SCORED_CALCULATORS[id]);
     } else {
-      renderInputCalculator(container, def, computeSodio);
+      renderInputCalculator(target, def, computeSodio);
     }
     return;
   }
   if (m?.type === 'drugs') {
     if (!drugsCache) {
-      const index = await fetchJson('content/drugs/index.json');
-      const categories = await Promise.all(index.categories.map(c => fetchJson(`content/drugs/${c}.json`)));
-      drugsCache = { index, categories };
+      const { data: index, usedFallback: indexFallback } = await fetchLocalizedJson('content/drugs/index.json', lang);
+      const catResults = await Promise.all(index.categories.map(c => fetchLocalizedJson(`content/drugs/${c}.json`, lang)));
+      drugsCache = {
+        index,
+        categories: catResults.map(r => r.data),
+        usedFallback: indexFallback || catResults.some(r => r.usedFallback),
+      };
     }
-    renderDrugReference(container, drugsCache.index, drugsCache.categories);
+    if (drugsCache.usedFallback) container.insertAdjacentHTML('beforeend', fallbackNoticeHtml());
+    const target = document.createElement('div');
+    container.appendChild(target);
+    renderDrugReference(target, drugsCache.index, drugsCache.categories);
     return;
   }
   // Plain content module.
-  const res = await fetch(`content/modules/${id}.html`);
-  if (!res.ok) {
-    container.outerHTML = NOT_FOUND_HTML;
-    return;
+  try {
+    const { data, usedFallback } = await fetchLocalizedText(`content/modules/${id}.html`, lang);
+    container.innerHTML = (usedFallback ? fallbackNoticeHtml() : '') + data;
+  } catch {
+    container.outerHTML = notFoundHtml();
   }
-  container.innerHTML = await res.text();
-}
-
-async function fetchText(path) {
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`${path}: ${res.status}`);
-  return res.text();
-}
-async function fetchJson(path) {
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`${path}: ${res.status}`);
-  return res.json();
 }

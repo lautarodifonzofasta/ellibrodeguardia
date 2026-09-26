@@ -1,0 +1,31 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="itu" onclick="switchTab(this,'itu','itu-dx')">🔍 Classificação</div>
+  <div class="tab" data-tab-grp="itu" onclick="switchTab(this,'itu','itu-tto')">💊 Tratamento</div>
+</div>
+<div id="itu-dx" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Tipo</th><th>Clínica</th><th>EAS</th><th>Decisão</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-g">Cistite não complicada</span></td><td>Disúria, polaciúria, urgência, sem febre, sem dor lombar</td><td>Nitrito + leucócitos</td><td>Ambulatorial</td></tr>
+        <tr><td><span class="tag t-a">Pielonefrite não complicada</span></td><td>Febre, calafrios, dor lombar ± sintomas baixos</td><td>Leucócitos, cilindros leucocitários</td><td>Ambulatorial se leve, internar se vômitos/sepse</td></tr>
+        <tr><td><span class="tag t-r">ITU complicada</span></td><td>Gravidez, homem, anomalia urológica, imunossuprimido, cateter</td><td>Variável</td><td>Urocultura sempre · ATB mais prolongado</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Bacteriúria assintomática — NÃO tratar exceto</span>Gravidez (tratar sempre) · Pré-cirurgia urológica · Imunossupressão grave. Em idosos ou cateterizados: não tratar se assintomática.</div></div>
+  </div></div>
+</div>
+<div id="itu-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Cenário</th><th>1ª linha</th><th>Alternativa</th><th>Duração</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Cistite não complicada (mulher)</strong></td><td><span class="drug">Nitrofurantoína</span> 100mg a cada 12h VO</td><td>Fosfomicina 3g DU · SMX-TMP 800/160 a cada 12h</td><td>5–7 dias (nitro) · 1 dose (fosfo)</td></tr>
+        <tr><td><strong>Pielonefrite não complicada (ambulatorial)</strong></td><td><span class="drug">Ciprofloxacino</span> 500mg a cada 12h VO</td><td>Amoxicilina-clavulanato 875/125 a cada 8h</td><td>7 dias (FQ) · 10–14 dias (amoxiclav)</td></tr>
+        <tr><td><strong>Pielonefrite internada</strong></td><td><span class="drug">Ceftriaxona</span> 2g/dia IV</td><td>Amicacina 15mg/kg/dia</td><td>7–14 dias (rotacionar para via oral)</td></tr>
+        <tr><td><strong>ITU complicada / suspeita de ESBL</strong></td><td><span class="drug">Ertapenem</span> 1g/dia IV</td><td>Imipenem/Meropenem</td><td>10–14 dias</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+</div>

@@ -64,6 +64,39 @@ input, select, textarea { outline: none; }
 }
 .sb-theme-btn:hover { border-color: var(--border2); }
 
+.lang-switch { position: relative; margin-left: auto; }
+.lang-switch .sb-theme-btn { margin-left: 0; }
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 168px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+  padding: 4px;
+  z-index: 30;
+}
+.lang-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 9px;
+  border-radius: calc(var(--r) - 3px);
+  font-size: 12.5px;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--t);
+}
+.lang-menu-item:hover { background: var(--bg3); }
+.lang-menu-item.active { color: var(--acc); font-weight: 600; }
+.lang-menu-item .lang-menu-flag { line-height: 1; flex-shrink: 0; }
+.lang-menu-item .lang-menu-check { margin-left: auto; font-size: 11px; color: var(--acc); }
+.sb-theme-btn svg, .lang-menu-flag svg { display: block; border-radius: 2px; }
+
 .sb-search {
   padding: 10px 12px;
   border-bottom: 1px solid var(--border);

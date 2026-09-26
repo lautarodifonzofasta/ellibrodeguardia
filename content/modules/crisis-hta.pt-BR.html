@@ -1,0 +1,42 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="hta" onclick="switchTab(this,'hta','hta-dx')">🔍 Classificação</div>
+  <div class="tab" data-tab-grp="hta" onclick="switchTab(this,'hta','hta-tto')">💊 Tratamento</div>
+</div>
+<div id="hta-dx" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="g2">
+      <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Emergência hipertensiva</span>PA muito elevada (geralmente &gt;180/120) COM lesão aguda de órgão-alvo.<br><br><strong>Órgãos:</strong> cérebro (encefalopatia, AVC hemorrágico) · coração (IAM, IC) · rim (lesão renal aguda) · retina (papiledema) · aorta (dissecção).<br><br>→ Internação em UTI. Reduzir a PA de forma controlada, IV, em minutos-horas.</div></div>
+      <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Urgência hipertensiva</span>PA muito elevada SEM lesão aguda de órgão-alvo.<br>Paciente assintomático ou com cefaleia leve, tontura.<br><br>→ Não requer emergência. Reduzir a PA em 24–48h ajustando o tratamento oral. Não reduzir em horas (risco de hipoperfusão).</div></div>
+    </div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Emergências hipertensivas conforme órgão afetado</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Órgão</th><th>Apresentação</th><th>Meta de PA</th><th>Droga de escolha</th></tr></thead>
+      <tbody>
+        <tr><td>SNC / Encefalopatia hipertensiva</td><td>Cefaleia, confusão, convulsões, fundo de olho</td><td>↓ 25% em 1h</td><td>Labetalol IV / Nicardipina IV</td></tr>
+        <tr><td>AVC Isquêmico</td><td>Déficit neurológico focal</td><td>&lt;185/110 se trombólise; caso contrário: não reduzir</td><td>Labetalol IV</td></tr>
+        <tr><td>AVC Hemorrágico</td><td>Cefaleia + déficit focal</td><td>PAS &lt;140 mmHg</td><td>Labetalol IV / Nicardipina IV</td></tr>
+        <tr><td>IAM / SCA</td><td>Dor torácica + ECG</td><td>PAM 60–80</td><td>Nitroglicerina IV + betabloqueador</td></tr>
+        <tr><td>Dissecção Ao</td><td>Dor lancinante</td><td>PAS 100–120 + FC &lt;60</td><td>Esmolol IV + Nitroprussiato IV</td></tr>
+        <tr><td>EAP / IC aguda</td><td>Dispneia + estertores</td><td>PAM ↓ 10–15%</td><td>Nitroglicerina IV + furosemida</td></tr>
+        <tr><td>Crise adrenérgica / Feocromocitoma</td><td>Paroxística, sudorese, taquicardia</td><td>Normalização</td><td>Fentolamina IV</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+</div>
+<div id="hta-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Droga</th><th>Dose IV</th><th>Início</th><th>Indicação preferida</th></tr></thead>
+      <tbody>
+        <tr><td class="tbl-name">Labetalol</td><td><span class="drug">20 mg IV em 2 min → 40–80 mg a cada 10 min</span> (máx 300 mg) OU infusão 1–2 mg/min</td><td>5 min</td><td>Maioria das emergências, dissecção (se não houver BB puro)</td></tr>
+        <tr><td class="tbl-name">Nitroprussiato</td><td><span class="drug">0,3–10 mcg/kg/min</span> infusão (proteger da luz)</td><td>Seg</td><td>Crise hipertensiva grave, dissecção + Labetalol</td></tr>
+        <tr><td class="tbl-name">Nitroglicerina</td><td><span class="drug">5–200 mcg/min</span> infusão</td><td>2 min</td><td>IAM, IC aguda, EAP</td></tr>
+        <tr><td class="tbl-name">Esmolol</td><td><span class="drug">500 mcg/kg em 1 min → 50–200 mcg/kg/min</span></td><td>1 min</td><td>Dissecção aórtica (βB rápido)</td></tr>
+        <tr><td class="tbl-name">Hidralazina</td><td><span class="drug">10–20 mg IV a cada 4–6h</span></td><td>10 min</td><td>Eclâmpsia / gravidez</td></tr>
+        <tr><td class="tbl-name">Captopril SL</td><td><span class="drug">25–50 mg sublingual</span></td><td>15 min</td><td>Urgência (não emergência). Não usar em urgência se AVC.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-r mt-8"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Não administrar nifedipina sublingual</span>Queda brusca e imprevisível da PA → hipoperfusão cerebral e coronariana. Uso abandonado em emergências hipertensivas.</div></div>
+  </div></div>
+</div>

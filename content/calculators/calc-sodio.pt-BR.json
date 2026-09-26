@@ -1,0 +1,31 @@
+{
+  "id": "calc-sodio",
+  "title": "Correção de sódio",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "Correção de sódio — máx +10 mEq/L em 24h (crônica) ou +12 mEq/L (aguda <48h)",
+    "text": ""
+  },
+  "inputs": [
+    { "id": "na-actual", "label": "Na⁺ atual (mEq/L)", "type": "number", "default": 120, "min": 100, "max": 145 },
+    { "id": "na-obj", "label": "Na⁺ alvo (mEq/L)", "type": "number", "default": 130, "min": 100, "max": 145 },
+    { "id": "na-peso", "label": "Peso (kg)", "type": "number", "default": 70, "min": 30, "max": 200 },
+    { "id": "na-sexo", "label": "Sexo", "type": "select", "options": [
+      { "label": "Masculino", "value": 0.6 },
+      { "label": "Feminino", "value": 0.5 }
+    ], "default": 0.6 }
+  ],
+  "placeholder": "Preencha os campos para calcular.",
+  "output": {
+    "actLabel": "ACT estimada:",
+    "actUnit": "L",
+    "deficitLabel": "Déficit de Na⁺:",
+    "deficitUnit": "mEq",
+    "volumeLabel": "Volume SF 3%:",
+    "volumeUnit": "ml totais",
+    "rateLabel": "Velocidade:",
+    "rateUnit": "ml/h × 24h",
+    "warning": "⚠ Controlar Na⁺ a cada 4–6h. Não exceder +10 mEq/L em 24h."
+  }
+}

@@ -27,5 +27,10 @@
     "initialScore": 0,
     "initialLabel": "Seleccioná los criterios presentes",
     "note": "≤1: baja prob. → D-dímero · 2–6: moderada → D-dímero o TC · >6: alta → TC directo"
+  },
+  "results": {
+    "high": { "label": "Alta probabilidad TEP", "detail": "TC-AP directa o trombolisis si inestable." },
+    "moderate": { "label": "Probabilidad moderada", "detail": "D-dímero o TC-AP según disponibilidad." },
+    "low": { "label": "Probabilidad baja", "detail": "D-dímero. Si negativo: descarta TEP." }
   }
 }

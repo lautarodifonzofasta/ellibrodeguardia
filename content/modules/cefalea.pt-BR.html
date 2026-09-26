@@ -1,0 +1,64 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="cef" onclick="switchTab(this,'cef','cef-flags')">🚩 Sinais de alarme</div>
+  <div class="tab" data-tab-grp="cef" onclick="switchTab(this,'cef','cef-dx')">🔍 Diagnóstico diferencial</div>
+  <div class="tab" data-tab-grp="cef" onclick="switchTab(this,'cef','cef-tto')">💊 Tratamento</div>
+</div>
+<div id="cef-flags" class="tab-pane on">
+  <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Mnemônico SNOOP — buscar em TODA cefaleia na emergência</span></div></div>
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Letra</th><th>Significado</th><th>Pensar em</th></tr></thead>
+      <tbody>
+        <tr><td class="tbl-name red">S</td><td>Sistêmico (febre, perda de peso, HIV, câncer)</td><td>Meningite, abscesso, metástases</td></tr>
+        <tr><td class="tbl-name red">N</td><td>Neurológico (confusão, déficit focal, papiledema)</td><td>HIC, AVC, encefalite</td></tr>
+        <tr><td class="tbl-name red">O</td><td>Onset súbito ("a pior cefaleia da minha vida")</td><td>Hemorragia subaracnóidea</td></tr>
+        <tr><td class="tbl-name red">O</td><td>Older (início &gt;50 anos)</td><td>Arterite de células gigantes, tumor</td></tr>
+        <tr><td class="tbl-name red">P</td><td>Progressiva ou mudança de padrão</td><td>Neoplasia, HIC, hematoma subdural</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-r mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Hemorragia subaracnóidea — não perder</span>Cefaleia "em trovoada" (thunderclap) = intensidade máxima em segundos. TC sem contraste: sensibilidade 98% nas primeiras 6h. Se TC negativa e &lt;6h → PUNÇÃO LOMBAR (xantocromia, hemácias em todos os tubos, pressão de abertura).</div></div>
+  </div></div>
+</div>
+<div id="cef-dx" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Tipo</th><th>Características</th><th>Dx específico</th></tr></thead>
+      <tbody>
+        <tr><td class="tbl-name">Enxaqueca</td><td>Unilateral, pulsátil, moderada-grave, náuseas/fotofobia/fonofobia, com ou sem aura</td><td>Critérios ICHD-3</td></tr>
+        <tr><td class="tbl-name">Tensional</td><td>Bilateral, em aperto ("capacete"), leve-moderada, sem náuseas, sem fotofobia intensa</td><td>Mais frequente</td></tr>
+        <tr><td class="tbl-name">Em salvas</td><td>Orbitária unilateral intensa, 15–180 min, agitação, sintomas autonômicos ipsilaterais</td><td>Tratamento específico urgente</td></tr>
+        <tr><td class="tbl-name">HSA</td><td>Thunderclap, pode ter meningismo, perda de consciência, fotofobia</td><td>TC + PL</td></tr>
+        <tr><td class="tbl-name">Meningite</td><td>Febre + rigidez de nuca + fotofobia</td><td>PL + ATB ANTES se instável</td></tr>
+        <tr><td class="tbl-name">HIC</td><td>Matinal, piora com manobra de Valsalva, papiledema, diplopia por VI par</td><td>TC + fundo de olho</td></tr>
+        <tr><td class="tbl-name">ACG (&gt;50 a.)</td><td>Temporal unilateral, claudicação mandibular, VHS muito elevada, claudicação visual</td><td>VHS + biópsia temporal</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+</div>
+<div id="cef-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="sec-hd"><div class="sec-hd-lbl">Crise de enxaqueca</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">AINEs ± antieméticos (1ª linha)</div><div class="step-body">
+        <span class="drug">Ibuprofeno</span> <span class="dose">600–800 mg VO</span> ou <span class="drug">Cetorolaco</span> <span class="dose">30 mg IV/IM</span><br>
+        + <span class="drug">Metoclopramida</span> <span class="dose">10 mg IV</span> (antiemético + procinético, aumenta a absorção)
+      </div></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Triptanos (se disponíveis, 1ª linha alternativa)</div><div class="step-body">
+        <span class="drug">Sumatriptano</span> <span class="dose">100 mg VO</span> ou <span class="dose">6 mg SC</span> (mais rápido)<br>
+        Não usar em cardiopatia isquêmica, HAS não controlada, gravidez
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Resgate na emergência</div><div class="step-body">
+        <span class="drug">Dexametasona</span> <span class="dose">10 mg IV</span> (reduz a recorrência em 24h)<br>
+        <span class="drug">Clorpromazina</span> <span class="dose">0,1 mg/kg IV diluída em 500 ml SF</span> (eficaz, hipotensora)<br>
+        <span class="drug">Cetorolaco</span> <span class="dose">30 mg IV</span> + <span class="drug">Metoclopramida</span> <span class="dose">10 mg IV</span>
+      </div></div></div>
+    </div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Cefaleia em salvas</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><span class="drug">O₂ 100%</span> <span class="dose">12–15 L/min × 15 min</span> — primeira linha</li>
+      <li><span class="drug">Sumatriptano SC</span> <span class="dose">6 mg</span> — mais rápido e eficaz</li>
+      <li>NÃO usar paracetamol nem AINEs isolados (resposta inadequada)</li>
+    </ul>
+  </div></div>
+</div>

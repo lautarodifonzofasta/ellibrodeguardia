@@ -16,5 +16,16 @@
       { "label": "Mujer", "value": 0.5 }
     ], "default": 0.6 }
   ],
-  "placeholder": "Completá los campos para calcular."
+  "placeholder": "Completá los campos para calcular.",
+  "output": {
+    "actLabel": "ACT estimada:",
+    "actUnit": "L",
+    "deficitLabel": "Déficit de Na⁺:",
+    "deficitUnit": "mEq",
+    "volumeLabel": "Volumen SF 3%:",
+    "volumeUnit": "ml totales",
+    "rateLabel": "Velocidad:",
+    "rateUnit": "ml/h × 24h",
+    "warning": "⚠ Controlar Na⁺ cada 4–6h. No superar +10 mEq/L en 24h."
+  }
 }

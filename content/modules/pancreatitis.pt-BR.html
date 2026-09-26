@@ -1,0 +1,80 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="panc" onclick="switchTab(this,'panc','panc-dx')">🔍 Diagnóstico</div>
+  <div class="tab" data-tab-grp="panc" onclick="switchTab(this,'panc','panc-sev')">📊 Gravidade</div>
+  <div class="tab" data-tab-grp="panc" onclick="switchTab(this,'panc','panc-tto')">💊 Tratamento</div>
+</div>
+
+<div id="panc-dx" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Critérios de Atlanta — diagnóstico com ≥2 de 3</span>1. Dor abdominal característica (epigástrica irradiada em faixa para o dorso) · 2. Lipase ou amilase ≥3× o valor normal · 3. Achados de imagem compatíveis (TC/US)</div></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Causas mais frequentes</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><strong>Litíase biliar (40–50%):</strong> bilirrubina ↑, FA ↑, US mostra cálculos</li>
+      <li><strong>Álcool (30%):</strong> história de consumo crônico, sem litíase</li>
+      <li><strong>Hipertrigliceridemia:</strong> TG &gt;1000 mg/dl, lipemia evidente no tubo</li>
+      <li><strong>Idiopática (10–20%), medicamentos, pós-CPRE</strong></li>
+    </ul>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Diagnósticos diferenciais</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Úlcera péptica perfurada (Rx: ar subdiafragmático)</li>
+      <li>Isquemia mesentérica (dor desproporcional, FA anticoag.)</li>
+      <li>IAM de parede inferior (sempre ECG em dor epigástrica)</li>
+      <li>Colecistite aguda (Murphy +, US definidor)</li>
+    </ul>
+  </div></div>
+</div>
+
+<div id="panc-sev" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th></th><th>Leve</th><th>Moderada</th><th>Grave</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Falência orgânica</strong></td><td>Não</td><td>Transitória (&lt;48h)</td><td>Persistente (&gt;48h)</td></tr>
+        <tr><td><strong>Complicações locais</strong></td><td>Não</td><td>Sim (necrose, pseudocisto)</td><td>Sim</td></tr>
+        <tr><td><strong>Mortalidade</strong></td><td>&lt;1%</td><td>~5%</td><td>15–30%+</td></tr>
+        <tr><td><strong>Internação</strong></td><td>Enfermaria</td><td>Enfermaria / semi-intensiva</td><td>UTI</td></tr>
+      </tbody>
+    </table></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Critérios de gravidade no plantão (BISAP simplificado)</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Ureia (BUN) &gt;25 mg/dl</li>
+      <li>Alteração do sensório (desorientação)</li>
+      <li>SIRS ≥2 critérios (FR&gt;20 ou PaCO₂&lt;32, FC&gt;90, T°&gt;38 ou &lt;36, leucócitos&gt;12k ou &lt;4k)</li>
+      <li>Idade &gt;60 anos</li>
+      <li>Derrame pleural na imagem</li>
+    </ul>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body">BISAP ≥3 → mortalidade significativa → UTI. Além disso: hematócrito &gt;44% na admissão prediz necrose pancreática.</div></div>
+  </div></div>
+</div>
+
+<div id="panc-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Hidratação agressiva IV — PILAR do tratamento</div><div class="step-body">
+        <span class="drug">Ringer Lactato</span> <span class="dose">250–500 ml/h</span> nas primeiras 12–24h (preferido em relação ao SF)<br>
+        Meta: diurese 0,5–1 ml/kg/h · Ureia em queda · Hematócrito 35–44%<br>
+        Reduzir a velocidade se surgirem sinais de sobre-hidratação (estertores, edemas)
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Analgesia — fundamental e não deve ser adiada</div><div class="step-body">
+        <span class="drug">Cetorolaco</span> <span class="dose">30 mg IV a cada 6–8h</span> se função renal OK<br>
+        <span class="drug">Morfina</span> <span class="dose">0,05–0,1 mg/kg IV titulada</span> — a evidência atual apoia seu uso (não piora o esfíncter de Oddi de forma clinicamente relevante)<br>
+        <span class="drug">Dipirona</span> <span class="dose">2,5g IV a cada 8h</span> — eficaz, antiespasmódica
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Dieta — retomar precocemente</div><div class="step-body">
+        Dieta branda oral com baixo teor de gordura nas primeiras 24h se tolerar (pancreatite leve/moderada)<br>
+        Jejum apenas se vômitos intensos ou íleo · A alimentação precoce melhora o prognóstico<br>
+        Nutrição enteral por SNE se não tolerar via oral (pancreatite grave) — superior à parenteral
+      </div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Antibióticos — NÃO profiláticos</div><div class="step-body">
+        Apenas se houver infecção documentada ou necrose infectada (febre persistente &gt;72h + imagem compatível)<br>
+        <span class="drug">Imipenem</span> ou <span class="drug">Meropenem</span> + considerar antifúngico se prolongado<br>
+        ATB profilático em necrose estéril NÃO reduz a mortalidade e aumenta a resistência
+      </div></div></div>
+      <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">Etiologia biliar: CPRE urgente</div><div class="step-body">
+        Pancreatite biliar com colangite associada ou coledocolitíase sem resolução espontânea → CPRE em &lt;24h<br>
+        Colecistectomia laparoscópica na mesma internação (leve) ou diferida (grave)
+      </div></div></div>
+    </div>
+  </div></div>
+</div>

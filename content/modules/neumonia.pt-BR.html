@@ -1,0 +1,62 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="neum" onclick="switchTab(this,'neum','neum-dx')">🔍 Diagnóstico</div>
+  <div class="tab" data-tab-grp="neum" onclick="switchTab(this,'neum','neum-sev')">📊 Gravidade</div>
+  <div class="tab" data-tab-grp="neum" onclick="switchTab(this,'neum','neum-tto')">💊 Tratamento</div>
+</div>
+<div id="neum-dx" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Diagnóstico</span>Sintomas respiratórios (tosse, dispneia, dor pleurítica) + febre + achados na ausculta + <strong>infiltrado novo na Rx ou TC</strong>.</div></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Dados que orientam o agente etiológico</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Agente</th><th>Pistas clínicas</th></tr></thead>
+      <tbody>
+        <tr><td class="tbl-name">S. pneumoniae</td><td>Início agudo, calafrio único, consolidação lobar, herpes labial, Gram: diplococos</td></tr>
+        <tr><td class="tbl-name">Mycoplasma / Clamídia</td><td>Jovem, gradual, "atípica", tosse persistente, padrão intersticial, sem leucocitose franca</td></tr>
+        <tr><td class="tbl-name">Legionella</td><td>Hotel / viagem recente, dissociação clínico-radiológica, hiponatremia, diarreia, ↑ CPK</td></tr>
+        <tr><td class="tbl-name">S. aureus</td><td>Pós-influenza, cavitações, progressão rápida, toxicidade sistêmica</td></tr>
+        <tr><td class="tbl-name">Klebsiella</td><td>Etilista, diabético, lobo sup. direito, escarro "gelatina de framboesa"</td></tr>
+        <tr><td class="tbl-name">Viral (influenza)</td><td>Epidemia, mialgias intensas, início súbito, infiltrado bilateral</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+</div>
+<div id="neum-sev" class="tab-pane">
+  <div class="card"><div class="card-header"><div class="card-ico ico-amber">📊</div><div class="card-header-text"><div class="card-title">CURB-65 — Escore de gravidade</div><div class="card-sub">1 ponto por critério presente</div></div></div>
+  <div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Letra</th><th>Critério</th><th>Pontos</th></tr></thead>
+      <tbody>
+        <tr><td class="tbl-name">C</td><td>Confusão de início recente</td><td class="tbl-dose">1</td></tr>
+        <tr><td class="tbl-name">U</td><td>Ureia &gt;44 mg/dl (BUN &gt;19 mg/dl)</td><td class="tbl-dose">1</td></tr>
+        <tr><td class="tbl-name">R</td><td>FR ≥30 irpm</td><td class="tbl-dose">1</td></tr>
+        <tr><td class="tbl-name">B</td><td>PAS &lt;90 mmHg ou PAD ≤60 mmHg</td><td class="tbl-dose">1</td></tr>
+        <tr><td class="tbl-name">65</td><td>Idade ≥65 anos</td><td class="tbl-dose">1</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tbl-wrap mt-8"><table class="tbl">
+      <thead><tr><th>Score</th><th>Mortalidade estimada</th><th>Conduta recomendada</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-g">0–1</span></td><td>1–3%</td><td>Tratamento ambulatorial</td></tr>
+        <tr><td><span class="tag t-a">2</span></td><td>9%</td><td>Internação em enfermaria</td></tr>
+        <tr><td><span class="tag t-r">3–5</span></td><td>&gt;20%</td><td>UTI / Unidade de alta dependência</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><strong>Critérios de pneumonia grave (ATS/IDSA):</strong> Necessita ≥1 maior OU ≥3 menores.<br>Maiores: IOT, choque séptico. Menores: FR≥30, PaO₂/FiO₂&lt;250, infiltrados multilobares, confusão, BUN≥20, leucopenia, trombocitopenia, hipotermia, hipotensão.</div></div>
+  </div></div>
+</div>
+<div id="neum-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Cenário</th><th>Antibiótico de escolha</th><th>Alternativa</th><th>Duração</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Ambulatorial sem comorbidades</strong></td><td><span class="drug">Amoxicilina</span> 1g a cada 8h VO</td><td>Azitromicina 500mg/dia</td><td>5–7 dias</td></tr>
+        <tr><td><strong>Ambulatorial com comorbidades</strong></td><td><span class="drug">Amoxicilina-clavulanato</span> 875/125 mg a cada 8h + <span class="drug">Azitromicina</span> 500mg/dia</td><td>Levofloxacino 750mg/dia</td><td>7 dias</td></tr>
+        <tr><td><strong>Internado (fora da UTI)</strong></td><td><span class="drug">Ampicilina-sulbactam</span> 3g a cada 6h IV + <span class="drug">Claritromicina</span> 500mg a cada 12h IV</td><td>Ceftriaxona 2g/dia + Azitromicina IV</td><td>7–10 dias</td></tr>
+        <tr><td><strong>UTI (pneumonia grave)</strong></td><td><span class="drug">Piperacilina-tazobactam</span> 4,5g a cada 6h IV + <span class="drug">Azitromicina</span> IV</td><td>Carbapenêmico + Levofloxacino</td><td>7–14 dias</td></tr>
+        <tr><td><strong>Suspeita de atípica em jovem</strong></td><td><span class="drug">Azitromicina</span> 500mg/dia VO</td><td>Claritromicina 500mg a cada 12h</td><td>5 dias</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-b mt-12"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Medidas gerais</span>O₂ para manter SpO₂ ≥92% (≥94% se gravidez) · Hidratação IV se não tolera via oral · Antitérmicos · Fisioterapia respiratória · Hemoculturas × 2 antes do ATB se internação · Teste de antígenos urinários (S. pneumoniae e Legionella) se grave.</div></div>
+  </div></div>
+</div>

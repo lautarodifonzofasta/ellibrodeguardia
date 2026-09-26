@@ -69,5 +69,10 @@
     "initialScore": 0,
     "initialLabel": "Completá urea, hemoglobina y PAS",
     "note": "0: ambulatorio · 1–6: internar · >6: endoscopía urgente"
+  },
+  "results": {
+    "zero": { "label": "Score 0 — bajo riesgo", "detail": "Puede considerarse manejo ambulatorio." },
+    "lowModerate": { "label": "Score bajo-moderado", "detail": "Internar para observación y endoscopía programada." },
+    "high": { "label": "Score alto", "detail": "Internación urgente. Endoscopía en <12–24h." }
   }
 }

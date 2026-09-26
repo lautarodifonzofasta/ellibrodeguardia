@@ -1,0 +1,55 @@
+
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Tempestade tireoidiana — mortalidade 20-30% — UTI imediata</span></div></div>
+<div class="tabs">
+  <div class="tab on" data-tab-grp="tir" onclick="switchTab(this,'tir','tir-dx')">🔍 Diagnóstico (Escore de Burch-Wartofsky)</div>
+  <div class="tab" data-tab-grp="tir" onclick="switchTab(this,'tir','tir-tto')">💊 Tratamento</div>
+</div>
+<div id="tir-dx" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Diagnóstico clínico — o TSH pode estar normal no início</span>Escore de Burch-Wartofsky ≥45: altamente sugestivo. 25–44: possível tempestade. &lt;25: tempestade pouco provável.</div></div>
+    <div class="tbl-wrap mt-12"><table class="tbl">
+      <thead><tr><th>Parâmetro</th><th>Pontuação</th></tr></thead>
+      <tbody>
+        <tr><td>T° 37,2–37,7°C</td><td>5</td></tr>
+        <tr><td>T° 37,8–38,3°C</td><td>10</td></tr>
+        <tr><td>T° 38,4–38,8°C</td><td>15</td></tr>
+        <tr><td>T° ≥38,9°C</td><td>20</td></tr>
+        <tr><td>FC 100–109 bpm</td><td>5</td></tr>
+        <tr><td>FC 110–119 bpm</td><td>10</td></tr>
+        <tr><td>FC ≥120 bpm</td><td>15</td></tr>
+        <tr><td>FA ou ICC</td><td>10</td></tr>
+        <tr><td>Agitação intensa</td><td>10</td></tr>
+        <tr><td>Confusão, psicose</td><td>20</td></tr>
+        <tr><td>Coma / convulsões</td><td>30</td></tr>
+        <tr><td>Diarreia, náuseas, vômitos</td><td>10</td></tr>
+        <tr><td>Icterícia</td><td>20</td></tr>
+        <tr><td>Fator precipitante identificado</td><td>10</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+</div>
+<div id="tir-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Ordem de administração: betabloqueador → tionamida → iodo (nunca iodo antes da tionamida)</span></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Betabloqueador — controle dos sintomas adrenérgicos</div><div class="step-body">
+        <span class="drug">Propranolol</span> <span class="dose">60–80 mg a cada 4h VO</span> ou <span class="dose">0,5–1 mg IV lento</span><br>
+        Ou <span class="drug">Esmolol</span> IV se não puder usar VO<br>
+        Inibe a conversão periférica de T4→T3
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Tionamida — bloqueia a síntese hormonal</div><div class="step-body">
+        <span class="drug">Propiltiouracila (PTU)</span> <span class="dose">200–250 mg a cada 4h VO/SNG</span> (preferida — também inibe a conversão T4→T3)<br>
+        Ou <span class="drug">Metimazol</span> <span class="dose">20–25 mg a cada 4–6h VO</span>
+      </div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Iodo — administrar 1h DEPOIS da tionamida</div><div class="step-body">
+        <span class="drug">Lugol</span> <span class="dose">5–10 gotas a cada 8h VO</span><br>
+        Bloqueia a liberação dos hormônios armazenados
+      </div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Corticoides — inibem a conversão periférica</div><div class="step-body">
+        <span class="drug">Dexametasona</span> <span class="dose">2 mg a cada 6h IV</span> ou <span class="drug">Hidrocortisona</span> <span class="dose">100 mg a cada 8h IV</span><br>
+        Também trata a insuficiência adrenal relativa associada
+      </div></div></div>
+      <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">Medidas de suporte</div><div class="step-body">Antitérmico (<span class="drug">Paracetamol</span> — NÃO AINEs). Resfriamento externo. Fluidoterapia IV. Tratar o fator precipitante.</div></div></div>
+    </div>
+  </div></div>
+</div>

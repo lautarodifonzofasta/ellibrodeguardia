@@ -1,0 +1,79 @@
+
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Avaliar imediatamente</span>SpO₂, FR, PA, FC, nível de consciência. Decidir se precisa de suporte respiratório urgente.</div></div>
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="ic" onclick="switchTab(this,'ic','ic-flags')">🚩 Sinais de alarme</div>
+  <div class="tab" data-tab-grp="ic" onclick="switchTab(this,'ic','ic-algo')">🔍 Classificação</div>
+  <div class="tab" data-tab-grp="ic" onclick="switchTab(this,'ic','ic-tto')">💊 Tratamento</div>
+</div>
+
+<div id="ic-flags" class="tab-pane on">
+  <div class="cl cl-r"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Indicadores de gravidade extrema</span>
+  <ul class="bullets mt-8">
+    <li><strong>SpO₂ &lt;90% com O₂ de alto fluxo</strong> → VNI ou IOT imediata</li>
+    <li><strong>PAS &lt;90 mmHg + sinais de hipoperfusão</strong> → Choque cardiogênico</li>
+    <li><strong>FR &gt;30 irpm + uso de musculatura acessória</strong> → Falência iminente</li>
+    <li><strong>Estertores bilaterais até o ápice + ortopneia</strong> → EAP maciço</li>
+    <li><strong>Oligúria &lt;0,5 ml/kg/h apesar de volemização</strong> → Baixo débito</li>
+  </ul></div></div>
+</div>
+
+<div id="ic-algo" class="tab-pane">
+  <div class="card"><div class="card-header"><div class="card-ico ico-blue">📊</div><div class="card-header-text"><div class="card-title">Classificação de Forrester (perfil hemodinâmico)</div></div></div>
+  <div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Perfil</th><th>Congestão</th><th>Perfusão</th><th>Conduta</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-g">I — Quente/Seco</span></td><td class="tbl-note">Não</td><td class="tbl-note">Adequada</td><td>Otimizar tratamento crônico</td></tr>
+        <tr><td><span class="tag t-a">II — Quente/Úmido</span></td><td>Sim</td><td class="tbl-note">Adequada</td><td>Diuréticos + vasodilatadores</td></tr>
+        <tr><td><span class="tag t-a">III — Frio/Seco</span></td><td class="tbl-note">Não</td><td>Reduzida</td><td>Volemização cuidadosa + inotrópicos</td></tr>
+        <tr><td><span class="tag t-r">IV — Frio/Úmido</span></td><td>Sim</td><td>Reduzida</td><td>Inotrópicos + diuréticos IV + suporte</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-b mt-12"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Avaliação prática</span><strong>Congestão:</strong> ortopneia, estertores, TJ, edemas, PCP estimada &gt;18<br><strong>Hipoperfusão:</strong> extremidades frias, sudorese, oligúria, PA baixa, má saturação, ureia em ascensão</div></div>
+  </div></div>
+</div>
+
+<div id="ic-tto" class="tab-pane">
+  <div class="tabs" style="margin-bottom:14px">
+    <div class="tab on" data-tab-grp="ic2" onclick="switchTab(this,'ic2','ic-epa')">EAP / Perfil II</div>
+    <div class="tab" data-tab-grp="ic2" onclick="switchTab(this,'ic2','ic-shock')">Choque cardiogênico</div>
+  </div>
+  <div id="ic-epa" class="tab-pane on">
+    <div class="card"><div class="card-body">
+      <div class="algo">
+        <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Posição + suporte respiratório</div><div class="step-body">
+          Sentado / semi-fowler 45° · Membros inferiores pendentes<br>
+          <strong>O₂ de alto fluxo</strong> → se SpO₂ &lt;90% → <strong>VNI (CPAP ou BiPAP)</strong> imediata<br>
+          CPAP: 5–10 cmH₂O · BiPAP: IPAP 10–14 / EPAP 5–8<br>
+          IOT se: Glasgow &lt;12, FR &gt;35, acidose grave, exaustão
+        </div></div></div>
+        <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Diurético de alça IV</div><div class="step-body">
+          <span class="drug">Furosemida</span> <span class="dose">40–80 mg IV</span> (se não usa furosemida oral)<br>
+          Se já usava furosemida: <span class="dose">o dobro da dose oral habitual IV</span><br>
+          Titular pela diurese: meta 0,5–1 ml/kg/h<br>
+          Bolus a cada 8h ou infusão contínua 5–40 mg/h
+        </div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Vasodilatadores (se PAS &gt;110 mmHg)</div><div class="step-body">
+          <span class="drug">Nitroglicerina</span> <span class="dose">10–20 mcg/min IV</span> → titular até 200 mcg/min<br>
+          Ou sublingual: <span class="dose">0,4–0,5 mg a cada 5 min × 3</span> enquanto se prepara via IV<br>
+          <span class="drug">Nitroprussiato</span> <span class="dose">0,3–5 mcg/kg/min</span> se crise hipertensiva + EAP (proteger da luz)
+        </div></div></div>
+        <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Monitorização e exames</div><div class="step-body">Diurese horária · ECG (descartar IAM como causa) · BNP/NT-proBNP · Troponina · Eletrólitos seriados · Gasometria arterial</div></div></div>
+      </div>
+    </div></div>
+  </div>
+  <div id="ic-shock" class="tab-pane">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Choque cardiogênico — mortalidade 40-50% — UTI URGENTE</span></div></div>
+    <div class="card"><div class="card-body">
+      <div class="algo">
+        <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Identificar e tratar a causa</div><div class="step-body">IAM → hemodinâmica urgente (principal causa). ECG + eco à beira-leito imediato.</div></div></div>
+        <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Inotrópicos</div><div class="step-body">
+          <span class="drug">Dobutamina</span> <span class="dose">2–20 mcg/kg/min IV</span> (inotrópico de escolha)<br>
+          Se choque profundo: <span class="drug">Noradrenalina</span> <span class="dose">0,1–1 mcg/kg/min</span> para manter PAM ≥65
+        </div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Fluidos — CUIDADO</div><div class="step-body">Evitar sobrecarga. Apenas se hipovolemia coexistente. Pequenos bolus de 250 ml e reavaliar.</div></div></div>
+      </div>
+    </div></div>
+  </div>
+</div>

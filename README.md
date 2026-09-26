@@ -34,6 +34,14 @@ El Libro de Guardia es una aplicación web offline diseñada para médicos resid
 
 ---
 
+## Idiomas
+
+Disponible en **Español** y **Português (Brasil)** — el botón ES/PT en la barra lateral cambia el idioma al instante, sin recargar manualmente. La preferencia se guarda en el dispositivo.
+
+El contenido en portugués es una traducción; el contenido clínico original y de referencia es el que está en español. Si notás un error de traducción, avisá por los canales de contacto de abajo.
+
+---
+
 ## Características
 
 - ✅ 100% offline — funciona sin internet una vez instalada
@@ -41,6 +49,7 @@ El Libro de Guardia es una aplicación web offline diseñada para médicos resid
 - ✅ Basada en guías actualizadas — GINA 2026, ACOG, FIGO 2022, CDC 2024, SADI 2025
 - ✅ HTML/CSS/JS simples, sin build ni dependencias externas
 - ✅ Diseñada para guardia — navegación rápida, tipografía legible, modo oscuro
+- ✅ Disponible en español y portugués (Brasil)
 
 ---
 

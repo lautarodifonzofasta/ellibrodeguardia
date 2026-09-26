@@ -1,0 +1,78 @@
+{
+  "id": "analgesia",
+  "label": "💉 Analgesia",
+  "columns": [
+    "Medicamento",
+    "Indicação",
+    "Dose",
+    "Precaução"
+  ],
+  "drugs": [
+    {
+      "name": "Morfina",
+      "indication": "Dor intensa, EAP, IAM",
+      "dose": "0,05–0,1 mg/kg IV titulada · 5–10 mg SC/IM",
+      "caution": "Depressão respiratória, náuseas. Antídoto: naloxona."
+    },
+    {
+      "name": "Fentanila",
+      "indication": "Dor intensa, indução, IOT",
+      "dose": "1–2 mcg/kg IV · 50–100 mcg IV titulado",
+      "caution": "Rigidez torácica (doses altas), IR (acúmulo)"
+    },
+    {
+      "name": "Tramadol",
+      "indication": "Dor moderada a intensa",
+      "dose": "100 mg IV/IM a cada 8h · 50–100 mg VO a cada 6–8h",
+      "caution": "Convulsões (limiar baixo), ISRS (síndrome serotoninérgica), náuseas"
+    },
+    {
+      "name": "Cetorolaco",
+      "indication": "Dor aguda, cólica, odontalgia",
+      "dose": "30 mg IV/IM · 10 mg VO a cada 6h (máx 5 dias)",
+      "caution": "IR, úlcera, sangramento. Não usar por &gt;5 dias."
+    },
+    {
+      "name": "Ibuprofeno",
+      "indication": "Dor/febre moderada",
+      "dose": "400–600 mg VO a cada 8h (com alimentos)",
+      "caution": "IR, úlcera, gravidez, IC"
+    },
+    {
+      "name": "Paracetamol",
+      "indication": "Dor/febre, gravidez",
+      "dose": "1g VO/IV a cada 6h (máx 4g/dia · 2g/dia em hepatopata)",
+      "caution": "Hepatotoxicidade em superdosagem ou uso crônico de álcool"
+    },
+    {
+      "name": "Diclofenaco",
+      "indication": "Dor aguda, cólica",
+      "dose": "75 mg IM · 50 mg VO a cada 8h",
+      "caution": "IR, úlcera. Não administrar em bolus IV direto."
+    },
+    {
+      "name": "Naloxona",
+      "indication": "Intoxicação por opioides",
+      "dose": "0,4–2 mg IV/IM/IN a cada 2–3 min (meia-vida curta: repetir)",
+      "caution": "Precipita síndrome de abstinência em dependentes"
+    },
+    {
+      "name": "Lidocaína",
+      "indication": "Anestesia local, antiarrítmico",
+      "dose": "Infiltração: 1–2% com/sem adrenalina · Arritmia: 1–1,5 mg/kg IV",
+      "caution": "Convulsões e cardiotoxicidade em superdosagem"
+    },
+    {
+      "name": "Ondansetrona",
+      "indication": "Náuseas/vômitos",
+      "dose": "4–8 mg IV lento a cada 8h · 4 mg SL",
+      "caution": "QT longo (leve). Segura na gravidez."
+    },
+    {
+      "name": "Metoclopramida",
+      "indication": "Náuseas, gastroparesia, enxaqueca",
+      "dose": "10 mg IV/IM/VO a cada 8h",
+      "caution": "Sintomas extrapiramidais (tratar com difenidramina)"
+    }
+  ]
+}

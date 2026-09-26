@@ -1,0 +1,102 @@
+{
+  "id": "cardio",
+  "label": "💓 Cardiovascular",
+  "columns": [
+    "Medicamento",
+    "Indicação urgente",
+    "Dose IV/IM/VO",
+    "Precaução"
+  ],
+  "drugs": [
+    {
+      "name": "Adrenalina (Epinefrina)",
+      "indication": "PCR, anafilaxia, asma grave",
+      "dose": "PCR: 1 mg IV a cada 3–5 min · Anafilaxia: 0,3–0,5 mg IM · Asma: 0,3 mg SC",
+      "caution": "Taquiarritmias"
+    },
+    {
+      "name": "Amiodarona",
+      "indication": "FA, TV com pulso, FV",
+      "dose": "TV/FV: 300 mg em bolus · FA: 150 mg IV em 10 min → infusão",
+      "caution": "QT longo, bradicardia, hepatotoxicidade"
+    },
+    {
+      "name": "Atropina",
+      "indication": "Bradicardia sintomática, intox. por organofosforados",
+      "dose": "0,5 mg IV a cada 3–5 min (máx 3 mg)",
+      "caution": "Glaucoma, HPB, taquicardia"
+    },
+    {
+      "name": "Adenosina",
+      "indication": "TSV",
+      "dose": "6 mg IV em bolus rápido → 12 mg × 2",
+      "caution": "Asma, bloqueios AV. Avisar o paciente."
+    },
+    {
+      "name": "Dobutamina",
+      "indication": "Choque cardiogênico, IC de baixo débito",
+      "dose": "2–20 mcg/kg/min IV em infusão",
+      "caution": "Taquiarritmias"
+    },
+    {
+      "name": "Noradrenalina",
+      "indication": "Choque séptico/cardiogênico",
+      "dose": "0,01–3 mcg/kg/min IV em infusão",
+      "caution": "Isquemia periférica"
+    },
+    {
+      "name": "Dopamina",
+      "indication": "Choque (alternativa), bradicardia",
+      "dose": "5–20 mcg/kg/min IV",
+      "caution": "Taquiarritmias"
+    },
+    {
+      "name": "Nitroglicerina",
+      "indication": "IAM, IC aguda, EAP, angina",
+      "dose": "5–200 mcg/min IV em infusão · SL: 0,4 mg a cada 5 min × 3",
+      "caution": "Hipotensão, cefaleia. Não associar a sildenafila."
+    },
+    {
+      "name": "Furosemida",
+      "indication": "EAP, IC aguda, HAS grave",
+      "dose": "40–80 mg IV em bolus ou 5–40 mg/h em infusão",
+      "caution": "Hipopotassemia, ototoxicidade"
+    },
+    {
+      "name": "Metoprolol",
+      "indication": "FA (controle de FC), HAS, IAM",
+      "dose": "2,5–5 mg IV a cada 5 min (máx 15 mg) · VO: 25–100 mg a cada 12h",
+      "caution": "Broncoespasmo, bradicardia, IC"
+    },
+    {
+      "name": "Labetalol",
+      "indication": "Crise hipertensiva, dissecção, AVC",
+      "dose": "20 mg IV a cada 10 min (máx 300 mg) · Infusão: 1–2 mg/min",
+      "caution": "Asma, IC descompensada"
+    },
+    {
+      "name": "Digoxina",
+      "indication": "FA com IC/disfunção sistólica",
+      "dose": "Ataque 0,5 mg IV → 0,25 mg a cada 6h × 2",
+      "caution": "IR, hipopotassemia, intoxicação digitálica"
+    },
+    {
+      "name": "Heparina não fracionada",
+      "indication": "IAM, TEP, anticoagulação urgente",
+      "dose": "IAM: 60–70 UI/kg em bolus · Infusão 12–15 UI/kg/h",
+      "caution": "Sangramento, trombocitopenia (HIT)"
+    },
+    {
+      "name": "Enoxaparina",
+      "indication": "SCA, TEP, TVP",
+      "dose": "1 mg/kg SC a cada 12h · SCA: 0,5 mg/kg IV em bolus",
+      "caution": "IR → ajustar dose ou usar HNF"
+    },
+    {
+      "name": "AAS (Ácido acetilsalicílico)",
+      "indication": "IAM, SCA, AVC isquêmico",
+      "dose": "IAM: 300 mg VO mastigado · Crônico: 100 mg/dia",
+      "caution": "Úlcera ativa, alergia a AINEs"
+    }
+  ]
+}

@@ -29,5 +29,10 @@
     "initialScore": 0,
     "initialLabel": "Seleccioná los criterios presentes",
     "note": "≤1: baja → D-dímero · 2–6: moderada · >6: alta → eco directo"
+  },
+  "results": {
+    "low": { "label": "Probabilidad baja", "detail": "D-dímero. Si negativo: descarta TVP." },
+    "moderate": { "label": "Probabilidad moderada", "detail": "D-dímero + eco Doppler." },
+    "high": { "label": "Probabilidad alta", "detail": "Eco Doppler directo. Anticoagular mientras se espera." }
   }
 }

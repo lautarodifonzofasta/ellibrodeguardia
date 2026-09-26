@@ -1,0 +1,66 @@
+{
+  "id": "atb",
+  "label": "🦠 ATB urgentes",
+  "columns": [
+    "Antibiótico",
+    "Cobertura principal",
+    "Dose padrão IV"
+  ],
+  "drugs": [
+    {
+      "name": "Ceftriaxona",
+      "indication": "Gram-, pneumococo, meningococo, N. gonorrhoeae",
+      "dose": "1–2 g a cada 24h IV"
+    },
+    {
+      "name": "Ampicilina-sulbactam",
+      "indication": "Gram+, Gram-, anaeróbios, Listeria",
+      "dose": "3g a cada 6h IV"
+    },
+    {
+      "name": "Piperacilina-tazobactam",
+      "indication": "Gram+ /-, Pseudomonas, anaeróbios",
+      "dose": "4,5g a cada 6h IV"
+    },
+    {
+      "name": "Meropenem",
+      "indication": "Amplo espectro incluindo ESBL",
+      "dose": "1g a cada 8h IV · Meningite: 2g a cada 8h"
+    },
+    {
+      "name": "Vancomicina",
+      "indication": "MRSA, Gram+ resistentes",
+      "dose": "15–20 mg/kg a cada 8–12h IV (monitorar nível sérico)"
+    },
+    {
+      "name": "Metronidazol",
+      "indication": "Anaeróbios, C. difficile, Giardia",
+      "dose": "500 mg a cada 8h IV/VO"
+    },
+    {
+      "name": "Ciprofloxacino",
+      "indication": "Gram- incluindo Pseudomonas, ITU",
+      "dose": "400 mg a cada 12h IV · 500 mg a cada 12h VO"
+    },
+    {
+      "name": "Levofloxacino",
+      "indication": "Pneumonia atípica, ITU, Legionella",
+      "dose": "750 mg a cada 24h IV/VO"
+    },
+    {
+      "name": "Claritromicina",
+      "indication": "Atípicos, S. pyogenes, H. pylori",
+      "dose": "500 mg a cada 12h IV/VO"
+    },
+    {
+      "name": "Clindamicina",
+      "indication": "Gram+, anaeróbios, pele/partes moles",
+      "dose": "600 mg a cada 8h IV · 300 mg a cada 6h VO"
+    },
+    {
+      "name": "Amicacina",
+      "indication": "Gram- (incluindo resistentes), sinergismo bacteriano",
+      "dose": "15–20 mg/kg a cada 24h IV (dose única diária)"
+    }
+  ]
+}

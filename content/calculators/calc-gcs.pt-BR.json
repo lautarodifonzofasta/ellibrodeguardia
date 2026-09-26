@@ -1,0 +1,58 @@
+{
+  "id": "calc-gcs",
+  "title": "Glasgow (GCS)",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "Escala de Coma de Glasgow (GCS)",
+    "text": "Avalia o nível de consciência. GCS ≤8 → via aérea comprometida → considerar IOT."
+  },
+  "groups": [
+    {
+      "id": "gcs-E",
+      "label": "Abertura ocular (E)",
+      "type": "single",
+      "options": [
+        { "label": "Espontânea", "points": 4, "badge": "E4" },
+        { "label": "Ao chamado verbal", "points": 3, "badge": "E3" },
+        { "label": "À dor", "points": 2, "badge": "E2" },
+        { "label": "Sem resposta", "points": 1, "badge": "E1" }
+      ]
+    },
+    {
+      "id": "gcs-V",
+      "label": "Resposta verbal (V)",
+      "type": "single",
+      "options": [
+        { "label": "Orientado", "points": 5, "badge": "V5" },
+        { "label": "Confuso", "points": 4, "badge": "V4" },
+        { "label": "Palavras inapropriadas", "points": 3, "badge": "V3" },
+        { "label": "Sons incompreensíveis", "points": 2, "badge": "V2" },
+        { "label": "Sem resposta", "points": 1, "badge": "V1" }
+      ]
+    },
+    {
+      "id": "gcs-M",
+      "label": "Resposta motora (M)",
+      "type": "single",
+      "options": [
+        { "label": "Obedece a comandos", "points": 6, "badge": "M6" },
+        { "label": "Localiza a dor", "points": 5, "badge": "M5" },
+        { "label": "Retirada à dor", "points": 4, "badge": "M4" },
+        { "label": "Decorticação (flexão anormal)", "points": 3, "badge": "M3" },
+        { "label": "Descerebração (extensão)", "points": 2, "badge": "M2" },
+        { "label": "Sem resposta", "points": 1, "badge": "M1" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 3,
+    "initialLabel": "Selecione uma opção por seção",
+    "note": "E + V + M (mínimo 3, máximo 15)"
+  },
+  "results": {
+    "severe": { "label": "Coma grave", "detail": "IOT imediata. GCS ≤ 8 = via aérea comprometida." },
+    "moderate": { "label": "Coma moderado", "detail": "Vigilância estreita. Considerar IOT se piora." },
+    "normal": { "label": "Normal ou leve", "detail": "GCS 15 = normal. Reavaliar se o contexto clínico mudar." }
+  }
+}

@@ -41,7 +41,7 @@
 <div id="copyright-notice">© 2026 Di Fonzo Lautaro · El Libro de Guardia · Todos los derechos reservados</div>
 
 <!-- FAB SCROLL TOP -->
-<button id="fab-top" title="Volver arriba">↑</button>
+<button id="fab-top" data-i18n-title="app.scrollTopTitle">↑</button>
 
 <!-- SEARCH MODAL -->
 <div id="search-modal">
@@ -49,7 +49,7 @@
   <div class="s-box">
     <div class="s-inp-row">
       <span style="font-size:18px;color:var(--text3)">🔍</span>
-      <input id="s-inp" type="text" placeholder="Buscar patología, síntoma, fármaco..." autocomplete="off">
+      <input id="s-inp" type="text" data-i18n-placeholder="app.searchPlaceholder" autocomplete="off">
       <span class="s-esc">ESC</span>
     </div>
     <div class="s-results" id="s-results"></div>
@@ -67,11 +67,15 @@
       <div class="sb-logo-name"><span style="color:var(--text)">El Libro </span><span style="color:#E63030">de Guardia</span></div>
       <div class="sb-logo-sub">Para Residentes · Di Fonzo L.</div>
     </div>
-    <div class="sb-theme-btn" id="theme-btn" title="Cambiar tema">🌙</div>
+    <div class="lang-switch" id="lang-switch">
+      <div class="sb-theme-btn" id="lang-btn" data-i18n-title="app.langToggleTitle" aria-haspopup="true" aria-expanded="false"></div>
+      <div class="lang-menu" id="lang-menu" hidden></div>
+    </div>
+    <div class="sb-theme-btn" id="theme-btn" data-i18n-title="app.themeToggleTitle" style="margin-left:6px">🌙</div>
   </div>
 
   <div class="sb-search">
-    <input class="sb-search-inp" id="sb-filter-inp" type="text" placeholder="🔍  Buscar módulo...">
+    <input class="sb-search-inp" id="sb-filter-inp" type="text" data-i18n-placeholder="app.sidebarFilterPlaceholder">
   </div>
 
   <div class="sb-scroll" id="sb-scroll">
@@ -92,8 +96,8 @@
       <span class="tb-bc-cur" id="bc-cur"></span>
     </div>
     <div class="tb-right">
-      <button id="btn-install" title="Instalar como app">⬇ Instalar</button>
-      <button class="tb-search-btn" id="tb-search-btn" title="Buscar (Ctrl+K)" aria-label="Buscar">🔍</button>
+      <button id="btn-install" data-i18n="app.installLabel" data-i18n-title="app.installTitle">⬇ Instalar</button>
+      <button class="tb-search-btn" id="tb-search-btn" data-i18n-title="app.searchButtonTitle" data-i18n-aria-label="app.searchButtonAriaLabel" aria-label="Buscar">🔍</button>
       <span class="tb-kbd" id="tb-kbd-hint" style="cursor:pointer;display:none">⌘K</span>
     </div>
   </div>

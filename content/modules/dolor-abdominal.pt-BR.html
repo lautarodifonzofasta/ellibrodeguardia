@@ -1,0 +1,59 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="dab" onclick="switchTab(this,'dab','dab-flags')">🚩 Sinais de alarme</div>
+  <div class="tab" data-tab-grp="dab" onclick="switchTab(this,'dab','dab-dx')">🔍 Diagnóstico diferencial</div>
+  <div class="tab" data-tab-grp="dab" onclick="switchTab(this,'dab','dab-tto')">💊 Manejo</div>
+</div>
+<div id="dab-flags" class="tab-pane on">
+  <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Abdome cirúrgico urgente — avaliar imediatamente</span>
+  <ul class="bullets mt-8">
+    <li><strong>Peritonite:</strong> defesa generalizada + descompressão dolorosa + abdome em tábua + sinais de sepse</li>
+    <li><strong>Choque hipovolêmico:</strong> hipotensão + taquicardia + dor abdominal → ruptura de aneurisma, gravidez ectópica rota</li>
+    <li><strong>Isquemia mesentérica:</strong> dor desproporcional ao exame, FA conhecida, aterosclerose grave</li>
+    <li><strong>Vólvulo / obstrução:</strong> distensão progressiva + ausência de ruídos + náuseas fecaloides</li>
+  </ul></div></div>
+  <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Sempre considerar em mulher em idade fértil</span>Gravidez ectópica até prova em contrário. BhCG quantitativo + ultrassom urgente.</div></div>
+</div>
+<div id="dab-dx" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="sec-hd"><div class="sec-hd-lbl">Diagnóstico diferencial por quadrante</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Quadrante</th><th>Principais diagnósticos</th></tr></thead>
+      <tbody>
+        <tr><td><strong>FID (fossa ilíaca direita)</strong></td><td>Apendicite aguda · Salpingite / DIP · Cálculo ureteral distal · Doença de Crohn · Hérnia inguinal</td></tr>
+        <tr><td><strong>FIE (fossa ilíaca esquerda)</strong></td><td>Diverticulite · Salpingite esquerda · Cálculo ureteral · Colite isquêmica · Hérnia</td></tr>
+        <tr><td><strong>HD (hipocôndrio direito)</strong></td><td>Cólica biliar / Colecistite · Hepatite · Abscesso hepático · Pleurite basal direita</td></tr>
+        <tr><td><strong>HE (hipocôndrio esquerdo)</strong></td><td>Úlcera gástrica perfurada · Pancreatite · Esplenomegalia / Infarto esplênico</td></tr>
+        <tr><td><strong>Epigástrico</strong></td><td>Úlcera péptica · Pancreatite aguda · IAM de parede inferior · Gastrite / DRGE</td></tr>
+        <tr><td><strong>Periumbilical</strong></td><td>Apendicite (início) · Hérnia umbilical · Isquemia mesentérica</td></tr>
+        <tr><td><strong>Difuso / generalizado</strong></td><td>Peritonite · Obstrução intestinal · Isquemia mesentérica · Porfiria · Cetoacidose</td></tr>
+      </tbody>
+    </table></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Sinais de exame relevantes</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><strong>Murphy positivo:</strong> interrupção inspiratória por dor à palpação do HD → colecistite</li>
+      <li><strong>McBurney / Blumberg em FID:</strong> apendicite</li>
+      <li><strong>Sinal do psoas:</strong> dor à extensão passiva da coxa direita → apendicite retrocecal</li>
+      <li><strong>Sinal do obturador:</strong> dor à rotação interna da coxa direita → apendicite pélvica</li>
+      <li><strong>Rovsing:</strong> dor em FID ao palpar a FIE → apendicite</li>
+    </ul>
+  </div></div>
+</div>
+<div id="dab-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Avaliação sistemática urgente</div><div class="step-body">
+        Hemograma · PCR · Enzimas hepáticas · Lipase · Função renal · Íons<br>
+        EAS (urina) · BhCG (mulher em idade fértil) · Hemoculturas se febre<br>
+        Ultrassom abdominal como primeira imagem (rápido, sem radiação)
+      </div></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Analgesia — NÃO reter por medo de "mascarar"</div><div class="step-body">
+        Evidência: a analgesia NÃO altera a precisão diagnóstica. Tratar a dor.<br>
+        <span class="drug">Cetorolaco</span> <span class="dose">30 mg IV</span> ou <span class="drug">Morfina</span> <span class="dose">0,1 mg/kg IV titulada</span><br>
+        Hioscina (Butilescopolamina) para cólica leve
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">TC de abdome com contraste</div><div class="step-body">Se dúvida diagnóstica, suspeita cirúrgica, ou paciente obeso/idoso onde o US é insuficiente.<br>Sensibilidade para apendicite &gt;95%.</div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Cirurgia urgente se</div><div class="step-body">Peritonite · Apendicite complicada · Colecistite gangrenosa · Obstrução com sinais de isquemia · Perfuração</div></div></div>
+    </div>
+  </div></div>
+</div>

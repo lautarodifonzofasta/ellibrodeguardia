@@ -13,7 +13,7 @@ test('SOFA boundaries', () => {
   assert.equal(interpret(24).severity, 'red');
 });
 
-test('SOFA distinguishes the two red bands by detail text', () => {
-  assert.match(interpret(7).detail, /50-70%/);
-  assert.match(interpret(11).detail, />95%/);
+test('SOFA distinguishes the two red bands via resultId', () => {
+  assert.equal(interpret(7).resultId, 'severe');
+  assert.equal(interpret(11).resultId, 'critical');
 });

@@ -1,0 +1,34 @@
+{
+  "id": "calc-curb65",
+  "title": "CURB-65",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "CURB-65 — Pneumonia adquirida na comunidade",
+    "text": "1 ponto por critério. Score ≥3: pneumonia grave, UTI."
+  },
+  "groups": [
+    {
+      "id": "curb65",
+      "label": null,
+      "type": "multi",
+      "options": [
+        { "label": "<strong>C</strong>onfusão de início recente", "points": 1, "badge": "+1" },
+        { "label": "<strong>U</strong>reia >44 mg/dl (BUN >19 mg/dl)", "points": 1, "badge": "+1" },
+        { "label": "<strong>R</strong>FR ≥30 irpm", "points": 1, "badge": "+1" },
+        { "label": "<strong>B</strong>P: PAS <90 ou PAD ≤60 mmHg", "points": 1, "badge": "+1" },
+        { "label": "Idade ≥<strong>65</strong> anos", "points": 1, "badge": "+1" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 0,
+    "initialLabel": "Selecione os critérios presentes",
+    "note": "0–1: ambulatorial · 2: internação em enfermaria · 3–5: UTI"
+  },
+  "results": {
+    "severe": { "label": "Pneumonia grave", "detail": "Internação em UTI. Mortalidade >20%." },
+    "moderate": { "label": "Pneumonia moderada", "detail": "Internação em enfermaria." },
+    "mild": { "label": "Pneumonia leve", "detail": "Tratamento ambulatorial possível." }
+  }
+}

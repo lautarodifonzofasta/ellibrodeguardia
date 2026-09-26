@@ -63,5 +63,10 @@
     "initialScore": 0,
     "initialLabel": "Completá todas las secciones",
     "note": "≤3: bajo (MACE <2%) · 4–6: moderado · ≥7: alto (MACE >65%)"
+  },
+  "results": {
+    "high": { "label": "Alto riesgo", "detail": "MACE >65%. Internación + cardiología urgente." },
+    "moderate": { "label": "Riesgo moderado", "detail": "MACE 12-65%. Internación + estudio." },
+    "low": { "label": "Bajo riesgo", "detail": "MACE <2%. Puede considerarse alta precoz." }
   }
 }

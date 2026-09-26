@@ -49,5 +49,10 @@
     "initialScore": 3,
     "initialLabel": "Seleccioná una opción por sección",
     "note": "E + V + M (mínimo 3, máximo 15)"
+  },
+  "results": {
+    "severe": { "label": "Coma severo", "detail": "IOT inmediata. GCS ≤ 8 = vía aérea comprometida." },
+    "moderate": { "label": "Coma moderado", "detail": "Vigilancia estrecha. Considerar IOT si deterioro." },
+    "normal": { "label": "Normal o leve", "detail": "GCS 15 = normal. Reevaluar si contexto clínico cambia." }
   }
 }
