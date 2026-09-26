@@ -1,0 +1,73 @@
+{
+  "id": "calc-blatchford",
+  "title": "Score Blatchford",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "Score de Blatchford — riesgo en hemorragia digestiva alta",
+    "text": "Score 0: puede considerarse ambulatorio. >6: endoscopía urgente."
+  },
+  "groups": [
+    {
+      "id": "bu",
+      "label": "Urea en sangre (mmol/L)",
+      "type": "single",
+      "options": [
+        { "label": "<6,5", "points": 0 },
+        { "label": "6,5–8,0", "points": 2 },
+        { "label": "8,0–10,0", "points": 3 },
+        { "label": "10,0–25,0", "points": 4 },
+        { "label": ">25,0", "points": 6 }
+      ]
+    },
+    {
+      "id": "hbm",
+      "label": "Hemoglobina en hombre (g/dl)",
+      "type": "single",
+      "options": [
+        { "label": "≥13", "points": 0 },
+        { "label": "12–12,9", "points": 1 },
+        { "label": "10–11,9", "points": 3 },
+        { "label": "<10", "points": 6 }
+      ]
+    },
+    {
+      "id": "hbf",
+      "label": "Hemoglobina en mujer (g/dl)",
+      "type": "single",
+      "options": [
+        { "label": "≥12", "points": 0 },
+        { "label": "10–11,9", "points": 1 },
+        { "label": "<10", "points": 6 }
+      ]
+    },
+    {
+      "id": "pas",
+      "label": "PAS (mmHg)",
+      "type": "single",
+      "options": [
+        { "label": "≥110", "points": 0 },
+        { "label": "100–109", "points": 1 },
+        { "label": "90–99", "points": 2 },
+        { "label": "<90", "points": 3 }
+      ]
+    },
+    {
+      "id": "blatchford-extra",
+      "label": null,
+      "type": "multi",
+      "options": [
+        { "label": "FC ≥100 lpm", "points": 1, "badge": "+1" },
+        { "label": "Melena al ingreso", "points": 1, "badge": "+1" },
+        { "label": "Síncope", "points": 2, "badge": "+2" },
+        { "label": "Hepatopatía conocida", "points": 2, "badge": "+2" },
+        { "label": "Insuficiencia cardíaca", "points": 2, "badge": "+2" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 0,
+    "initialLabel": "Completá urea, hemoglobina y PAS",
+    "note": "0: ambulatorio · 1–6: internar · >6: endoscopía urgente"
+  }
+}

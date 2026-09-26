@@ -1,0 +1,66 @@
+{
+  "id": "atb",
+  "label": "🦠 ATB urgentes",
+  "columns": [
+    "Antibiótico",
+    "Cobertura principal",
+    "Dosis estándar IV"
+  ],
+  "drugs": [
+    {
+      "name": "Ceftriaxona (Rocefín)",
+      "indication": "Gram-, neumococo, meningococo, N. gonorrhoeae",
+      "dose": "1–2 g c/24h IV"
+    },
+    {
+      "name": "Ampicilina-sulbactam (Unasyn)",
+      "indication": "Gram+, Gram-, anaerobios, Listeria",
+      "dose": "3g c/6h IV"
+    },
+    {
+      "name": "Piperacilina-tazobactam (Tazocin)",
+      "indication": "Gram+ /-, Pseudomonas, anaerobios",
+      "dose": "4,5g c/6h IV"
+    },
+    {
+      "name": "Meropenem (Meropenem)",
+      "indication": "Amplio espectro incluyendo BLEE",
+      "dose": "1g c/8h IV · Meningitis: 2g c/8h"
+    },
+    {
+      "name": "Vancomicina",
+      "indication": "MRSA, Gram+ resistentes",
+      "dose": "15–20 mg/kg c/8–12h IV (monitorear nivel)"
+    },
+    {
+      "name": "Metronidazol (Flagyl)",
+      "indication": "Anaerobios, C. difficile, Giardia",
+      "dose": "500 mg c/8h IV/VO"
+    },
+    {
+      "name": "Ciprofloxacina (Cipro)",
+      "indication": "Gram- incluyendo Pseudomonas, ITU",
+      "dose": "400 mg c/12h IV · 500 mg c/12h VO"
+    },
+    {
+      "name": "Levofloxacina",
+      "indication": "Neumonía atípica, ITU, Legionella",
+      "dose": "750 mg c/24h IV/VO"
+    },
+    {
+      "name": "Claritromicina (Klaricid)",
+      "indication": "Atípicos, S. pyogenes, H. pylori",
+      "dose": "500 mg c/12h IV/VO"
+    },
+    {
+      "name": "Clindamicina (Dalacin)",
+      "indication": "Gram+, anaerobios, piel/tejidos blandos",
+      "dose": "600 mg c/8h IV · 300 mg c/6h VO"
+    },
+    {
+      "name": "Amikacina",
+      "indication": "Gram- (incluyendo resistentes), bacterias sinérgico",
+      "dose": "15–20 mg/kg c/24h IV (dosis única diaria)"
+    }
+  ]
+}

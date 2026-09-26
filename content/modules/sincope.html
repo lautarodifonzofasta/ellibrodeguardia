@@ -1,0 +1,33 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="sinc" onclick="switchTab(this,'sinc','sinc-dx')">🔍 Dx diferencial</div>
+  <div class="tab" data-tab-grp="sinc" onclick="switchTab(this,'sinc','sinc-algo')">📊 Estratificación</div>
+</div>
+<div id="sinc-dx" class="tab-pane on">
+  <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Definición</span>Pérdida transitoria de consciencia por hipoperfusión cerebral global, con recuperación espontánea y sin secuela neurológica.</div></div>
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Tipo</th><th>Clave diagnóstica</th><th>Riesgo</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-r">Cardíaco</span></td><td>Sin pródromo o pródromo muy breve, durante ejercicio o decúbito, palpitaciones previas, ECG anormal</td><td>Alto</td></tr>
+        <tr><td><span class="tag t-a">Ortostático</span></td><td>Al ponerse de pie, en ancianos, con fármacos antihipertensivos</td><td>Bajo-moderado</td></tr>
+        <tr><td><span class="tag t-g">Vasovagal</span></td><td>Desencadenado por emociones, calor, dolor, bipedestación prolongada, pródromo típico (sudoración, náuseas)</td><td>Bajo</td></tr>
+        <tr><td><span class="tag t-b">Situacional</span></td><td>Tos, defecación, micción, maniobra de Valsalva</td><td>Bajo</td></tr>
+        <tr><td><span class="tag t-p">Neurológico</span></td><td>Convulsiones (post-ictal, mordedura de lengua, movimientos), TIA carotídeo (no suele dar síncope)</td><td>Variable</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+  <div class="cl cl-r mt-8"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Banderas rojas — síncope de alto riesgo</span>
+  Síncope durante el ejercicio · Con palpitaciones previas · Con dolor torácico · ECG anormal · Sin pródromo · En posición supina · Antecedente familiar de muerte súbita · IAM o IC conocida</div></div>
+</div>
+<div id="sinc-algo" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="sec-hd"><div class="sec-hd-lbl">Estudios mínimos en urgencias</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets"><li>ECG de 12 derivaciones (buscar QTc largo, BRI, WPW, BRIHH, bloqueos AV, TV)</li><li>Glucemia capilar (descartar hipoglucemia)</li><li>Ortostáticos (PA sentado → de pie a 1 y 3 min)</li><li>PA en ambos brazos si sospecha disección</li></ul>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Score ROSE — alto riesgo si ≥1 criterio</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>BNP &gt;300 pg/ml</li><li>Bradicardia &lt;50 en urgencias</li><li>Anemia (Hb &lt;9 g/dl)</li><li>Anomalía ECG (BRI, QTc &gt;480 ms, cambios isquémicos)</li><li>SatO₂ &lt;94% en urgencias</li><li>Historia de IC congestiva</li>
+    </ul>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body">Si alto riesgo → monitorización 24–48h + evaluación cardiológica. Si bajo riesgo (vasovagal típico, joven, sin factores) → puede irse con indicaciones.</div></div>
+  </div></div>
+</div>

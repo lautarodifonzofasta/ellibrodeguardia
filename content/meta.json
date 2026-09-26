@@ -1,0 +1,382 @@
+{
+  "home": {
+    "title": "Inicio",
+    "category": "Inicio",
+    "icon": "🏠"
+  },
+  "pcr": {
+    "title": "PCR / RCP",
+    "category": "🚨 Emergencias críticas",
+    "icon": "💓",
+    "sub": "BLS · ALS · Post-RCE",
+    "badge": "crit"
+  },
+  "shock": {
+    "title": "Shock",
+    "category": "🚨 Emergencias críticas",
+    "icon": "🩸",
+    "sub": "Clasificación · Anafilaxis · Neumotórax",
+    "badge": "crit"
+  },
+  "dolor-toracico": {
+    "title": "Dolor torácico",
+    "category": "🫀 Cardiovascular",
+    "icon": "❤️",
+    "sub": "IAM, TEP, aorta, pericardio",
+    "badge": "crit"
+  },
+  "arritmias": {
+    "title": "Palpitaciones / Arritmias",
+    "category": "🫀 Cardiovascular",
+    "icon": "⚡"
+  },
+  "ic-aguda": {
+    "title": "IC aguda / Edema agudo",
+    "category": "🫀 Cardiovascular",
+    "icon": "💙",
+    "badge": "crit"
+  },
+  "crisis-hta": {
+    "title": "Crisis hipertensiva",
+    "category": "🫀 Cardiovascular",
+    "icon": "📈"
+  },
+  "sincope": {
+    "title": "Síncope",
+    "category": "🫀 Cardiovascular",
+    "icon": "😵"
+  },
+  "disnea": {
+    "title": "Disnea aguda",
+    "category": "🫁 Respiratorio",
+    "icon": "🫁",
+    "sub": "Algoritmo diferencial",
+    "badge": "crit"
+  },
+  "tep": {
+    "title": "TEP",
+    "category": "🫁 Respiratorio",
+    "icon": "🩸",
+    "badge": "crit"
+  },
+  "tvp": {
+    "title": "TVP",
+    "category": "🫁 Respiratorio",
+    "icon": "🩸",
+    "badge": "crit"
+  },
+  "neumonia": {
+    "title": "Neumonía",
+    "category": "🫁 Respiratorio",
+    "icon": "🦠"
+  },
+  "epoc": {
+    "title": "EPOC exacerbado",
+    "category": "🫁 Respiratorio",
+    "icon": "💨"
+  },
+  "asma": {
+    "title": "Asma severa",
+    "category": "🫁 Respiratorio",
+    "icon": "🌬️"
+  },
+  "acv": {
+    "title": "ACV / TIA",
+    "category": "🧠 Neurológico",
+    "icon": "🧠",
+    "badge": "crit"
+  },
+  "convulsiones": {
+    "title": "Convulsiones / Status",
+    "category": "🧠 Neurológico",
+    "icon": "⚡",
+    "badge": "crit"
+  },
+  "cefalea": {
+    "title": "Cefalea",
+    "category": "🧠 Neurológico",
+    "icon": "🤕"
+  },
+  "alt-sensorio": {
+    "title": "Alteración del sensorio",
+    "category": "🧠 Neurológico",
+    "icon": "😶‍🌫️"
+  },
+  "delirium": {
+    "title": "Delirium",
+    "category": "🧠 Neurológico",
+    "icon": "🧠",
+    "badge": "crit"
+  },
+  "sepsis": {
+    "title": "Sepsis / Shock séptico",
+    "category": "🔥 Infectología",
+    "icon": "🦠",
+    "badge": "crit"
+  },
+  "anafilaxia": {
+    "title": "Anafilaxia",
+    "category": "🔥 Infectología",
+    "icon": "🚨",
+    "badge": "crit"
+  },
+  "fiebre": {
+    "title": "Fiebre sin foco",
+    "category": "🔥 Infectología",
+    "icon": "🌡️"
+  },
+  "meningitis": {
+    "title": "Meningitis",
+    "category": "🔥 Infectología",
+    "icon": "🧬",
+    "badge": "crit"
+  },
+  "celulitis": {
+    "title": "Celulitis / Erisipela",
+    "category": "🔥 Infectología",
+    "icon": "🦵",
+    "badge": "crit"
+  },
+  "herpes-zoster": {
+    "title": "Herpes Zóster",
+    "category": "🔥 Infectología",
+    "icon": "🧬",
+    "sub": "Diagnóstico · Antiviral · Neuralgia"
+  },
+  "itu": {
+    "title": "ITU / Pielonefritis",
+    "category": "🔥 Infectología",
+    "icon": "💧"
+  },
+  "faringoamig": {
+    "title": "Faringoamigdalitis",
+    "category": "🔥 Infectología",
+    "icon": "🤒"
+  },
+  "dolor-abdominal": {
+    "title": "Dolor abdominal agudo",
+    "category": "🤢 Abdominal",
+    "icon": "🤢"
+  },
+  "colico-renal": {
+    "title": "Cólico renal",
+    "category": "🤢 Abdominal",
+    "icon": "💎"
+  },
+  "colico-biliar": {
+    "title": "Cólico biliar / Colecistitis",
+    "category": "🤢 Abdominal",
+    "icon": "🫐"
+  },
+  "pancreatitis": {
+    "title": "Pancreatitis aguda",
+    "category": "🤢 Abdominal",
+    "icon": "🔥"
+  },
+  "hemorragia-digestiva": {
+    "title": "Hemorragia digestiva",
+    "category": "🤢 Abdominal",
+    "icon": "🩸",
+    "badge": "crit"
+  },
+  "higado-descompensado": {
+    "title": "Hígado descompensado",
+    "category": "🤢 Abdominal",
+    "icon": "🟡",
+    "badge": "crit"
+  },
+  "cad": {
+    "title": "CAD / SHHNC",
+    "category": "🍬 Endocrinológico",
+    "icon": "🍬",
+    "badge": "crit"
+  },
+  "hipoglucemia": {
+    "title": "Hipoglucemia",
+    "category": "🍬 Endocrinológico",
+    "icon": "📉",
+    "badge": "crit"
+  },
+  "tiroides": {
+    "title": "Crisis tiroidea",
+    "category": "🍬 Endocrinológico",
+    "icon": "🦋"
+  },
+  "hiponatremia": {
+    "title": "Hiponatremia",
+    "category": "🍬 Endocrinológico",
+    "icon": "🧂",
+    "badge": "crit"
+  },
+  "hiperkalemia": {
+    "title": "Hiperkalemia",
+    "category": "🍬 Endocrinológico",
+    "icon": "⚡",
+    "badge": "crit"
+  },
+  "falla-renal": {
+    "title": "Falla renal aguda",
+    "category": "🫘 Nefrología",
+    "icon": "🫘",
+    "badge": "crit"
+  },
+  "ginecoobs": {
+    "title": "Emergencias ginecobstétricas",
+    "category": "🤰 Ginecobstétrico",
+    "icon": "🤰",
+    "badge": "crit"
+  },
+  "hta-gestacional": {
+    "title": "HTA gestacional",
+    "category": "🤰 Ginecobstétrico",
+    "icon": "📈",
+    "badge": "crit"
+  },
+  "rpm-puerperal": {
+    "title": "RPM y patología puerperal",
+    "category": "🤰 Ginecobstétrico",
+    "icon": "🫧",
+    "badge": "crit"
+  },
+  "hepato-embarazo": {
+    "title": "Hepatopatías del embarazo",
+    "category": "🤰 Ginecobstétrico",
+    "icon": "🫀"
+  },
+  "abuso-sexual": {
+    "title": "Abuso sexual — Protocolo",
+    "category": "🤰 Ginecobstétrico",
+    "icon": "⚖️",
+    "badge": "crit"
+  },
+  "gineco-infecciones": {
+    "title": "Infecciones genitales / EPI",
+    "category": "🤰 Ginecobstétrico",
+    "icon": "🔬"
+  },
+  "vertigo": {
+    "title": "Vértigo",
+    "category": "👂 ORL / Oftalmología",
+    "icon": "🌀",
+    "sub": "Central vs periférico"
+  },
+  "otitis": {
+    "title": "Otitis",
+    "category": "👂 ORL / Oftalmología",
+    "icon": "👂"
+  },
+  "sinusitis": {
+    "title": "Sinusitis",
+    "category": "👂 ORL / Oftalmología",
+    "icon": "👃"
+  },
+  "ojo-rojo": {
+    "title": "Ojo rojo",
+    "category": "👂 ORL / Oftalmología",
+    "icon": "👁️"
+  },
+  "lumbalgia": {
+    "title": "Lumbalgia",
+    "category": "🦴 Musculoesquelético",
+    "icon": "🦴",
+    "sub": "Banderas rojas + estudio"
+  },
+  "agitacion": {
+    "title": "Agitación psicomotriz",
+    "category": "🧬 Psiquiátrico / Toxicología",
+    "icon": "🌀"
+  },
+  "intoxicaciones": {
+    "title": "Intoxicaciones",
+    "category": "🧬 Psiquiátrico / Toxicología",
+    "icon": "☠️"
+  },
+  "panico": {
+    "title": "Crisis de pánico",
+    "category": "🧬 Psiquiátrico / Toxicología",
+    "icon": "😰"
+  },
+  "calc-gcs": {
+    "title": "Glasgow (GCS)",
+    "category": "🧮 Calculadoras",
+    "icon": "🧠",
+    "badge": "calc",
+    "type": "calculator"
+  },
+  "calc-sofa": {
+    "title": "SOFA Score",
+    "category": "🧮 Calculadoras",
+    "icon": "🦠",
+    "badge": "calc",
+    "type": "calculator"
+  },
+  "calc-wells-tep": {
+    "title": "Wells TEP",
+    "category": "🧮 Calculadoras",
+    "icon": "🩸",
+    "badge": "calc",
+    "type": "calculator"
+  },
+  "calc-curb65": {
+    "title": "CURB-65",
+    "category": "🧮 Calculadoras",
+    "icon": "🫁",
+    "badge": "calc",
+    "type": "calculator"
+  },
+  "calc-heart": {
+    "title": "HEART Score",
+    "category": "🧮 Calculadoras",
+    "icon": "❤️",
+    "badge": "calc",
+    "type": "calculator"
+  },
+  "calc-chads": {
+    "title": "CHA₂DS₂-VASc",
+    "category": "🧮 Calculadoras",
+    "icon": "🩺",
+    "badge": "calc",
+    "type": "calculator"
+  },
+  "calc-nihss": {
+    "title": "NIHSS",
+    "category": "🧮 Calculadoras",
+    "icon": "🧬",
+    "badge": "calc"
+  },
+  "calc-psi": {
+    "title": "PSI / PORT",
+    "category": "🧮 Calculadoras",
+    "icon": "🫁",
+    "badge": "calc"
+  },
+  "calc-wells-tvp": {
+    "title": "Wells TVP",
+    "category": "💊 Referencia",
+    "icon": "🧮",
+    "badge": "calc",
+    "type": "calculator"
+  },
+  "calc-blatchford": {
+    "title": "Score Blatchford",
+    "category": "💊 Referencia",
+    "icon": "🧮",
+    "badge": "calc",
+    "type": "calculator"
+  },
+  "calc-sodio": {
+    "title": "Corrección de sodio",
+    "category": "💊 Referencia",
+    "icon": "🧮",
+    "badge": "calc",
+    "type": "calculator"
+  },
+  "drogas": {
+    "title": "Drogas de emergencia",
+    "category": "💊 Referencia",
+    "icon": "💊",
+    "sub": "80+ fármacos con dosis",
+    "badge": "ref",
+    "type": "drugs"
+  }
+}

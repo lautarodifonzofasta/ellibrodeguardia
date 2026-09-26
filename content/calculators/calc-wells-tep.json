@@ -1,0 +1,31 @@
+{
+  "id": "calc-wells-tep",
+  "title": "Wells TEP",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "Wells Score para TEP",
+    "text": "Usarlo cuando la sospecha clínica existe pero no es segura. Guía el uso de D-dímero y TC-AP."
+  },
+  "groups": [
+    {
+      "id": "wells",
+      "label": null,
+      "type": "multi",
+      "options": [
+        { "label": "Signos o síntomas de TVP", "points": 3, "badge": "+3" },
+        { "label": "Diagnóstico alternativo menos probable que TEP", "points": 3, "badge": "+3" },
+        { "label": "FC >100 lpm", "points": 1, "badge": "+1.5" },
+        { "label": "Inmovilización o cirugía en últimas 4 semanas", "points": 1, "badge": "+1.5" },
+        { "label": "TEP o TVP previo documentado", "points": 1, "badge": "+1.5" },
+        { "label": "Hemoptisis", "points": 1, "badge": "+1" },
+        { "label": "Cáncer activo o tratado en últimos 6 meses", "points": 1, "badge": "+1" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 0,
+    "initialLabel": "Seleccioná los criterios presentes",
+    "note": "≤1: baja prob. → D-dímero · 2–6: moderada → D-dímero o TC · >6: alta → TC directo"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "calc-chads",
+  "title": "CHA₂DS₂-VASc",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "CHA₂DS₂-VASc — riesgo tromboembólico en fibrilación auricular no valvular",
+    "text": "Score ≥2 (hombre) o ≥3 (mujer) → anticoagulación recomendada."
+  },
+  "groups": [
+    {
+      "id": "chads",
+      "label": null,
+      "type": "multi",
+      "options": [
+        { "label": "<strong>C</strong> — Insuficiencia Cardíaca / FEVI <40%", "points": 1, "badge": "+1" },
+        { "label": "<strong>H</strong> — Hipertensión arterial", "points": 1, "badge": "+1" },
+        { "label": "<strong>A₂</strong> — Edad ≥75 años", "points": 2, "badge": "+2" },
+        { "label": "<strong>D</strong> — Diabetes mellitus", "points": 1, "badge": "+1" },
+        { "label": "<strong>S₂</strong> — ACV / TIA / Tromboembolismo previo", "points": 2, "badge": "+2" },
+        { "label": "<strong>V</strong> — Enfermedad vascular (IAM, arteriopatía periférica, placa Ao)", "points": 1, "badge": "+1" },
+        { "label": "<strong>A</strong> — Edad 65–74 años", "points": 1, "badge": "+1" },
+        { "label": "<strong>Sc</strong> — Sexo femenino", "points": 1, "badge": "+1" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 0,
+    "initialLabel": "Seleccioná los criterios presentes",
+    "note": "0 (H) / 0–1 (M): no anticoagular · ≥2 (H) / ≥3 (M): anticoagular"
+  }
+}

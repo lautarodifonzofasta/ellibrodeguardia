@@ -1,0 +1,48 @@
+{
+  "id": "resp",
+  "label": "🫁 Respiratorio",
+  "columns": [
+    "Fármaco",
+    "Indicación",
+    "Dosis",
+    "Precaución"
+  ],
+  "drugs": [
+    {
+      "name": "Salbutamol (Ventolin)",
+      "indication": "Asma, EPOC",
+      "dose": "Nebuliz: 2,5–5 mg c/20 min · Inhaler: 4–8 puff · IV: 0,5 mcg/kg/min",
+      "caution": "Taquicardia, hipopotasemia"
+    },
+    {
+      "name": "Ipratropio (Atrovent)",
+      "indication": "EPOC, asma (combinado)",
+      "dose": "Nebuliz: 0,5 mg c/6–8h · Inhaler: 2 puff c/6h",
+      "caution": "Retención urinaria, glaucoma"
+    },
+    {
+      "name": "Metilprednisolona (Solu-Medrol)",
+      "indication": "Asma severa, EPOC, IC, alergia",
+      "dose": "Asma: 125 mg IV · EPOC: 40 mg IV c/12h",
+      "caution": "Hiperglucemia, infección"
+    },
+    {
+      "name": "Sulfato de Magnesio",
+      "indication": "Asma refractaria, Torsades, eclampsia",
+      "dose": "Asma: 2g IV en 20 min · Eclampsia: 4g en 20 min → 1–2 g/h",
+      "caution": "Hipotensión, bloqueo NM (si muy elevado)"
+    },
+    {
+      "name": "Aminofilina (Teofilina)",
+      "indication": "EPOC/Asma refractaria (2ª línea)",
+      "dose": "6 mg/kg IV en 30 min (si no tomaba) → 0,5 mg/kg/h",
+      "caution": "Taquiarritmias, convulsiones si > nivel"
+    },
+    {
+      "name": "Ketamina",
+      "indication": "IOT de secuencia rápida, asma refractaria",
+      "dose": "1–2 mg/kg IV · Asma: 0,5–1 mg/kg IV",
+      "caution": "Alucinaciones, aumento PIO/PIC"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "analgesia",
+  "label": "💉 Analgesia",
+  "columns": [
+    "Fármaco",
+    "Indicación",
+    "Dosis",
+    "Precaución"
+  ],
+  "drugs": [
+    {
+      "name": "Morfina",
+      "indication": "Dolor severo, EPA, IAM",
+      "dose": "0,05–0,1 mg/kg IV titulada · 5–10 mg SC/IM",
+      "caution": "Depresión respiratoria, náuseas. Antídoto: naloxona."
+    },
+    {
+      "name": "Fentanilo",
+      "indication": "Dolor severo, inducción, IAB",
+      "dose": "1–2 mcg/kg IV · 50–100 mcg IV titulado",
+      "caution": "Rigidez torácica (dosis altas), IR (acumulación)"
+    },
+    {
+      "name": "Tramadol (Tramadol)",
+      "indication": "Dolor moderado-severo",
+      "dose": "100 mg IV/IM c/8h · 50–100 mg VO c/6–8h",
+      "caution": "Convulsiones (umbral bajo), ISRS (serotonina), náuseas"
+    },
+    {
+      "name": "Ketorolac (Toradol)",
+      "indication": "Dolor agudo, cólico, odontalgias",
+      "dose": "30 mg IV/IM · 10 mg VO c/6h (máx 5 días)",
+      "caution": "IR, úlcera, sangrado. No &gt;5 días."
+    },
+    {
+      "name": "Ibuprofeno",
+      "indication": "Dolor/fiebre moderada",
+      "dose": "400–600 mg VO c/8h (con alimentos)",
+      "caution": "IR, úlcera, embarazo, IC"
+    },
+    {
+      "name": "Paracetamol (Tafirol)",
+      "indication": "Dolor/fiebre, embarazo",
+      "dose": "1g VO/IV c/6h (máx 4g/día · 2g/día en hepatópata)",
+      "caution": "Hepatotoxicidad en sobredosis o alcohol crónico"
+    },
+    {
+      "name": "Diclofenac (Voltaren)",
+      "indication": "Dolor agudo, cólico",
+      "dose": "75 mg IM · 50 mg VO c/8h",
+      "caution": "IR, úlcera. No dar IV directa."
+    },
+    {
+      "name": "Naloxona (Narcan)",
+      "indication": "Intoxicación por opiáceos",
+      "dose": "0,4–2 mg IV/IM/IN c/2–3 min (vida media corta: repetir)",
+      "caution": "Precipita síndrome abstinencia en dependientes"
+    },
+    {
+      "name": "Lidocaína (Xylocaína)",
+      "indication": "Anestesia local, antiarrítmico",
+      "dose": "Infiltración: 1–2% s/adrenalina · Arritmia: 1–1,5 mg/kg IV",
+      "caution": "Convulsiones y cardiotoxicidad si sobredosis"
+    },
+    {
+      "name": "Ondansetrón (Zofran)",
+      "indication": "Náuseas/vómitos",
+      "dose": "4–8 mg IV lento c/8h · 4 mg SL",
+      "caution": "QT largo (leve). Seguro en embarazo."
+    },
+    {
+      "name": "Metoclopramida (Primperán)",
+      "indication": "Náuseas, gastroparesia, migraña",
+      "dose": "10 mg IV/IM/VO c/8h",
+      "caution": "Síntomas extrapiramidales (tratar con difenhidramina)"
+    }
+  ]
+}

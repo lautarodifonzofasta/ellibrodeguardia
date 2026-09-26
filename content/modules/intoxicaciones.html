@@ -1,0 +1,51 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="tox" onclick="switchTab(this,'tox','tox-abc')">🔍 ABC + Toxidromes</div>
+  <div class="tab" data-tab-grp="tox" onclick="switchTab(this,'tox','tox-ant')">💊 Antídotos</div>
+</div>
+<div id="tox-abc" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Llamar al Centro Nacional de Toxicología (Argentina): (011) 4923-1051 / 0800-333-0160 (24h)</span></div></div>
+    <div class="algo mt-12">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">ABC + estabilización</div><div class="step-body">Vía aérea · O₂ · Acceso venoso · Monitor · Glucemia capilar siempre</div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Identificar toxidrome</div><div class="step-body">Ver tabla abajo. Guía la búsqueda etiológica.</div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Descontaminación gastrointestinal</div><div class="step-body">
+        <strong>Carbón activado</strong> <span class="dose">1 g/kg VO (hasta 50 g)</span> — útil si &lt;2h de ingesta, vía aérea protegida, no corrosivos<br>
+        NO hacer lavado gástrico de rutina. Lavado solo si &lt;1h + sustancia grave + no carbón activo disponible<br>
+        Catárticos: No recomendados de rutina
+      </div></div></div>
+    </div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Toxidromes principales</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Toxidrome</th><th>Signos</th><th>Causa común</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Colinérgico (SLUDGE)</strong></td><td>Sudoración, Lagrimeo, Uresis, Defecación, GI (cólico), Emesis + Broncoespasmo, bradicardia, miosis</td><td>Organofosforados, carbamatos, fisostigmina</td></tr>
+        <tr><td><strong>Anticolinérgico</strong></td><td>Midriasis, sequedad, retención urinaria, taquicardia, hipertermia, piel seca, delirium ("rojo, seco, loco")</td><td>Atropina, antidepresivos tricíclicos, antihistamínicos, escopolamina</td></tr>
+        <tr><td><strong>Opiáceo</strong></td><td>Miosis puntiforme, bradipnea, hipotensión, coma</td><td>Morfina, codeína, tramadol, fentanilo</td></tr>
+        <tr><td><strong>Simpaticomimético</strong></td><td>Midriasis, taquicardia, HTA, diaforesis, agitación, hipertermia</td><td>Cocaína, anfetaminas, pseudoefedrina</td></tr>
+        <tr><td><strong>Serotoninérgico</strong></td><td>Hipertermia, clonus, rigidez, diaforesis, taquicardia</td><td>ISRS + IMAO, tramadol, triptanes</td></tr>
+        <tr><td><strong>Sedante/hipnótico</strong></td><td>Confusión, sedación, ataxia, depresión respiratoria, sin miosis</td><td>BDZ, alcohol, barbitúricos, GABA-érgicos</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+</div>
+<div id="tox-ant" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Tóxico</th><th>Antídoto</th><th>Dosis</th></tr></thead>
+      <tbody>
+        <tr><td>Opiáceos</td><td><span class="drug">Naloxona</span></td><td><span class="dose">0,4–2 mg IV/IM/IN c/2–3 min</span> (vida media corta — repetir o infusión)</td></tr>
+        <tr><td>Benzodiazepinas</td><td><span class="drug">Flumazenil</span></td><td><span class="dose">0,2 mg IV c/min hasta 1 mg</span> (precaución: puede precipitar convulsiones)</td></tr>
+        <tr><td>Paracetamol</td><td><span class="drug">N-Acetilcisteína</span></td><td><span class="dose">150 mg/kg IV en 1h → 50 mg/kg en 4h → 100 mg/kg en 16h</span></td></tr>
+        <tr><td>Organofosforados</td><td><span class="drug">Atropina</span> + <span class="drug">Pralidoxima</span></td><td>Atropina <span class="dose">2–4 mg IV c/5–10 min</span> hasta secar secreciones. Pralidoxima <span class="dose">1–2g IV en 30 min</span></td></tr>
+        <tr><td>Antidepresivos tricíclicos</td><td><span class="drug">NaHCO₃</span></td><td><span class="dose">1–2 mEq/kg IV bolo</span> si QRS &gt;100 ms o arritmia</td></tr>
+        <tr><td>Warfarina / anticoagulantes AVK</td><td><span class="drug">Vitamina K</span> + <span class="drug">CCP 4F</span></td><td>VitK <span class="dose">10 mg IV</span>. CCP <span class="dose">25–50 UI/kg</span> si sangrado activo</td></tr>
+        <tr><td>Digoxina</td><td><span class="drug">Anticuerpos anti-digoxina</span></td><td>Fragmentos Fab: dosis según nivel sérico</td></tr>
+        <tr><td>Metanol / Etilenglicol</td><td><span class="drug">Fomepizol</span> o <span class="drug">Etanol</span></td><td>Fomepizol <span class="dose">15 mg/kg IV</span>. Si no hay: etanol hasta nivel 100 mg/dl</td></tr>
+        <tr><td>CO (monóxido)</td><td><span class="drug">O₂ 100%</span></td><td>Alto flujo máscara con reservorio. O₂ hiperbárico si grave.</td></tr>
+        <tr><td>Hierro</td><td><span class="drug">Deferoxamina</span></td><td><span class="dose">15 mg/kg/h IV</span></td></tr>
+        <tr><td>Cianuro</td><td><span class="drug">Hidroxocobalamina</span></td><td><span class="dose">5g IV en 15 min</span></td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+</div>

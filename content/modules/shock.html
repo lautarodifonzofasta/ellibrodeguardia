@@ -1,0 +1,94 @@
+
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Shock = hipoperfusión tisular. PAM &lt;65 o lactato &gt;2 = tratar AHORA aunque la PA sea normal.</span></div></div>
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="shk" onclick="switchTab(this,'shk','shk-dx')">🔍 Clasificación</div>
+  <div class="tab" data-tab-grp="shk" onclick="switchTab(this,'shk','shk-tto')">💊 Tratamiento</div>
+</div>
+
+<div id="shk-dx" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Tipo</th><th>Mecanismo</th><th>Presentación clínica</th><th>Clave diagnóstica</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-r">Hipovolémico</span></td><td>Pérdida de volumen intravascular</td><td>Taquicardia, piel fría, mucosas secas, venas planas, hemorragia visible o no</td><td>Historia + respuesta a volumen. Hto en descenso.</td></tr>
+        <tr><td><span class="tag t-r">Distributivo (séptico)</span></td><td>Vasodilatación periférica masiva</td><td>Piel caliente-rosada inicialmente, fiebre, foco infeccioso, lactato ↑</td><td>Hemocultivos + lactato. Ver módulo sepsis.</td></tr>
+        <tr><td><span class="tag t-r">Cardiogénico</span></td><td>Fallo de bomba</td><td>Piel fría, disnea, crepitantes, IY, antec. cardíaco</td><td>ECG + eco + troponina + BNP</td></tr>
+        <tr><td><span class="tag t-a">Obstructivo</span></td><td>Obstrucción mecánica al flujo</td><td>Variable: IY + taquicardia + hipotensión sin respuesta a volumen</td><td>TEP masivo · Taponamiento · Neumotórax a tensión</td></tr>
+        <tr><td><span class="tag t-b">Anafiláctico</span></td><td>Histamina + vasodilatación masiva</td><td>Urticaria, edema, broncoespasmo, exposición alérgeno reciente</td><td>Clínico. Respuesta a adrenalina.</td></tr>
+        <tr><td><span class="tag t-b">Neurogénico</span></td><td>Pérdida tono simpático</td><td>Bradicardia + hipotensión + lesión medular/TCE</td><td>Contexto + bradicardia (a diferencia del resto)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Claves de diferenciación rápida en guardia</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><strong>IY + Kussmaul + ruidos apagados → Taponamiento</strong> (tríada de Beck)</li>
+      <li><strong>IY + MV abolido unilateral → Neumotórax a tensión</strong> → descompresión inmediata sin esperar Rx</li>
+      <li><strong>IY + fallo derecho agudo + hipoxemia → TEP masivo</strong></li>
+      <li><strong>Sin IY + taquicardia + sangrado → Hipovolémico hemorrágico</strong></li>
+      <li><strong>Piel caliente + fiebre → Distributivo (séptico)</strong></li>
+    </ul>
+  </div></div>
+</div>
+
+<div id="shk-tto" class="tab-pane">
+  <div class="tabs" style="margin-bottom:14px">
+    <div class="tab on" data-tab-grp="shk2" onclick="switchTab(this,'shk2','shk-hipo')">Hipovolémico</div>
+    <div class="tab" data-tab-grp="shk2" onclick="switchTab(this,'shk2','shk-anaf')">Anafiláctico</div>
+    <div class="tab" data-tab-grp="shk2" onclick="switchTab(this,'shk2','shk-tens')">Neumotórax tensión</div>
+  </div>
+  <div id="shk-hipo" class="tab-pane on">
+    <div class="card"><div class="card-body">
+      <div class="algo">
+        <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Controlar el sangrado (si hemorrágico)</div><div class="step-body">Compresión directa · Torniquete si extremidad · Cirugía de control de daño si cavitario</div></div></div>
+        <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Reposición de volumen</div><div class="step-body">
+          <span class="drug">Ringer lactato</span> o <span class="drug">SF 0,9%</span> <span class="dose">1L IV rápido</span> → evaluar respuesta → repetir<br>
+          Hemorrágico severo: <span class="drug">Glóbulos rojos</span> + <span class="drug">PFC</span> en relación 1:1 (si disponible)<br>
+          Objetivo: PAM ≥65 mmHg · Diuresis ≥0,5 ml/kg/h · Lactato en descenso
+        </div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Vasopresores si no responde a volumen</div><div class="step-body">
+          <span class="drug">Noradrenalina</span> <span class="dose">0,1–1 mcg/kg/min IV</span> (de elección)<br>
+          En hemorrágico: no reemplaza al volumen/sangre, es puente
+        </div></div></div>
+      </div>
+    </div></div>
+  </div>
+  <div id="shk-anaf" class="tab-pane">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Anafilaxia — Adrenalina IM INMEDIATA, no demorar por ningún motivo</span></div></div>
+    <div class="card"><div class="card-body">
+      <div class="algo">
+        <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Adrenalina IM — primera línea SIEMPRE</div><div class="step-body">
+          <span class="drug">Adrenalina 1:1000</span> <span class="dose">0,3–0,5 mg IM en cara lateral del muslo</span><br>
+          Repetir cada 5–15 min si no hay respuesta (hasta 3 dosis)<br>
+          Si shock refractario: <span class="drug">Adrenalina IV</span> <span class="dose">0,1 mg diluido lento</span> o <span class="dose">infusión 1–10 mcg/min</span>
+        </div></div></div>
+        <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Posición + O₂ + volumen</div><div class="step-body">
+          Decúbito supino con piernas elevadas (excepto disnea)<br>
+          O₂ alto flujo · <span class="drug">SF 0,9%</span> <span class="dose">1–2L IV rápido</span>
+        </div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Antihistamínico + corticoide (adyuvantes, NO de primera línea)</div><div class="step-body">
+          <span class="drug">Difenhidramina</span> <span class="dose">50 mg IV</span> (anti-H1)<br>
+          <span class="drug">Ranitidina</span> o <span class="drug">Famotidina</span> IV (anti-H2, suma efecto)<br>
+          <span class="drug">Metilprednisolona</span> <span class="dose">125 mg IV</span> (previene respuesta bifásica tardía)<br>
+          Broncoespasmo: <span class="drug">Salbutamol</span> nebulizado
+        </div></div></div>
+      </div>
+    </div></div>
+  </div>
+  <div id="shk-tens" class="tab-pane">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Neumotórax a tensión = emergencia con minutos de margen — descompresión SIN ESPERAR Rx</span></div></div>
+    <div class="card"><div class="card-body">
+      <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Diagnóstico clínico</span>Disnea severa súbita + MV abolido unilateral + timpanismo + desviación traqueal contralateral + IY + hipotensión. POCUS: ausencia de deslizamiento pleural.</div></div>
+      <div class="algo mt-8">
+        <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Descompresión con aguja — INMEDIATA</div><div class="step-body">
+          2do espacio intercostal, línea medioclavicular, borde superior de la 3ª costilla<br>
+          Aguja 14G o 16G, longitud ≥8 cm (2ª EIC) o 4–5 cm (5° EIC línea axilar anterior)<br>
+          Salida de aire = diagnóstico confirmado
+        </div></div></div>
+        <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Drenaje pleural definitivo</div><div class="step-body">
+          Tubo de tórax 5° EIC línea axilar media tras estabilización<br>
+          Tamaño: 28–32 Fr para adulto
+        </div></div></div>
+      </div>
+    </div></div>
+  </div>
+</div>

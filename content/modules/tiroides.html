@@ -1,0 +1,55 @@
+
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Tormenta tiroidea — mortalidad 20-30% — UCI inmediata</span></div></div>
+<div class="tabs">
+  <div class="tab on" data-tab-grp="tir" onclick="switchTab(this,'tir','tir-dx')">🔍 Diagnóstico (Score de Burch-Wartofsky)</div>
+  <div class="tab" data-tab-grp="tir" onclick="switchTab(this,'tir','tir-tto')">💊 Tratamiento</div>
+</div>
+<div id="tir-dx" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Diagnóstico clínico — TSH puede estar normal al inicio</span>Score de Burch-Wartofsky ≥45: altamente sugestivo. 25–44: posible tormenta. &lt;25: tormenta poco probable.</div></div>
+    <div class="tbl-wrap mt-12"><table class="tbl">
+      <thead><tr><th>Parámetro</th><th>Puntaje</th></tr></thead>
+      <tbody>
+        <tr><td>T° 37,2–37,7°C</td><td>5</td></tr>
+        <tr><td>T° 37,8–38,3°C</td><td>10</td></tr>
+        <tr><td>T° 38,4–38,8°C</td><td>15</td></tr>
+        <tr><td>T° ≥38,9°C</td><td>20</td></tr>
+        <tr><td>FC 100–109 lpm</td><td>5</td></tr>
+        <tr><td>FC 110–119 lpm</td><td>10</td></tr>
+        <tr><td>FC ≥120 lpm</td><td>15</td></tr>
+        <tr><td>FA o ICC</td><td>10</td></tr>
+        <tr><td>Agitación intensa</td><td>10</td></tr>
+        <tr><td>Confusión, psicosis</td><td>20</td></tr>
+        <tr><td>Coma / convulsiones</td><td>30</td></tr>
+        <tr><td>Diarrea, náuseas, vómitos</td><td>10</td></tr>
+        <tr><td>Ictericia</td><td>20</td></tr>
+        <tr><td>Factor precipitante identificado</td><td>10</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+</div>
+<div id="tir-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Orden de administración: betabloqueante → tionamida → yodo (nunca yodo antes que tionamida)</span></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Betabloqueante — control de síntomas adrenérgicos</div><div class="step-body">
+        <span class="drug">Propranolol</span> <span class="dose">60–80 mg c/4h VO</span> o <span class="dose">0,5–1 mg IV lento</span><br>
+        O <span class="drug">Esmolol</span> IV si no puede tomar VO<br>
+        Inhibe conversión periférica T4→T3
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Tionamida — bloquea síntesis de hormonas</div><div class="step-body">
+        <span class="drug">Propiltiouracilo (PTU)</span> <span class="dose">200–250 mg c/4h VO/SNG</span> (preferido — también inhibe conversión T4→T3)<br>
+        O <span class="drug">Metimazol</span> <span class="dose">20–25 mg c/4–6h VO</span>
+      </div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Yodo — dar 1h DESPUÉS de la tionamida</div><div class="step-body">
+        <span class="drug">Lugol</span> <span class="dose">5–10 gotas c/8h VO</span><br>
+        Bloquea la liberación de hormonas almacenadas
+      </div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Corticoides — inhiben conversión periférica</div><div class="step-body">
+        <span class="drug">Dexametasona</span> <span class="dose">2 mg c/6h IV</span> o <span class="drug">Hidrocortisona</span> <span class="dose">100 mg c/8h IV</span><br>
+        También trata la insuficiencia suprarrenal relativa asociada
+      </div></div></div>
+      <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">Medidas de soporte</div><div class="step-body">Antipirético (<span class="drug">Paracetamol</span> — NO AINEs). Cobertura fría. Fluidoterapia IV. Tratar factor precipitante.</div></div></div>
+    </div>
+  </div></div>
+</div>

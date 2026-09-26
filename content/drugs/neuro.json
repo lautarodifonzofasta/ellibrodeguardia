@@ -1,0 +1,72 @@
+{
+  "id": "neuro",
+  "label": "🧠 Neurológico",
+  "columns": [
+    "Fármaco",
+    "Indicación",
+    "Dosis",
+    "Precaución"
+  ],
+  "drugs": [
+    {
+      "name": "Lorazepam (Ativan)",
+      "indication": "Status epiléptico 1ª línea, ansiolítico",
+      "dose": "0,1 mg/kg IV (máx 4 mg/dosis)",
+      "caution": "Depresión respiratoria"
+    },
+    {
+      "name": "Diazepam (Valium)",
+      "indication": "Status epiléptico, abstinencia alcohólica",
+      "dose": "0,15–0,2 mg/kg IV · IM: 10 mg · Rectal: 10–20 mg",
+      "caution": "Depresión respiratoria"
+    },
+    {
+      "name": "Midazolam (Dormicum)",
+      "indication": "Sedación, status epiléptico, agitación",
+      "dose": "IM: 0,2 mg/kg · IV: 1–2,5 mg titulado · Status: 10 mg IM",
+      "caution": "Hipotensión, depresión respiratoria"
+    },
+    {
+      "name": "Valproato sódico (Depakene)",
+      "indication": "Status epiléptico 2ª línea",
+      "dose": "40 mg/kg IV en 10 min (máx 3000 mg)",
+      "caution": "Hepatotoxicidad, embarazo"
+    },
+    {
+      "name": "Levetiracetam (Keppra)",
+      "indication": "Status epiléptico 2ª línea",
+      "dose": "60 mg/kg IV en 10 min (máx 4500 mg)",
+      "caution": "Agitación, ajustar en IR"
+    },
+    {
+      "name": "Fenitoína (Epamin)",
+      "indication": "Status epiléptico 2ª línea",
+      "dose": "20 mg/kg IV (máx 50 mg/min)",
+      "caution": "Hipotensión, arritmias durante infusión"
+    },
+    {
+      "name": "Alteplase (Actilyse)",
+      "indication": "ACV isquémico, TEP masivo, IAM",
+      "dose": "ACV: 0,9 mg/kg IV (máx 90 mg) · TEP: 100 mg en 2h",
+      "caution": "Hemorragia. Contraindicaciones absolutas."
+    },
+    {
+      "name": "Dexametasona (Fortecortin)",
+      "indication": "Edema cerebral, meningitis, anafilaxis",
+      "dose": "Edema: 10 mg IV → 4 mg c/6h · Meningitis: 0,15 mg/kg c/6h",
+      "caution": "Hiperglucemia, infección"
+    },
+    {
+      "name": "Manitol 20%",
+      "indication": "Hipertensión endocraneal, glaucoma agudo",
+      "dose": "0,5–1,5 g/kg IV en 20–30 min",
+      "caution": "IR, hiperosmolaridad. Monitorear osmolaridad."
+    },
+    {
+      "name": "Haloperidol (Haldol)",
+      "indication": "Agitación, psicosis",
+      "dose": "5 mg IM (repetir c/30 min, máx 20 mg/día)",
+      "caution": "QT largo, síntomas extrapiramidales"
+    }
+  ]
+}

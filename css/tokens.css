@@ -1,0 +1,65 @@
+/* Design tokens: colors, spacing, typography — dark (default) + light theme overrides */
+:root {
+  --bg:       #181c24;
+  --bg2:      #1f2433;
+  --bg3:      #252d3f;
+  --surface:  #2c364a;
+  --border:   #313d55;
+  --border2:  #445068;
+  --text:     #e8edf6;
+  --text2:    #94a6c4;
+  --text3:    #606e8a;
+  --acc:      #5aabff;
+  --acc2:     #2278e0;
+  --red:      #ff6b63;
+  --red-bg:   rgba(255,107,99,.13);
+  --red-bd:   rgba(255,107,99,.35);
+  --amber:    #ffbe45;
+  --amb-bg:   rgba(255,190,69,.11);
+  --amb-bd:   rgba(255,190,69,.35);
+  --green:    #4dd97a;
+  --grn-bg:   rgba(77,217,122,.11);
+  --grn-bd:   rgba(77,217,122,.35);
+  --blue-bg:  rgba(90,171,255,.11);
+  --blue-bd:  rgba(90,171,255,.35);
+  --purple:   #cc9fff;
+  --pur-bg:   rgba(204,159,255,.11);
+  --pur-bd:   rgba(204,159,255,.35);
+  --teal:     #3de87a;
+  --pink:     #ff8f87;
+  --font:     -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto, sans-serif;
+  --mono:     'SF Mono', 'Fira Code', Consolas, 'Courier New', monospace;
+  --r:        8px;
+  --r-lg:     12px;
+  --r-xl:     16px;
+  --t:        .15s ease;
+  --sb-w:     260px;
+  --top-h:    56px;
+}
+[data-theme="light"] {
+  --bg:       #f0f4fa;
+  --bg2:      #ffffff;
+  --bg3:      #e6ecf5;
+  --surface:  #ffffff;
+  --border:   #c8d3e4;
+  --border2:  #96a8bf;
+  --text:     #0f1c33;
+  --text2:    #3d5170;
+  --text3:    #728299;
+  --acc:      #1358c8;
+  --acc2:     #0c44a0;
+  --red:      #c41e28;
+  --red-bg:   rgba(196,30,40,.07);
+  --red-bd:   rgba(196,30,40,.24);
+  --amber:    #7d5200;
+  --amb-bg:   rgba(125,82,0,.07);
+  --amb-bd:   rgba(125,82,0,.24);
+  --green:    #145c26;
+  --grn-bg:   rgba(20,92,38,.07);
+  --grn-bd:   rgba(20,92,38,.24);
+  --blue-bg:  rgba(19,88,200,.07);
+  --blue-bd:  rgba(19,88,200,.24);
+  --purple:   #5e34b0;
+  --pur-bg:   rgba(94,52,176,.07);
+  --pur-bd:   rgba(94,52,176,.24);
+}

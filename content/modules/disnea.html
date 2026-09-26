@@ -1,0 +1,99 @@
+
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">SpO₂ &lt;90% + FR &gt;30 + uso de musculatura accesoria = fallo ventilatorio inminente</span>Soporte respiratorio antes que diagnóstico definitivo.</div></div>
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="dis" onclick="switchTab(this,'dis','dis-flags')">🚩 Banderas rojas</div>
+  <div class="tab" data-tab-grp="dis" onclick="switchTab(this,'dis','dis-algo')">🔍 Algoritmo diferencial</div>
+  <div class="tab" data-tab-grp="dis" onclick="switchTab(this,'dis','dis-tto')">💊 Soporte inicial</div>
+</div>
+
+<div id="dis-flags" class="tab-pane on">
+  <div class="cl cl-r"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Signos de alarma — soporte respiratorio URGENTE</span>
+  <ul class="bullets mt-8">
+    <li><strong>SpO₂ &lt;90% pese a O₂ suplementario</strong> → VMNI o IOT</li>
+    <li><strong>FR &gt;30 rpm + uso de esternocleidomastoideo</strong> → agotamiento inminente</li>
+    <li><strong>Cianosis central + diaforesis</strong> → fallo ventilatorio grave</li>
+    <li><strong>Alteración del sensorio (agitación o somnolencia)</strong> → IOT inminente</li>
+    <li><strong>Silencio auscultatorio bilateral</strong> → asma casi fatal o neumotórax bilateral</li>
+    <li><strong>Hipotensión + taquicardia + distensión yugular + disnea</strong> → TEP masivo o taponamiento</li>
+    <li><strong>Stridor inspiratorio</strong> → obstrucción de vía aérea alta</li>
+  </ul></div></div>
+</div>
+
+<div id="dis-algo" class="tab-pane">
+  <div class="card"><div class="card-header"><div class="card-ico ico-blue">🔍</div><div class="card-header-text"><div class="card-title">Algoritmo diagnóstico diferencial — primeros 10 minutos</div></div></div>
+  <div class="card-body">
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Auscultación + SpO₂ + FC + PA — SIMULTÁNEOS al ingreso</div><div class="step-body">
+        Estos 4 datos en 60 segundos orientan el 80% de los diagnósticos.
+      </div></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">¿Hay sibilancias?</div><div class="step-body">
+        <strong>Sibilancias espiratorias difusas:</strong> Asma severa · EPOC exacerbado<br>
+        <strong>Sibilancias + crepitantes basales + IY:</strong> IC aguda (asma cardíaca)<br>
+        <strong>Sibilancias unilaterales:</strong> cuerpo extraño, tumor, compresión extrínseca
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">¿Hay crepitantes?</div><div class="step-body">
+        <strong>Crepitantes finos bilaterales + ortopnea:</strong> IC izquierda / EPA<br>
+        <strong>Crepitantes unilaterales + fiebre + consolidación:</strong> Neumonía<br>
+        <strong>Crepitantes + Velcro (fibrosos, inspiratorios):</strong> Fibrosis pulmonar
+      </div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">¿MV asimétrico o abolido?</div><div class="step-body">
+        <strong>MV abolido unilateral + timpanismo:</strong> Neumotórax → Rx tórax URGENTE o POCUS<br>
+        <strong>MV abolido unilateral + matidez:</strong> Derrame pleural masivo
+      </div></div></div>
+      <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">¿Taquicardia + hipoxemia sin hallazgos auscultatorios?</div><div class="step-body">
+        Auscultación normal + disnea + taquicardia → <strong>TEP hasta demostrar lo contrario</strong><br>
+        Calcular Wells TEP. ECG: taquicardia sinusal más frecuente.
+      </div></div></div>
+      <div class="step"><div class="step-n">6</div><div class="step-c"><div class="step-title">Exámenes complementarios dirigidos</div><div class="step-body">
+        <strong>Siempre:</strong> SpO₂, ECG, Rx tórax AP<br>
+        <strong>Según sospecha:</strong> BNP/NT-proBNP (IC) · D-dímero/TC-AP (TEP) · Gases arteriales (severidad) · Troponina (SCA) · Hemograma (anemia) · POCUS bedside
+      </div></div></div>
+    </div>
+
+    <div class="sec-hd mt-16"><div class="sec-hd-lbl">Diagnóstico diferencial rápido</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Diagnóstico</th><th>Claves clínicas</th><th>Inicio</th><th>Posición de alivio</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-r">EPA / IC aguda</span></td><td>Crepitantes bilaterales, ortopnea, IY, edemas, antec. cardíaco</td><td>Horas</td><td>Sentado</td></tr>
+        <tr><td><span class="tag t-r">TEP</span></td><td>Taquicardia, hipoxemia, dolor pleurítico, factores de riesgo</td><td>Minutos</td><td>Ninguna</td></tr>
+        <tr><td><span class="tag t-r">Neumotórax espontáneo</span></td><td>Joven delgado o EPOC, MV abolido, dolor pleurítico súbito</td><td>Segundos</td><td>Sentado</td></tr>
+        <tr><td><span class="tag t-a">Asma severa</span></td><td>Sibilancias, antec. alérgico, uso de musculatura accesoria</td><td>Min-horas</td><td>Sentado adelante</td></tr>
+        <tr><td><span class="tag t-a">EPOC exacerbado</span></td><td>Tabaquista crónico, sibilancias, hipercapnia, tos con esputo</td><td>Horas-días</td><td>Sentado adelante</td></tr>
+        <tr><td><span class="tag t-a">Neumonía grave</span></td><td>Fiebre, tos, crepitantes focales, consolidación</td><td>Horas-días</td><td>Lateral sano</td></tr>
+        <tr><td><span class="tag t-b">Anemia severa</span></td><td>Palidez, taquicardia, sin hallazgos pulmonares, Hb &lt;7</td><td>Gradual</td><td>Reposo</td></tr>
+        <tr><td><span class="tag t-b">Ansiedad / Pánico</span></td><td>Parestesias, SpO₂ normal, auscultación normal, contexto</td><td>Minutos</td><td>Variable</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+</div>
+
+<div id="dis-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">O₂ suplementario — objetivo según diagnóstico</div><div class="step-body">
+        <strong>Mayoría de causas:</strong> SpO₂ objetivo ≥94% → cánula nasal 2–4 L/min o máscara simple<br>
+        <strong>EPOC:</strong> SpO₂ objetivo 88–92% → Venturi 24–28% o cánula 1–2 L/min (evitar hipercapnia)<br>
+        <strong>SpO₂ &lt;90% refractaria:</strong> máscara con reservorio 10–15 L/min
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Posición</div><div class="step-body">
+        Sentado o semi-fowler 45° en IC/EPA y asma<br>
+        Decúbito lateral del lado sano en derrame/neumotórax unilateral<br>
+        NO decúbito supino en disnea severa
+      </div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">VMNI — indicaciones en guardia</div><div class="step-body">
+        <strong>EPA cardiogénico:</strong> SpO₂ &lt;90% pese a O₂ → CPAP 5–10 cmH₂O (primera línea)<br>
+        <strong>EPOC con hipercapnia:</strong> pH &lt;7.35 + pCO₂ &gt;45 → BiPAP IPAP 10–14 / EPAP 4–6<br>
+        <strong>Asma severa:</strong> puede beneficiarse de CPAP pero con más controversia<br>
+        Contraindicaciones absolutas: vómitos activos, alteración consciencia severa, trauma facial
+      </div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">IOT de secuencia rápida — si VMNI falla o contraindicada</div><div class="step-body">
+        GCS ≤8 · FR &gt;35 · PaO₂/FiO₂ &lt;100 · Acidosis severa (pH &lt;7.20) · Agotamiento · Apnea<br>
+        <span class="drug">Etomidato</span> <span class="dose">0,3 mg/kg IV</span> (inducción, no suprime cortisol)<br>
+        O <span class="drug">Ketamina</span> <span class="dose">1,5 mg/kg IV</span> (broncodilatador, útil en asma)<br>
+        + <span class="drug">Succinilcolina</span> <span class="dose">1,5 mg/kg IV</span> (relajante de elección, inicio 45–60 seg)<br>
+        O <span class="drug">Rocuronio</span> <span class="dose">1,2 mg/kg IV</span> (si contraindicación succinilcolina)
+      </div></div></div>
+    </div>
+  </div></div>
+</div>

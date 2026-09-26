@@ -1,0 +1,53 @@
+{
+  "id": "calc-gcs",
+  "title": "Glasgow (GCS)",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "Glasgow Coma Scale (GCS)",
+    "text": "Evalúa nivel de consciencia. GCS ≤8 → vía aérea comprometida → considerar IOT."
+  },
+  "groups": [
+    {
+      "id": "gcs-E",
+      "label": "Apertura ocular (E)",
+      "type": "single",
+      "options": [
+        { "label": "Espontánea", "points": 4, "badge": "E4" },
+        { "label": "A la voz", "points": 3, "badge": "E3" },
+        { "label": "Al dolor", "points": 2, "badge": "E2" },
+        { "label": "Sin respuesta", "points": 1, "badge": "E1" }
+      ]
+    },
+    {
+      "id": "gcs-V",
+      "label": "Respuesta verbal (V)",
+      "type": "single",
+      "options": [
+        { "label": "Orientado", "points": 5, "badge": "V5" },
+        { "label": "Confuso", "points": 4, "badge": "V4" },
+        { "label": "Palabras inapropiadas", "points": 3, "badge": "V3" },
+        { "label": "Sonidos incomprensibles", "points": 2, "badge": "V2" },
+        { "label": "Sin respuesta", "points": 1, "badge": "V1" }
+      ]
+    },
+    {
+      "id": "gcs-M",
+      "label": "Respuesta motora (M)",
+      "type": "single",
+      "options": [
+        { "label": "Obedece órdenes", "points": 6, "badge": "M6" },
+        { "label": "Localiza el dolor", "points": 5, "badge": "M5" },
+        { "label": "Retirada al dolor", "points": 4, "badge": "M4" },
+        { "label": "Decorticación (flexión anormal)", "points": 3, "badge": "M3" },
+        { "label": "Descerebración (extensión)", "points": 2, "badge": "M2" },
+        { "label": "Sin respuesta", "points": 1, "badge": "M1" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 3,
+    "initialLabel": "Seleccioná una opción por sección",
+    "note": "E + V + M (mínimo 3, máximo 15)"
+  }
+}

@@ -1,0 +1,102 @@
+
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">TEP masivo = emergencia con mortalidad >50%</span>Inestabilidad hemodinámica → trombolisis sistémica sin esperar TC.</div></div>
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="tep" onclick="switchTab(this,'tep','tep-flags')">🚩 Sospecha</div>
+  <div class="tab" data-tab-grp="tep" onclick="switchTab(this,'tep','tep-algo')">🔍 Wells + Dx</div>
+  <div class="tab" data-tab-grp="tep" onclick="switchTab(this,'tep','tep-tto')">💊 Tratamiento</div>
+</div>
+
+<div id="tep-flags" class="tab-pane on">
+  <div class="card"><div class="card-header"><div class="card-ico ico-red">🔍</div><div class="card-header-text"><div class="card-title">Presentación clínica — sospechar TEP si</div></div></div>
+  <div class="card-body">
+    <ul class="bullets">
+      <li>Disnea súbita inexplicada <strong>+ taquicardia sinusal</strong></li>
+      <li>Dolor pleurítico + hemoptisis</li>
+      <li>Síncope o presíncope sin otra causa</li>
+      <li>Hipoxemia inexplicada (gradiente A-a aumentado)</li>
+      <li>Signos de fallo derecho agudo (IY, R2 fuerte, ritmo de galope derecho)</li>
+    </ul>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Factores de riesgo</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Inmovilización prolongada / viaje aéreo &gt;6h</li>
+      <li>Cirugía reciente (especialmente ortopédica)</li>
+      <li>Cáncer activo · Embarazo / puerperio</li>
+      <li>TEP o TVP previa · Trombofilias conocidas</li>
+      <li>ACO combinados · Catéter venoso central</li>
+    </ul>
+  </div></div>
+</div>
+
+<div id="tep-algo" class="tab-pane">
+  <div class="card"><div class="card-header"><div class="card-ico ico-blue">📊</div><div class="card-header-text"><div class="card-title">Score de Wells para TEP</div></div></div>
+  <div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Criterio</th><th>Puntos</th></tr></thead>
+      <tbody>
+        <tr><td>Signos/síntomas de TVP</td><td class="tbl-dose">+3</td></tr>
+        <tr><td>Diagnóstico alternativo menos probable que TEP</td><td class="tbl-dose">+3</td></tr>
+        <tr><td>FC &gt;100 lpm</td><td class="tbl-dose">+1,5</td></tr>
+        <tr><td>Inmovilización o cirugía en últimas 4 semanas</td><td class="tbl-dose">+1,5</td></tr>
+        <tr><td>TEP o TVP previo</td><td class="tbl-dose">+1,5</td></tr>
+        <tr><td>Hemoptisis</td><td class="tbl-dose">+1</td></tr>
+        <tr><td>Cáncer activo (tratamiento en últimos 6 meses)</td><td class="tbl-dose">+1</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tbl-wrap mt-8"><table class="tbl">
+      <thead><tr><th>Score</th><th>Probabilidad</th><th>Prevalencia TEP</th><th>Conducta</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-g">≤1</span></td><td>Baja</td><td>~10%</td><td>D-dímero → si neg: descarta</td></tr>
+        <tr><td><span class="tag t-a">2–6</span></td><td>Moderada</td><td>~30%</td><td>D-dímero → si pos: TC-AP</td></tr>
+        <tr><td><span class="tag t-r">&gt;6</span></td><td>Alta</td><td>~65%</td><td>TC-AP directamente</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><strong>D-dímero</strong> solo útil si probabilidad baja/moderada. Alto D-dímero sin TC <em>no confirma</em> TEP. En &gt;50 años: usar umbral ajustado = edad × 10 mcg/L.</div></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">ECG en TEP</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Más frecuente: <strong>taquicardia sinusal</strong></li>
+      <li>Clásico (pero poco sensible): <strong>S1Q3T3</strong></li>
+      <li>BRD nuevo · Inversión T en V1-V4 · Eje derecho · FA nueva</li>
+    </ul>
+  </div></div>
+</div>
+
+<div id="tep-tto" class="tab-pane">
+  <div class="tabs" style="margin-bottom:14px">
+    <div class="tab on" data-tab-grp="tep2" onclick="switchTab(this,'tep2','tep-masivo')">TEP masivo</div>
+    <div class="tab" data-tab-grp="tep2" onclick="switchTab(this,'tep2','tep-submas')">Sub-masivo / Leve</div>
+  </div>
+  <div id="tep-masivo" class="tab-pane on">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">TEP masivo = hipotensión (PAS &lt;90 o caída &gt;40 mmHg) + criterios de TEP</span>Trombolisis sistémica INMEDIATA salvo contraindicación absoluta</div></div>
+    <div class="card"><div class="card-body">
+      <div class="algo">
+        <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Trombolisis sistémica</div><div class="step-body">
+          <span class="drug">Alteplase (rtPA)</span> <span class="dose">100 mg IV en 2h</span><br>
+          O <span class="drug">Estreptoquinasa</span> <span class="dose">250.000 UI IV en 30 min → 100.000 UI/h × 24h</span><br>
+          <strong>Contraindicaciones absolutas:</strong> ACV hemorrágico previo, ACV isquémico &lt;3m, neoplasia intracraneal, cirugía mayor &lt;3 semanas, hemorragia activa
+        </div></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Anticoagulación post-trombolisis</div><div class="step-body">Esperar 2–3h post-alteplase, luego iniciar HNF infusión (sin bolo inicial)</div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Soporte hemodinámico</div><div class="step-body">
+          <span class="drug">Noradrenalina</span> <span class="dose">0,1–1 mcg/kg/min</span> si hipotensión refractaria<br>
+          Cuidado con volemización: el VD dilatado empeora si sobrecarga
+        </div></div></div>
+      </div>
+    </div></div>
+  </div>
+  <div id="tep-submas" class="tab-pane">
+    <div class="card"><div class="card-body">
+      <div class="algo">
+        <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">Anticoagulación inmediata</div><div class="step-body">
+          <span class="drug">Enoxaparina</span> <span class="dose">1 mg/kg SC c/12h</span> (preferida ambulatoriamente)<br>
+          O <span class="drug">HNF IV</span> infusión si hospitalizacion o inestabilidad (KPTT 50–70)<br>
+          <span class="drug">Rivaroxabán</span> <span class="dose">15 mg c/12h × 21 días → 20 mg/día</span> (NACO alternativo)
+        </div></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Decisión de internación — score sPESI</div><div class="step-body">
+          <strong>sPESI = 0</strong> + troponina y BNP normales + eco sin disfunción VD → considerar alta precoz<br>
+          <strong>sPESI ≥1</strong> o disfunción VD → internar 48–72h mínimo
+        </div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Duración anticoagulación</div><div class="step-body">Factor provocador transitorio (cirugía, inmovilización): 3 meses<br>Sin factor identificado: 3–6 meses mínimo, discutir indefinida<br>Cáncer: preferir HBPM o NACO, indefinida</div></div></div>
+      </div>
+    </div></div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="epoc" onclick="switchTab(this,'epoc','epoc-dx')">🔍 Diagnóstico</div>
+  <div class="tab" data-tab-grp="epoc" onclick="switchTab(this,'epoc','epoc-tto')">💊 Tratamiento</div>
+</div>
+<div id="epoc-dx" class="tab-pane on">
+  <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Signos de exacerbación grave — internación urgente</span>
+  SpO₂ &lt;88% · pH &lt;7.35 · FR &gt;25 · Uso de musculatura accesoria · Cianosis · Alteración del sensorio · Cor pulmonale descompensado</div></div>
+  <div class="card"><div class="card-body">
+    <div class="sec-hd"><div class="sec-hd-lbl">Clasificación de severidad</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Grado</th><th>Criterios</th><th>Manejo</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-g">Leve</span></td><td>Responde a broncodilatadores, sin hipoxemia severa</td><td>Ambulatorio</td></tr>
+        <tr><td><span class="tag t-a">Moderado</span></td><td>Necesita ATB/corticoides o empeora</td><td>Urgencias / Internación</td></tr>
+        <tr><td><span class="tag t-r">Grave</span></td><td>Fallo respiratorio (pO₂&lt;60 o pCO₂&gt;45 en basal normal)</td><td>UCI / VMNI</td></tr>
+      </tbody>
+    </table></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Diagnósticos diferenciales</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets"><li>IC izquierda (el más importante — puede coexistir)</li><li>Neumonía · TEP · Neumotórax</li><li>Arritmia supraventricular · Reflujo gastroesofágico</li></ul>
+  </div></div>
+</div>
+<div id="epoc-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">O₂ controlado — OBJETIVO SpO₂ 88–92%</div><div class="step-body">No dar O₂ a alto flujo sin control → riesgo de hipercapnia por abolición del drive hipóxico.<br>Iniciar con cánula nasal 1–2 L/min o Venturi 24–28%. Titular por gases.</div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Broncodilatadores nebulizados</div><div class="step-body">
+        <span class="drug">Salbutamol</span> <span class="dose">2,5 mg (1 amp.) nebulizado c/20 min × 3 → luego c/4–6h</span><br>
+        + <span class="drug">Ipratropio</span> <span class="dose">0,5 mg nebulizado c/6h</span><br>
+        Alternativa: inhaladores con espaciador (misma eficacia si técnica correcta)
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Corticoides sistémicos</div><div class="step-body">
+        <span class="drug">Metilprednisolona</span> <span class="dose">40 mg IV c/12–24h × 5 días</span><br>
+        O <span class="drug">Prednisona</span> <span class="dose">40 mg/día VO × 5 días</span> (equivalente, si tolera oral)
+      </div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Antibióticos (si indicados)</div><div class="step-body">
+        Indicar si: ≥2 de 3 criterios de Anthonisen (aumento de disnea, volumen y purulencia del esputo)<br>
+        <span class="drug">Amoxicilina-clavulánico</span> <span class="dose">875/125 mg c/8h VO × 5–7 días</span><br>
+        O <span class="drug">Levofloxacina</span> <span class="dose">750 mg/día × 5 días</span> (si riesgo de P. aeruginosa)<br>
+        O <span class="drug">Azitromicina</span> <span class="dose">500 mg/día × 5 días</span> (si leve, sin factor de riesgo)
+      </div></div></div>
+      <div class="step"><div class="step-n crit">5</div><div class="step-c"><div class="step-title">VMNI si pH &lt;7.35 + pCO₂ &gt;45 mmHg</div><div class="step-body">
+        BiPAP: IPAP 10–20 cmH₂O / EPAP 4–6 cmH₂O<br>
+        Reduce necesidad de IOT y mortalidad. Iniciar precozmente.<br>
+        IOT si: VMNI falla, deterioro neurológico, apnea, intolerancia absoluta
+      </div></div></div>
+    </div>
+  </div></div>
+</div>

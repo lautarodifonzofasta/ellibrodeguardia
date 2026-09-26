@@ -1,0 +1,195 @@
+
+<style>
+.arr-w{font-family:inherit}
+.arr-box{border-radius:8px;padding:9px 13px;border:1.5px solid;line-height:1.4}
+.arr-t{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:3px}
+.arr-b{color:var(--text);font-size:13px;font-weight:500}
+.arr-s{color:var(--text2);font-size:11.5px;margin-top:3px}
+.arr-start{background:var(--bg3);border-color:var(--border2);text-align:center}
+.arr-start .arr-b{font-size:12.5px;color:var(--text2)}
+.arr-red{background:var(--red-bg);border-color:var(--red-bd)}
+.arr-red .arr-t{color:var(--red)}
+.arr-amber{background:var(--amb-bg);border-color:var(--amb-bd)}
+.arr-amber .arr-t{color:var(--amber)}
+.arr-blue{background:var(--blue-bg);border-color:var(--blue-bd)}
+.arr-blue .arr-t{color:var(--acc)}
+.arr-green{background:var(--grn-bg);border-color:var(--grn-bd)}
+.arr-green .arr-t{color:var(--green)}
+.arr-gray{background:var(--bg3);border-color:var(--border)}
+.arr-gray .arr-t{color:var(--text3)}
+.arr-gray .arr-b{font-size:12.5px}
+.a-arrow{display:flex;flex-direction:column;align-items:center;margin:3px 0}
+.a-line{width:2px;height:13px;background:var(--border2)}
+.a-head{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--border2)}
+.a-lbl{font-size:11px;font-weight:600;color:var(--text3);margin:1px 0;text-align:center}
+.a-split{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.a-split3{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.a-sep{height:1.5px;background:var(--border);margin:12px 0;border-radius:1px}
+.a-sec{font-size:12px;font-weight:700;text-align:center;padding:5px 0;border-radius:6px;margin-bottom:8px;letter-spacing:.03em}
+.a-sec-tachy{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd)}
+.a-sec-brady{background:var(--blue-bg);color:var(--acc);border:1px solid var(--blue-bd)}
+.a-rule{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 13px;margin-top:8px}
+.a-rule-t{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:4px}
+.a-rule-b{font-size:12px;color:var(--text2);line-height:1.6}
+</style>
+<div class="arr-w" style="padding:4px 0">
+
+  <div class="arr-box arr-start">
+    <div class="arr-b">Palpitaciones · Síncope · Taquicardia o Bradicardia en monitor</div>
+    <div class="arr-s" style="margin-top:4px">ECG 12 derivadas · Acceso venoso · Monitor · SpO₂ · PA</div>
+  </div>
+  <div class="a-arrow"><div class="a-line"></div><div class="a-head"></div></div>
+
+  <div class="arr-box arr-red">
+    <span class="arr-t">Pregunta 1 — siempre primero</span>
+    <div class="arr-b">¿Inestable hemodinámicamente?</div>
+    <div class="arr-s">PAS &lt;90 · Angina activa · IC descompensada · Alteración del sensorio · SpO₂ en caída</div>
+  </div>
+  <div class="a-arrow"><div class="a-line"></div><div class="a-head"></div></div>
+
+  <div class="a-split">
+    <div>
+      <div class="a-lbl">SÍ — cualquier ritmo</div>
+      <div class="arr-box arr-red">
+        <span class="arr-t">CVE sincronizada inmediata</span>
+        <div class="arr-b">Sedación previa</div>
+        <div class="arr-s">
+          <span class="drug">Midazolam</span> <span class="dose">0,05 mg/kg IV</span><br>
+          + <span class="drug">Fentanilo</span> <span class="dose">1 mcg/kg IV</span><br><br>
+          <strong>Energía bifásica:</strong><br>
+          Estrecho regular (TSV): 50–100 J<br>
+          FA / Flutter: 120–200 J<br>
+          Ancho regular (TV): 100 J<br>
+          FV / TV sin pulso → no sincronizar
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="a-lbl">NO → evaluar FC</div>
+      <div class="arr-box arr-blue">
+        <span class="arr-t">Pregunta 2</span>
+        <div class="arr-b">¿FC &gt;100 o FC &lt;60?</div>
+        <div class="arr-s">Ver sección correspondiente abajo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAQUICARDIA -->
+  <div style="margin-top:14px">
+    <div class="a-sec a-sec-tachy">FC &gt;100 lpm — Taquicardia</div>
+  </div>
+
+  <div class="arr-box arr-amber">
+    <span class="arr-t">Pregunta 3 — analizar QRS</span>
+    <div class="arr-b">¿QRS ancho ≥120 ms o estrecho &lt;120 ms?</div>
+  </div>
+  <div class="a-arrow"><div class="a-line"></div><div class="a-head"></div></div>
+
+  <div class="a-split">
+    <div>
+      <div class="a-lbl">QRS ancho ≥120 ms</div>
+      <div class="arr-box arr-red">
+        <span class="arr-t">TV hasta demostrar lo contrario</span>
+        <div class="arr-b">No usar verapamilo — colapso</div>
+        <div class="arr-s">
+          <span class="drug">Amiodarona</span> <span class="dose">150 mg IV en 10 min</span><br>
+          → infusión <span class="dose">1 mg/min × 6h</span><br><br>
+          Si Torsades de pointes:<br>
+          <span class="drug">MgSO₄</span> <span class="dose">2 g IV en 5 min</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="a-lbl">QRS estrecho &lt;120 ms</div>
+      <div class="arr-box arr-blue">
+        <span class="arr-t">Pregunta 4 — ¿regular o irregular?</span>
+      </div>
+      <div class="a-arrow"><div class="a-line"></div><div class="a-head"></div></div>
+      <div class="a-split3">
+        <div>
+          <div class="a-lbl" style="font-size:10.5px">Regular → TSV</div>
+          <div class="arr-box arr-blue" style="padding:8px 10px">
+            <span class="arr-t" style="font-size:10px">Maniobras vagales</span>
+            <div class="arr-b" style="font-size:12px">Valsalva modificado</div>
+            <div class="arr-s">
+              Si falla:<br>
+              <span class="drug">Adenosina</span><br>
+              <span class="dose">6 mg IV bolo</span> rápido<br>
+              flush 20 ml SF<br>
+              → <span class="dose">12 mg × 2</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="a-lbl" style="font-size:10.5px">Irregular → FA/Flutter</div>
+          <div class="arr-box arr-amber" style="padding:8px 10px">
+            <span class="arr-t" style="font-size:10px">Control de FC</span>
+            <div class="arr-b" style="font-size:12px">Betabloqueante 1ª línea</div>
+            <div class="arr-s">
+              <span class="drug">Metoprolol</span><br>
+              <span class="dose">2,5–5 mg IV</span><br>
+              c/5 min × 3<br>
+              (máx 15 mg)<br>
+              Ver módulo FA
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRADICARDIA -->
+  <div style="margin-top:14px">
+    <div class="a-sec a-sec-brady">FC &lt;60 lpm — Bradicardia</div>
+  </div>
+
+  <div class="arr-box arr-blue">
+    <span class="arr-t">Pregunta 5 — ¿sintomática?</span>
+    <div class="arr-b">Tratar solo si FC &lt;50 con síntomas: hipotensión · síncope · angor · IC</div>
+    <div class="arr-s">ECG: ¿sinusal? · ¿BAV 1°/2°/3°? · ¿ritmo de escape?</div>
+  </div>
+  <div class="a-arrow"><div class="a-line"></div><div class="a-head"></div></div>
+
+  <div class="a-split">
+    <div>
+      <div class="a-lbl">1ª línea — bradicardia sinusal · BAV I · BAV II Mobitz I</div>
+      <div class="arr-box arr-blue">
+        <span class="arr-t">Atropina</span>
+        <div class="arr-b">Primera línea ACLS</div>
+        <div class="arr-s">
+          <span class="drug">Atropina</span> <span class="dose">1 mg IV bolo</span><br>
+          c/3–5 min · máx <span class="dose">3 mg</span><br><br>
+          <strong>No usar en:</strong><br>
+          BAV 2° Mobitz II<br>
+          BAV 3° con QRS ancho<br>
+          Trasplantado cardíaco
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="a-lbl">Si Atropina falla · BAV II Mobitz II · BAV 3°</div>
+      <div class="arr-box arr-amber">
+        <span class="arr-t">Marcapasos transcutáneo</span>
+        <div class="arr-b">Definitivo en BAV alto grado</div>
+        <div class="arr-s">
+          FC 60–80 lpm · ↑ mA hasta captura<br>
+          Analgosedación (doloroso)<br><br>
+          <strong>Puente farmacológico:</strong><br>
+          <span class="drug">Dopamina</span> <span class="dose">5–20 mcg/kg/min</span><br>
+          o <span class="drug">Adrenalina</span> <span class="dose">2–10 mcg/min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGLA CLAVE -->
+  <div class="a-rule" style="margin-top:10px">
+    <span class="a-rule-t">Reglas prácticas ACLS</span>
+    <div class="a-rule-b">
+      QRS ancho + taquicardia = TV hasta demostrar lo contrario<br>
+      No dar verapamilo en QRS ancho · Adenosina solo en QRS estrecho regular<br>
+      Atropina 1 mg IV (dosis actualizada AHA 2020) · Doses &lt;0,5 mg pueden empeorar bradicardia
+    </div>
+  </div>
+
+</div>

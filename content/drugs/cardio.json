@@ -1,0 +1,102 @@
+{
+  "id": "cardio",
+  "label": "💓 Cardiovascular",
+  "columns": [
+    "Fármaco",
+    "Indicación urgente",
+    "Dosis IV/IM/VO",
+    "Precaución"
+  ],
+  "drugs": [
+    {
+      "name": "Adrenalina (Epinefrina)",
+      "indication": "PCR, anafilaxis, asma severa",
+      "dose": "PCR: 1 mg IV c/3–5 min · Anafilaxis: 0,3–0,5 mg IM · Asma: 0,3 mg SC",
+      "caution": "Taquiarritmias"
+    },
+    {
+      "name": "Amiodarona (Ancoron)",
+      "indication": "FA, TV con pulso, FV",
+      "dose": "TV/FV: 300 mg bolo · FA: 150 mg IV en 10 min → infusión",
+      "caution": "QT largo, bradicardia, hepatotoxicidad"
+    },
+    {
+      "name": "Atropina",
+      "indication": "Bradicardia sintomática, intox. organofosfatos",
+      "dose": "0,5 mg IV c/3–5 min (máx 3 mg)",
+      "caution": "Glaucoma, HPB, taquicardia"
+    },
+    {
+      "name": "Adenosina (Adenocor)",
+      "indication": "TSV",
+      "dose": "6 mg IV bolo rápido → 12 mg × 2",
+      "caution": "Asma, bloqueos AV. Avisar al paciente."
+    },
+    {
+      "name": "Dobutamina (Dobutrex)",
+      "indication": "Shock cardiogénico, IC bajo gasto",
+      "dose": "2–20 mcg/kg/min IV infusión",
+      "caution": "Taquiarritmias"
+    },
+    {
+      "name": "Noradrenalina",
+      "indication": "Shock séptico/cardiogénico",
+      "dose": "0,01–3 mcg/kg/min IV infusión",
+      "caution": "Isquemia periférica"
+    },
+    {
+      "name": "Dopamina",
+      "indication": "Shock (alternativa), bradicardia",
+      "dose": "5–20 mcg/kg/min IV",
+      "caution": "Taquiarritmias"
+    },
+    {
+      "name": "Nitroglicerina (Nitronal)",
+      "indication": "IAM, IC aguda, EPA, angina",
+      "dose": "5–200 mcg/min IV infusión · SL: 0,4 mg c/5 min × 3",
+      "caution": "Hipotensión, cefalea. No con sildenafil."
+    },
+    {
+      "name": "Furosemida (Lasix)",
+      "indication": "EPA, IC aguda, HTA grave",
+      "dose": "40–80 mg IV bolo o 5–40 mg/h infusión",
+      "caution": "Hipopotasemia, ototoxicidad"
+    },
+    {
+      "name": "Metoprolol (Lopressor)",
+      "indication": "FA (control FC), HTA, IAM",
+      "dose": "2,5–5 mg IV c/5 min (máx 15 mg) · VO: 25–100 mg c/12h",
+      "caution": "Broncoespasmo, bradicardia, IC"
+    },
+    {
+      "name": "Labetalol (Trandate)",
+      "indication": "Crisis HTA, disección, ACV",
+      "dose": "20 mg IV c/10 min (máx 300 mg) · Infusión: 1–2 mg/min",
+      "caution": "Asma, IC descompensada"
+    },
+    {
+      "name": "Digoxina (Lanicor)",
+      "indication": "FA con IC/disfunción sistólica",
+      "dose": "Carga 0,5 mg IV → 0,25 mg c/6h × 2",
+      "caution": "IR, hipopotasemia, intoxicación digitálica"
+    },
+    {
+      "name": "Heparina no fraccionada",
+      "indication": "IAM, TEP, anticoagulación urgente",
+      "dose": "IAM: 60–70 UI/kg bolo · Infusión 12–15 UI/kg/h",
+      "caution": "Sangrado, trombocitopenia (HIT)"
+    },
+    {
+      "name": "Enoxaparina (Clexane)",
+      "indication": "SCA, TEP, TVP",
+      "dose": "1 mg/kg SC c/12h · SCA: 0,5 mg/kg IV bolo",
+      "caution": "IR → ajustar dosis o usar HNF"
+    },
+    {
+      "name": "AAS (Aspirina)",
+      "indication": "IAM, SCA, ACV isquémico",
+      "dose": "IAM: 300 mg VO masticado · Crónico: 100 mg/día",
+      "caution": "Úlcera activa, alergia AINEs"
+    }
+  ]
+}

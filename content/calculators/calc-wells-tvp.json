@@ -1,0 +1,33 @@
+{
+  "id": "calc-wells-tvp",
+  "title": "Wells TVP",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "Wells TVP — probabilidad pre-test de trombosis venosa profunda",
+    "text": ""
+  },
+  "groups": [
+    {
+      "id": "wells-tvp",
+      "label": null,
+      "type": "multi",
+      "options": [
+        { "label": "Cáncer activo", "points": 1, "badge": "+1" },
+        { "label": "Parálisis o inmovilización reciente de MMII", "points": 1, "badge": "+1" },
+        { "label": "Cirugía mayor o reposo en cama >3 días (últimas 12 semanas)", "points": 1, "badge": "+1" },
+        { "label": "Dolor localizado en trayecto venoso profundo", "points": 1, "badge": "+1" },
+        { "label": "Edema de todo el miembro inferior", "points": 1, "badge": "+1" },
+        { "label": "Edema con fóvea >3 cm vs contralateral", "points": 1, "badge": "+1" },
+        { "label": "Edema con fóvea solo en miembro sintomático", "points": 1, "badge": "+1" },
+        { "label": "Venas superficiales colaterales (no varicosas)", "points": 1, "badge": "+1" },
+        { "label": "Diagnóstico alternativo tan o más probable", "points": -2, "badge": "−2" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 0,
+    "initialLabel": "Seleccioná los criterios presentes",
+    "note": "≤1: baja → D-dímero · 2–6: moderada · >6: alta → eco directo"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "calc-sodio",
+  "title": "Corrección de sodio",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "Corrección de sodio — máx +10 mEq/L en 24h (crónica) o +12 mEq/L (aguda <48h)",
+    "text": ""
+  },
+  "inputs": [
+    { "id": "na-actual", "label": "Na⁺ actual (mEq/L)", "type": "number", "default": 120, "min": 100, "max": 145 },
+    { "id": "na-obj", "label": "Na⁺ objetivo (mEq/L)", "type": "number", "default": 130, "min": 100, "max": 145 },
+    { "id": "na-peso", "label": "Peso (kg)", "type": "number", "default": 70, "min": 30, "max": 200 },
+    { "id": "na-sexo", "label": "Sexo", "type": "select", "options": [
+      { "label": "Hombre", "value": 0.6 },
+      { "label": "Mujer", "value": 0.5 }
+    ], "default": 0.6 }
+  ],
+  "placeholder": "Completá los campos para calcular."
+}

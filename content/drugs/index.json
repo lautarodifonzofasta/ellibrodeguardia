@@ -1,0 +1,9 @@
+{
+  "intro": {
+    "kind": "b",
+    "icon": "💊",
+    "title": "Referencia rápida de fármacos de emergencia",
+    "text": "Dosis en adultos. Nombres comerciales argentinos entre paréntesis. Ajustar en IR/IH."
+  },
+  "categories": ["cardio", "neuro", "resp", "atb", "analgesia"]
+}

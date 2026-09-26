@@ -1,0 +1,67 @@
+
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Cada hora sin tratamiento aumenta la mortalidad</span>Tres pilares en paralelo — no en secuencia. Iniciar todo dentro de la primera hora.</div></div>
+<div class="tabs">
+  <div class="tab on" data-tab-grp="sep" onclick="switchTab(this,'sep','sep-dx')">🔍 Diagnóstico</div>
+  <div class="tab" data-tab-grp="sep" onclick="switchTab(this,'sep','sep-bundle')">⏱️ 3 Pilares</div>
+  <div class="tab" data-tab-grp="sep" onclick="switchTab(this,'sep','sep-atb')">💊 Antibióticos</div>
+</div>
+<div id="sep-dx" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th></th><th>Criterio</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-a">Sepsis</span></td><td>Infección sospechada o confirmada + SOFA ≥2 (o qSOFA ≥2 fuera de UCI)</td></tr>
+        <tr><td><span class="tag t-r">Shock séptico</span></td><td>Sepsis + hipotensión refractaria a volemización + lactato &gt;2 mmol/L + noradrenalina necesaria</td></tr>
+      </tbody>
+    </table></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">qSOFA — screening rápido (fuera de UCI)</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>FR ≥22 rpm → 1 punto</li>
+      <li>Alteración del estado mental (GCS &lt;15) → 1 punto</li>
+      <li>PAS ≤100 mmHg → 1 punto</li>
+    </ul>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body">qSOFA ≥2 → alta probabilidad de sepsis, iniciar bundle inmediatamente. Confirmar con SOFA completo si hay laboratorio.</div></div>
+  </div></div>
+</div>
+<div id="sep-bundle" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">SSC 2021 — Los 3 pilares se inician en paralelo, no en secuencia</span>Eliminó los bundles rígidos de 3h y 6h. Todo arranca en la primera hora.</div></div>
+    <div class="algo mt-12">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Reposición de fluidos — &lt;30 min si hipoperfusión</div><div class="step-body">
+        Bolo inicial y evaluar respuesta dinámica con cada bolo<br>
+        <span class="drug">SF 0,9%</span> o <span class="drug">Ringer lactato</span> — no 30 ml/kg automáticos para todos<br>
+        <strong>SSC 2021: guiar por respuesta dinámica al volumen, no por volumen fijo</strong><br>
+        Si PAM &lt;65 refractaria → <span class="drug">Noradrenalina</span> <span class="dose">0,01–3 mcg/kg/min IV</span><br>
+        Shock refractario: <span class="drug">Hidrocortisona</span> <span class="dose">200 mg/día IV</span> en infusión continua
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">ATB empíricos — &lt;1 hora desde el reconocimiento</div><div class="step-body">
+        Amplio espectro según foco sospechado — ver tab de antibióticos<br>
+        <strong>Hemocultivos × 2 antes del ATB</strong> — sin demorar más de 5 minutos<br>
+        Lactato sérico: &gt;2 mmol/L = hipoperfusión · &gt;4 mmol/L = shock aunque no haya hipotensión<br>
+        Repetir lactato a las 2h para evaluar respuesta
+      </div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Control de la fuente — &lt;6–12 horas</div><div class="step-body">
+        Identificar y eliminar el foco infeccioso tan pronto como sea posible<br>
+        Retirar catéteres infectados · Drenar abscesos · Desbridar tejido necrótico<br>
+        Cirugía si el foco lo requiere — no demorar por estabilización
+      </div></div></div>
+    </div>
+  </div></div>
+</div>
+<div id="sep-atb" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Foco probable</th><th>Empírico 1ª línea</th><th>Alternativa / Observaciones</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sin foco identificado</strong></td><td><span class="drug">Piperacilina-tazobactam</span> 4,5g c/6h IV + <span class="drug">Amikacina</span> 15–20 mg/kg/día</td><td>Agregar vancomicina si sospecha MRSA</td></tr>
+        <tr><td><strong>Pulmonar</strong></td><td><span class="drug">Ceftriaxona</span> 2g c/24h IV + <span class="drug">Claritromicina</span> 500mg c/12h IV</td><td>Si intubado/ICU: Pip-tazo + Claritromicina</td></tr>
+        <tr><td><strong>Urinario</strong></td><td><span class="drug">Ceftriaxona</span> 1–2g c/24h IV</td><td>Amikacina si alergia, BLEE: Ertapenem</td></tr>
+        <tr><td><strong>Abdominal / quirúrgico</strong></td><td><span class="drug">Pip-tazo</span> 4,5g c/6h IV + <span class="drug">Metronidazol</span> 500mg c/8h IV</td><td>Ertapenem si BLEE probable</td></tr>
+        <tr><td><strong>SNC (meningitis)</strong></td><td><span class="drug">Ceftriaxona</span> 2g c/12h IV + <span class="drug">Ampicilina</span> 2g c/4h IV + <span class="drug">Dexametasona</span> 0,15 mg/kg c/6h × 4 días</td><td>Ampicilina cubre Listeria. Ver módulo meningitis.</td></tr>
+        <tr><td><strong>Piel/tejidos blandos</strong></td><td><span class="drug">Clindamicina</span> 600mg c/8h IV + <span class="drug">Ceftriaxona</span> 2g/día</td><td>Vancomicina si sospecha MRSA</td></tr>
+        <tr><td><strong>Neutropenia febril</strong></td><td><span class="drug">Piperacilina-tazobactam</span> 4,5g c/6h IV</td><td>Meropenem si inestable o mucositis severa; + antifúngico si persistente</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Principio de desescalada</span>Cubrir amplio al inicio. A las 48–72h, con resultados de hemocultivos, <strong>desescalar al antibiótico de menor espectro posible</strong>. La duración depende del foco y respuesta clínica.</div></div>
+  </div></div>
+</div>

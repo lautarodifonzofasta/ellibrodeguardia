@@ -1,0 +1,114 @@
+// Hash-based router — the one genuinely new capability versus the legacy
+// nav()/navId() (which just swapped innerHTML with no URL/history at all):
+// every view now has a real, deep-linkable, back-button-friendly URL.
+import { renderScoredCalculator, renderInputCalculator } from './calculators/engine.js';
+import { SCORED_CALCULATORS } from './calculators/index.js';
+import { compute as computeSodio } from './calculators/calc-sodio.js';
+import { renderDrugReference } from './drugs.js';
+import { setActiveSidebarItem } from './sidebar.js';
+
+const NOT_FOUND_HTML = `<div class="view active"><div style="padding:40px;text-align:center;color:var(--text3)"><div style="font-size:32px;margin-bottom:12px">🔧</div><div style="font-size:15px;font-weight:600;margin-bottom:6px">Módulo en construcción</div><div style="font-size:13px">Disponible en la próxima actualización.</div></div></div>`;
+
+let meta = null;
+let sidebarEl = null;
+let screen = null;
+let bcCur = null;
+let bcSep = null;
+let onNavigateCallback = null;
+let drugsCache = null;
+
+export function initRouter({ meta: metaData, sidebarEl: sb, screenEl, bcCurEl, bcSepEl, onNavigate }) {
+  meta = metaData;
+  sidebarEl = sb;
+  screen = screenEl;
+  bcCur = bcCurEl;
+  bcSep = bcSepEl;
+  onNavigateCallback = onNavigate;
+  window.addEventListener('hashchange', () => navigate(currentId()));
+  navigate(currentId());
+}
+
+export function currentId() {
+  return location.hash.slice(1) || 'home';
+}
+
+export function goTo(id) {
+  if (currentId() === id) {
+    navigate(id);
+  } else {
+    location.hash = id;
+  }
+}
+
+async function navigate(id) {
+  updateBreadcrumb(id);
+  if (sidebarEl) setActiveSidebarItem(sidebarEl, id);
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'view active';
+  screen.replaceChildren(wrapper);
+
+  try {
+    await render(id, wrapper);
+  } catch (err) {
+    console.error(`Failed to render view "${id}":`, err);
+    screen.innerHTML = NOT_FOUND_HTML;
+  }
+  screen.scrollTop = 0;
+  if (onNavigateCallback) onNavigateCallback(id);
+}
+
+function updateBreadcrumb(id) {
+  if (id === 'home') {
+    bcCur.textContent = '';
+    bcSep.style.display = 'none';
+    return;
+  }
+  const m = meta[id];
+  bcCur.textContent = m ? m.title : id;
+  bcSep.style.display = 'inline';
+}
+
+async function render(id, container) {
+  if (id === 'home') {
+    container.innerHTML = await fetchText('content/home.html');
+    return;
+  }
+  const m = meta[id];
+  if (m?.type === 'calculator') {
+    const def = await fetchJson(`content/calculators/${id}.json`);
+    if (def.groups) {
+      renderScoredCalculator(container, def, SCORED_CALCULATORS[id]);
+    } else {
+      renderInputCalculator(container, def, computeSodio);
+    }
+    return;
+  }
+  if (m?.type === 'drugs') {
+    if (!drugsCache) {
+      const index = await fetchJson('content/drugs/index.json');
+      const categories = await Promise.all(index.categories.map(c => fetchJson(`content/drugs/${c}.json`)));
+      drugsCache = { index, categories };
+    }
+    renderDrugReference(container, drugsCache.index, drugsCache.categories);
+    return;
+  }
+  // Plain content module.
+  const res = await fetch(`content/modules/${id}.html`);
+  if (!res.ok) {
+    container.outerHTML = NOT_FOUND_HTML;
+    return;
+  }
+  container.innerHTML = await res.text();
+}
+
+async function fetchText(path) {
+  const res = await fetch(path);
+  if (!res.ok) throw new Error(`${path}: ${res.status}`);
+  return res.text();
+}
+async function fetchJson(path) {
+  const res = await fetch(path);
+  if (!res.ok) throw new Error(`${path}: ${res.status}`);
+  return res.json();
+}

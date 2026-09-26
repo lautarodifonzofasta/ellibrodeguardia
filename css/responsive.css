@@ -1,0 +1,104 @@
+/* Mobile breakpoints — kept as one file since the original rules interleave
+   layout (sidebar drawer) and component (tabs/cards/tables) overrides in a
+   single media query; splitting them by concern risked breaking selectors. */
+
+@media (max-width: 768px) {
+  :root { --sb-w: 85vw; --top-h: 52px; }
+
+  /* ── Sidebar: drawer overlay ── */
+  #sidebar { position: fixed; top: 0; left: 0; transform: translateX(-100%); height: 100dvh; z-index: 30; }
+  #sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,.4); }
+  #sb-overlay.open { display: block; }
+  .tb-ham { display: flex; }
+
+  /* ── Main content ── */
+  .view { padding: 12px; }
+  .g2, .g3 { grid-template-columns: 1fr; }
+
+  /* ── Hero ── */
+  .hero { padding: 18px 16px; border-radius: var(--r-lg); }
+  .hero h1 { font-size: 28px; letter-spacing: -1px; }
+  .hero-desc { font-size: 13px; margin-bottom: 16px; }
+  .hero-stats { gap: 20px; flex-wrap: wrap; }
+  .h-stat-n { font-size: 20px; }
+
+  /* ── Tabs: full width, scroll horizontal ── */
+  .tabs {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { padding: 7px 12px; font-size: 12px; white-space: nowrap; flex-shrink: 0; }
+
+  /* ── Cards ── */
+  .card-body { padding: 12px; }
+  .card-header { padding: 12px 14px; }
+  .card-title { font-size: 13.5px; }
+
+  /* ── Tables: horizontal scroll + bigger touch targets ── */
+  .tbl-wrap { -webkit-overflow-scrolling: touch; }
+  .tbl { font-size: 12px; }
+  .tbl th { padding: 8px 10px; font-size: 10px; }
+  .tbl td { padding: 9px 10px; }
+  .tbl-name { font-size: 11.5px; }
+  .tbl-dose { font-size: 11.5px; }
+
+  /* ── Algorithm steps ── */
+  .step { padding: 10px 0; gap: 10px; }
+  .step-n { min-width: 26px; height: 26px; font-size: 10px; }
+  .step-title { font-size: 13px; }
+  .step-body { font-size: 12.5px; }
+
+  /* ── Drug chips — allow wrap ── */
+  .drug, .dose { white-space: normal; word-break: break-word; }
+
+  /* ── Callouts ── */
+  .cl { padding: 10px 12px; font-size: 12.5px; gap: 8px; }
+  .cl-ico { font-size: 14px; }
+  ul.bullets li { font-size: 12.5px; }
+
+  /* ── Decision boxes ── */
+  .dec-split { flex-direction: column; }
+  .dec-box { max-width: 100%; }
+
+  /* ── Module grid ── */
+  .mod-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .mod-card { padding: 11px 12px; gap: 8px; }
+  .mod-card-ico { font-size: 18px; }
+  .mod-card-name { font-size: 12px; }
+  .mod-card-sub { font-size: 10px; }
+
+  /* ── Calculators ── */
+  .calc-opt { padding: 10px 12px; }
+  .calc-opt-lbl { font-size: 12.5px; }
+  .calc-result { padding: 14px 16px; }
+  .cr-score { font-size: 36px; }
+
+  /* ── Search modal ── */
+  #search-modal { padding-top: 12px; align-items: flex-start; }
+  .s-box { border-radius: var(--r-lg) var(--r-lg) 0 0; margin-top: auto; }
+  #search-modal { align-items: flex-end; padding-top: 0; }
+  .s-backdrop { backdrop-filter: blur(3px); }
+  .s-inp-row input { font-size: 16px; }
+
+  /* ── FAB ── */
+  #fab-top { bottom: 16px; right: 14px; width: 40px; height: 40px; font-size: 16px; }
+
+  /* ── Topbar ── */
+  #topbar { padding: 0 12px; gap: 8px; }
+  .tb-bc-cur { font-size: 13px; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ── Drogas table: hide less important cols ── */
+  .tbl .tbl-note { display: none; }
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+  .mod-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 24px; }
+  .tab { padding: 6px 10px; font-size: 11.5px; }
+}

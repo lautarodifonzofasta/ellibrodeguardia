@@ -1,0 +1,29 @@
+{
+  "id": "calc-curb65",
+  "title": "CURB-65",
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "CURB-65 — Neumonía adquirida en la comunidad",
+    "text": "1 punto por cada criterio. Score ≥3: neumonía grave, UCI."
+  },
+  "groups": [
+    {
+      "id": "curb65",
+      "label": null,
+      "type": "multi",
+      "options": [
+        { "label": "<strong>C</strong>onfusión de nueva aparición", "points": 1, "badge": "+1" },
+        { "label": "<strong>U</strong>rea >44 mg/dl (BUN >19 mg/dl)", "points": 1, "badge": "+1" },
+        { "label": "<strong>R</strong>FR ≥30 rpm", "points": 1, "badge": "+1" },
+        { "label": "<strong>B</strong>P: PAS <90 o PAD ≤60 mmHg", "points": 1, "badge": "+1" },
+        { "label": "Edad ≥<strong>65</strong> años", "points": 1, "badge": "+1" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": 0,
+    "initialLabel": "Seleccioná los criterios presentes",
+    "note": "0–1: ambulatorio · 2: internación sala · 3–5: UCI"
+  }
+}

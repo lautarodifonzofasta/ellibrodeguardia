@@ -1,0 +1,141 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="gin" onclick="switchTab(this,'gin','gin-dx')">🔍 Dx diferencial</div>
+  <div class="tab" data-tab-grp="gin" onclick="switchTab(this,'gin','gin-vag')">🦠 Vaginosis/Vaginitis</div>
+  <div class="tab" data-tab-grp="gin" onclick="switchTab(this,'gin','gin-cerv')">🔬 Cervicitis</div>
+  <div class="tab" data-tab-grp="gin" onclick="switchTab(this,'gin','gin-epi')">🚨 EPI</div>
+</div>
+
+<!-- TAB 1: DX DIFERENCIAL -->
+<div id="gin-dx" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Tres preguntas clave: ¿cómo es el flujo? ¿hay olor? ¿hay prurito?</span>Solo la tricomoniasis es estrictamente una ITS — VB y candidiasis no lo son.</div></div>
+    <div class="tbl-wrap mt-12"><table class="tbl">
+      <thead><tr><th></th><th>Vaginosis bacteriana</th><th>Candidiasis</th><th>Tricomoniasis</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Flujo</strong></td><td>Grisáceo · Homogéneo · Adherente a paredes</td><td>Blanco grumoso · "Cottage cheese"</td><td>Verde-amarillento · Espumoso · Abundante</td></tr>
+        <tr><td><strong>Olor</strong></td><td>Pescado (aminas) · Peor post coito</td><td>Sin olor o levemente ácido</td><td>Fétido</td></tr>
+        <tr><td><strong>Prurito</strong></td><td>Leve o ausente</td><td>Intenso · Principal síntoma</td><td>Variable · Ardor</td></tr>
+        <tr><td><strong>pH vaginal</strong></td><td>&gt;4,5</td><td>&lt;4,5 (normal)</td><td>&gt;4,5</td></tr>
+        <tr><td><strong>Test aminas (KOH)</strong></td><td>Positivo ✓</td><td>Negativo</td><td>Puede ser positivo</td></tr>
+        <tr><td><strong>Microscopía</strong></td><td>Clue cells (células guía)</td><td>Hifas y esporas</td><td>Tricomonas móviles</td></tr>
+        <tr><td><strong>Agente</strong></td><td>Gardnerella + anaerobios</td><td>Candida albicans (90%)</td><td>Trichomonas vaginalis</td></tr>
+        <tr><td><strong>ITS</strong></td><td>No</td><td>No</td><td>Sí — tratar pareja</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Cervicitis y EPI → ver tabs siguientes</span>Si hay dolor pélvico, fiebre o flujo mucopurulento cervical → pensar cervicitis o EPI, no solo vaginitis.</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 2: VAGINOSIS / VAGINITIS -->
+<div id="gin-vag" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="sec-hd"><div class="sec-hd-lbl">Vaginosis bacteriana — Criterios de Amsel (≥3 de 4)</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Flujo vaginal homogéneo grisáceo adherente a paredes</li>
+      <li>pH vaginal &gt;4,5</li>
+      <li>Test de aminas positivo — olor a pescado al agregar KOH 10% (Whiff test)</li>
+      <li>Células guía (clue cells) en microscopía en fresco — &gt;20% de células epiteliales</li>
+    </ul>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">VB en embarazo — tratar siempre</span>Asociada a RPM, parto prematuro, corioamnionitis e infecciones puerperales.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento — SADI 2025 / Ministerio Salud Argentina</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Diagnóstico</th><th>Primera línea</th><th>Alternativa</th><th>Pareja</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Vaginosis bacteriana</strong></td><td><span class="drug">Metronidazol</span> <span class="dose">500 mg c/12h VO × 7 días</span><br>O <span class="drug">Metronidazol gel 0,75%</span> <span class="dose">1 aplicador vaginal/noche × 5 días</span></td><td><span class="drug">Clindamicina crema 2%</span> <span class="dose">1 aplicador vaginal/noche × 7 días</span></td><td>No tratar de rutina</td></tr>
+        <tr><td><strong>Candidiasis vulvovaginal</strong></td><td><span class="drug">Fluconazol</span> <span class="dose">150 mg VO dosis única</span></td><td><span class="drug">Clotrimazol óvulos</span> <span class="dose">500 mg vaginal dosis única</span><br>O <span class="drug">Miconazol crema 2%</span> <span class="dose">× 7 días</span></td><td>No tratar salvo síntomas</td></tr>
+        <tr><td><strong>Tricomoniasis</strong></td><td><span class="drug">Metronidazol</span> <span class="dose">2 g VO dosis única</span><br>O <span class="drug">Tinidazol</span> <span class="dose">2 g VO dosis única</span></td><td><span class="drug">Metronidazol</span> <span class="dose">500 mg c/12h × 7 días</span></td><td><strong>Tratar siempre</strong></td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-b mt-8"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Candidiasis recurrente (≥4 episodios/año)</span>Descartar diabetes, HIV, inmunosupresión. Tratar con Fluconazol 150 mg semanal × 6 meses (mantenimiento). Derivar a ginecología.</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 3: CERVICITIS -->
+<div id="gin-cerv" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Cervicitis — inflamación del cuello uterino</span>Agentes principales: N. gonorrhoeae + C. trachomatis. Tratar ambos empíricamente siempre — la coinfección es frecuente.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Clínica</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Flujo mucopurulento endocervical (amarillo-verdoso)</li>
+      <li>Cuello uterino friable — sangra fácilmente al contacto</li>
+      <li>Puede ser asintomática (50% de los casos de clamidia)</li>
+      <li>Dolor pélvico leve · Dispareunia · Spotting postcoital</li>
+      <li>Si hay dolor a la movilización cervical → sospechar EPI</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Diagnóstico</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Hisopado endocervical para cultivo de gonococo y PCR de Chlamydia</li>
+      <li>VDRL · VIH · Hepatitis B · Tricomonas (ITS asociadas frecuentes)</li>
+      <li>Embarazo: BHCG siempre</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento empírico — SADI 2025 / CDC 2026</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Cubrir gonorrea + clamidia siempre</div><div class="step-body">
+        <span class="drug">Ceftriaxona</span> <span class="dose">500 mg IM dosis única</span> — gonorrea<br>
+        + <span class="drug">Doxiciclina</span> <span class="dose">100 mg c/12h VO × 7 días</span> — clamidia<br>
+        O <span class="drug">Azitromicina</span> <span class="dose">1 g VO dosis única</span> si adherencia es problema
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Tratar pareja sexual — siempre</div><div class="step-body">
+        Misma conducta empírica · Abstinencia hasta completar tratamiento · Estudio de ITS completo
+      </div></div></div>
+    </div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Gonococo — resistencia creciente a quinolonas en Argentina</span>No usar ciprofloxacina ni azitromicina como monoterapia para gonorrea. Ceftriaxona sigue siendo primera línea.</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 4: EPI -->
+<div id="gin-epi" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">EPI — umbral diagnóstico bajo. Si hay criterios mínimos: tratar. El retraso aumenta el riesgo de infertilidad, ectópico y dolor pélvico crónico.</span></div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Criterios diagnósticos — CDC 2026</div><div class="sec-hd-line"></div></div>
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Criterios mínimos — iniciar tratamiento si UNO o más están presentes en mujer sexualmente activa con dolor pélvico</span></div></div>
+    <ul class="bullets mt-8">
+      <li><strong>Dolor a la movilización cervical</strong> (Chandelier sign)</li>
+      <li><strong>Dolor uterino a la palpación</strong></li>
+      <li><strong>Dolor anexial bilateral</strong></li>
+    </ul>
+    <div class="sec-hd mt-4"><div class="sec-hd-lbl">Criterios adicionales — aumentan la especificidad</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Fiebre &gt;38,3°C · Leucocitosis</li>
+      <li>Flujo mucopurulento cervical o vaginal</li>
+      <li>Leucocitos en preparado en fresco de flujo vaginal</li>
+      <li>PCR/NAAT positiva para gonorrea o clamidia</li>
+      <li>Eco: líquido en fondo de saco, absceso tubo-ovárico</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Tratamiento — guía europea IUSTI 2026 / CDC 2026</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th></th><th>Ambulatorio (leve-moderada)</th><th>Internación (grave)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Esquema</strong></td><td>
+          <span class="drug">Ceftriaxona</span> <span class="dose">500 mg IM dosis única</span><br>
+          + <span class="drug">Doxiciclina</span> <span class="dose">100 mg c/12h VO × 14 días</span><br>
+          + <span class="drug">Metronidazol</span> <span class="dose">500 mg c/12h VO × 14 días</span>
+        </td><td>
+          <span class="drug">Cefoxitina</span> <span class="dose">2 g IV c/6h</span><br>
+          + <span class="drug">Doxiciclina</span> <span class="dose">100 mg IV/VO c/12h</span><br>
+          O <span class="drug">Clindamicina</span> <span class="dose">900 mg IV c/8h</span><br>
+          + <span class="drug">Gentamicina</span> <span class="dose">5 mg/kg/día IV</span>
+        </td></tr>
+        <tr><td><strong>Duración</strong></td><td>14 días</td><td>IV hasta 24h de mejoría → oral hasta 14 días</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Criterios de internación</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li>Absceso tubo-ovárico</li>
+      <li>No respuesta a tto oral en 72h</li>
+      <li>Embarazo</li>
+      <li>Imposibilidad de descartar urgencia quirúrgica</li>
+      <li>Intolerancia oral · Inmunosupresión</li>
+    </ul>
+
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Síndrome de Fitz-Hugh-Curtis</span>Perihepatitis por extensión de EPI — dolor en CSD que puede confundirse con colecistitis. Dolor a la palpación hepática + antecedente de flujo/dolor pélvico. Mismo tratamiento que EPI.</div></div>
+  </div></div>
+</div>

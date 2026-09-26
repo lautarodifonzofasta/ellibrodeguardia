@@ -1,0 +1,59 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="dab" onclick="switchTab(this,'dab','dab-flags')">🚩 Banderas rojas</div>
+  <div class="tab" data-tab-grp="dab" onclick="switchTab(this,'dab','dab-dx')">🔍 Diagnóstico diferencial</div>
+  <div class="tab" data-tab-grp="dab" onclick="switchTab(this,'dab','dab-tto')">💊 Manejo</div>
+</div>
+<div id="dab-flags" class="tab-pane on">
+  <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Abdomen quirúrgico urgente — evaluar inmediatamente</span>
+  <ul class="bullets mt-8">
+    <li><strong>Peritonitis:</strong> defensa generalizada + rebote + abdomen en tabla + signos de sepsis</li>
+    <li><strong>Shock hipovolémico:</strong> hipotensión + taquicardia + dolor abdominal → rotura de aneurisma, embarazo ectópico roto</li>
+    <li><strong>Isquemia mesentérica:</strong> dolor desproporcionado al examen, FA conocida, arteriosclerosis severa</li>
+    <li><strong>Vólvulo / oclusión:</strong> distensión progresiva + ausencia de ruidos + náuseas fecaloideas</li>
+  </ul></div></div>
+  <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Siempre considerar en mujer en edad fértil</span>Embarazo ectópico hasta demostrar lo contrario. BHCG cuantitativa + ecografía urgente.</div></div>
+</div>
+<div id="dab-dx" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="sec-hd"><div class="sec-hd-lbl">Diagnóstico diferencial por cuadrante</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Cuadrante</th><th>Diagnósticos principales</th></tr></thead>
+      <tbody>
+        <tr><td><strong>FID (fosa ilíaca derecha)</strong></td><td>Apendicitis aguda · Salpingitis / EPI · Cálculo ureteral distal · Enfermedad de Crohn · Hernia inguinal</td></tr>
+        <tr><td><strong>FII (fosa ilíaca izquierda)</strong></td><td>Diverticulitis · Salpingitis izquierda · Cálculo ureteral · Colitis isquémica · Hernia</td></tr>
+        <tr><td><strong>CSD (cuadrante superior derecho)</strong></td><td>Cólico biliar / Colecistitis · Hepatitis · Absceso hepático · Pleuritis basal derecha</td></tr>
+        <tr><td><strong>CSI (cuadrante superior izquierdo)</strong></td><td>Úlcera gástrica perforada · Pancreatitis · Esplenomegalia / Infarto esplénico</td></tr>
+        <tr><td><strong>Epigástrico</strong></td><td>Úlcera péptica · Pancreatitis aguda · IAM inferior · Gastritis / GERD</td></tr>
+        <tr><td><strong>Periumbilical</strong></td><td>Apendicitis (inicio) · Hernia umbilical · Isquemia mesentérica</td></tr>
+        <tr><td><strong>Difuso / generalizado</strong></td><td>Peritonitis · Obstrucción intestinal · Isquemia mesentérica · Porfiria · Cetoacidosis</td></tr>
+      </tbody>
+    </table></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Signos exploratorios relevantes</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><strong>Murphy positivo:</strong> cese inspiratorio por dolor en palpación CSD → colecistitis</li>
+      <li><strong>McBurney / Blumberg en FID:</strong> apendicitis</li>
+      <li><strong>Psoas sign:</strong> dolor en extensión pasiva del muslo derecho → apendicitis retrocecal</li>
+      <li><strong>Obturador sign:</strong> dolor en rotación interna del muslo derecho → apendicitis pélvica</li>
+      <li><strong>Rovsing:</strong> dolor en FID al palpar FII → apendicitis</li>
+    </ul>
+  </div></div>
+</div>
+<div id="dab-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Evaluación sistemática urgente</div><div class="step-body">
+        Hemograma · PCR · Hepatograma · Lipasa · Función renal · Ionograma<br>
+        Orina completa · BHCG (mujer edad fértil) · Hemocultivos si fiebre<br>
+        Ecografía abdominal como primera imagen (rápida, sin radiación)
+      </div></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Analgesia — NO retener por miedo a "enmascarar"</div><div class="step-body">
+        Evidencia: la analgesia NO altera la precisión diagnóstica. Tratar el dolor.<br>
+        <span class="drug">Ketorolac</span> <span class="dose">30 mg IV</span> o <span class="drug">Morfina</span> <span class="dose">0,1 mg/kg IV titulada</span><br>
+        Hioscina (Buscapina) para cólico suave
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">TC abdominal con contraste</div><div class="step-body">Si duda diagnóstica, sospecha quirúrgica, o paciente obeso/mayor donde la eco es insuficiente.<br>Sensibilidad para apendicitis &gt;95%.</div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Cirugía urgente si</div><div class="step-body">Peritonitis · Apendicitis complicada · Colecistitis gangrenosa · Obstrucción con signos de isquemia · Perforación</div></div></div>
+    </div>
+  </div></div>
+</div>

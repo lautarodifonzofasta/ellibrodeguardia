@@ -1,0 +1,342 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="pcr" onclick="switchTab(this,'pcr','pcr-algo')">⏱️ Algoritmo ALS</div>
+  <div class="tab" data-tab-grp="pcr" onclick="switchTab(this,'pcr','pcr-h5t')">5H · 5T</div>
+  <div class="tab" data-tab-grp="pcr" onclick="switchTab(this,'pcr','pcr-post')">🏥 Post-RCE</div>
+</div>
+
+<div id="pcr-algo" class="tab-pane on">
+<style>
+.pcr-wrap{font-family:inherit}
+.pcr-box{border-radius:8px;padding:10px 14px;text-align:center;font-size:13px;font-weight:500;border:1.5px solid;line-height:1.4;margin-bottom:0}
+.pcr-start{background:var(--bg3);border-color:var(--border2);color:var(--text2);font-size:12px}
+.pcr-red{background:var(--red-bg);border-color:var(--red-bd);color:var(--text)}
+.pcr-red .pcr-title{color:var(--red);font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:4px}
+.pcr-amber{background:var(--amb-bg);border-color:var(--amb-bd);color:var(--text)}
+.pcr-amber .pcr-title{color:var(--amber);font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:4px}
+.pcr-blue{background:var(--blue-bg);border-color:var(--blue-bd);color:var(--text)}
+.pcr-blue .pcr-title{color:var(--acc);font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:4px}
+.pcr-green{background:var(--grn-bg);border-color:var(--grn-bd);color:var(--text)}
+.pcr-green .pcr-title{color:var(--green);font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:4px}
+.pcr-gray{background:var(--bg3);border-color:var(--border);color:var(--text2);font-size:12px}
+.pcr-mini{font-size:11.5px;color:var(--text2);margin-top:3px;font-weight:400}
+.pcr-arr{display:flex;flex-direction:column;align-items:center;margin:3px 0}
+.pcr-arr-line{width:2px;height:14px;background:var(--border2)}
+.pcr-arr-head{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--border2)}
+.pcr-split{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.pcr-loop{text-align:center;margin:6px 0}
+.pcr-loop-pill{display:inline-flex;align-items:center;gap:5px;background:var(--bg3);border:1.5px solid var(--border2);border-radius:20px;padding:4px 14px;font-size:11px;color:var(--text2);font-weight:500}
+.pcr-sep{height:1px;background:var(--border);margin:10px 0}
+</style>
+<div class="pcr-wrap" style="padding:4px 0">
+
+  <div class="pcr-box pcr-start">Sin respuesta · Sin respiración normal · Gasping ≠ ventilación</div>
+  <div class="pcr-arr"><div class="pcr-arr-line"></div><div class="pcr-arr-head"></div></div>
+
+  <div class="pcr-box pcr-red">
+    <span class="pcr-title">Inmediato</span>
+    Llamar ayuda · Traer DEA / Desfibrilador
+    <div class="pcr-mini">Asignar roles: compresiones · vía aérea · drogas · cronómetro</div>
+  </div>
+  <div class="pcr-arr"><div class="pcr-arr-line"></div><div class="pcr-arr-head"></div></div>
+
+  <div class="pcr-box pcr-amber">
+    <span class="pcr-title">RCP de alta calidad</span>
+    <strong>100–120/min · 5–6 cm de profundidad · relación 30:2</strong>
+    <div class="pcr-mini">Manos en tercio inferior del esternón · Brazos extendidos · Rotación cada 2 min</div>
+    <div class="pcr-mini">Interrupción <strong>&lt;10 seg</strong> · Permitir descompresión completa</div>
+  </div>
+  <div class="pcr-arr"><div class="pcr-arr-line"></div><div class="pcr-arr-head"></div></div>
+
+  <div class="pcr-box pcr-blue">
+    <span class="pcr-title">Cada 2 minutos — pausa &lt;10 seg</span>
+    <strong>Analizar ritmo en el monitor</strong>
+  </div>
+  <div class="pcr-arr"><div class="pcr-arr-line"></div><div class="pcr-arr-head"></div></div>
+
+  <div class="pcr-split">
+    <div>
+      <div class="pcr-box pcr-red" style="text-align:left">
+        <span class="pcr-title">Desfibrilable</span>
+        <strong>FV · TV sin pulso</strong>
+      </div>
+      <div class="pcr-arr"><div class="pcr-arr-line"></div><div class="pcr-arr-head"></div></div>
+      <div class="pcr-box pcr-red">
+        <strong style="font-size:14px">⚡ Desfibrilar</strong>
+        <div class="pcr-mini">200 J bifásico · 360 J monofásico</div>
+        <div class="pcr-mini">Minimizar pausa pre-descarga</div>
+      </div>
+      <div class="pcr-arr"><div class="pcr-arr-line"></div><div class="pcr-arr-head"></div></div>
+      <div class="pcr-box pcr-amber">
+        RCP 2 min inmediata
+        <div class="pcr-mini">Sin verificar pulso post-descarga</div>
+      </div>
+      <div class="pcr-arr"><div class="pcr-arr-line"></div><div class="pcr-arr-head"></div></div>
+      <div class="pcr-box pcr-blue" style="text-align:left">
+        <span class="pcr-title">Drogas (desde 2ª descarga)</span>
+        <span class="drug">Adrenalina</span> <span class="dose">1 mg IV c/3–5 min</span><br>
+        <span class="drug">Amiodarona</span> <span class="dose">300 mg bolo</span>
+        <div class="pcr-mini">Luego 150 mg si persiste FV/TV</div>
+      </div>
+    </div>
+    <div>
+      <div class="pcr-box pcr-gray" style="text-align:left">
+        <span style="font-size:11px;font-weight:700;color:var(--text2);display:block;margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em">No desfibrilable</span>
+        <strong style="color:var(--text)">AESP · Asistolia</strong>
+      </div>
+      <div class="pcr-arr"><div class="pcr-arr-line"></div><div class="pcr-arr-head"></div></div>
+      <div class="pcr-box pcr-amber">
+        RCP 2 min continua
+        <div class="pcr-mini">No interrumpir por nada</div>
+      </div>
+      <div class="pcr-arr"><div class="pcr-arr-line"></div><div class="pcr-arr-head"></div></div>
+      <div class="pcr-box pcr-blue" style="text-align:left">
+        <span class="pcr-title">Drogas (inmediato)</span>
+        <span class="drug">Adrenalina</span> <span class="dose">1 mg IV c/3–5 min</span>
+        <div class="pcr-mini">Tan pronto haya acceso IV o IO</div>
+      </div>
+      <div class="pcr-arr"><div class="pcr-arr-line"></div><div class="pcr-arr-head"></div></div>
+      <div class="pcr-box pcr-gray" style="text-align:left;font-size:12px">
+        <div style="font-weight:600;color:var(--text);margin-bottom:4px">Buscar 5H · 5T →</div>
+        Ver pestaña "5H · 5T" para diagnóstico y tratamiento de cada causa reversible
+      </div>
+    </div>
+  </div>
+
+  <div class="pcr-arr"><div class="pcr-arr-line" style="height:8px"></div></div>
+  <div class="pcr-loop">
+    <div class="pcr-loop-pill">↻ Repetir ciclo cada 2 min — analizar ritmo</div>
+  </div>
+
+  <div class="pcr-sep"></div>
+
+  <div class="pcr-box pcr-blue" style="text-align:left">
+    <span class="pcr-title">Vía aérea</span>
+    BVM + O₂ 100% · Cánula orofaríngea · 30:2 sin IOT
+    <div class="pcr-mini">IOT solo cuando no interrumpe compresiones · Si intubado → <strong>10 vent/min</strong> sin sincronizar</div>
+  </div>
+
+  <div class="pcr-sep"></div>
+
+  <div class="pcr-box pcr-blue" style="text-align:left">
+    <span class="pcr-title">Acceso vascular</span>
+    IV periférico o <strong>IO intraóseo</strong> — misma eficacia, más rápido si IV difícil
+  </div>
+
+  <div class="pcr-sep"></div>
+
+  <div class="pcr-box pcr-green">
+    <span class="pcr-title">RCE — Retorno de circulación espontánea</span>
+    Pulso palpable · PA ↑ · ETCO₂ ↑ bruscamente (&gt;40 mmHg)
+    <div class="pcr-mini">→ Ver pestaña Post-RCE · UCI · ECG inmediato · Control de temperatura</div>
+  </div>
+
+</div>
+</div>
+
+<div id="pcr-h5t" class="tab-pane">
+<style>
+.h5t-sec{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 8px;padding-left:1px}
+.h5t-sec-h{color:var(--red)}
+.h5t-sec-t{color:var(--acc)}
+.h5t-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.h5t-card{border-radius:8px;overflow:hidden;border:1px solid}
+.h5t-card-h{border-color:var(--red-bd)}
+.h5t-card-t{border-color:var(--blue-bd)}
+.h5t-head{padding:9px 12px 7px;display:flex;align-items:baseline;gap:7px}
+.h5t-head-h{background:var(--red-bg)}
+.h5t-head-t{background:var(--blue-bg)}
+.h5t-ltr{font-size:20px;font-weight:700;line-height:1}
+.h5t-ltr-h{color:var(--red)}
+.h5t-ltr-t{color:var(--acc)}
+.h5t-name{font-size:12.5px;font-weight:700;line-height:1.2;color:var(--text)}
+.h5t-body{padding:9px 12px;background:var(--bg2)}
+.h5t-lbl{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
+.h5t-lbl-h{color:var(--red)}
+.h5t-lbl-t{color:var(--acc)}
+.h5t-lbl-g{color:var(--green)}
+.h5t-txt{font-size:12px;color:var(--text2);line-height:1.55;margin-bottom:6px}
+.h5t-div{height:1px;background:var(--border);margin:6px 0}
+.h5t-full{grid-column:1/-1}
+.h5t-sep{height:1px;background:var(--border);margin:12px 0}
+</style>
+<div style="padding:4px 0">
+
+  <div class="h5t-sec h5t-sec-h">5 H — causas metabólicas y fisiológicas</div>
+  <div class="h5t-grid">
+
+    <div class="h5t-card h5t-card-h">
+      <div class="h5t-head h5t-head-h">
+        <span class="h5t-ltr h5t-ltr-h">H</span>
+        <span class="h5t-name">Hipoxia</span>
+      </div>
+      <div class="h5t-body">
+        <div class="h5t-lbl h5t-lbl-h">Sospechar si</div>
+        <div class="h5t-txt">Cianosis · SpO₂ baja pre-PCR · Obstrucción VA · Intubación esofágica</div>
+        <div class="h5t-div"></div>
+        <div class="h5t-lbl h5t-lbl-g">Tratar con</div>
+        <div class="h5t-txt">BVM + O₂ 100% · Verificar posición TET · Aspirar si obstrucción</div>
+      </div>
+    </div>
+
+    <div class="h5t-card h5t-card-h">
+      <div class="h5t-head h5t-head-h">
+        <span class="h5t-ltr h5t-ltr-h">H</span>
+        <span class="h5t-name">Hipovolemia</span>
+      </div>
+      <div class="h5t-body">
+        <div class="h5t-lbl h5t-lbl-h">Sospechar si</div>
+        <div class="h5t-txt">Hemorragia · Trauma · Sepsis · Venas planas en POCUS</div>
+        <div class="h5t-div"></div>
+        <div class="h5t-lbl h5t-lbl-g">Tratar con</div>
+        <div class="h5t-txt"><span class="drug">Ringer</span> o <span class="drug">SF 0,9%</span> <span class="dose">500–1000 ml IV rápido</span> · Hemoderivados si hemorrágico</div>
+      </div>
+    </div>
+
+    <div class="h5t-card h5t-card-h">
+      <div class="h5t-head h5t-head-h">
+        <span class="h5t-ltr h5t-ltr-h">H</span>
+        <span class="h5t-name">Hidrógeno ión (acidosis)</span>
+      </div>
+      <div class="h5t-body">
+        <div class="h5t-lbl h5t-lbl-h">Sospechar si</div>
+        <div class="h5t-txt">Sepsis · CAD · Insuf. renal · Intox. metformina o metanol</div>
+        <div class="h5t-div"></div>
+        <div class="h5t-lbl h5t-lbl-g">Tratar con</div>
+        <div class="h5t-txt"><span class="drug">NaHCO₃ 8,4%</span> <span class="dose">1 mEq/kg IV</span> si pH &lt;7.1 · Ventilar adecuadamente</div>
+      </div>
+    </div>
+
+    <div class="h5t-card h5t-card-h">
+      <div class="h5t-head h5t-head-h">
+        <span class="h5t-ltr h5t-ltr-h">H</span>
+        <span class="h5t-name">Hipo / Hiperkalemia</span>
+      </div>
+      <div class="h5t-body">
+        <div class="h5t-lbl h5t-lbl-h">Sospechar si</div>
+        <div class="h5t-txt">Insuf. renal · Diuréticos · ECG: onda T picuda, QRS ancho</div>
+        <div class="h5t-div"></div>
+        <div class="h5t-lbl h5t-lbl-g">HiperK</div>
+        <div class="h5t-txt"><span class="drug">CaCl₂ 10%</span> <span class="dose">10 ml IV</span> · <span class="drug">NaHCO₃</span> <span class="dose">50 mEq</span> · Glucosa + insulina</div>
+        <div class="h5t-lbl h5t-lbl-g">HipoK</div>
+        <div class="h5t-txt"><span class="drug">ClK</span> <span class="dose">20–40 mEq IV</span> diluido lento</div>
+      </div>
+    </div>
+
+    <div class="h5t-card h5t-card-h h5t-full">
+      <div class="h5t-head h5t-head-h">
+        <span class="h5t-ltr h5t-ltr-h">H</span>
+        <span class="h5t-name">Hipotermia</span>
+      </div>
+      <div class="h5t-body" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div>
+          <div class="h5t-lbl h5t-lbl-h">Sospechar si</div>
+          <div class="h5t-txt">T° central &lt;30°C · Exposición al frío · Ahogamiento · "No está muerto hasta estar caliente y muerto"</div>
+        </div>
+        <div>
+          <div class="h5t-lbl h5t-lbl-g">Tratar con</div>
+          <div class="h5t-txt">RCP continua hasta T° ≥30°C · Fluidos calentados · Mantas térmicas · &lt;30°C: máx 3 descargas, sin drogas hasta recalentar</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="h5t-sep"></div>
+
+  <div class="h5t-sec h5t-sec-t">5 T — trombosis y causas mecánicas</div>
+  <div class="h5t-grid">
+
+    <div class="h5t-card h5t-card-t">
+      <div class="h5t-head h5t-head-t">
+        <span class="h5t-ltr h5t-ltr-t">T</span>
+        <span class="h5t-name">Trombosis coronaria</span>
+      </div>
+      <div class="h5t-body">
+        <div class="h5t-lbl h5t-lbl-t">Sospechar si</div>
+        <div class="h5t-txt">SDST en ECG · Dolor torácico pre-PCR · Factores de riesgo CV</div>
+        <div class="h5t-div"></div>
+        <div class="h5t-lbl h5t-lbl-g">Tratar con</div>
+        <div class="h5t-txt">Cateterismo durante o post-RCE · <span class="drug">AAS</span> <span class="dose">300 mg</span> · <span class="drug">Heparina</span></div>
+      </div>
+    </div>
+
+    <div class="h5t-card h5t-card-t">
+      <div class="h5t-head h5t-head-t">
+        <span class="h5t-ltr h5t-ltr-t">T</span>
+        <span class="h5t-name">Trombosis pulmonar</span>
+      </div>
+      <div class="h5t-body">
+        <div class="h5t-lbl h5t-lbl-t">Sospechar si</div>
+        <div class="h5t-txt">Inmovilización · Cáncer · TVP conocida · Fallo derecho en POCUS</div>
+        <div class="h5t-div"></div>
+        <div class="h5t-lbl h5t-lbl-g">Tratar con</div>
+        <div class="h5t-txt"><span class="drug">Alteplase</span> <span class="dose">50 mg IV bolo</span> · RCP continua 60–90 min post-trombolisis</div>
+      </div>
+    </div>
+
+    <div class="h5t-card h5t-card-t">
+      <div class="h5t-head h5t-head-t">
+        <span class="h5t-ltr h5t-ltr-t">T</span>
+        <span class="h5t-name">Taponamiento cardíaco</span>
+      </div>
+      <div class="h5t-body">
+        <div class="h5t-lbl h5t-lbl-t">Sospechar si</div>
+        <div class="h5t-txt">Tríada de Beck: hipotensión + IY + ruidos apagados · Eco: líquido + colapso VD</div>
+        <div class="h5t-div"></div>
+        <div class="h5t-lbl h5t-lbl-g">Tratar con</div>
+        <div class="h5t-txt">Pericardiocentesis subxifoidea · Aguja 18G · 45° hacia hombro izquierdo</div>
+      </div>
+    </div>
+
+    <div class="h5t-card h5t-card-t">
+      <div class="h5t-head h5t-head-t">
+        <span class="h5t-ltr h5t-ltr-t">T</span>
+        <span class="h5t-name">Tensión (neumotórax)</span>
+      </div>
+      <div class="h5t-body">
+        <div class="h5t-lbl h5t-lbl-t">Sospechar si</div>
+        <div class="h5t-txt">MV abolido + timpanismo + IY · POCUS: sin deslizamiento pleural</div>
+        <div class="h5t-div"></div>
+        <div class="h5t-lbl h5t-lbl-g">Tratar con</div>
+        <div class="h5t-txt">Aguja 14G en 2° EIC línea medioclavicular · Luego tubo de tórax 5° EIC</div>
+      </div>
+    </div>
+
+    <div class="h5t-card h5t-card-t h5t-full">
+      <div class="h5t-head h5t-head-t">
+        <span class="h5t-ltr h5t-ltr-t">T</span>
+        <span class="h5t-name">Tóxicos / Intoxicaciones</span>
+      </div>
+      <div class="h5t-body" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div>
+          <div class="h5t-lbl h5t-lbl-t">Sospechar si</div>
+          <div class="h5t-txt">Historia de ingesta · QTc largo · QRS &gt;120 ms · Miosis/midriasis extrema · Toxidrome</div>
+        </div>
+        <div>
+          <div class="h5t-lbl h5t-lbl-g">Antídotos clave</div>
+          <div class="h5t-txt">
+            Opiáceos → <span class="drug">Naloxona</span> <span class="dose">2 mg IV</span><br>
+            Tricíclicos → <span class="drug">NaHCO₃</span> <span class="dose">1–2 mEq/kg</span><br>
+            Organofosf. → <span class="drug">Atropina</span> <span class="dose">2–4 mg IV</span><br>
+            BCC/digoxina → <span class="drug">CaCl₂</span> <span class="dose">10 ml IV</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div id="pcr-post" class="tab-pane">
+  <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">RCE = Retorno de Circulación Espontánea</span>El período post-RCE es de altísima mortalidad. UCI obligatoria.</div></div>
+  <div class="card mt-12"><div class="card-body">
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">ECG de 12 derivadas inmediato</div><div class="step-body">¿IAM-SDST? → Cateterismo urgente aunque esté en coma · TC cráneo si no hay causa obvia</div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Hemodinámica post-RCE</div><div class="step-body">Objetivo PAM ≥65 mmHg · SpO₂ 94–98% · pCO₂ 35–45 mmHg<br>Evitar hiperoxia y hiperventilación · <span class="drug">Noradrenalina</span> si hipotensión refractaria</div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Control de temperatura dirigido</div><div class="step-body">Paciente comatoso (GCS &lt;8) → temperatura objetivo 32–36°C por 24h<br>Evitar fiebre &gt;37,7°C durante las primeras 72h</div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Neuropronóstico — no antes de 72h</div><div class="step-body">Evaluación neurológica mínima a las 72h post-RCE (más si hay sedoanalgesia)<br>EEG continuo si coma · TC/RM cerebral</div></div></div>
+    </div>
+  </div></div>
+</div>

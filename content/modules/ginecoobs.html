@@ -1,0 +1,233 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="gob" onclick="switchTab(this,'gob','gob-orient')">🧭 Orientación</div>
+  <div class="tab" data-tab-grp="gob" onclick="switchTab(this,'gob','gob-1mit')">1ª Mitad</div>
+  <div class="tab" data-tab-grp="gob" onclick="switchTab(this,'gob','gob-2mit')">2ª Mitad</div>
+  <div class="tab" data-tab-grp="gob" onclick="navId('hta-gestacional')">📈 HTA →</div>
+  <div class="tab" data-tab-grp="gob" onclick="switchTab(this,'gob','gob-estudios')">🔬 Estudios</div>
+</div>
+
+<!-- TAB 1: ORIENTACIÓN + CALCULADORA FUM -->
+<div id="gob-orient" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Llegó una paciente embarazada — seguí estos pasos</span>Tranquilo. Un paso a la vez.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Calculadora de edad gestacional por FUM</div><div class="sec-hd-line"></div></div>
+    <div style="background:var(--bg3);border-radius:var(--r);padding:14px;margin-bottom:12px">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <div>
+          <div style="font-size:11px;color:var(--text3);margin-bottom:4px">Fecha Última Menstruación (FUM)</div>
+          <input type="date" id="fum-input" style="padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:13px" onchange="calcEG()">
+        </div>
+        <div style="flex:1;min-width:160px">
+          <div style="font-size:11px;color:var(--text3);margin-bottom:4px">Edad gestacional</div>
+          <div id="eg-result" style="font-size:15px;font-weight:700;color:var(--acc);padding:6px 10px;background:var(--bg);border-radius:6px;border:1px solid var(--border)">Ingresá la FUM</div>
+        </div>
+      </div>
+      <div id="eg-trimestre" style="font-size:12px;color:var(--text3);margin-top:8px"></div>
+    </div>
+
+    <div class="sec-hd"><div class="sec-hd-lbl">Tres preguntas clave</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">¿Cuántas semanas?</div><div class="step-body">
+        Usá la calculadora o la eco confirmada<br>
+        <strong>&lt;20 semanas</strong> → ir a tab "1ª Mitad"<br>
+        <strong>≥20 semanas</strong> → ir a tab "2ª Mitad"
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">¿Hay sangrado?</div><div class="step-body">
+        Si sangra → ¿hay dolor asociado?<br>
+        <strong>Sin dolor</strong>: aborto, placenta previa, mola<br>
+        <strong>Con dolor</strong>: ectópico (1ª mitad), DPPNI (2ª mitad)<br>
+        Postparto: hemorragia postparto — actuar de inmediato
+      </div></div></div>
+      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">¿Cuál es la TA?</div><div class="step-body">
+        Tomar TA <strong>siempre</strong> en toda embarazada<br>
+        PAS ≥140 o PAD ≥90 → tab HTA gestacional<br>
+        PAS ≥160 o PAD ≥110 → emergencia — actuar ya
+      </div></div></div>
+    </div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Siempre en toda embarazada que consulta</span>BHCG · Grupo y factor RH · ECG si HTA · Ver tab Estudios para laboratorio completo</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 2: PRIMERA MITAD -->
+<div id="gob-1mit" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Primera mitad — &lt;20 semanas</span>La clave es: ¿hay dolor? Orienta hacia ectópico vs aborto vs mola.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Sangrado SIN dolor — pensar aborto o mola</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Tipo</th><th>Eco / cuello</th><th>Conducta</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-a">Amenaza</span></td><td>Embrión vivo · Cuello cerrado</td><td>Reposo · Control ambulatorio</td></tr>
+        <tr><td><span class="tag t-a">Inevitable</span></td><td>Cuello abierto · Saco íntegro</td><td>Internación · Misoprostol o expectante</td></tr>
+        <tr><td><span class="tag t-a">Incompleto</span></td><td>Restos en cavidad · Cuello abierto</td><td>AMEU o legrado · Oxitocina si sangra</td></tr>
+        <tr><td><span class="tag t-g">Completo</span></td><td>Cavidad vacía · Cuello cerrado</td><td>Control ambulatorio · Eco de confirmación</td></tr>
+        <tr><td><span class="tag t-a">Retenido</span></td><td>Sin latido · Cuello cerrado</td><td>Misoprostol 800 mcg vaginal o AMEU</td></tr>
+        <tr><td><span class="tag t-r">Séptico</span></td><td>Variable · Flujo fétido · Fiebre</td><td>ATB + legrado urgente · Ver abajo</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Aborto séptico — antibióticos</div><div class="sec-hd-line"></div></div>
+    <ul class="bullets">
+      <li><span class="drug">Ampicilina-sulbactam</span> <span class="dose">3 g c/6h IV</span> + <span class="drug">Metronidazol</span> <span class="dose">500 mg c/8h IV</span></li>
+      <li>Si shock séptico: agregar <span class="drug">Gentamicina</span> <span class="dose">5 mg/kg/día IV</span></li>
+      <li>Legrado dentro de las 6h de iniciados los ATB — es el control de la fuente</li>
+    </ul>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Sangrado CON dolor — pensar embarazo ectópico</div><div class="sec-hd-line"></div></div>
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">BHCG+ sin saco intrauterino en eco = ectópico hasta demostrar lo contrario</span>Puede no haber sangrado externo visible. Riesgo de shock hemorrágico si roto.</div></div>
+    <div class="algo mt-8">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">¿Hemodinámicamente estable?</div><div class="step-body">
+        <strong>Inestable</strong> → cirugía urgente (laparoscopia de elección / laparotomía si inestable)<br>
+        <strong>Estable</strong> → evaluar criterios para MTX
+      </div></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Criterios para Metotrexato (ACOG)</div><div class="step-body">
+        ✓ Estable hemodinámicamente<br>
+        ✓ BHCG &lt;5000 mUI/ml<br>
+        ✓ Masa &lt;3,5 cm sin actividad cardíaca fetal<br>
+        ✓ Sin sangrado libre significativo en eco<br>
+        ✓ Función renal, hepática y hemograma normales<br>
+        ✓ Paciente confiable para seguimiento
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">MTX — protocolo dosis única</div><div class="step-body">
+        <span class="drug">Metotrexato</span> <span class="dose">50 mg/m² IM dosis única</span><br>
+        Control BHCG días 4 y 7 — debe descender ≥15% entre día 4 y 7<br>
+        Si no desciende → segunda dosis o cirugía
+      </div></div></div>
+    </div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Enfermedad trofoblástica gestacional — Mola hidatiforme</div><div class="sec-hd-line"></div></div>
+    <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Sospechar si: HTA antes de 20 semanas + BHCG muy elevada + útero grande para la EG</span></div></div>
+    <div class="tbl-wrap mt-8"><table class="tbl">
+      <thead><tr><th>Clínica</th><th>Eco</th><th>Conducta</th></tr></thead>
+      <tbody>
+        <tr><td>Sangrado irregular · Náuseas intensas · Útero mayor que EG · HTA precoz · Sin latido fetal</td><td>Imagen en "copos de nieve" o panal · Sin embrión (mola completa) · BHCG muy elevada (&gt;100.000)</td><td>Internación · AMEU o legrado por aspiración · NO oxitocina antes del legrado · Seguimiento con BHCG hasta negativizar</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-b mt-8"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">HTA en &lt;20 semanas → pensar mola, NO preeclampsia</span>Preeclampsia prácticamente no ocurre antes de las 20 semanas salvo en mola o embarazo múltiple.</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 3: SEGUNDA MITAD -->
+<div id="gob-2mit" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Segunda mitad — ≥20 semanas</span>La clave es: ¿sangra? ¿hay dolor? ¿cuál es la TA? Las tres juntas definen el diagnóstico.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Hemorragia — dolor orienta el diagnóstico</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th></th><th>Placenta previa</th><th>DPPNI</th><th>Rotura uterina</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Sangrado</strong></td><td>Rojo brillante · Indoloro · Espontáneo</td><td>Oscuro · Con dolor intenso</td><td>Puede cesar bruscamente</td></tr>
+        <tr><td><strong>Dolor</strong></td><td>Ausente</td><td>Intenso · Útero en tabla</td><td>Súbito y muy intenso → alivio</td></tr>
+        <tr><td><strong>Útero</strong></td><td>Blando · Relajado</td><td>Hipertónico · Tenso · No se relaja</td><td>Feto palpable fuera del útero</td></tr>
+        <tr><td><strong>Feto</strong></td><td>Puede estar bien</td><td>Sufrimiento fetal</td><td>FCF ausente o alterada</td></tr>
+        <tr><td><strong>Urgencia</strong></td><td>Alta</td><td>Emergencia</td><td>Emergencia absoluta</td></tr>
+        <tr><td><strong>Conducta</strong></td><td><strong>NO tacto vaginal</strong> · Eco · Cesárea si &gt;28 sem</td><td>Cesárea urgente · 2 vías · Hemoderivados</td><td>Laparotomía inmediata</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">HTA en ≥20 semanas → ir al tab HTA gestacional</div><div class="sec-hd-line"></div></div>
+    <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body">PAS ≥140 o PAD ≥90 en embarazada ≥20 sem → abrir tab HTA. PAS ≥160 → emergencia, no esperar.</div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Hemorragia postparto — FIGO 2022</div><div class="sec-hd-line"></div></div>
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Definición: &gt;500 ml en parto vaginal · &gt;1000 ml en cesárea · O con repercusión hemodinámica</span>Causa más frecuente: atonía uterina (70–80%) · Regla de las 4T: Tono · Tejido · Trauma · Trombina</div></div>
+    <div class="algo mt-8">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Oxitocina — primera línea (FIGO 2022)</div><div class="step-body">
+        <span class="drug">Oxitocina</span> <span class="dose">10 UI IM o IV lento</span> inmediato<br>
+        Infusión: <span class="drug">Oxitocina</span> <span class="dose">20–40 UI en 500 ml SF a 500 ml/h</span><br>
+        Masaje uterino bimanual · Vaciar vejiga
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Ácido tranexámico — siempre en HPP (FIGO 2022)</div><div class="step-body">
+        <span class="drug">Ácido tranexámico</span> <span class="dose">1 g IV en 10–20 min</span> — cuanto antes mejor<br>
+        Repetir 1 g a los 30 min si persiste · Reduce mortalidad 20–30% (estudio WOMAN)
+      </div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Segunda línea si persiste</div><div class="step-body">
+        <span class="drug">Ergometrina</span> <span class="dose">0,2 mg IM</span> — contraindicada en HTA<br>
+        <span class="drug">Misoprostol</span> <span class="dose">600–800 mcg rectal o sublingual</span><br>
+        Llamar obstetricia urgente · Hemoderivados · 2 vías gruesas
+      </div></div></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- TAB 4: HTA GESTACIONAL -->
+<div id="gob-hta" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Diagnóstico</th><th>Criterios</th><th>Conducta</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-a">HTA gestacional</span></td><td>PAS ≥140 o PAD ≥90 · ≥20 sem · Sin proteinuria · Sin daño órgano blanco</td><td>Internación · Control materno-fetal</td></tr>
+        <tr><td><span class="tag t-a">Preeclampsia</span></td><td>HTA + proteinuria ≥300 mg/24h o cociente prot/creat ≥0,3</td><td>Internación · Sulfato Mg si criterios severidad</td></tr>
+        <tr><td><span class="tag t-r">Preeclampsia severa</span></td><td>PAS ≥160 o PAD ≥110 · O: creatinina &gt;1,1 · plaquetas &lt;100.000 · TGO/TGP &gt;2x · edema pulmonar · síntomas neurológicos/visuales</td><td>Sulfato Mg YA · Antihipertensivo IV · Terminación</td></tr>
+        <tr><td><span class="tag t-r">Eclampsia</span></td><td>Convulsiones en paciente con preeclampsia</td><td>Sulfato Mg YA · Posición lateral · O₂ · UCI</td></tr>
+        <tr><td><span class="tag t-r">HELLP</span></td><td>Hemólisis (LDH &gt;600) + TGO/TGP elevadas + Plaquetas &lt;100.000</td><td>UCI · Corticoides · Terminación urgente</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Sulfato de magnesio — Esquema de Zuspan (ACOG 2020)</div><div class="sec-hd-line"></div></div>
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Dosis de carga</div><div class="step-body">
+        <span class="drug">Sulfato de magnesio</span> <span class="dose">4 g IV en 20 min</span><br>
+        Diluir: 20 ml SO₄Mg 20% en 80 ml SF → pasar en 20 min
+      </div></div></div>
+      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Mantenimiento</div><div class="step-body">
+        <span class="drug">Sulfato de magnesio</span> <span class="dose">2 g/h IV infusión continua</span><br>
+        Continuar 24h postparto o 24h después de la última convulsión
+      </div></div></div>
+      <div class="step"><div class="step-n">!</div><div class="step-c"><div class="step-title">Monitoreo — controlar cada hora</div><div class="step-body">
+        Reflejo rotuliano presente · FR ≥12 rpm · Diuresis ≥25 ml/h<br>
+        <strong>Antídoto toxicidad:</strong> <span class="drug">Gluconato de Ca²⁺ 10%</span> <span class="dose">10 ml IV lento</span>
+      </div></div></div>
+    </div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Crisis hipertensiva — antihipertensivos (ACOG 2020)</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Fármaco</th><th>Dosis</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td><span class="drug">Nifedipina</span></td><td><span class="dose">10–20 mg VO · Repetir c/20–30 min</span></td><td>1ª línea oral · No sublingual</td></tr>
+        <tr><td><span class="drug">Labetalol</span></td><td><span class="dose">20 mg IV · Doblar c/10 min · Máx 300 mg</span></td><td>1ª línea IV · Evitar en asma</td></tr>
+        <tr><td><span class="drug">Hidralazina</span></td><td><span class="dose">5–10 mg IV c/20 min · Máx 30 mg</span></td><td>Alternativa</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body">Objetivo: PAS 140–155 / PAD 90–105. No bajar demasiado rápido — riesgo hipoperfusión fetal.</div></div>
+  </div></div>
+</div>
+
+<!-- TAB 5: ESTUDIOS -->
+<div id="gob-estudios" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Lo que NO puede faltar en toda embarazada que consulta a guardia</span></div></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Laboratorio básico — siempre</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Estudio</th><th>¿Para qué?</th></tr></thead>
+      <tbody>
+        <tr><td><strong>BHCG cuantitativa</strong></td><td>Confirmar embarazo · Sospecha ectópico · Seguimiento mola · Si baja &lt;48h = aborto probable</td></tr>
+        <tr><td><strong>Grupo y factor RH</strong></td><td>Si Rh negativo → inmunoglobulina anti-D 300 mcg IM dentro de 72h ante cualquier sangrado</td></tr>
+        <tr><td><strong>Hemograma completo</strong></td><td>Anemia por sangrado · Leucocitosis en séptico · Plaquetas en HELLP</td></tr>
+        <tr><td><strong>Coagulación (KPTT · TP · Fibrinógeno)</strong></td><td>DPPNI · HPP · HELLP — coagulopatía de consumo</td></tr>
+        <tr><td><strong>Hepatograma + LDH</strong></td><td>HELLP (TGO/TGP &gt;2x, LDH &gt;600) · Daño hepático en preeclampsia severa</td></tr>
+        <tr><td><strong>Función renal + ionograma</strong></td><td>Daño renal en preeclampsia · Creatinina &gt;1,1 = criterio severidad</td></tr>
+        <tr><td><strong>Proteinuria en orina</strong></td><td>Diagnóstico de preeclampsia · Cociente prot/creat ≥0,3 = proteinuria significativa</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Ecografía obstétrica — qué buscar según situación</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Hallazgo ecográfico</th><th>Qué descarta / confirma</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Localización del saco gestacional</strong></td><td>Saco fuera del útero o ausente con BHCG+ → ectópico</td></tr>
+        <tr><td><strong>Vitalidad fetal (latido)</strong></td><td>Ausente → aborto retenido o muerte fetal</td></tr>
+        <tr><td><strong>Localización de placenta</strong></td><td>Placenta previa (ocluye OCE) · Inserción baja</td></tr>
+        <tr><td><strong>Hematoma retroplacentario</strong></td><td>Confirma DPPNI</td></tr>
+        <tr><td><strong>Imagen en copos de nieve / panal</strong></td><td>Mola hidatiforme · Sin embrión en mola completa</td></tr>
+        <tr><td><strong>Líquido libre en Douglas / abdomen</strong></td><td>Hemoperitoneo → ectópico roto · DPPNI con rotura</td></tr>
+        <tr><td><strong>Longitud cervical</strong></td><td>&lt;25 mm → riesgo parto pretérmino · Cuello abierto = aborto inevitable</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="cl cl-b mt-12"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Laboratorio según sospecha clínica</span>
+    HTA/Preeclampsia: agregar ácido úrico y LDH · HPP: agregar fibrinógeno urgente · Aborto séptico: hemocultivos × 2 antes de ATB · Mola: BHCG cuantitativa seriada</div></div>
+  </div></div>
+</div>

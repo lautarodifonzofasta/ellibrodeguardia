@@ -1,0 +1,47 @@
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="far" onclick="switchTab(this,'far','far-dx')">🔍 Centor / McIsaac</div>
+  <div class="tab" data-tab-grp="far" onclick="switchTab(this,'far','far-tto')">💊 Tratamiento</div>
+</div>
+<div id="far-dx" class="tab-pane on">
+  <div class="card"><div class="card-body">
+    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">El 80-90% son virales — el objetivo es identificar el 10% que necesita ATB</span>Principales bacterias: S. pyogenes (EBHGA). Complicaciones si no tratado: fiebre reumática, absceso periamigdalino.</div></div>
+    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Score de McIsaac (modificación de Centor)</div><div class="sec-hd-line"></div></div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Criterio</th><th>Puntos</th></tr></thead>
+      <tbody>
+        <tr><td>T° &gt;38°C</td><td class="tbl-dose">+1</td></tr>
+        <tr><td>Ausencia de tos</td><td class="tbl-dose">+1</td></tr>
+        <tr><td>Exudado o inflamación amigdalina</td><td class="tbl-dose">+1</td></tr>
+        <tr><td>Adenopatía cervical anterior dolorosa</td><td class="tbl-dose">+1</td></tr>
+        <tr><td>Edad 3–14 años</td><td class="tbl-dose">+1</td></tr>
+        <tr><td>Edad ≥45 años</td><td class="tbl-dose">-1</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tbl-wrap mt-8"><table class="tbl">
+      <thead><tr><th>Score</th><th>Probabilidad EBHGA</th><th>Conducta</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-g">≤0</span></td><td>~2%</td><td>No ATB, no cultivo</td></tr>
+        <tr><td><span class="tag t-g">1</span></td><td>~5%</td><td>No ATB, no cultivo</td></tr>
+        <tr><td><span class="tag t-a">2–3</span></td><td>~15–32%</td><td>Cultivo / RADT, tratar si positivo</td></tr>
+        <tr><td><span class="tag t-r">4–5</span></td><td>~52%</td><td>Tratar empíricamente (o cultivo)</td></tr>
+      </tbody>
+    </table></div>
+  </div></div>
+</div>
+<div id="far-tto" class="tab-pane">
+  <div class="card"><div class="card-body">
+    <div class="algo">
+      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Antibiótico si McIsaac ≥4 o cultivo/RADT positivo</div><div class="step-body">
+        <span class="drug">Amoxicilina</span> <span class="dose">500 mg c/8h VO × 10 días</span> — <strong>primera elección</strong><br>
+        O <span class="drug">Amoxicilina</span> <span class="dose">1g c/12h VO × 10 días</span><br>
+        <em>Si alergia a penicilina:</em> <span class="drug">Azitromicina</span> <span class="dose">500 mg/día × 5 días</span> O <span class="drug">Claritromicina</span> <span class="dose">500 mg c/12h × 10 días</span>
+      </div></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Analgesia / antitérmicos</div><div class="step-body">
+        <span class="drug">Ibuprofeno</span> <span class="dose">400 mg c/8h</span> (superior al paracetamol en odinofagia)<br>
+        <span class="drug">Dexametasona</span> <span class="dose">10 mg IM dosis única</span> — reduce dolor en primeras 24h (opcional)
+      </div></div></div>
+      <div class="step"><div class="step-n">!</div><div class="step-c"><div class="step-title">Sospecha de mononucleosis</div><div class="step-body">Adenopatías cervicales masivas + exudado bilateral + esplenomegalia + joven → NO dar amoxicilina (rash en 90%). Pedir serología VEB / Monospot.</div></div></div>
+    </div>
+  </div></div>
+</div>
