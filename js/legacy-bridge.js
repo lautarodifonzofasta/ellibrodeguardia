@@ -14,6 +14,7 @@ export function installLegacyBridge() {
   window.navId = goTo;
   window.navSb = goTo;
   window.calcEG = calcEG;
+  window.showAAZone = showAAZone;
 }
 
 // Ported verbatim from legacy-index.html:1371-1386. Reads sibling tabs'
@@ -61,4 +62,22 @@ function calcEG() {
   }
   resultEl.textContent = `${r.weeks} sem + ${r.days} días`;
   if (trimEl) trimEl.textContent = `${r.trimester} · ${r.half}`;
+}
+const AA_ZONES = ['hcd','epi','hci','fd','meso','fi','fid','hipo','fii'];
+function showAAZone(id) {
+  AA_ZONES.forEach(z => {
+    const c = document.getElementById('q-'+z);
+    const l = document.getElementById('ql-'+z);
+    if (c) c.classList.remove('active');
+    if (l) l.classList.remove('active');
+  });
+  const ac = document.getElementById('q-'+id);
+  const al = document.getElementById('ql-'+id);
+  if (ac) ac.classList.add('active');
+  if (al) al.classList.add('active');
+  const empty = document.getElementById('result-empty');
+  if (empty) empty.style.display = 'none';
+  document.querySelectorAll('.result-zone').forEach(z => z.classList.remove('on'));
+  const zone = document.getElementById('rz-'+id);
+  if (zone) zone.classList.add('on');
 }

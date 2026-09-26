@@ -4,6 +4,6 @@
   "type": "module",
   "description": "Dev-only manifest — not a build step. Declares ES module syntax so `node --test` can run the calculator tests; the deployed site is plain static files and ignores this file entirely (browsers don't read package.json).",
   "scripts": {
-    "test": "node --test tests/"
+    "test": "node --test \"tests/**/*.test.mjs\""
   }
 }
