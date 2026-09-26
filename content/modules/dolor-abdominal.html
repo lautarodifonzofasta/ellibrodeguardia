@@ -90,7 +90,7 @@
   <div class="dx-item alta"><div class="dx-name">Úlcera péptica</div><div class="dx-clave">Dolor post/preprandial, alivio con antiácidos</div></div>
   <div class="prob-label media">Probabilidad media</div>
   <div class="dx-item media"><div class="dx-name">Perforación de úlcera</div><div class="dx-clave">Abdomen en tabla, inicio brusco, neumoperitoneo</div></div>
-  <div class="dx-item media"><div class="dx-name">Gastritis / GERD</div><div class="dx-clave">AINES, H. pylori, pirosis, sin defensa</div></div>
+  <div class="dx-item media"><div class="dx-name">Gastritis / ERGE</div><div class="dx-clave">AINEs, H. pylori, pirosis, sin defensa</div></div>
   <div class="prob-label baja">A descartar</div>
   <div class="dx-item baja"><div class="dx-name">IAM inferior / SCA</div><div class="dx-clave">ECG obligatorio — el infarto puede debutar como epigastralgia</div></div>
   <div class="dx-item baja"><div class="dx-name">Disección aórtica</div><div class="dx-clave">Dolor desgarrante, pulsos asimétricos, HTA severa</div></div>
@@ -109,18 +109,19 @@
   <div class="zone-organs">Bazo · Cola del páncreas · Ángulo esplénico · Estómago</div>
   <div class="prob-label alta">Probabilidad alta</div>
   <div class="dx-item alta"><div class="dx-name">Pancreatitis aguda</div><div class="dx-clave">Cola pancreática — lipasa ↑↑, dolor en faja</div></div>
-  <div class="dx-item alta"><div class="dx-name">Esplenomegalia dolorosa</div><div class="dx-clave">Hepatitis viral, EBV, hematológico</div></div>
+  <div class="dx-item alta"><div class="dx-name">Esplenomegalia dolorosa</div><div class="dx-clave">Hepatitis viral, VEB, hematológico</div></div>
   <div class="prob-label media">Probabilidad media</div>
   <div class="dx-item media"><div class="dx-name">Infarto esplénico</div><div class="dx-clave">FA, endocarditis, trombofilia — Kehr (+)</div></div>
-  <div class="dx-item media"><div class="dx-name">Rotura esplénica</div><div class="dx-clave">Trauma, EBV — hipotensión, Kehr, peritonismo</div></div>
+  <div class="dx-item media"><div class="dx-name">Rotura esplénica</div><div class="dx-clave">Trauma, VEB — hipotensión, Kehr, peritonismo</div></div>
   <div class="prob-label baja">A descartar</div>
   <div class="dx-item baja"><div class="dx-name">Úlcera gástrica perforada</div><div class="dx-clave">Abdomen en tabla, inicio brusco</div></div>
   <div class="dx-item baja"><div class="dx-name">Pleuritis basal izquierda</div><div class="dx-clave">Dolor pleurítico, sin defensa</div></div>
   <div class="cl cl-g" style="margin-top:12px"><div class="cl-ico">🔬</div><div class="cl-body"><span class="cl-title">Estudios de elección</span>
     <ul class="bullets mt-8">
       <li>Ecografía — bazo, líquido libre</li>
-      <li>Lipasa · hemograma · serologías (EBV si contexto)</li>
-      <li>TAC con contraste si inestabilidad o duda</li>
+      <li>Lipasa · hemograma · serologías (VEB si contexto)</li>
+      <li>TAC con contraste si estable con duda diagnóstica</li>
+      <li>Inestable → eFAST + cirugía, sin TAC</li>
     </ul>
   </div></div>
 </div></div></div>
@@ -134,7 +135,7 @@
   <div class="dx-item media"><div class="dx-name">Pielonefritis aguda</div><div class="dx-clave">Fiebre alta, Giordano (+), dolor constante, piuria</div></div>
   <div class="dx-item media"><div class="dx-name">Colitis / masa colónica</div><div class="dx-clave">Cambio de hábito, sangrado, contexto</div></div>
   <div class="prob-label baja">A descartar</div>
-  <div class="dx-item baja"><div class="dx-name">Apendicitis retrocecal</div><div class="dx-clave">Simula cólico renal — psoas sign (+)</div></div>
+  <div class="dx-item baja"><div class="dx-name">Apendicitis retrocecal</div><div class="dx-clave">Simula cólico renal — signo del psoas (+)</div></div>
   <div class="cl cl-g" style="margin-top:12px"><div class="cl-ico">🔬</div><div class="cl-body"><span class="cl-title">Estudios de elección</span>
     <ul class="bullets mt-8">
       <li>Orina completa · función renal · hemograma</li>
@@ -233,6 +234,7 @@
   <div class="dx-item alta"><div class="dx-name">Diverticulitis aguda</div><div class="dx-clave">"Apendicitis izquierda", fiebre, defensa localizada</div></div>
   <div class="prob-label media">Probabilidad media</div>
   <div class="dx-item media"><div class="dx-name">EPI / Salpingitis izquierda</div><div class="dx-clave">Mujer en edad fértil, descarga vaginal</div></div>
+  <div class="dx-item media"><div class="dx-name">Embarazo ectópico</div><div class="dx-clave">Mujer en edad fértil — BHCG urgente</div></div>
   <div class="dx-item media"><div class="dx-name">Cólico renoureteral</div><div class="dx-clave">Hematuria, irradiación inguinal</div></div>
   <div class="dx-item media"><div class="dx-name">Colitis isquémica</div><div class="dx-clave">Adulto mayor, ateroesclerosis</div></div>
   <div class="prob-label baja">A descartar</div>
@@ -254,7 +256,7 @@
 <div class="card"><div class="card-body">
   <div class="sec-hd"><div class="sec-hd-lbl">Anamnesis orientada — OPQRST</div><div class="sec-hd-line"></div></div>
   <div class="algo">
-    <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">¿Dónde empezó el dolor y a dónde se fue?</div><div class="step-body">Migratorio (periumbilical → FID) = patognomónico de apendicitis. Irradiación a ingle = urolitiasis. Al dorso = pancreatitis, disección aórtica.</div></div></div>
+    <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">¿Dónde empezó el dolor y a dónde se fue?</div><div class="step-body">Migratorio (periumbilical → FID) = típico de apendicitis. Irradiación a ingle = urolitiasis. Al dorso = pancreatitis, disección aórtica.</div></div></div>
     <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">¿Inicio gradual o brusco?</div><div class="step-body">Inicio súbito = perforación, disección, isquemia, torsión, ectópico roto. Gradual = inflamatorio (apendicitis, colecistitis, diverticulitis).</div></div></div>
     <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">¿Constante o en cólico?</div><div class="step-body">Cólico = víscera hueca (uréter, vesícula, intestino). Constante con peritonismo = proceso inflamatorio que comprometió el peritoneo.</div></div></div>
     <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">¿Cuánto tiempo lleva? ¿Episodios previos similares?</div><div class="step-body">Recurrentes = cólico biliar, urolitiasis, EII. Primer episodio progresivo = apendicitis, diverticulitis.</div></div></div>
@@ -265,7 +267,7 @@
     <div class="step"><div class="step-n">9</div><div class="step-c"><div class="step-title">En mujer: ¿FUM? ¿Podría estar embarazada?</div><div class="step-body">BHCG ante toda mujer en edad fértil con dolor abdominal. El embarazo ectópico puede matar y simular apendicitis.</div></div></div>
     <div class="step"><div class="step-n">10</div><div class="step-c"><div class="step-title">¿Descarga vaginal, disuria, hematuria?</div><div class="step-body">Descarga = EPI, vaginitis. Disuria + hematuria = ITU, urolitiasis. Hematuria sin dolor = neoplasia hasta demostrar lo contrario.</div></div></div>
     <div class="step"><div class="step-n">11</div><div class="step-c"><div class="step-title">¿Cirugías abdominales previas?</div><div class="step-body">Adherencias → obstrucción. Apendicectomía previa no descarta dolor en FID.</div></div></div>
-    <div class="step"><div class="step-n">12</div><div class="step-c"><div class="step-title">¿AINES, anticoagulantes, corticoides?</div><div class="step-body">AINES → gastropatía. Corticoides → enmascaran peritonismo. Anticoagulantes → hematoma retroperitoneal.</div></div></div>
+    <div class="step"><div class="step-n">12</div><div class="step-c"><div class="step-title">¿AINEs, anticoagulantes, corticoides?</div><div class="step-body">AINEs → gastropatía. Corticoides → enmascaran peritonismo. Anticoagulantes → hematoma retroperitoneal.</div></div></div>
     <div class="step"><div class="step-n">13</div><div class="step-c"><div class="step-title">¿HTA, FA, ateroesclerosis conocida?</div><div class="step-body">FA → isquemia mesentérica embólica. HTA + &gt;60 años → aneurisma aórtico. Siempre ECG en dolor epigástrico.</div></div></div>
     <div class="step"><div class="step-n">14</div><div class="step-c"><div class="step-title">¿Alcohol, cálculos biliares conocidos?</div><div class="step-body">85% de pancreatitis aguda = biliar o enólica.</div></div></div>
   </div>
@@ -297,14 +299,14 @@
     <thead><tr><th>Cuadrante</th><th>Diagnósticos principales</th></tr></thead>
     <tbody>
       <tr><td><strong>HCD</strong></td><td>Colecistitis · Cólico biliar · Colangitis · Hepatitis · Absceso hepático · IAM inferior</td></tr>
-      <tr><td><strong>Epigastrio</strong></td><td>Úlcera péptica · Pancreatitis · Perforación · IAM inferior · GERD · Disección aórtica</td></tr>
+      <tr><td><strong>Epigastrio</strong></td><td>Úlcera péptica · Pancreatitis · Perforación · IAM inferior · ERGE · Disección aórtica</td></tr>
       <tr><td><strong>HCI</strong></td><td>Pancreatitis (cola) · Esplenomegalia · Infarto esplénico · Rotura esplénica</td></tr>
       <tr><td><strong>Flanco D</strong></td><td>Cólico ureteral · Pielonefritis · Apendicitis retrocecal</td></tr>
       <tr><td><strong>Mesogastrio</strong></td><td>Obstrucción intestinal · Apendicitis (inicio) · Isquemia mesentérica · Aneurisma aórtico</td></tr>
       <tr><td><strong>Flanco I</strong></td><td>Cólico ureteral · Diverticulitis · Pielonefritis · Colitis isquémica</td></tr>
       <tr><td><strong>FID</strong></td><td>Apendicitis · EPI · Embarazo ectópico · Urolitiasis · Crohn · Torsión ovárica</td></tr>
       <tr><td><strong>Hipogastrio</strong></td><td>Retención urinaria · Cistitis · EPI · Amenaza de aborto · Diverticulitis distal</td></tr>
-      <tr><td><strong>FII</strong></td><td>Diverticulitis · EPI · Urolitiasis · Colitis isquémica · Torsión ovárica · Vólvulo sigma</td></tr>
+      <tr><td><strong>FII</strong></td><td>Diverticulitis · EPI · Embarazo ectópico · Urolitiasis · Colitis isquémica · Torsión ovárica · Vólvulo sigma</td></tr>
       <tr><td><strong>Difuso</strong></td><td>Peritonitis · Obstrucción avanzada · Isquemia mesentérica · Cetoacidosis · Porfiria</td></tr>
     </tbody>
   </table></div>
@@ -322,18 +324,18 @@
   </div>
   <div class="sec-hd mt-12"><div class="sec-hd-lbl">Analgesia según tipo de dolor</div><div class="sec-hd-line"></div></div>
   <div class="g2">
-    <div class="card"><div class="card-body"><div class="dx-name" style="margin-bottom:6px">Dolor nociceptivo / inflamatorio</div><span class="drug">Ketorolac</span> <span class="dose">30 mg IV</span><br>o <span class="drug">Morfina</span> <span class="dose">0.05–0.1 mg/kg IV</span><br>+ Antiemético</div></div>
-    <div class="card"><div class="card-body"><div class="dx-name" style="margin-bottom:6px">Espasmo / cólico (víscera hueca)</div><span class="drug">Butilescopolamina</span> <span class="dose">20 mg IV</span><br>+ <span class="drug">Diclofenac</span> <span class="dose">75 mg IM</span></div></div>
+    <div class="card"><div class="card-body"><div class="dx-name" style="margin-bottom:6px">Dolor nociceptivo / inflamatorio</div><span class="drug">Ketorolac</span> <span class="dose">30 mg IV</span><br>o <span class="drug">Morfina</span> <span class="dose">0,05–0,1 mg/kg IV titulada</span><br>+ Antiemético</div></div>
+    <div class="card"><div class="card-body"><div class="dx-name" style="margin-bottom:6px">Espasmo / cólico (víscera hueca)</div><span class="drug">Hioscina butilbromuro</span> <span class="dose">20 mg IV</span><br>+ <span class="drug">Diclofenac</span> <span class="dose">75 mg IM</span></div></div>
   </div>
   <div class="sec-hd mt-12"><div class="sec-hd-lbl">Indicaciones de cirugía urgente</div><div class="sec-hd-line"></div></div>
   <ul class="bullets">
     <li><strong>Peritonitis generalizada</strong> — cualquier causa</li>
-    <li><strong>Apendicitis complicada</strong> — perforada, absceso</li>
+    <li><strong>Apendicitis complicada</strong> — perforada (si hay absceso, consultar con cirugía de guardia)</li>
     <li><strong>Colecistitis gangrenosa</strong> o con perforación</li>
     <li><strong>Obstrucción intestinal</strong> con isquemia o estrangulación</li>
     <li><strong>Aneurisma aórtico roto</strong> — emergencia inmediata</li>
     <li><strong>Embarazo ectópico roto</strong> con inestabilidad hemodinámica</li>
-    <li><strong>Isquemia mesentérica</strong> — acidosis + peritonismo</li>
+    <li><strong>Isquemia mesentérica</strong> — sospecha → consulta inmediata con cirugía de guardia</li>
   </ul>
 </div></div>
 </div>
@@ -341,11 +343,11 @@
 <div id="abd-flags" class="tab-pane">
   <div class="cl cl-r"><div class="cl-ico">🔴</div><div class="cl-body"><span class="cl-title">Inestabilidad hemodinámica</span>TAS &lt;90, FC &gt;100, frialdad periférica → shock. Causas: ectópico roto, aneurisma, isquemia, sepsis.</div></div>
   <div class="cl cl-r"><div class="cl-ico">🔴</div><div class="cl-body"><span class="cl-title">Abdomen en tabla / defensa generalizada</span>Peritonitis franca → cirugía urgente. Llamar a cirugía sin esperar imagen.</div></div>
-  <div class="cl cl-r"><div class="cl-ico">🔴</div><div class="cl-body"><span class="cl-title">Tríada de Charcot</span>Fiebre + ictericia + dolor en HCD = colangitis. Con hipotensión + alteración del sensorio = Pentada de Reynolds → sepsis biliar.</div></div>
-  <div class="cl cl-r"><div class="cl-ico">🔴</div><div class="cl-body"><span class="cl-title">Dolor desproporcionado al examen</span>Isquemia mesentérica: dolor severo con abdomen blando. Lactato elevado confirma. Ojo con el período de calma — la mejoría del dolor (espontánea o tras analgesia) no descarta isquemia, puede ser necrosis de terminaciones nerviosas antes de la perforación.</div></div>
+  <div class="cl cl-r"><div class="cl-ico">🔴</div><div class="cl-body"><span class="cl-title">Tríada de Charcot</span>Fiebre + ictericia + dolor en HCD = colangitis. Con hipotensión + alteración del sensorio = Péntada de Reynolds → sepsis biliar.</div></div>
+  <div class="cl cl-r"><div class="cl-ico">🔴</div><div class="cl-body"><span class="cl-title">Dolor desproporcionado al examen</span>Isquemia mesentérica: dolor severo con abdomen blando. Lactato elevado apoya, pero normal no descarta → angioTC. Ojo con el período de calma — la mejoría del dolor (espontánea o tras analgesia) no descarta isquemia, puede ser necrosis de terminaciones nerviosas antes de la perforación.</div></div>
   <div class="cl cl-r"><div class="cl-ico">🔴</div><div class="cl-body"><span class="cl-title">Masa pulsátil en epigastrio &gt;60 años</span>Aneurisma aórtico abdominal hasta demostrar lo contrario. Eco a la cabecera + cirugía vascular inmediata.</div></div>
   <div class="cl cl-a"><div class="cl-ico">🟠</div><div class="cl-body"><span class="cl-title">BHCG (+) + dolor FID/FII + inestabilidad</span>Embarazo ectópico roto — emergencia obstétrico-quirúrgica.</div></div>
   <div class="cl cl-a"><div class="cl-ico">🟠</div><div class="cl-body"><span class="cl-title">Neumoperitoneo en Rx tórax de pie</span>Aire libre subdiafragmático → perforación de víscera hueca. Cirugía urgente.</div></div>
   <div class="cl cl-a"><div class="cl-ico">🟠</div><div class="cl-body"><span class="cl-title">Lactato &gt;2 mmol/L</span>Hipoperfusión / isquemia. Combinar con contexto clínico. Escalar urgente.</div></div>
-  <div class="cl cl-a"><div class="cl-ico">🟠</div><div class="cl-body"><span class="cl-title">Vómitos fecaloideos</span>Obstrucción intestinal baja avanzada → cirugía urgente.</div></div>
+  <div class="cl cl-a"><div class="cl-ico">🟠</div><div class="cl-body"><span class="cl-title">Vómitos fecaloideos</span>Obstrucción intestinal baja avanzada → consultar con cirugía de guardia.</div></div>
 </div>
