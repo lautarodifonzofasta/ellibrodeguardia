@@ -99,6 +99,13 @@
     "icon": "⚡",
     "badge": "crit"
   },
+  "tec": {
+    "title": "TEC",
+    "category": "🧠 Neurológico",
+    "icon": "⛑️",
+    "sub": "Traumatismo encefalocraneano",
+    "badge": "crit"
+  },
   "cefalea": {
     "title": "Cefalea",
     "category": "🧠 Neurológico",
