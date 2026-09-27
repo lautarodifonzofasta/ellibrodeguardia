@@ -112,23 +112,177 @@ export async function renderRcp(container) {
     updateLive(st, now);
   }
 
-  /** Repaints only the running clocks (no re-render, so taps aren't lost). */
+  /** Repaints only the running clocks and rings (no re-render, so taps aren't lost). */
   function updateLive(st, now) {
     if (!st) return;
     const set = (sel, text) => main.querySelectorAll(sel).forEach(el => { el.textContent = text; });
     set('[data-live="total"]', mmss(st.totalMs));
-    if (st.cycle) set('[data-live="cycle"]', mmss(st.cycle.elapsedMs));
-    if (st.nextEvent) set('[data-live="next"]', st.nextEvent.inMs > 0 ? mmss(st.nextEvent.inMs) : `+${mmss(-st.nextEvent.inMs)}`);
-    set('[data-live="pause"]', st.pauses.current ? mmss(st.pauses.current.ms) : '');
-    for (const m of st.medications.inProfile) {
-      set(`[data-live="window-${m.drugId}"]`, windowLabel(m, now));
-      set(`[data-live="since-${m.drugId}"]`, m.sinceLastMs == null ? '' : mmss(m.sinceLastMs));
+    const ring = cycleRing(st);
+    set('[data-live="cycle-big"]', ring.big);
+    set('[data-live="cycle-sub"]', ring.sub);
+    main.querySelectorAll('[data-ring="cycle"]').forEach(el => el.setAttribute('stroke-dashoffset', ringOffset(ring.progress)));
+    const drug = ringDrug(st);
+    if (drug) {
+      const d = drugRing(drug, now);
+      set('[data-live="drug-big"]', d.big);
+      set('[data-live="drug-sub"]', d.sub);
+      main.querySelectorAll('[data-ring="drug"]').forEach(el => el.setAttribute('stroke-dashoffset', ringOffset(d.progress)));
     }
   }
 
   function windowLabel(m, now) {
     if (!m.windowText) return '';
     return m.windowText.replace('{mm:ss}', mmss(m.window.fromAt - now));
+  }
+
+  // ─── Ring clocks ────────────────────────────────────────────────────────
+  // Two ring clocks: compressions (the current cycle) and the drug that has a
+  // repeat interval in the profile (adrenalina). SVG draws only the ring; the
+  // numbers are HTML on top, so they stay readable and accessible.
+  const RING_R = 52;
+  const RING_C = 2 * Math.PI * RING_R;
+  const ringOffset = p => (RING_C * (1 - Math.min(1, Math.max(0, p)))).toFixed(2);
+
+  function ringSvg(name, progress, tickAt) {
+    let tick = '';
+    if (tickAt != null) {
+      const a = tickAt * 2 * Math.PI - Math.PI / 2;
+      const pt = r => `${(60 + r * Math.cos(a)).toFixed(2)} ${(60 + r * Math.sin(a)).toFixed(2)}`;
+      const [x1, y1] = pt(RING_R - 8).split(' ');
+      const [x2, y2] = pt(RING_R + 8).split(' ');
+      tick = `<line class="rcp-ring-tick" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`;
+    }
+    return `<svg class="rcp-ring-svg" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+      <circle class="rcp-ring-track" cx="60" cy="60" r="${RING_R}"/>
+      <circle class="rcp-ring-bar" data-ring="${name}" cx="60" cy="60" r="${RING_R}"
+        stroke-dasharray="${RING_C.toFixed(2)}" stroke-dashoffset="${ringOffset(progress)}" transform="rotate(-90 60 60)"/>
+      ${tick}</svg>`;
+  }
+
+  /** What the compressions ring shows right now. */
+  function cycleRing(st) {
+    const cyc = st.cycle;
+    if (!cyc) return { label: 'compresiones', big: '--:--', sub: '', progress: 0, tone: 'blue', tick: null };
+    if (st.pauses.current) {
+      return { label: 'pausa', big: mmss(st.pauses.current.ms), sub: `Ciclo ${cyc.number} · ${mmss(cyc.elapsedMs)}`, progress: cyc.durationMs ? cyc.elapsedMs / cyc.durationMs : 0, tone: 'amber', tick: null };
+    }
+    if (!cyc.durationMs) return { label: 'compresiones', big: mmss(cyc.elapsedMs), sub: `Ciclo ${cyc.number}`, progress: 0, tone: 'blue', tick: null };
+    const tick = (cyc.durationMs - profile.cycle.preAlertSec * 1000) / cyc.durationMs;
+    if (cyc.overdueMs > 0) return { label: 'compresiones', big: `+${mmss(cyc.overdueMs)}`, sub: `Ciclo ${cyc.number} · ${mmss(cyc.durationMs)}`, progress: 1, tone: 'red', tick };
+    const tone = st.alert?.kind === 'check_rhythm' ? 'red' : st.alert?.kind === 'pre_alert' ? 'amber' : 'blue';
+    return { label: 'compresiones', big: mmss(cyc.elapsedMs), sub: `/ ${mmss(cyc.durationMs)} · Ciclo ${cyc.number}`, progress: cyc.elapsedMs / cyc.durationMs, tone, tick };
+  }
+
+  /** The profile drug that gets the second ring: the first one with a repeat interval. */
+  const ringDrug = st => st.medications.inProfile.find(m => profile.medications.find(d => d.id === m.drugId).intervalSec) || null;
+
+  function drugRing(m, now) {
+    const def = profile.medications.find(d => d.id === m.drugId);
+    const maxMs = def.intervalSec.max * 1000;
+    if (!m.count) return { label: m.name.toLocaleLowerCase('es'), big: '--:--', sub: 'sin dosis', progress: 0, tone: 'none', tick: def.intervalSec.min / def.intervalSec.max };
+    const tone = { before: 'blue', open: 'green', late: 'red' }[m.windowState] || 'none';
+    return {
+      label: `última ${m.name.toLocaleLowerCase('es')}`,
+      big: mmss(m.sinceLastMs),
+      sub: windowLabel(m, now),
+      progress: m.sinceLastMs / maxMs,
+      tone,
+      tick: def.intervalSec.min / def.intervalSec.max,
+    };
+  }
+
+  function ringHtml(name, r) {
+    return `<div class="rcp-ring is-${r.tone}">
+        ${ringSvg(name, r.progress, r.tick)}
+        <div class="rcp-ring-center">
+          <span class="rcp-ring-label">${esc(r.label)}</span>
+          <span class="rcp-ring-big" data-live="${name}-big">${esc(r.big)}</span>
+          <span class="rcp-ring-sub" data-live="${name}-sub">${esc(r.sub)}</span>
+        </div>
+      </div>`;
+  }
+
+  function activeHtml(st) {
+    const now = Date.now();
+    const drug = ringDrug(st);
+    const prompt = st.prompt ? `<div class="rcp-prompt is-${PROMPT_TONE[st.prompt.key] || 'blue'}" role="status">${esc(st.prompt.screen)}</div>` : '';
+    const boxNote = st.algorithm?.note && st.state === S.CPR_ACTIVE && !st.cycle?.durationMs ? `<p class="rcp-sub">${esc(st.algorithm.note)}</p>` : '';
+    const drugInd = drug ? st.indications.find(i => i.drugId === drug.drugId) : null;
+    const otherInds = st.indications.filter(i => i !== drugInd).map(i => `
+      <div class="rcp-ind">
+        <span class="rcp-ind-text">${esc(i.message.screen)}</span>
+        ${i.kind === 'group' && i.options.length > 1
+          ? '<button class="rcp-btn rcp-small" data-act="meds">Registrar</button>'
+          : `<button class="rcp-btn rcp-small" data-act="med-open" data-arg="${esc(i.drugId || i.options[0].drugId)}">Registrar</button>`}
+      </div>`).join('');
+    const reminders = st.algorithm?.actions.length
+      ? `<p class="rcp-reminders"><span class="rcp-box">Box ${esc(st.algorithm.box)}</span> ${st.algorithm.actions.map(esc).join(' · ')}</p>` : '';
+    const others = st.medications.inProfile.filter(m => m.count && m !== drug).map(m => `${esc(m.name)} ×${m.count}`)
+      .concat(st.medications.others.map(m => `${esc(m.name)} ×${m.count}`));
+
+    return `
+      <div class="rcp-topcard">
+        <div class="rcp-total"><span class="rcp-total-label">duración total</span><span class="rcp-total-time" data-live="total">${mmss(st.totalMs)}</span></div>
+        <span class="rcp-top-actions">
+          <button class="rcp-btn rcp-small rcp-ok" data-act="rosc-ask">ROSC</button>
+          <button class="rcp-btn rcp-small rcp-ghost" data-act="stop-ask">Finalizar</button>
+        </span>
+      </div>
+      ${badge()}
+      ${prompt}${boxNote}
+      ${stateActionsHtml(st)}
+      <section class="rcp-ringcard" aria-label="Compresiones">
+        ${ringHtml('cycle', cycleRing(st))}
+        <div class="rcp-ringside">
+          ${st.state === S.CPR_ACTIVE ? '<button class="rcp-btn rcp-primary" data-act="check">Evaluar ritmo</button>' : ''}
+          <button class="rcp-btn" data-act="shocks">Descarga</button>
+          <div class="rcp-counters"><span><small>ciclos</small><b>${st.cycle ? st.cycle.number : 0}</b></span><span><small>descargas</small><b>${st.shocks.length}</b></span></div>
+        </div>
+      </section>
+      ${drug ? `
+      <section class="rcp-ringcard" aria-label="${esc(drug.name)}">
+        ${ringHtml('drug', drugRing(drug, now))}
+        <div class="rcp-ringside">
+          <button class="rcp-btn ${drugInd ? 'rcp-warn-btn' : 'rcp-primary'}" data-act="med-open" data-arg="${esc(drug.drugId)}">${esc(drug.name)}</button>
+          <button class="rcp-btn" data-act="meds">Otras drogas</button>
+          <div class="rcp-counters"><span><small>dosis</small><b>${drug.count}</b></span></div>
+        </div>
+        ${drugInd ? `<p class="rcp-ring-ind">${esc(drugInd.message.screen)}</p>` : ''}
+      </section>` : ''}
+      ${otherInds}
+      <div class="rcp-stack"><button class="rcp-btn" data-act="other">Otro evento</button></div>
+      ${reminders}
+      <p class="rcp-sub">Ventilación: ${esc(st.ventilation.text)}${others.length ? ` · ${others.join(' · ')}` : ''}</p>`;
+  }
+
+  /** The big decision buttons of the states that need one (above the rings). */
+  function stateActionsHtml(st) {
+    switch (st.state) {
+      case S.RHYTHM_CHECK:
+        return `<div class="rcp-stack">
+            <button class="rcp-btn rcp-huge rcp-danger" data-act="rhythm" data-arg="shockable">${esc(profile.rhythms.shockable)}</button>
+            <button class="rcp-btn rcp-huge rcp-info" data-act="rhythm" data-arg="non_shockable">${esc(profile.rhythms.non_shockable)}</button>
+            <button class="rcp-btn rcp-ghost" data-act="cancel-check">Cancelar (reanudar compresiones)</button>
+          </div>`;
+      case S.SHOCKABLE:
+        return `<div class="rcp-stack">
+            <button class="rcp-btn rcp-huge rcp-danger" data-act="shock">DESCARGA REALIZADA</button>
+            <ul class="rcp-ref">${profile.reference.shock.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
+            <button class="rcp-btn rcp-ghost" data-act="no-shock-ask">Reanudar sin descarga</button>
+          </div>`;
+      case S.POST_SHOCK:
+        return '<div class="rcp-stack"><button class="rcp-btn rcp-huge rcp-ok" data-act="resume">Reiniciar compresiones</button></div>';
+      case S.NON_SHOCKABLE:
+        if (st.algorithm.kind === 'rosc_check') {
+          return `<div class="rcp-stack">
+              <button class="rcp-btn rcp-huge rcp-ok" data-act="rosc-ask">${esc(st.algorithm.yesLabel)}</button>
+              <button class="rcp-btn rcp-huge rcp-info" data-act="resume">${esc(st.algorithm.noLabel)}</button>
+            </div>`;
+        }
+        return '<div class="rcp-stack"><button class="rcp-btn rcp-huge rcp-info" data-act="resume">Continuar RCP</button></div>';
+      default:
+        return '';
+    }
   }
 
   const badge = () => `<span class="rcp-profile">${esc(profileLabel(profile))}</span>`;
@@ -157,86 +311,6 @@ export async function renderRcp(container) {
         <p class="rcp-resume-info">Tiempo total <b data-live="total">${mmss(st.totalMs)}</b> · Ciclo ${st.cycle ? st.cycle.number : '-'} · Box ${esc(st.algorithm?.box ?? '-')}</p>
         <button class="rcp-btn rcp-huge rcp-primary" data-act="resume-view">Continuar</button>
       </div>`;
-  }
-
-  function activeHtml(st) {
-    const shocks = st.shocks.length;
-    const cyc = st.cycle;
-    const cycleLine = cyc ? `Ciclo ${cyc.number} · <span data-live="cycle">${mmss(cyc.elapsedMs)}</span>${cyc.durationMs ? ` / ${mmss(cyc.durationMs)}` : ''}` : '';
-    const prompt = st.prompt ? `<div class="rcp-prompt is-${PROMPT_TONE[st.prompt.key] || 'blue'}" role="status">${esc(st.prompt.screen)}</div>` : '';
-    const next = st.nextEvent ? `<p class="rcp-next">Evaluar ritmo en <b data-live="next"></b></p>` : '';
-    const boxNote = st.algorithm?.note && st.state === S.CPR_ACTIVE && !cyc?.durationMs ? `<p class="rcp-sub">${esc(st.algorithm.note)}</p>` : '';
-    const inds = st.indications.map(i => `
-      <div class="rcp-ind">
-        <span class="rcp-ind-text">${esc(i.message.screen)}</span>
-        ${i.kind === 'group' && i.options.length > 1
-          ? '<button class="rcp-btn rcp-small" data-act="meds">Registrar</button>'
-          : `<button class="rcp-btn rcp-small" data-act="med-open" data-arg="${esc(i.drugId || i.options[0].drugId)}">Registrar</button>`}
-      </div>`).join('');
-    const windows = st.medications.inProfile.filter(m => m.windowText).map(m =>
-      `<p class="rcp-window">${esc(m.name)}: <b data-live="window-${esc(m.drugId)}"></b></p>`).join('');
-    const reminders = st.algorithm?.actions.length
-      ? `<p class="rcp-reminders"><span class="rcp-box">Box ${esc(st.algorithm.box)}</span> ${st.algorithm.actions.map(esc).join(' · ')}</p>` : '';
-    const doses = st.medications.inProfile.filter(m => m.count).map(m => `${esc(m.name)} ×${m.count}`)
-      .concat(st.medications.others.map(m => `${esc(m.name)} ×${m.count}`));
-    const metrics = [`Ciclo ${cyc ? cyc.number : '-'}`, `Descargas ${shocks}`, ...doses];
-    if (st.pauses.current) metrics.push('Pausa actual <b data-live="pause"></b>');
-
-    return `
-      <div class="rcp-top">${badge()}
-        <span class="rcp-top-actions">
-          <button class="rcp-btn rcp-small rcp-ok" data-act="rosc-ask">ROSC</button>
-          <button class="rcp-btn rcp-small rcp-ghost" data-act="stop-ask">Finalizar</button>
-        </span>
-      </div>
-      <div class="rcp-clock" data-live="total">${mmss(st.totalMs)}</div>
-      <p class="rcp-cycle">${cycleLine}</p>
-      ${prompt}${next}${boxNote}${inds}${windows}${reminders}
-      <p class="rcp-sub">Ventilación: ${esc(st.ventilation.text)}</p>
-      ${stateActionsHtml(st)}
-      <p class="rcp-metrics">${metrics.join(' · ')}</p>`;
-  }
-
-  function stateActionsHtml(st) {
-    const secondary = `
-      <div class="rcp-grid">
-        <button class="rcp-btn" data-act="meds">Administrar droga</button>
-        <button class="rcp-btn" data-act="shocks">Descarga</button>
-        <button class="rcp-btn" data-act="other">Otro evento</button>
-      </div>`;
-    switch (st.state) {
-      case S.CPR_ACTIVE:
-        return `<div class="rcp-grid">
-            <button class="rcp-btn rcp-big rcp-primary rcp-span" data-act="check">Evaluar ritmo</button>
-            <button class="rcp-btn rcp-big" data-act="meds">Administrar droga</button>
-            <button class="rcp-btn rcp-big" data-act="shocks">Descarga</button>
-            <button class="rcp-btn rcp-big rcp-span" data-act="other">Otro evento</button>
-          </div>`;
-      case S.RHYTHM_CHECK:
-        return `<div class="rcp-stack">
-            <button class="rcp-btn rcp-huge rcp-danger" data-act="rhythm" data-arg="shockable">${esc(profile.rhythms.shockable)}</button>
-            <button class="rcp-btn rcp-huge rcp-info" data-act="rhythm" data-arg="non_shockable">${esc(profile.rhythms.non_shockable)}</button>
-            <button class="rcp-btn rcp-ghost" data-act="cancel-check">Cancelar (reanudar compresiones)</button>
-          </div>${secondary}`;
-      case S.SHOCKABLE:
-        return `<div class="rcp-stack">
-            <button class="rcp-btn rcp-huge rcp-danger" data-act="shock">DESCARGA REALIZADA</button>
-            <ul class="rcp-ref">${profile.reference.shock.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
-            <button class="rcp-btn rcp-ghost" data-act="no-shock-ask">Reanudar sin descarga</button>
-          </div>${secondary}`;
-      case S.POST_SHOCK:
-        return `<div class="rcp-stack"><button class="rcp-btn rcp-huge rcp-ok" data-act="resume">Reiniciar compresiones</button></div>${secondary}`;
-      case S.NON_SHOCKABLE:
-        if (st.algorithm.kind === 'rosc_check') {
-          return `<div class="rcp-stack">
-              <button class="rcp-btn rcp-huge rcp-ok" data-act="rosc-ask">${esc(st.algorithm.yesLabel)}</button>
-              <button class="rcp-btn rcp-huge rcp-info" data-act="resume">${esc(st.algorithm.noLabel)}</button>
-            </div>${secondary}`;
-        }
-        return `<div class="rcp-stack"><button class="rcp-btn rcp-huge rcp-info" data-act="resume">Continuar RCP</button></div>${secondary}`;
-      default:
-        return '';
-    }
   }
 
   function summaryHtml() {

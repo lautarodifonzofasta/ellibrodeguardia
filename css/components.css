@@ -692,23 +692,51 @@ ul.bullets li strong { color: var(--text); }
 .rcp-resume-info { font-size: 16px; color: var(--text2); margin: 0; }
 .rcp-resume-info b { color: var(--text); font-family: var(--mono); }
 
-.rcp-clock { font-family: var(--mono); font-weight: 800; font-size: clamp(56px, 19vw, 104px); line-height: 1; color: var(--text); letter-spacing: -0.02em; margin: 6px 0 2px; }
-.rcp-cycle { font-family: var(--mono); font-size: 20px; font-weight: 700; color: var(--text2); margin: 0 0 10px; }
 .rcp-prompt { font-size: clamp(20px, 5.6vw, 26px); font-weight: 800; line-height: 1.25; padding: 14px 16px; border-radius: var(--r-lg); border: 2px solid; margin: 8px 0; }
 .rcp-prompt.is-red { border-color: var(--red); background: var(--red-bg); color: var(--text); }
 .rcp-prompt.is-amber { border-color: var(--amber); background: var(--amb-bg); color: var(--text); }
 .rcp-prompt.is-blue { border-color: var(--acc); background: var(--blue-bg); color: var(--text); }
 .rcp-prompt.is-green { border-color: var(--green); background: var(--grn-bg); color: var(--text); }
-.rcp-next { font-size: 18px; color: var(--text); margin: 6px 0; }
-.rcp-next b, .rcp-window b, .rcp-metrics b { font-family: var(--mono); }
 .rcp-sub { font-size: 13px; line-height: 1.45; color: var(--text2); margin: 6px 0; }
-.rcp-window { font-size: 15px; color: var(--text); margin: 6px 0; }
 .rcp-reminders { font-size: 14px; line-height: 1.5; color: var(--text2); margin: 8px 0; }
 .rcp-box { display: inline-block; font-size: 11px; font-weight: 700; color: var(--text); background: var(--bg3); border: 1px solid var(--border2); border-radius: 6px; padding: 1px 7px; margin-right: 4px; }
 .rcp-ind { display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 2px solid var(--amber); background: var(--amb-bg); border-radius: var(--r); padding: 8px 10px; margin: 8px 0; }
 .rcp-ind-text { font-size: 17px; font-weight: 800; color: var(--text); }
-.rcp-metrics { font-size: 13px; color: var(--text2); margin: 12px 0 0; }
 .rcp-warn { font-size: 13px; color: var(--text); border-left: 3px solid var(--red); background: var(--red-bg); padding: 8px 10px; border-radius: var(--r); margin: 10px 0; }
+
+/* Top card: total duration, ROSC and Finalizar always in reach */
+.rcp-topcard { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 8px 12px; margin-bottom: 8px; }
+.rcp-total { display: flex; flex-direction: column; }
+.rcp-total-label { font-size: 12px; color: var(--text2); }
+.rcp-total-time { font-family: var(--mono); font-size: clamp(30px, 9vw, 40px); font-weight: 800; line-height: 1.05; color: var(--text); }
+
+/* Ring clocks: compressions (current cycle) and the interval drug. The SVG
+   draws only the ring; the numbers are HTML on top. The ring colour carries
+   the state (blue running, amber pre-alert / pause, red due or overdue,
+   green drug window open); the text always says it too. */
+.rcp-ringcard { display: grid; grid-template-columns: minmax(0, 1fr) minmax(112px, 38%); gap: 10px; align-items: center; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 12px; margin: 10px 0; }
+.rcp-ring { position: relative; width: 100%; max-width: 220px; aspect-ratio: 1; justify-self: center; }
+.rcp-ring-svg { display: block; width: 100%; height: 100%; }
+.rcp-ring-track { fill: none; stroke: var(--bg3); stroke-width: 9; }
+.rcp-ring-bar { fill: none; stroke: var(--acc); stroke-width: 9; stroke-linecap: round; }
+.rcp-ring-tick { stroke: var(--text2); stroke-width: 2.5; stroke-linecap: round; }
+.rcp-ring.is-amber .rcp-ring-bar { stroke: var(--amber); }
+.rcp-ring.is-red .rcp-ring-bar { stroke: var(--red); }
+.rcp-ring.is-green .rcp-ring-bar { stroke: var(--green); }
+.rcp-ring.is-none .rcp-ring-bar { stroke: transparent; }
+.rcp-ring-center { position: absolute; inset: 14%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 2px; }
+.rcp-ring-label { font-size: 12px; color: var(--text2); }
+.rcp-ring-big { font-family: var(--mono); font-size: clamp(28px, 9vw, 42px); font-weight: 800; line-height: 1; color: var(--text); }
+.rcp-ring.is-red .rcp-ring-big { color: var(--red); }
+.rcp-ring-sub { font-size: 12px; line-height: 1.25; color: var(--text2); }
+.rcp-ringside { display: flex; flex-direction: column; gap: 8px; }
+.rcp-ringside .rcp-btn { min-height: 52px; font-size: 16px; padding: 8px 10px; }
+.rcp-counters { display: flex; justify-content: space-around; gap: 6px; text-align: center; }
+.rcp-counters span { display: flex; flex-direction: column; }
+.rcp-counters small { font-size: 11px; color: var(--text2); }
+.rcp-counters b { font-family: var(--mono); font-size: 28px; line-height: 1.1; color: var(--text); }
+.rcp-ring-ind { grid-column: 1 / -1; margin: 0; font-size: 17px; font-weight: 800; text-align: center; color: var(--text); border: 2px solid var(--amber); background: var(--amb-bg); border-radius: var(--r); padding: 8px; }
+.rcp-warn-btn { background: var(--amber); border-color: var(--amber); color: var(--bg); }
 
 /* Buttons: big targets, solid colours, no motion */
 .rcp-btn { display: inline-flex; align-items: center; justify-content: center; text-align: center; min-height: 56px; padding: 10px 14px; border-radius: var(--r-lg); border: 2px solid var(--border2); background: var(--bg3); color: var(--text); font-size: 17px; font-weight: 700; line-height: 1.2; }
@@ -724,7 +752,6 @@ ul.bullets li strong { color: var(--text); }
 .rcp-ghost { background: transparent; }
 .rcp-link { background: none; border: none; color: var(--acc); text-decoration: underline; font-size: 15px; padding: 10px 0; text-align: left; min-height: 44px; }
 .rcp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
-.rcp-span { grid-column: 1 / -1; }
 .rcp-stack { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
 .rcp-ref { font-size: 13px; line-height: 1.45; color: var(--text2); margin: 4px 0 0; padding-left: 18px; }
 

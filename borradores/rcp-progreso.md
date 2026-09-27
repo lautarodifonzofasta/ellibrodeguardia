@@ -91,8 +91,13 @@ Decisiones de la Fase 2:
 27. **Indicación de grupo** (amiodarona o lidocaína): "Registrar" abre la lista para elegir, salvo que ya haya una droga elegida.
 28. **Botones de color:** el texto usa el color del fondo de la página, con contraste medido ≥ 4,5 en los dos temas.
 29. **Lidocaína:** la dosis se registra en mg. El peso es opcional y muestra el rango con una multiplicación directa, sin redondeos (70 kg → 70–105 mg).
+30. **Rediseño con dos relojes circulares**, pedido por el autor con una referencia visual. Reemplaza el "reloj total dominante" del pedido; la duración total queda arriba, junto a ROSC y Finalizar.
+    - **Anillo de compresiones:** se llena en el ciclo de 2 min, con una marca en el preaviso. Azul en curso, ámbar en el preaviso o en pausa (muestra el tiempo de pausa), rojo al vencer (muestra "+mm:ss"). A su lado van "Evaluar ritmo", "Descarga" y los contadores de ciclos y descargas.
+    - **Anillo de la droga con intervalo en el perfil (adrenalina):** cuenta desde la última dosis hasta el máximo (5 min), con una marca en el mínimo (3 min). Azul antes, verde con la ventana abierta, rojo con la ventana superada, con los textos del .md. A su lado van "Adrenalina", "Otras drogas" y el contador de dosis.
+    - Las decisiones de cada estado (ritmo, descarga, reiniciar) aparecen arriba de los anillos.
+    - De la referencia **no** se tomó lo que no está en el pedido (metrónomo, fracción de compresión, gestos de doble toque): queda para decidir con el autor.
 
-Verificación de la Fase 2: `npm test` pasa 81/81. En Edge headless a 380 px, el recorrido del criterio de aceptación pasa 36/36: Iniciar, Box 1 sin cronómetro, FV, doble toque en "Descarga realizada" (se registra una sola), preaviso y aviso de fin de ciclo, recarga en plena RCP con "¿Continuar?", adrenalina indicada y registrada con su ventana, IV, 3ª descarga, lidocaína con rango por peso, panel de descargas, ida y vuelta a otro módulo, ROSC con confirmación, resumen, post-ROSC reservado, nota, edición auditada, copiar, offline, "RCP anterior", contraste y sin errores de consola.
+Verificación de la Fase 2: `npm test` pasa 81/81. En Edge headless a 380 px, el recorrido del criterio de aceptación pasa 40/40 (con los relojes circulares): Iniciar, Box 1 sin cronómetro, FV, doble toque en "Descarga realizada" (se registra una sola), preaviso y aviso de fin de ciclo, recarga en plena RCP con "¿Continuar?", adrenalina indicada y registrada con su ventana, IV, 3ª descarga, lidocaína con rango por peso, panel de descargas, ida y vuelta a otro módulo, ROSC con confirmación, resumen, post-ROSC reservado, nota, edición auditada, copiar, offline, "RCP anterior", contraste y sin errores de consola.
 
 ### Diferencias entre `pcr.html` y el perfil AHA 2025 (para el autor; no se tocó `pcr.html`)
 
