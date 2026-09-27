@@ -325,3 +325,268 @@ ul.bullets li strong { color: var(--text); }
 .signo-name { font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 3px; }
 .signo-tech { font-size: 12px; color: var(--text2); margin-bottom: 2px; line-height: 1.4; }
 .signo-dx { font-size: 11px; color: var(--acc); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+
+/* ══ MÓDULO: POLITRAUMA ══ */
+/* content/modules/politrauma.html. Tab 1: sticky x-A-B-C-D-E jump bar
+   (ptGo() in js/legacy-bridge.js) + vertical rail with one big lettered
+   circle per step, ending in a "¿Estable?" fork. Tab 2: AMPLE (same circles,
+   neutral) + head-to-toe two-column list. Every color comes from tokens.css
+   so light and dark both work; nothing animates. */
+.pt { --pt-dot: 48px; --pt-gap: 12px; --pt-bar: 68px; }
+@media (min-width: 769px) { .pt { --pt-dot: 56px; --pt-gap: 14px; } }
+
+/* Urgency color carried by each letter: x–C red, D–E amber, AMPLE neutral */
+.pt-red     { --pt-c: var(--red);   --pt-tint: var(--red-bg); --pt-bd: var(--red-bd); }
+.pt-amb     { --pt-c: var(--amber); --pt-tint: var(--amb-bg); --pt-bd: var(--amb-bd); }
+.pt-neutral { --pt-c: var(--text);  --pt-tint: var(--bg3);    --pt-bd: var(--border2); }
+
+.pt-vh {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+  white-space: nowrap; border: 0;
+}
+
+/* Aviso inicial (reuses .cl .cl-r) */
+.pt-aviso .cl-body p + p { margin-top: 3px; }
+
+/* Sober notes: "Qué cambió en ATLS 11", "Cuándo empezarla" */
+.pt-note {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border2);
+  border-radius: var(--r);
+  padding: 9px 12px;
+  margin-bottom: 18px;
+  font-size: 12.5px; line-height: 1.55; color: var(--text2);
+}
+.pt-note p + p { margin-top: 3px; }
+.pt-note strong { color: var(--text); }
+
+/* ── Jump bar: sticky at the top of #screen (the scroll container) while
+   tab 1 is on screen. 6 × 44px targets fit in the 356px content box of a
+   380px phone (12px .view padding each side). --pt-bar = its height + air,
+   used as the steps' scroll-margin-top. */
+.pt-jump {
+  position: sticky; top: 0; z-index: 3;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 6px 0;
+  margin-bottom: 14px;
+}
+.pt-jump-in { display: flex; justify-content: space-between; gap: 4px; max-width: 360px; }
+.pt-jump-btn {
+  width: 44px; height: 44px; flex: 0 0 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; font-weight: 800; line-height: 1;
+  color: var(--pt-c);
+  background: var(--pt-tint);
+  border: 1.5px solid var(--pt-bd);
+}
+/* Hover ring only where hover is real: on touch, :hover sticks after a tap
+   and would read as a "current step" marker on the wrong letter. */
+@media (hover: hover) { .pt-jump-btn:hover { border-color: var(--pt-c); } }
+.pt-jump-btn:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+
+/* ── Rail: a 2px line through the centre of the circles column; each item
+   draws its own segment (::before) so the line runs unbroken from x down to
+   "¿Estable?", where .pt-fork takes over. */
+.pt-rail { list-style: none; margin: 0; padding: 0; }
+.pt-rail > li {
+  position: relative;
+  padding-left: calc(var(--pt-dot) + var(--pt-gap));
+  padding-bottom: 26px;
+}
+.pt-rail > li::before {
+  content: '';
+  position: absolute; top: 0; bottom: 0;
+  left: calc(var(--pt-dot) / 2 - 1px);
+  width: 2px;
+  background: var(--text3); /* ≥3:1 on --bg in both themes: the rail carries meaning */
+}
+.pt-rail > li:first-child::before { top: calc(var(--pt-dot) / 2); }
+
+.pt-step { scroll-margin-top: var(--pt-bar); }
+.pt-step-hd {
+  display: flex; align-items: center; gap: var(--pt-gap);
+  margin: 0 0 6px calc(-1 * (var(--pt-dot) + var(--pt-gap)));
+  min-height: var(--pt-dot);
+  font-size: 16px; font-weight: 700; line-height: 1.3; letter-spacing: -.2px;
+  color: var(--text);
+}
+.pt-step-hd:focus { outline: none; }
+.pt-step-hd:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; border-radius: var(--r); }
+
+/* The big letter — the largest type on the screen. Opaque base (--bg) under
+   the tint so the rail line doesn't show through the circle. */
+.pt-letter {
+  position: relative; /* paints above the rail line */
+  flex: 0 0 var(--pt-dot);
+  width: var(--pt-dot); height: var(--pt-dot);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: calc(var(--pt-dot) * .62); font-weight: 800; line-height: 1;
+  color: var(--pt-c);
+  background: linear-gradient(var(--pt-tint), var(--pt-tint)), var(--bg);
+  border: 2px solid var(--pt-bd);
+}
+/* Lowercase x: optical nudge so it sits as centred as the capitals */
+.pt-lc { padding-bottom: .1em; }
+
+/* Step blocks, always Evaluá → Hacé → Si encontrás (labels in sentence case) */
+.pt-blk { margin-top: 10px; }
+.pt-blk-lbl { font-size: 12px; font-weight: 700; color: var(--text2); margin-bottom: 3px; }
+.pt-lines { list-style: none; margin: 0; padding: 0; }
+.pt-lines li {
+  position: relative;
+  padding-left: 13px; margin-bottom: 4px;
+  font-size: 13.5px; line-height: 1.5; color: var(--text);
+}
+.pt-lines li::before {
+  content: '';
+  position: absolute; left: 1px; top: .6em;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--text3);
+}
+
+/* "Si encontrás": the only block with a faint red ground; one row per
+   hallazgo → acción */
+.pt-si { background: var(--red-bg); border-radius: var(--r); padding: 8px 12px 4px; }
+.pt-si .pt-blk-lbl { color: var(--red); margin-bottom: 0; }
+.pt-rows { list-style: none; margin: 0; padding: 0; }
+.pt-rows li { padding: 6px 0; font-size: 13.5px; line-height: 1.5; color: var(--text); }
+.pt-rows li + li { border-top: 1px solid var(--red-bd); }
+
+/* Letterless rail nodes (adjuntos, Reevaluá, ¿Estable?): small marker on
+   the line, vertically centred on the item's first line (--pt-node-y). */
+.pt-node::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--pt-dot) / 2 - 7px);
+  top: var(--pt-node-y, 3px);
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--text3);
+}
+
+.pt-adj { --pt-node-y: 16px; }
+.pt-adj details { border: 1px solid var(--border); border-radius: var(--r); background: var(--bg2); }
+.pt-adj summary {
+  list-style: none; cursor: pointer;
+  min-height: 44px; padding: 0 12px;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  font-size: 13.5px; font-weight: 600; color: var(--text);
+}
+.pt-adj summary::-webkit-details-marker { display: none; }
+/* Glyph is decorative: '/ ""' keeps it out of the accessible name (the
+   open/closed state is already announced); the plain value is the fallback. */
+.pt-adj summary::after { content: '▸'; content: '▸' / ''; font-size: 12px; color: var(--text3); }
+.pt-adj details[open] summary::after { content: '▾'; content: '▾' / ''; }
+.pt-adj summary:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; border-radius: var(--r); }
+.pt-adj ul { list-style: none; margin: 0; padding: 0 12px 6px; }
+.pt-adj li {
+  padding: 5px 0;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px; line-height: 1.5; color: var(--text2);
+}
+.pt-adj li strong { color: var(--text); }
+
+.pt-reeval { font-size: 13.5px; line-height: 1.5; color: var(--text); }
+.pt-rail > .pt-reeval { padding-bottom: 22px; }
+
+.pt-q { --pt-node-y: 3px; }
+.pt-rail > .pt-q { padding-bottom: 12px; }
+.pt-q p { font-size: 16px; font-weight: 700; line-height: 1.3; color: var(--text); }
+.pt-q::after { border-radius: 2px; transform: rotate(45deg); border-color: var(--text2); }
+
+/* ── Fork of "¿Estable?": the rail comes down, turns right along a
+   horizontal bar and drops one arrow into each outcome box. Stays two
+   columns at every width so it always reads as a decision. */
+.pt-fork {
+  --pt-fgap: 10px;
+  position: relative;
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--pt-fgap);
+  align-items: start;
+  padding-top: 30px;
+  max-width: 560px;
+}
+.pt-fork::before {
+  content: '';
+  position: absolute; top: 0; height: 16px;
+  left: calc(var(--pt-dot) / 2 - 1px);
+  right: calc(25% - var(--pt-fgap) / 4 - 1px); /* ends over the right box's centre */
+  border-left: 2px solid var(--text3);
+  border-bottom: 2px solid var(--text3);
+  border-bottom-left-radius: 8px;
+}
+.pt-branch {
+  position: relative;
+  background: var(--bg2);
+  border: 1.5px solid var(--border2);
+  border-radius: var(--r);
+  padding: 9px 11px;
+  font-size: 13px; line-height: 1.45; color: var(--text);
+}
+.pt-branch::before { /* stem from the bar down to the box */
+  content: '';
+  position: absolute; top: -16.5px; left: calc(50% - 1px);
+  width: 2px; height: 9px;
+  background: var(--text3);
+}
+.pt-branch::after { /* arrowhead */
+  content: '';
+  position: absolute; top: -7.5px; left: calc(50% - 5px);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--text3);
+}
+.pt-branch-hd { display: block; font-weight: 700; font-size: 13.5px; margin-bottom: 3px; }
+.pt-no  { border-color: var(--red-bd); }
+.pt-no .pt-branch-hd  { color: var(--red); }
+.pt-yes { border-color: var(--grn-bd); }
+.pt-yes .pt-branch-hd { color: var(--green); }
+
+/* ── Tab 2 ── */
+.pt-h2 { font-size: 15px; font-weight: 700; line-height: 1.3; color: var(--text); margin: 22px 0 10px; }
+
+/* AMPLE: 5 big neutral circles in a row, then each letter's text. When the
+   module is wide enough, each text sits directly under its letter. */
+.pt-ample { container-type: inline-size; }
+.pt-ample-row {
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: 8px;
+  justify-items: center;
+  margin-bottom: 8px;
+}
+.pt-ample-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); column-gap: 8px; }
+.pt-ample-list li {
+  padding: 6px 0;
+  border-top: 1px solid var(--border);
+  font-size: 13.5px; line-height: 1.5; color: var(--text);
+}
+.pt-ample-k { font-weight: 800; }
+.pt-ample-n { font-weight: 600; }
+.pt-ample-d { display: block; font-size: 13px; color: var(--text2); }
+@container (min-width: 600px) {
+  .pt-ample-row { justify-items: start; }
+  .pt-ample-list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .pt-ample-list li { border-top: 0; padding: 0; }
+}
+
+/* Head-to-toe: two columns, light row separators only, no outer border */
+.pt-exam { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.5; }
+.pt-exam th, .pt-exam td {
+  text-align: left; vertical-align: top;
+  padding: 7px 0;
+  border-top: 1px solid var(--border);
+}
+.pt-exam thead th { border-top: 0; padding-top: 0; font-size: 11.5px; font-weight: 600; color: var(--text2); }
+.pt-exam tbody th { width: 8.5em; padding-right: 12px; font-weight: 700; color: var(--text); }
+.pt-exam td { color: var(--text2); }
+@media (min-width: 769px) { .pt-exam tbody th { width: 11em; } }
+
+.pt-tec {
+  margin-top: 16px; padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 13px; color: var(--text2);
+}
+.pt-src { margin: 22px 0 16px; font-size: 11px; color: var(--text2); } /* bottom margin clears the fixed copyright strip */
