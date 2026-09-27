@@ -30,7 +30,7 @@ El Libro de Guardia es una aplicación web offline diseñada para médicos resid
 | 🧮 Calculadoras | GCS, SOFA, Wells, CURB-65, HEART, NIHSS y más |
 | 💊 Referencia | Drogas de emergencia con dosis |
 
-64 módulos · 11 calculadoras · 100+ fármacos con dosis
+65 módulos · 11 calculadoras · 100+ fármacos con dosis
 
 ---
 

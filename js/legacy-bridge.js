@@ -5,6 +5,9 @@
 // against the original rather than risk a mechanical markup rewrite. All NEW
 // code in this app (router, search, calculators, drug reference) uses
 // addEventListener instead; nothing here should be called from new code.
+// Exception: new content modules written in the same inline-handler style as
+// their siblings may register a small, documented global here (showAAZone for
+// dolor-abdominal, ptGo for politrauma) instead of shipping their own script.
 import { goTo } from './router.js';
 import { compute as computeGestationalAge } from './calculators/gestational-age.js';
 
@@ -15,6 +18,7 @@ export function installLegacyBridge() {
   window.navSb = goTo;
   window.calcEG = calcEG;
   window.showAAZone = showAAZone;
+  window.ptGo = ptGo;
 }
 
 // Ported verbatim from legacy-index.html:1371-1386. Reads sibling tabs'
@@ -80,4 +84,22 @@ function showAAZone(id) {
   document.querySelectorAll('.result-zone').forEach(z => z.classList.remove('on'));
   const zone = document.getElementById('rz-'+id);
   if (zone) zone.classList.add('on');
+}
+
+// Politrauma module (content/modules/politrauma.html): the sticky x-A-B-C-D-E
+// bar jumps to a step. Not an <a href="#..."> because the router treats every
+// hash as a route, so this scrolls #screen (the scroll container) directly and
+// leaves location.hash alone. The offset is the step's CSS scroll-margin-top
+// (sized in components.css to clear the sticky bar), so it lives in one place.
+function ptGo(step) {
+  const target = document.getElementById('pt-' + step);
+  const screen = document.getElementById('screen');
+  if (!target || !screen) return;
+  const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+  const top = target.getBoundingClientRect().top - screen.getBoundingClientRect().top + screen.scrollTop - margin;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  screen.scrollTo({ top: Math.max(0, top), behavior: reduceMotion ? 'auto' : 'smooth' });
+  // Move focus to the step heading too, so keyboard/screen-reader users land there.
+  const heading = target.querySelector('[tabindex="-1"]');
+  if (heading) heading.focus({ preventScroll: true });
 }

@@ -1,0 +1,258 @@
+<div class="pt">
+
+<div class="cl cl-r pt-aviso"><div class="cl-ico">🚨</div><div class="cl-body">
+  <p><strong>Paciente inestable = no demores.</strong> La revisión secundaria y la TAC esperan.</p>
+  <p>Inestable con sangrado → quirófano, angiografía o derivación a centro de trauma.</p>
+  <p>La resucitación se hace en paralelo a la revisión primaria, no después.</p>
+</div></div>
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="pt" onclick="switchTab(this,'pt','pt-pri')">🩸 Primaria · xABCDE</div>
+  <div class="tab" data-tab-grp="pt" onclick="switchTab(this,'pt','pt-sec')">🔎 Secundaria</div>
+</div>
+
+<!-- ── Pestaña 1: revisión primaria ── -->
+<div id="pt-pri" class="tab-pane on">
+
+  <!-- Barra fija: salta a cada paso con ptGo() (no con #anclas: el router
+       trata cualquier #hash como una ruta). -->
+  <nav class="pt-jump" aria-label="xABCDE">
+    <div class="pt-jump-in">
+      <button type="button" class="pt-jump-btn pt-red pt-lc" onclick="ptGo('x')" aria-label="x · Hemorragia exanguinante externa">x</button>
+      <button type="button" class="pt-jump-btn pt-red" onclick="ptGo('a')" aria-label="A · Vía aérea + restricción de movimiento cervical">A</button>
+      <button type="button" class="pt-jump-btn pt-red" onclick="ptGo('b')" aria-label="B · Ventilación">B</button>
+      <button type="button" class="pt-jump-btn pt-red" onclick="ptGo('c')" aria-label="C · Circulación y control de la hemorragia">C</button>
+      <button type="button" class="pt-jump-btn pt-amb" onclick="ptGo('d')" aria-label="D · Déficit neurológico">D</button>
+      <button type="button" class="pt-jump-btn pt-amb" onclick="ptGo('e')" aria-label="E · Exposición y control del ambiente">E</button>
+    </div>
+  </nav>
+
+  <div class="pt-note">
+    <p><strong>Qué cambió en ATLS 11:</strong> la x (hemorragia exanguinante externa) va antes que la vía aérea.</p>
+    <p>Control de daños: hipotensión permisiva, mínimo cristaloide, hemoderivados precoces y ácido tranexámico en las primeras 3 h.</p>
+    <p>Restricción de columna selectiva, no rutinaria.</p>
+  </div>
+
+  <ol class="pt-rail">
+
+    <li id="pt-x" class="pt-step pt-red">
+      <h2 class="pt-step-hd" tabindex="-1"><span class="pt-letter pt-lc">x</span><span class="pt-vh"> · </span>Hemorragia exanguinante externa</h2>
+      <div class="pt-blk">
+        <p class="pt-blk-lbl">Evaluá</p>
+        <ul class="pt-lines">
+          <li>Sangrado externo que amenaza la vida</li>
+          <li>Cuero cabelludo: puede sangrar litros</li>
+        </ul>
+      </div>
+      <div class="pt-blk">
+        <p class="pt-blk-lbl">Hacé</p>
+        <ul class="pt-lines">
+          <li>Presión directa → empaquetamiento de la herida → torniquete precoz en miembros (anotá la hora)</li>
+        </ul>
+      </div>
+      <div class="pt-blk pt-si">
+        <p class="pt-blk-lbl">Si encontrás</p>
+        <ul class="pt-rows">
+          <li><strong>Sospecha de fractura de pelvis inestable</strong> → faja pélvica a la altura de los trocánteres mayores</li>
+        </ul>
+      </div>
+    </li>
+
+    <li id="pt-a" class="pt-step pt-red">
+      <h2 class="pt-step-hd" tabindex="-1"><span class="pt-letter">A</span><span class="pt-vh"> · </span>Vía aérea + restricción de movimiento cervical</h2>
+      <div class="pt-blk">
+        <p class="pt-blk-lbl">Evaluá</p>
+        <ul class="pt-lines">
+          <li>¿Habla con voz normal? → vía aérea permeable por ahora</li>
+          <li>Obstrucción: sangre, vómito, dientes, trauma maxilofacial, estridor</li>
+        </ul>
+      </div>
+      <div class="pt-blk">
+        <p class="pt-blk-lbl">Hacé</p>
+        <ul class="pt-lines">
+          <li>Aspirar, tracción mandibular sin hiperextender, cánula orofaríngea</li>
+          <li>Restricción cervical selectiva según mecanismo y clínica; no es prioritaria en trauma penetrante</li>
+        </ul>
+      </div>
+      <div class="pt-blk pt-si">
+        <p class="pt-blk-lbl">Si encontrás</p>
+        <ul class="pt-rows">
+          <li><strong>GCS ≤8, no protege la vía aérea, hipoxemia refractaria, quemadura inhalatoria o hematoma cervical en expansión</strong> → vía aérea definitiva, de preferencia con videolaringoscopio. Resucitá antes de inducir para evitar el colapso periintubación</li>
+        </ul>
+      </div>
+    </li>
+
+    <li id="pt-b" class="pt-step pt-red">
+      <h2 class="pt-step-hd" tabindex="-1"><span class="pt-letter">B</span><span class="pt-vh"> · </span>Ventilación</h2>
+      <div class="pt-blk">
+        <p class="pt-blk-lbl">Evaluá</p>
+        <ul class="pt-lines">
+          <li>Exponé el tórax: FR, SatO₂, inspección, palpación, auscultación y percusión</li>
+        </ul>
+      </div>
+      <div class="pt-blk">
+        <p class="pt-blk-lbl">Hacé</p>
+        <ul class="pt-lines">
+          <li>O₂ suplementario</li>
+        </ul>
+      </div>
+      <div class="pt-blk pt-si">
+        <p class="pt-blk-lbl">Si encontrás</p>
+        <ul class="pt-rows">
+          <li><strong>Neumotórax a tensión</strong> → es clínico, no esperes la Rx: descompresión en 4°–5° espacio intercostal por delante de la línea axilar media → tubo pleural</li>
+          <li><strong>Neumotórax abierto</strong> → apósito oclusivo fijado en 3 lados → tubo pleural</li>
+          <li><strong>Hemotórax masivo (&gt;1500 ml al drenar o &gt;200 ml/h por 2–4 h)</strong> → tubo pleural + cirugía</li>
+          <li><strong>Enfisema subcutáneo masivo o fuga aérea persistente</strong> → sospechá lesión del árbol traqueobronquial</li>
+        </ul>
+      </div>
+    </li>
+
+    <li id="pt-c" class="pt-step pt-red">
+      <h2 class="pt-step-hd" tabindex="-1"><span class="pt-letter">C</span><span class="pt-vh"> · </span>Circulación y control de la hemorragia</h2>
+      <div class="pt-blk">
+        <p class="pt-blk-lbl">Evaluá</p>
+        <ul class="pt-lines">
+          <li>Shock en trauma = hemorrágico hasta demostrar lo contrario</li>
+          <li>Buscá el sangrado, "uno en el piso y cuatro más": externo, tórax, abdomen, pelvis/retroperitoneo, huesos largos</li>
+        </ul>
+      </div>
+      <div class="pt-blk">
+        <p class="pt-blk-lbl">Hacé</p>
+        <ul class="pt-lines">
+          <li>2 vías periféricas gruesas o intraósea, laboratorio con grupo y factor, eFAST</li>
+          <li>Hipotensión permisiva (PAS ~80–90 mmHg, pulso radial palpable) hasta controlar el sangrado, excepto en TEC (ver módulo TEC)</li>
+          <li>Cristaloide mínimo, solo como puente → hemoderivados precoces; protocolo de transfusión masiva (1:1:1 o sangre total)</li>
+          <li>Ácido tranexámico 1 g IV en 10 min + 1 g en 8 h, dentro de las 3 h del trauma</li>
+          <li>Evitá la tríada letal: hipotermia, acidosis, coagulopatía. Si hay transfusión masiva, controlá el calcio iónico</li>
+        </ul>
+      </div>
+      <div class="pt-blk pt-si">
+        <p class="pt-blk-lbl">Si encontrás</p>
+        <ul class="pt-rows">
+          <li><strong>Ingurgitación yugular + hipotensión + ruidos cardíacos apagados</strong> → sospechá taponamiento cardíaco</li>
+        </ul>
+      </div>
+    </li>
+
+    <li id="pt-d" class="pt-step pt-amb">
+      <h2 class="pt-step-hd" tabindex="-1"><span class="pt-letter">D</span><span class="pt-vh"> · </span>Déficit neurológico</h2>
+      <div class="pt-blk">
+        <p class="pt-blk-lbl">Evaluá</p>
+        <ul class="pt-lines">
+          <li>GCS por componentes (ej.: O3 V4 M5 = 12) y su tendencia</li>
+          <li>Pupilas, signos de lateralización, glucemia</li>
+        </ul>
+      </div>
+      <div class="pt-blk">
+        <p class="pt-blk-lbl">Hacé</p>
+        <ul class="pt-lines">
+          <li>Evitá hipoxia e hipotensión: son la lesión cerebral secundaria</li>
+        </ul>
+      </div>
+      <div class="pt-blk pt-si">
+        <p class="pt-blk-lbl">Si encontrás</p>
+        <ul class="pt-rows">
+          <li><strong>Anisocoria, postura extensora, caída del GCS ≥2 o tríada de Cushing</strong> → posible herniación: ver módulo TEC</li>
+        </ul>
+      </div>
+    </li>
+
+    <li id="pt-e" class="pt-step pt-amb">
+      <h2 class="pt-step-hd" tabindex="-1"><span class="pt-letter">E</span><span class="pt-vh"> · </span>Exposición y control del ambiente</h2>
+      <div class="pt-blk">
+        <p class="pt-blk-lbl">Hacé</p>
+        <ul class="pt-lines">
+          <li>Desvestí por completo y rotá en bloque para ver el dorso</li>
+          <li>Prevení la hipotermia: mantas, fluidos y hemoderivados tibios, ambiente cálido</li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="pt-node pt-adj">
+      <details>
+        <summary>Adjuntos a la revisión primaria</summary>
+        <ul>
+          <li><strong>Monitoreo:</strong> ECG, SatO₂, PA, FR, capnografía si está intubado</li>
+          <li><strong>Laboratorio:</strong> hemograma, coagulograma, grupo y factor, gases con lactato y exceso de base, BHCG en mujer en edad fértil</li>
+          <li><strong>Imágenes:</strong> eFAST, Rx de tórax AP, Rx de pelvis AP</li>
+          <li><strong>Sonda vesical:</strong> no colocar si hay sangre en el meato o sospecha de lesión uretral</li>
+          <li><strong>Sonda gástrica:</strong> orogástrica (no nasal) si sospechás fractura de base de cráneo</li>
+          <li>Derivación precoz si tu centro no puede resolver</li>
+        </ul>
+      </details>
+    </li>
+
+    <li class="pt-node pt-reeval">
+      <p><strong>Reevaluá:</strong> ante cualquier deterioro, volvé a x.</p>
+    </li>
+
+    <li class="pt-node pt-q">
+      <p>¿Estable?</p>
+    </li>
+  </ol>
+
+  <!-- Bifurcación de "¿Estable?": el riel baja y se abre en dos salidas. -->
+  <div class="pt-fork">
+    <div class="pt-branch pt-no"><span class="pt-branch-hd">No →</span> control de daños: quirófano, angiografía o derivación a centro de trauma</div>
+    <div class="pt-branch pt-yes"><span class="pt-branch-hd">Sí, con tendencia a normalizarse →</span> revisión secundaria (pestaña 2)</div>
+  </div>
+
+</div>
+
+<!-- ── Pestaña 2: revisión secundaria ── -->
+<div id="pt-sec" class="tab-pane">
+
+  <div class="pt-note">
+    <p><strong>Cuándo empezarla:</strong> solo con la revisión primaria completa, la resucitación en marcha y el paciente con tendencia a la normalización.</p>
+    <p>Si se deteriora, volvé a xABCDE.</p>
+  </div>
+
+  <h2 class="pt-h2">Historia: AMPLE</h2>
+  <div class="pt-ample">
+    <div class="pt-ample-row pt-neutral" aria-hidden="true">
+      <span class="pt-letter">A</span>
+      <span class="pt-letter">M</span>
+      <span class="pt-letter">P</span>
+      <span class="pt-letter">L</span>
+      <span class="pt-letter">E</span>
+    </div>
+    <ul class="pt-ample-list">
+      <li><span class="pt-ample-k">A:</span> <span class="pt-ample-n">Alergias</span></li>
+      <li><span class="pt-ample-k">M:</span> <span class="pt-ample-n">Medicación.</span> <span class="pt-ample-d">Anticoagulantes y antiagregantes; betabloqueantes (enmascaran la taquicardia)</span></li>
+      <li><span class="pt-ample-k">P:</span> <span class="pt-ample-n">Pasado médico / embarazo</span></li>
+      <li><span class="pt-ample-k">L:</span> <span class="pt-ample-n">Libaciones y última comida</span></li>
+      <li><span class="pt-ample-k">E:</span> <span class="pt-ample-n">Eventos y entorno.</span> <span class="pt-ample-d">Mecanismo del trauma: velocidad, eyección, muerte de otro ocupante, caída de altura, arma</span></li>
+    </ul>
+  </div>
+
+  <h2 class="pt-h2">Examen de la cabeza a los pies</h2>
+  <table class="pt-exam">
+    <thead><tr><th scope="col">Región</th><th scope="col">Qué buscar</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Cabeza</th><td>Heridas de cuero cabelludo, hundimientos, pupilas, agudeza visual, signos de fractura de base de cráneo</td></tr>
+      <tr><th scope="row">Maxilofacial</th><td>Inestabilidad facial, maloclusión, compromiso de la vía aérea</td></tr>
+      <tr><th scope="row">Cuello</th><td>Dolor en apófisis espinosas, desviación traqueal, ingurgitación yugular, hematoma, enfisema subcutáneo</td></tr>
+      <tr><th scope="row">Tórax</th><td>Contusiones, crepitación, fracturas costales; reevaluar ruidos respiratorios y cardíacos</td></tr>
+      <tr><th scope="row">Abdomen</th><td>Signo del cinturón de seguridad, distensión, defensa; reevaluar eFAST</td></tr>
+      <tr><th scope="row">Pelvis y periné</th><td>Equimosis perineal, sangre en meato; tacto rectal / vaginal selectivo. No "abrir" la pelvis para probar estabilidad</td></tr>
+      <tr><th scope="row">Músculo-esquelético</th><td>Deformidades, pulsos distales, síndrome compartimental, heridas en fracturas (expuestas)</td></tr>
+      <tr><th scope="row">Neurológico</th><td>GCS por componentes, sensibilidad y motilidad en las 4 extremidades, nivel sensitivo</td></tr>
+      <tr><th scope="row">Dorso</th><td>Rotación en bloque: heridas, escalones en la columna</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="pt-h2">Poblaciones que engañan</h2>
+  <ul class="bullets">
+    <li><strong>Adulto mayor:</strong> una PA "normal" puede ser shock; los betabloqueantes ocultan la taquicardia; mecanismos menores causan lesiones graves</li>
+    <li><strong>Anticoagulado:</strong> umbral muy bajo para imágenes y reversión precoz</li>
+    <li><strong>Embarazada &gt;20 semanas:</strong> desplazá el útero a la izquierda; el mejor tratamiento del feto es resucitar a la madre</li>
+    <li><strong>Niño:</strong> compensa mucho y descompensa de golpe; la hipotensión es un signo tardío</li>
+  </ul>
+
+  <p class="pt-tec">¿Trauma de cráneo? → módulo TEC (criterios de TAC y neuroprotección).</p>
+
+</div>
+
+<p class="pt-src">Fuente: ATLS 11ª edición (ACS, 2025). Revisión: 2026-09.</p>
+
+</div>

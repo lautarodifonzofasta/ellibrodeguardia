@@ -18,6 +18,13 @@
     "sub": "Clasificación · Anafilaxis · Neumotórax",
     "badge": "crit"
   },
+  "politrauma": {
+    "title": "Politrauma",
+    "category": "🚨 Emergencias críticas",
+    "icon": "🚑",
+    "sub": "Revisión primaria y secundaria",
+    "badge": "crit"
+  },
   "dolor-toracico": {
     "title": "Dolor torácico",
     "category": "🫀 Cardiovascular",
