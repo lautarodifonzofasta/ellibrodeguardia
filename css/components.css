@@ -590,3 +590,11 @@ ul.bullets li strong { color: var(--text); }
   font-size: 13px; color: var(--text2);
 }
 .pt-src { margin: 22px 0 16px; font-size: 11px; color: var(--text2); } /* bottom margin clears the fixed copyright strip */
+
+/* Windows contrast themes: the rail, stems and dots are background-drawn
+   (forced to Canvas, so they vanish) and the arrowhead's transparent side
+   borders get painted (a solid box). Redraw them in the theme's text color. */
+@media (forced-colors: active) {
+  .pt-rail > li::before, .pt-branch::before, .pt-lines li::before { forced-color-adjust: none; background: CanvasText; }
+  .pt-branch::after { forced-color-adjust: none; border-top-color: CanvasText; }
+}
