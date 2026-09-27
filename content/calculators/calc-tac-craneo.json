@@ -1,0 +1,40 @@
+{
+  "id": "calc-tac-craneo",
+  "title": "Regla Canadiense de TAC de cráneo",
+  "hidePoints": true,
+  "showInitialResult": true,
+  "groups": [
+    {
+      "id": "aplica",
+      "label": "Primero: ¿se puede usar la regla?",
+      "type": "multi",
+      "options": [
+        { "label": "Anticoagulado o con trastorno de la coagulación", "points": 1000 },
+        { "label": "Convulsión después del trauma", "points": 1000 },
+        { "label": "GCS <13 en cualquier momento", "points": 1000 },
+        { "label": "Menor de 16 años", "points": 100 }
+      ]
+    },
+    {
+      "id": "alto",
+      "label": "Alto riesgo: intervención neuroquirúrgica",
+      "type": "multi",
+      "options": [
+        { "label": "GCS <15 a las 2 h del trauma", "points": 10 },
+        { "label": "Sospecha de fractura de cráneo abierta o con hundimiento", "points": 10 },
+        { "label": "Signos de fractura de base de cráneo (hemotímpano, ojos de mapache, signo de Battle, otorraquia/rinorraquia)", "points": 10 },
+        { "label": "Vómitos: 2 o más episodios", "points": 10 },
+        { "label": "Edad ≥65 años", "points": 10 }
+      ]
+    },
+    {
+      "id": "medio",
+      "label": "Riesgo medio: lesión visible en TAC",
+      "type": "multi",
+      "options": [
+        { "label": "Amnesia retrógrada ≥30 minutos antes del impacto", "points": 1 },
+        { "label": "Mecanismo peligroso: peatón atropellado, eyección del vehículo o caída de >1 m o 5 escalones", "points": 1 }
+      ]
+    }
+  ]
+}

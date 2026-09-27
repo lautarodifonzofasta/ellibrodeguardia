@@ -1,5 +1,8 @@
 // Registry mapping a calculator's view id (matches content/calculators/<id>.json
 // and content/meta.json) to its pure scoring-interpretation function.
+// A calculator can also live only inside a content module, with no meta.json
+// entry of its own: calc-tac-craneo is embedded in content/modules/tec.html
+// via <div data-calculator="calc-tac-craneo"> (mounted by js/router.js).
 import { interpret as gcs } from './calc-gcs.js';
 import { interpret as sofa } from './calc-sofa.js';
 import { interpret as wellsTep } from './calc-wells-tep.js';
@@ -8,6 +11,7 @@ import { interpret as heart } from './calc-heart.js';
 import { interpret as chads } from './calc-chads.js';
 import { interpret as wellsTvp } from './calc-wells-tvp.js';
 import { interpret as blatchford } from './calc-blatchford.js';
+import { interpret as tacCraneo } from './calc-tac-craneo.js';
 
 export const SCORED_CALCULATORS = {
   'calc-gcs': gcs,
@@ -18,4 +22,5 @@ export const SCORED_CALCULATORS = {
   'calc-chads': chads,
   'calc-wells-tvp': wellsTvp,
   'calc-blatchford': blatchford,
+  'calc-tac-craneo': tacCraneo,
 };

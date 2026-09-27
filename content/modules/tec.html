@@ -1,0 +1,98 @@
+<div class="tec">
+
+<div class="cl cl-b tec-pt"><div class="cl-ico">🚑</div><div class="cl-body">
+  <p>¿Politraumatizado? Primero xABCDE → <a class="xref" href="#politrauma" onclick="navId('politrauma');return false">módulo Politrauma</a>.</p>
+</div></div>
+
+<div class="tabs">
+  <div class="tab on" data-tab-grp="tec" onclick="switchTab(this,'tec','tec-main')">🧠 TEC</div>
+  <div class="tab" data-tab-grp="tec" onclick="switchTab(this,'tec','tec-tac')">🩻 ¿TAC de cerebro?</div>
+</div>
+
+<!-- ── Pestaña 1: TEC ── -->
+<div id="tec-main" class="tab-pane on">
+
+  <h2 class="tec-h2">Clasificación por GCS</h2>
+  <div class="tbl-wrap"><table class="tbl tec-gcs">
+    <thead><tr><th scope="col">Severidad</th><th scope="col">GCS</th><th scope="col">Conducta inicial</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Leve</th><td class="tec-gcs-n">13–15</td><td>Aplicar criterios de TAC (pestaña 2)</td></tr>
+      <tr><th scope="row">Moderado</th><td class="tec-gcs-n">9–12</td><td>TAC siempre, interconsulta con neurocirugía, internación</td></tr>
+      <tr><th scope="row">Grave</th><td class="tec-gcs-n">3–8</td><td>Vía aérea definitiva, neuroprotección, TAC urgente, neurocirugía</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="tec-note">
+    <p>Registrá el GCS por componentes: "O2 V2 M5" dice mucho más que "GCS 9".</p>
+    <p>Lo que más importa es la tendencia: una caída de 2 puntos o más es una emergencia.</p>
+  </div>
+
+  <h2 class="tec-h2">Neuroprotección: evitar la lesión secundaria</h2>
+  <ul class="bullets">
+    <li><strong>No hipotensión:</strong> PAS ≥100 mmHg entre 50 y 69 años; ≥110 mmHg entre 15 y 49 años y en mayores de 70.
+      <span class="tec-line">En TEC no se aplica la hipotensión permisiva.</span></li>
+    <li><strong>No hipoxia:</strong> SatO₂ &gt;94%</li>
+    <li><strong>Normocapnia:</strong> PaCO₂ 35–45 mmHg; la hiperventilación de rutina empeora la isquemia</li>
+    <li>Cabecera a 30° (si no hay contraindicación), cuello alineado sin compresión yugular</li>
+    <li>Normotermia, normoglucemia, tratar las convulsiones</li>
+    <li>Ácido tranexámico dentro de las 3 h; ATLS 11 respalda un bolo de 2 g en TEC.</li>
+    <li><strong>Anticoagulado:</strong> revertir precozmente según el fármaco</li>
+  </ul>
+
+  <div class="cl cl-r tec-hern"><div class="cl-ico">🚨</div><div class="cl-body">
+    <h2 class="tec-cl-hd">Signos de herniación</h2>
+    <p><strong>Anisocoria, postura extensora, caída del GCS ≥2 o tríada de Cushing →</strong>
+      <span class="tec-line tec-then">osmoterapia (manitol 0,25–1 g/kg IV o solución salina hipertónica),</span>
+      <span class="tec-line tec-then">hiperventilación breve solo como puente (PaCO₂ 30–35 mmHg)</span>
+      <span class="tec-line tec-then">y neurocirugía inmediata.</span></p>
+  </div></div>
+
+  <h2 class="tec-h2">TEC leve: alta</h2>
+  <ul class="bullets">
+    <li>Con TAC normal o sin criterios de TAC, GCS 15 sostenido y sin otros factores de riesgo</li>
+    <li>Adulto responsable que lo observe las primeras 24 h</li>
+    <li><strong>Pautas de alarma para volver:</strong> cefalea que empeora, vómitos repetidos, somnolencia, confusión, convulsión, debilidad o adormecimiento de un lado, pupilas desiguales, salida de líquido por nariz u oído</li>
+  </ul>
+
+</div>
+
+<!-- ── Pestaña 2: ¿TAC de cerebro? ── -->
+<div id="tec-tac" class="tab-pane">
+
+  <h2 class="tec-h2">Regla Canadiense de TAC de cráneo</h2>
+  <div class="tec-note">
+    <p><strong>A quién se aplica:</strong> TEC leve con GCS 13–15 y pérdida de conocimiento presenciada, amnesia definida o desorientación presenciada.</p>
+    <p>Marcá lo que tenga tu paciente.</p>
+  </div>
+
+  <!-- Checklist: content/calculators/calc-tac-craneo.json + js/calculators/
+       calc-tac-craneo.js, rendered here by js/router.js. -->
+  <div class="tec-calc" data-calculator="calc-tac-craneo"></div>
+
+  <h2 class="tec-h2">Alternativa: Criterios de Nueva Orleans</h2>
+  <div class="tec-note">
+    <p>Solo para GCS 15 con pérdida de conocimiento.</p>
+    <p>Cualquier criterio positivo → TAC.</p>
+    <p>Más sensible, pero pide más tomografías que la regla canadiense.</p>
+  </div>
+  <ul class="bullets tec-no">
+    <li>Cefalea</li>
+    <li>Vómitos</li>
+    <li>Edad &gt;60 años</li>
+    <li>Intoxicación con alcohol o drogas</li>
+    <li>Amnesia anterógrada persistente</li>
+    <li>Trauma visible por encima de las clavículas</li>
+    <li>Convulsión</li>
+  </ul>
+
+  <div class="tec-note tec-final">
+    <p><strong>La regla no reemplaza al juicio clínico.</strong></p>
+    <p>Ante duda, deterioro, intoxicación que impide evaluar o imposibilidad de observar al paciente, pedí la TAC.</p>
+    <p>En menores de 16 años usá los criterios PECARN.</p>
+  </div>
+
+</div>
+
+<p class="src-line">Fuentes: ATLS 11ª ed. (ACS, 2025); Regla Canadiense de TAC de cráneo (Stiell 2001); Criterios de Nueva Orleans (Haydel 2000); Brain Trauma Foundation 4ª ed. Revisión: 2026-09.</p>
+
+</div>

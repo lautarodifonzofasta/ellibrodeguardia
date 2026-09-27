@@ -100,6 +100,26 @@ async function render(id, container) {
     return;
   }
   container.innerHTML = await res.text();
+  await mountEmbeddedCalculators(container);
+}
+
+// A content module can embed a scored calculator with
+// <div data-calculator="calc-id"></div>: it's rendered through the same
+// JSON + interpret() path as a standalone calculator view. A slot that fails
+// shows a short notice, so the rest of the module stays usable.
+async function mountEmbeddedCalculators(container) {
+  const slots = container.querySelectorAll('[data-calculator]');
+  await Promise.all([...slots].map(async slot => {
+    const id = slot.dataset.calculator;
+    try {
+      const interpret = SCORED_CALCULATORS[id];
+      if (!interpret) throw new Error('not in SCORED_CALCULATORS');
+      renderScoredCalculator(slot, await fetchJson(`content/calculators/${id}.json`), interpret);
+    } catch (err) {
+      console.error(`Failed to mount embedded calculator "${id}":`, err);
+      slot.innerHTML = '<div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body">No se pudo cargar el checklist. Recargá la página.</div></div>';
+    }
+  }));
 }
 
 async function fetchText(path) {
