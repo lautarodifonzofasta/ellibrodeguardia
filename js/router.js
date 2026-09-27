@@ -16,6 +16,12 @@ let bcCur = null;
 let bcSep = null;
 let onNavigateCallback = null;
 let drugsCache = null;
+// A view's renderer may return a cleanup function (timers, listeners, wake
+// lock); it runs before the next view renders. navToken identifies the latest
+// navigation, so a render that finishes after the user already moved on is
+// cleaned up immediately instead of being kept.
+let viewCleanup = null;
+let navToken = 0;
 
 export function initRouter({ meta: metaData, sidebarEl: sb, screenEl, bcCurEl, bcSepEl, onNavigate }) {
   meta = metaData;
@@ -41,6 +47,8 @@ export function goTo(id) {
 }
 
 async function navigate(id) {
+  const token = ++navToken;
+  runViewCleanup();
   updateBreadcrumb(id);
   if (sidebarEl) setActiveSidebarItem(sidebarEl, id);
 
@@ -48,14 +56,34 @@ async function navigate(id) {
   wrapper.className = 'view active';
   screen.replaceChildren(wrapper);
 
+  let cleanup;
   try {
-    await render(id, wrapper);
+    cleanup = await render(id, wrapper);
   } catch (err) {
     console.error(`Failed to render view "${id}":`, err);
+    if (token !== navToken) return; // the user already moved on; leave their current view alone
     screen.innerHTML = NOT_FOUND_HTML;
   }
+  if (token !== navToken) {
+    if (typeof cleanup === 'function') {
+      try { cleanup(); } catch (err) { console.error('View cleanup failed:', err); }
+    }
+    return;
+  }
+  if (typeof cleanup === 'function') viewCleanup = cleanup;
   screen.scrollTop = 0;
   if (onNavigateCallback) onNavigateCallback(id);
+}
+
+function runViewCleanup() {
+  if (!viewCleanup) return;
+  const cleanup = viewCleanup;
+  viewCleanup = null;
+  try {
+    cleanup();
+  } catch (err) {
+    console.error('View cleanup failed:', err);
+  }
 }
 
 function updateBreadcrumb(id) {

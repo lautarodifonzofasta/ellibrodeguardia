@@ -1,0 +1,197 @@
+{
+  "id": "aha-2025-adulto",
+  "name": "AHA Adulto",
+  "version": "2025",
+  "source": "2025 AHA Guidelines for CPR and ECC · Adult Cardiac Arrest Algorithm",
+  "sourceFile": "borradores/rcp-aha2025.md",
+  "reviewed": "2026-09",
+  "validatedBy": "Lautaro Di Fonzo (autor), 2026-09-27",
+
+  "cycle": { "durationSec": 120, "preAlertSec": 15 },
+
+  "rhythms": {
+    "shockable": "⚡ Desfibrilable (FV / TV sin pulso)",
+    "non_shockable": "🔵 No desfibrilable (AESP / asistolia)"
+  },
+
+  "algorithm": {
+    "start": "1",
+    "boxes": {
+      "1": {
+        "kind": "cpr", "timed": false,
+        "actions": [{ "text": "Iniciar RCP" }, { "text": "Ventilación con bolsa-máscara y O₂" }, { "text": "Conectar monitor/desfibrilador" }],
+        "note": "Primer control de ritmo: apenas está conectado el monitor/desfibrilador; no espera 2 min",
+        "onRhythm": { "shockable": "2", "non_shockable": "9" }
+      },
+      "2": { "kind": "rhythm", "actions": [{ "text": "FV / TV sin pulso" }], "next": "3" },
+      "3": { "kind": "shock", "actions": [{ "text": "Descarga" }], "next": "4" },
+      "4": {
+        "kind": "cpr", "timed": true,
+        "actions": [{ "text": "RCP 2 min" }, { "text": "Acceso IV/IO", "doneWhen": ["VASCULAR_ACCESS"] }],
+        "onRhythm": { "shockable": "5", "non_shockable": "12" }
+      },
+      "5": { "kind": "shock", "actions": [{ "text": "Descarga" }], "next": "6" },
+      "6": {
+        "kind": "cpr", "timed": true,
+        "actions": [
+          { "text": "RCP 2 min" },
+          { "text": "Adrenalina cada 3–5 min" },
+          { "text": "Considerar vía aérea avanzada y capnografía", "doneWhen": ["AIRWAY_PLACED", "CAPNOGRAPHY_STARTED"] }
+        ],
+        "onRhythm": { "shockable": "7", "non_shockable": "12" }
+      },
+      "7": { "kind": "shock", "actions": [{ "text": "Descarga" }], "next": "8" },
+      "8": {
+        "kind": "cpr", "timed": true,
+        "actions": [{ "text": "RCP 2 min" }, { "text": "Amiodarona o lidocaína" }, { "text": "Tratar causas reversibles" }],
+        "onRhythm": { "shockable": "5", "non_shockable": "12" }
+      },
+      "9": { "kind": "rhythm", "actions": [{ "text": "Asistolia / AESP" }, { "text": "Adrenalina lo antes posible" }], "next": "10" },
+      "10": {
+        "kind": "cpr", "timed": true,
+        "actions": [
+          { "text": "RCP 2 min" },
+          { "text": "Acceso IV/IO", "doneWhen": ["VASCULAR_ACCESS"] },
+          { "text": "Adrenalina cada 3–5 min" },
+          { "text": "Considerar vía aérea avanzada y capnografía", "doneWhen": ["AIRWAY_PLACED", "CAPNOGRAPHY_STARTED"] }
+        ],
+        "onRhythm": { "shockable": "5", "non_shockable": "11" }
+      },
+      "11": {
+        "kind": "cpr", "timed": true,
+        "actions": [{ "text": "RCP 2 min" }, { "text": "Tratar causas reversibles" }],
+        "onRhythm": { "shockable": "5", "non_shockable": "12" }
+      },
+      "12": {
+        "kind": "rosc_check",
+        "actions": [{ "text": "¿Signos de ROSC?" }, { "text": "Considerar si corresponde continuar la reanimación" }],
+        "yesLabel": "Sí → Confirmar ROSC",
+        "noLabel": "No → Box 10",
+        "noRosc": "10"
+      }
+    }
+  },
+
+  "ventilation": {
+    "withoutAirway": "30:2",
+    "withAirway": "Compresiones continuas con 1 ventilación cada 6 s (10/min)"
+  },
+
+  "vascularAccess": {
+    "routes": ["IV", "IO"],
+    "note": "IV primero; IO si la IV no resulta o no es factible. La app registra la vía que elija el usuario."
+  },
+
+  "medications": [
+    {
+      "id": "adrenalina",
+      "name": "Adrenalina",
+      "doses": [{ "amount": "1 mg", "route": "IV/IO" }],
+      "maxDoses": null,
+      "intervalSec": { "min": 180, "max": 300 },
+      "firstDose": { "afterVisiting": ["6", "9", "10"] },
+      "message": { "screen": "ADRENALINA 1 mg IV/IO", "voice": "Corresponde adrenalina." },
+      "windowTexts": { "before": "Próxima en {mm:ss}", "open": "Ventana abierta", "late": "Ventana superada" },
+      "note": "Operativamente, dar adrenalina cada 2 ciclos de RCP después de la dosis inicial cumple la recomendación de 3–5 min."
+    },
+    {
+      "id": "amiodarona",
+      "name": "Amiodarona",
+      "group": "antiarritmico",
+      "doses": [{ "amount": "300 mg en bolo", "route": "IV/IO" }, { "amount": "150 mg", "route": "IV/IO" }],
+      "maxDoses": 2
+    },
+    {
+      "id": "lidocaina",
+      "name": "Lidocaína",
+      "group": "antiarritmico",
+      "doses": [
+        { "amount": "1–1,5 mg/kg", "route": "IV/IO", "perKg": { "min": 1, "max": 1.5, "unit": "mg" } },
+        { "amount": "0,5–0,75 mg/kg", "route": "IV/IO", "perKg": { "min": 0.5, "max": 0.75, "unit": "mg" } }
+      ],
+      "maxDoses": 2,
+      "doseEntry": "Pedir la dosis administrada en mg. Si el usuario ingresa un peso estimado, mostrar el rango en mg (cálculo directo, sin redondeos)."
+    }
+  ],
+
+  "medicationGroups": [
+    {
+      "id": "antiarritmico",
+      "label": "Amiodarona o lidocaína",
+      "drugs": ["amiodarona", "lidocaina"],
+      "maxDoses": 2,
+      "firstDose": { "atBox": ["8"] },
+      "nextDose": { "atBox": ["8"], "laterPass": true },
+      "preferChosen": true,
+      "message": { "screen": "AMIODARONA o LIDOCAÍNA", "voice": "Considerar amiodarona o lidocaína." }
+    }
+  ],
+
+  "medicationNotes": [
+    "Al registrar, la dosis aparece precargada y es editable: se guarda lo que realmente se administró.",
+    "No se ofrecen como opción, según AHA 2025: vasopresina, adrenalina en dosis altas y calcio, bicarbonato o magnesio de rutina. Se pueden registrar igual como \"Otra\"."
+  ],
+
+  "reversibleCauses": [
+    { "id": "hipovolemia", "label": "Hipovolemia" },
+    { "id": "hipoxia", "label": "Hipoxia" },
+    { "id": "hidrogeniones", "label": "Hidrogeniones (acidosis)" },
+    { "id": "potasio", "label": "Hipo/hiperpotasemia" },
+    { "id": "hipotermia", "label": "Hipotermia" },
+    { "id": "neumotorax", "label": "Neumotórax a tensión" },
+    { "id": "taponamiento", "label": "Taponamiento cardíaco" },
+    { "id": "toxicos", "label": "Tóxicos" },
+    { "id": "trombosis-pulmonar", "label": "Trombosis pulmonar" },
+    { "id": "trombosis-coronaria", "label": "Trombosis coronaria" }
+  ],
+
+  "messages": {
+    "start": { "screen": "INICIAR COMPRESIONES · Conectar monitor/desfibrilador", "voice": "Iniciar compresiones. Conectar el monitor." },
+    "preAlert": { "screen": "PREPARARSE PARA EVALUAR RITMO", "voice": "Prepararse para evaluar ritmo." },
+    "checkRhythm": { "screen": "DETENER COMPRESIONES · EVALUAR RITMO · Cambiar compresor", "voice": "Detener compresiones. Evaluar ritmo." },
+    "shockable": { "screen": "⚡ RITMO DESFIBRILABLE · PREPARAR DESCARGA", "voice": "Ritmo desfibrilable. Preparar descarga." },
+    "postShock": { "screen": "REINICIAR COMPRESIONES", "voice": "Reiniciar compresiones." },
+    "nonShockable": { "screen": "🔵 RITMO NO DESFIBRILABLE · CONTINUAR RCP", "voice": "Ritmo no desfibrilable. Reiniciar compresiones." },
+    "roscCheck": { "screen": "¿SIGNOS DE ROSC?", "voice": "Evaluar signos de circulación espontánea." },
+    "roscConfirmed": { "screen": "✅ ROSC", "voice": "Retorno de circulación espontánea confirmado." }
+  },
+
+  "reference": {
+    "shock": [
+      "Bifásico: energía recomendada por el fabricante (por ejemplo, dosis inicial de 120–200 J); si se desconoce, la máxima disponible. Las siguientes, equivalentes; pueden considerarse dosis mayores.",
+      "Monofásico: 360 J.",
+      "No se incluyen el cambio de vector ni la doble desfibrilación secuencial: su utilidad no está establecida."
+    ],
+    "quality": [
+      "Compresiones de al menos 5 cm, a 100–120/min, con reexpansión completa del tórax.",
+      "Minimizar las interrupciones de las compresiones.",
+      "Evitar la ventilación excesiva.",
+      "Cambiar de compresor cada 2 min, o antes si hay fatiga.",
+      "Sin vía aérea avanzada: 30:2.",
+      "Con vía aérea avanzada: 1 ventilación cada 6 s (10/min) con compresiones continuas.",
+      "Capnografía de onda continua: si la EtCO₂ es baja o está descendiendo, reevaluar la calidad de la RCP."
+    ],
+    "airway": [
+      "Intubación endotraqueal o dispositivo supraglótico.",
+      "Capnografía de onda continua o capnometría para confirmar y monitorear la posición del tubo endotraqueal.",
+      "Si colocarla interrumpe las compresiones, diferirla hasta que no haya respuesta a la RCP y a las descargas iniciales, o hasta el ROSC."
+    ],
+    "etco2": "Un aumento brusco puede indicar ROSC (no hay un valor de corte absoluto); valores de al menos 10 mmHg, idealmente 20 mmHg o más, pueden indicar compresiones mecánicamente adecuadas."
+  },
+
+  "noteTemplate": {
+    "rules": "Incluir solo las frases cuyos datos estén registrados. Horas en formato HH:MM. No agregar nada que no esté en el registro.",
+    "lines": [
+      "Paciente adulto en paro cardiorrespiratorio. Se inicia RCP a las {hora_inicio}.",
+      "Ritmo inicial: {desfibrilable (FV/TV sin pulso) | no desfibrilable (AESP/asistolia)}.",
+      "Se realizan {n} descargas ({horas}).",
+      "Por cada droga: Se administra {droga} {dosis} {vía} en {n} dosis ({horas}).",
+      "Se coloca vía aérea avanzada a las {hora}. Se monitorea con capnografía{; EtCO₂ registradas: valor (hora)}.",
+      "Causas reversibles consideradas: {lista}.",
+      "Otros eventos: {texto (hora)}.",
+      "Cierre con ROSC: Se obtiene ROSC a las {hora_rosc}, tras {duración} de RCP ({n} ciclos).",
+      "Cierre sin ROSC: Se finaliza la RCP a las {hora_fin} ({motivo}), tras {duración} de reanimación.",
+      "Algoritmo de referencia: AHA 2025, paro cardíaco del adulto."
+    ]
+  }
+}
