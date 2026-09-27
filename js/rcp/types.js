@@ -111,12 +111,14 @@
  * @property {{atBox: string[], laterPass: boolean}} [nextDose]
  * @property {boolean} [preferChosen]  After the first dose, suggest the same drug.
  * @property {{screen: string, voice: string}} message
+ * @property {Object<string, {screen: string, voice: string}>} [chosenMessages]  Next-dose text per drug once one was chosen (required with preferChosen).
  */
 
 /**
  * @typedef {object} AlgorithmBox
  * @property {'cpr'|'rhythm'|'shock'|'rosc_check'} kind
- * @property {{text: string, doneWhen?: ResuscitationEventType[]}[]} actions  Reminders; "doneWhen" hides one once registered.
+ * @property {{text: string, doneWhen?: ResuscitationEventType[], hideWhenGroupExhausted?: string}[]} actions
+ *   Reminders; "doneWhen" hides one once registered, "hideWhenGroupExhausted" once that drug group reached its maximum.
  * @property {boolean} [timed]  cpr: whether the cycle has an end-of-cycle alert.
  * @property {{shockable: string, non_shockable: string}} [onRhythm]  cpr: next Box after a rhythm check.
  * @property {string} [next]    rhythm / shock: next Box.

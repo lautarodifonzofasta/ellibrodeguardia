@@ -149,10 +149,23 @@ test('antiarrítmico: first dose at Box 8; the second only on a later pass throu
   assert.equal(g.doseNumber, 2);
   assert.deepEqual(g.options.map(o => [o.drugId, o.dose.amount]), [['lidocaina', '0,5–0,75 mg/kg']], 'suggests the drug already chosen');
   assert.deepEqual(g.options[0].dose.perKg, { min: 0.5, max: 0.75, unit: 'mg' });
+  assert.deepEqual(g.message, { screen: 'LIDOCAÍNA 0,5–0,75 mg/kg IV/IO', voice: 'Considerar segunda dosis de lidocaína.' }, 'text for the chosen drug');
+  assert.ok(st(s, 570).algorithm.actions.includes('Amiodarona o lidocaína'), 'reminder still shown before the 2nd dose');
   s = give(s, 'amiodarona', '150 mg', 575);                  // registering the other one is not blocked
+  assert.deepEqual(st(s, 576).algorithm.actions, ['RCP 2 min', 'Tratar causas reversibles'], 'reminder hidden once the group is complete');
   s = shockCycle(rcp, shockCycle(rcp, s, 690), 820);         // back to Box 8 again
   assert.equal(s.box, '8');
   assert.equal(ind(st(s, 830), 'antiarritmico'), null, 'no suggestions after the second dose');
+  assert.deepEqual(st(s, 830).algorithm.actions, ['RCP 2 min', 'Tratar causas reversibles']);
+});
+
+test('antiarrítmico: the 2nd-dose text names amiodarona when it was the one chosen', () => {
+  let s = shockCycle(rcp, shockCycle(rcp, shockCycle(rcp, started(), 40), 170), 300);
+  s = give(s, 'amiodarona', '300 mg en bolo', 310);
+  s = shockCycle(rcp, shockCycle(rcp, s, 430), 560);
+  const g = ind(st(s, 570), 'antiarritmico');
+  assert.deepEqual(g.options.map(o => [o.drugId, o.dose.amount]), [['amiodarona', '150 mg']]);
+  assert.deepEqual(g.message, { screen: 'AMIODARONA 150 mg IV/IO', voice: 'Considerar segunda dosis de amiodarona.' });
 });
 
 test('antiarrítmico: returning to Box 8 without a shock is not a new pass (no early 2nd dose)', () => {

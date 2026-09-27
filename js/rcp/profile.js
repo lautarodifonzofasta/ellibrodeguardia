@@ -127,6 +127,20 @@ function checkMedications(profile) {
     }
     if (g.preferChosen !== undefined && typeof g.preferChosen !== 'boolean') fail(`${where}: "preferChosen" debe ser true o false.`);
     checkMessage(g.message, where);
+    // With preferChosen, the next dose names the chosen drug: each drug needs its own text.
+    if (g.preferChosen || g.chosenMessages !== undefined) {
+      if (!isObject(g.chosenMessages)) fail(`${where}: faltan los textos para la droga elegida.`);
+      for (const id of g.drugs) checkMessage(g.chosenMessages[id], `${where} (${id} elegida)`);
+      if (Object.keys(g.chosenMessages).some(id => !g.drugs.includes(id))) fail(`${where}: texto para una droga que no es del grupo.`);
+    }
+  }
+
+  for (const [id, box] of Object.entries(boxes)) {
+    for (const a of box.actions) {
+      if (a.hideWhenGroupExhausted !== undefined && !groupIds.has(a.hideWhenGroupExhausted)) {
+        fail(`Box ${id}: "hideWhenGroupExhausted" apunta a un grupo que no existe.`);
+      }
+    }
   }
 }
 

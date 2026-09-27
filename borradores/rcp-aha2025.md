@@ -81,6 +81,7 @@ Salida del Box 8: la versión oficial en texto no dice adónde va el Box 8. Se a
   - Segunda dosis: el algoritmo da la dosis pero no el momento. Se adopta: en el siguiente pase por el Box 8 (confirmado por el autor el 2026-09-27).
   - Una vez elegida una de las dos, las indicaciones siguientes sugieren la misma. Registrar la otra no se bloquea.
   - El algoritmo define solo primera y segunda dosis: después de la segunda, no sugerir más.
+  - Después de la segunda dosis, el recordatorio "Amiodarona o lidocaína" del Box 8 deja de mostrarse (confirmado por el autor el 2026-09-27).
 - **Causas reversibles:** en los Box 8 y 11 se muestra el recordatorio; el panel está disponible siempre.
 - **Box 12:** pregunta "¿Signos de ROSC?" con dos botones: "Sí → Confirmar ROSC" y "No → Box 10". El botón ROSC general sigue disponible en todo momento.
 
@@ -146,6 +147,8 @@ Salida del Box 8: la versión oficial en texto no dice adónde va el Box 8. Se a
 | No desfibrilable | 🔵 RITMO NO DESFIBRILABLE · CONTINUAR RCP | "Ritmo no desfibrilable. Reiniciar compresiones." |
 | Adrenalina indicada | ADRENALINA 1 mg IV/IO | "Corresponde adrenalina." |
 | Antiarrítmico (Box 8) | AMIODARONA o LIDOCAÍNA | "Considerar amiodarona o lidocaína." |
+| 2ª dosis, amiodarona ya elegida | AMIODARONA 150 mg IV/IO | "Considerar segunda dosis de amiodarona." |
+| 2ª dosis, lidocaína ya elegida | LIDOCAÍNA 0,5–0,75 mg/kg IV/IO | "Considerar segunda dosis de lidocaína." |
 | Box 12 | ¿SIGNOS DE ROSC? | "Evaluar signos de circulación espontánea." |
 | ROSC confirmado | ✅ ROSC | "Retorno de circulación espontánea confirmado." |
 

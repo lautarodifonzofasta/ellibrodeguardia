@@ -188,7 +188,8 @@ function indications(session, profile, meds, visited) {
       const m = meds.inProfile.find(x => x.drugId === id);
       return { drugId: id, name: m.name, doseNumber: m.nextDoseNumber, dose: m.nextDose };
     }).filter(o => o.dose);
-    if (options.length) out.push({ kind: 'group', groupId: g.id, label: g.label, doseNumber: doses.length + 1, options, message: g.message });
+    const message = chosen ? g.chosenMessages[chosen] : g.message;
+    if (options.length) out.push({ kind: 'group', groupId: g.id, label: g.label, doseNumber: doses.length + 1, options, message });
   }
   return out;
 }
@@ -247,6 +248,10 @@ export function getStatus(session, profile, now) {
   const lastRhythm = rhythmChecks.length ? rhythmChecks[rhythmChecks.length - 1].rhythm : null;
   const pauses = pauseStats(session, clockAt);
   const done = type => session.events.some(e => e.type === type && live(e));
+  const groupExhausted = groupId => {
+    const g = profile.medicationGroups.find(x => x.id === groupId);
+    return ofType(session, 'MEDICATION_GIVEN').filter(e => live(e) && g.drugs.includes(e.data.drugId)).length >= g.maxDoses;
+  };
 
   const box = session.box ? profile.algorithm.boxes[session.box] : null;
   const lastCheck = lastBySeq(ofType(session, 'RHYTHM_CHECK'));
@@ -257,12 +262,14 @@ export function getStatus(session, profile, now) {
     timed: box.kind === 'cpr' ? box.timed : null,
     // Reminders to show while the Box is being worked (not once its shock is
     // done or CPR has ended). An action with "doneWhen" disappears once every
-    // listed event has been registered (profile rule).
+    // listed event has been registered, and one with "hideWhenGroupExhausted"
+    // once that drug group reached its maximum (profile rules).
     // On the way to a shock, the rhythm Box passed through (e.g. "FV / TV sin
     // pulso") is shown with the shock Box.
     actions: REMINDER_STATES.includes(session.state)
       ? [...(session.state === S.SHOCKABLE && via ? profile.algorithm.boxes[via].actions : []), ...box.actions]
-        .filter(a => !(a.doneWhen && a.doneWhen.every(done))).map(a => a.text)
+        .filter(a => !(a.doneWhen && a.doneWhen.every(done)) && !(a.hideWhenGroupExhausted && groupExhausted(a.hideWhenGroupExhausted)))
+        .map(a => a.text)
       : [],
     note: box.note || null,
     yesLabel: box.yesLabel || null,

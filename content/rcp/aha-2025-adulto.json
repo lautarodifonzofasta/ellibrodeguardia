@@ -43,7 +43,7 @@
       "7": { "kind": "shock", "actions": [{ "text": "Descarga" }], "next": "8" },
       "8": {
         "kind": "cpr", "timed": true,
-        "actions": [{ "text": "RCP 2 min" }, { "text": "Amiodarona o lidocaína" }, { "text": "Tratar causas reversibles" }],
+        "actions": [{ "text": "RCP 2 min" }, { "text": "Amiodarona o lidocaína", "hideWhenGroupExhausted": "antiarritmico" }, { "text": "Tratar causas reversibles" }],
         "onRhythm": { "shockable": "5", "non_shockable": "12" }
       },
       "9": { "kind": "rhythm", "actions": [{ "text": "Asistolia / AESP" }, { "text": "Adrenalina lo antes posible" }], "next": "10" },
@@ -123,7 +123,11 @@
       "firstDose": { "atBox": ["8"] },
       "nextDose": { "atBox": ["8"], "laterPass": true },
       "preferChosen": true,
-      "message": { "screen": "AMIODARONA o LIDOCAÍNA", "voice": "Considerar amiodarona o lidocaína." }
+      "message": { "screen": "AMIODARONA o LIDOCAÍNA", "voice": "Considerar amiodarona o lidocaína." },
+      "chosenMessages": {
+        "amiodarona": { "screen": "AMIODARONA 150 mg IV/IO", "voice": "Considerar segunda dosis de amiodarona." },
+        "lidocaina": { "screen": "LIDOCAÍNA 0,5–0,75 mg/kg IV/IO", "voice": "Considerar segunda dosis de lidocaína." }
+      }
     }
   ],
 

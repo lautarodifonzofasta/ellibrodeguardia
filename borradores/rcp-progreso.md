@@ -39,15 +39,15 @@ Fase 1:
 18. **Box 2 ("FV / TV sin pulso")** se muestra junto con el Box de descarga cuando el camino pasa por él.
 19. **Límite del grupo de antiarrítmicos:** después de 2 dosis del grupo, las dos drogas quedan marcadas `groupExhausted` (no se sugieren más), pero registrarlas sigue permitido.
 
-## Preguntas abiertas para el autor (no bloquean)
+Respuestas del autor al cierre de la Fase 1 (2026-09-27):
 
-- Después de la 2ª dosis de antiarrítmico, el recordatorio "Amiodarona o lidocaína" del Box 8 se sigue mostrando, porque es texto del Box. ¿Ocultarlo una vez completado el grupo?
-- Cuando ya se eligió una de las dos drogas, el texto de pantalla y voz sigue diciendo "AMIODARONA o LIDOCAÍNA", porque el .md tiene un solo texto. ¿Hace falta uno para la 2ª dosis de la droga elegida?
-- Reanudar sin descarga abre un ciclo nuevo de 2 min, que cuenta en el total de ciclos. ¿Está bien así?
+20. **Recordatorio "Amiodarona o lidocaína" del Box 8:** se oculta una vez completadas las 2 dosis del grupo. Está registrado en el .md §3.2 y en el perfil como `hideWhenGroupExhausted`.
+21. **Texto para la 2ª dosis de la droga elegida:** "AMIODARONA 150 mg IV/IO" / "Considerar segunda dosis de amiodarona." y "LIDOCAÍNA 0,5–0,75 mg/kg IV/IO" / "Considerar segunda dosis de lidocaína.". Es una propuesta aprobada por el autor, agregada al .md §9 y al perfil como `chosenMessages`.
+22. **Reanudar sin descarga** abre un ciclo nuevo de 2 min, que cuenta en el total. Confirmado.
 
 ## Verificación de la Fase 1
 
-- `npm test`: 74/74 (22 de la app + 52 del motor de RCP, sobre el perfil AHA real).
+- `npm test`: 75/75 (22 de la app + 53 del motor de RCP, sobre el perfil AHA real).
 - Dos revisiones adversariales con verificación: cumplimiento del pedido y fidelidad caja por caja al .md. La transcripción resultó literal y el comportamiento coincide con las reglas 3.2. Se corrigieron todos los hallazgos confirmados.
 - Fuzzer de invariantes guiado: unas 150.000 acciones sobre todos los Boxes (hasta 7 pases por el Box 8), con recorrido de la tabla, estado coherente con el Box, indicaciones, restauración idéntica y errores tipados. Sin fallos.
 
