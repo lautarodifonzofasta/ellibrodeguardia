@@ -115,7 +115,7 @@ Guardá, recargá el navegador, y el módulo nuevo debería aparecer en la categ
 
 ## 6. Editar una calculadora
 
-Las calculadoras (`content/calculators/*.json`) también son JSON. Es seguro editar textos (el título, la explicación, las etiquetas de las opciones) — es más delicado tocar los números de puntaje, porque de eso depende el resultado que ve el médico. Si necesitás cambiar el puntaje o los umbrales de una calculadora, mejor pedile ayuda a alguien que pueda revisar los tests (`node --test tests/` debe seguir devolviendo "pass" para todas).
+Las calculadoras (`content/calculators/*.json`) también son JSON. Es seguro editar textos (el título, la explicación, las etiquetas de las opciones) — es más delicado tocar los números de puntaje, porque de eso depende el resultado que ve el médico. Si necesitás cambiar el puntaje o los umbrales de una calculadora, mejor pedile ayuda a alguien que pueda revisar los tests (`npm test` debe seguir devolviendo "pass" para todas).
 
 ---
 
@@ -143,8 +143,9 @@ Todo lo anterior edita los archivos en tu compu — todavía no quedó guardado 
 1. Descargalo de [desktop.github.com](https://desktop.github.com/) e instalalo.
 2. Abrilo e iniciá sesión con tu cuenta de GitHub.
 3. **File → Add Local Repository** y elegí la carpeta `ellibrodeguardia`.
-4. Vas a ver la lista de archivos que cambiaste. Escribí una frase corta describiendo qué hiciste (por ejemplo: "Corregí dosis de furosemida") y hacé clic en **Commit to modernize-buildless** (o la rama en la que estés).
-5. Hacé clic en **Push origin** (arriba a la derecha) para subir el cambio a GitHub.
+4. Antes del commit, en la terminal de VS Code corré `node tools/generate-sw.mjs`. Actualiza `sw.js` para que quienes ya tienen la app instalada reciban tu cambio; si te lo olvidás, `npm test` te avisa.
+5. Vas a ver la lista de archivos que cambiaste. Escribí una frase corta describiendo qué hiciste (por ejemplo: "Corregí dosis de furosemida") y hacé clic en **Commit to modernize-buildless** (o la rama en la que estés).
+6. Hacé clic en **Push origin** (arriba a la derecha) para subir el cambio a GitHub.
 
 Si en algún momento la app deja de andar bien después de un cambio, en GitHub Desktop podés hacer clic derecho sobre ese cambio en el historial y elegir **Revert** para deshacerlo — nada se pierde para siempre.
 
@@ -155,7 +156,7 @@ Si en algún momento la app deja de andar bien después de un cambio, en GitHub 
 - La página se ve en blanco o no navega: abrí las herramientas de desarrollador del navegador (F12), pestaña **Console**, y fijate si hay un mensaje en rojo. Casi siempre indica qué archivo tiene el problema.
 - Un módulo o calculadora no carga: lo más común es un error de JSON (falta una coma, comillas, o `{`/`}` sin cerrar) — VS Code suele subrayarlo en rojo apenas lo abrís.
 - Agregaste un módulo nuevo pero no aparece en el menú ni en el buscador: revisá que lo hayas agregado también en `content/meta.json` (paso 5b).
-- Cambiaste o agregaste archivos y querés que el modo offline los incluya: corré `node tools/generate-sw.mjs` y guardá el archivo `sw.js` que genera.
+- Publicaste un cambio pero la app instalada sigue mostrando lo viejo: corré `node tools/generate-sw.mjs`, guardá el archivo `sw.js` que genera y volvé a subirlo. Hace falta después de cualquier cambio, no solo al agregar archivos.
 
 ---
 

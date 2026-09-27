@@ -1,59 +1,353 @@
 
 <div class="tabs">
-  <div class="tab on" data-tab-grp="dab" onclick="switchTab(this,'dab','dab-flags')">🚩 Banderas rojas</div>
-  <div class="tab" data-tab-grp="dab" onclick="switchTab(this,'dab','dab-dx')">🔍 Diagnóstico diferencial</div>
-  <div class="tab" data-tab-grp="dab" onclick="switchTab(this,'dab','dab-tto')">💊 Manejo</div>
+  <div class="tab on" data-tab-grp="aa" onclick="switchTab(this,'aa','abd-mapa')">🗺️ Cuadrantes</div>
+  <div class="tab" data-tab-grp="aa" onclick="switchTab(this,'aa','abd-preg')">📋 Preguntas clave</div>
+  <div class="tab" data-tab-grp="aa" onclick="switchTab(this,'aa','abd-signos')">🩺 Signos físicos</div>
+  <div class="tab" data-tab-grp="aa" onclick="switchTab(this,'aa','abd-dx')">🔍 Diagnósticos</div>
+  <div class="tab" data-tab-grp="aa" onclick="switchTab(this,'aa','abd-tto')">💊 Manejo</div>
+  <div class="tab" data-tab-grp="aa" onclick="switchTab(this,'aa','abd-flags')">🚩 Banderas rojas</div>
 </div>
-<div id="dab-flags" class="tab-pane on">
-  <div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Abdomen quirúrgico urgente — evaluar inmediatamente</span>
-  <ul class="bullets mt-8">
-    <li><strong>Peritonitis:</strong> defensa generalizada + rebote + abdomen en tabla + signos de sepsis</li>
-    <li><strong>Shock hipovolémico:</strong> hipotensión + taquicardia + dolor abdominal → rotura de aneurisma, embarazo ectópico roto</li>
-    <li><strong>Isquemia mesentérica:</strong> dolor desproporcionado al examen, FA conocida, arteriosclerosis severa</li>
-    <li><strong>Vólvulo / oclusión:</strong> distensión progresiva + ausencia de ruidos + náuseas fecaloideas</li>
-  </ul></div></div>
-  <div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Siempre considerar en mujer en edad fértil</span>Embarazo ectópico hasta demostrar lo contrario. BHCG cuantitativa + ecografía urgente.</div></div>
-</div>
-<div id="dab-dx" class="tab-pane">
-  <div class="card"><div class="card-body">
-    <div class="sec-hd"><div class="sec-hd-lbl">Diagnóstico diferencial por cuadrante</div><div class="sec-hd-line"></div></div>
-    <div class="tbl-wrap"><table class="tbl">
-      <thead><tr><th>Cuadrante</th><th>Diagnósticos principales</th></tr></thead>
-      <tbody>
-        <tr><td><strong>FID (fosa ilíaca derecha)</strong></td><td>Apendicitis aguda · Salpingitis / EPI · Cálculo ureteral distal · Enfermedad de Crohn · Hernia inguinal</td></tr>
-        <tr><td><strong>FII (fosa ilíaca izquierda)</strong></td><td>Diverticulitis · Salpingitis izquierda · Cálculo ureteral · Colitis isquémica · Hernia</td></tr>
-        <tr><td><strong>CSD (cuadrante superior derecho)</strong></td><td>Cólico biliar / Colecistitis · Hepatitis · Absceso hepático · Pleuritis basal derecha</td></tr>
-        <tr><td><strong>CSI (cuadrante superior izquierdo)</strong></td><td>Úlcera gástrica perforada · Pancreatitis · Esplenomegalia / Infarto esplénico</td></tr>
-        <tr><td><strong>Epigástrico</strong></td><td>Úlcera péptica · Pancreatitis aguda · IAM inferior · Gastritis / GERD</td></tr>
-        <tr><td><strong>Periumbilical</strong></td><td>Apendicitis (inicio) · Hernia umbilical · Isquemia mesentérica</td></tr>
-        <tr><td><strong>Difuso / generalizado</strong></td><td>Peritonitis · Obstrucción intestinal · Isquemia mesentérica · Porfiria · Cetoacidosis</td></tr>
-      </tbody>
-    </table></div>
-    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Signos exploratorios relevantes</div><div class="sec-hd-line"></div></div>
-    <ul class="bullets">
-      <li><strong>Murphy positivo:</strong> cese inspiratorio por dolor en palpación CSD → colecistitis</li>
-      <li><strong>McBurney / Blumberg en FID:</strong> apendicitis</li>
-      <li><strong>Psoas sign:</strong> dolor en extensión pasiva del muslo derecho → apendicitis retrocecal</li>
-      <li><strong>Obturador sign:</strong> dolor en rotación interna del muslo derecho → apendicitis pélvica</li>
-      <li><strong>Rovsing:</strong> dolor en FID al palpar FII → apendicitis</li>
+
+<div id="abd-mapa" class="tab-pane on">
+<div class="mapa-wrap">
+<svg class="svg-grid" viewBox="0 0 270 270">
+  <rect id="q-hcd" class="q-cell" x="2" y="2" width="86" height="86" rx="4" onclick="showAAZone('hcd')"/>
+  <text id="ql-hcd" class="q-label" x="45" y="32" onclick="showAAZone('hcd')">HCD</text>
+  <text class="q-organ" x="45" y="48" onclick="showAAZone('hcd')">Hígado · Vesícula</text>
+  <text class="q-organ" x="45" y="60" onclick="showAAZone('hcd')">Vía biliar</text>
+
+  <rect id="q-epi" class="q-cell" x="92" y="2" width="86" height="86" rx="4" onclick="showAAZone('epi')"/>
+  <text id="ql-epi" class="q-label" x="135" y="32" onclick="showAAZone('epi')">EPIGASTRIO</text>
+  <text class="q-organ" x="135" y="48" onclick="showAAZone('epi')">Estómago · Páncreas</text>
+  <text class="q-organ" x="135" y="60" onclick="showAAZone('epi')">Duodeno · Aorta</text>
+
+  <rect id="q-hci" class="q-cell" x="182" y="2" width="86" height="86" rx="4" onclick="showAAZone('hci')"/>
+  <text id="ql-hci" class="q-label" x="225" y="32" onclick="showAAZone('hci')">HCI</text>
+  <text class="q-organ" x="225" y="48" onclick="showAAZone('hci')">Bazo · Estómago</text>
+  <text class="q-organ" x="225" y="60" onclick="showAAZone('hci')">Cola páncreas</text>
+
+  <rect id="q-fd" class="q-cell" x="2" y="92" width="86" height="86" rx="4" onclick="showAAZone('fd')"/>
+  <text id="ql-fd" class="q-label" x="45" y="122" onclick="showAAZone('fd')">FLANCO D</text>
+  <text class="q-organ" x="45" y="138" onclick="showAAZone('fd')">Colon asc.</text>
+  <text class="q-organ" x="45" y="150" onclick="showAAZone('fd')">Riñón · Uréter D</text>
+
+  <rect id="q-meso" class="q-cell" x="92" y="92" width="86" height="86" rx="4" onclick="showAAZone('meso')"/>
+  <text id="ql-meso" class="q-label" x="135" y="122" onclick="showAAZone('meso')">MESOGASTRIO</text>
+  <text class="q-organ" x="135" y="138" onclick="showAAZone('meso')">I. delgado · Aorta</text>
+  <text class="q-organ" x="135" y="150" onclick="showAAZone('meso')">Vasos mesentéricos</text>
+
+  <rect id="q-fi" class="q-cell" x="182" y="92" width="86" height="86" rx="4" onclick="showAAZone('fi')"/>
+  <text id="ql-fi" class="q-label" x="225" y="122" onclick="showAAZone('fi')">FLANCO I</text>
+  <text class="q-organ" x="225" y="138" onclick="showAAZone('fi')">Colon desc.</text>
+  <text class="q-organ" x="225" y="150" onclick="showAAZone('fi')">Riñón · Uréter I</text>
+
+  <rect id="q-fid" class="q-cell" x="2" y="182" width="86" height="86" rx="4" onclick="showAAZone('fid')"/>
+  <text id="ql-fid" class="q-label" x="45" y="212" onclick="showAAZone('fid')">FID</text>
+  <text class="q-organ" x="45" y="228" onclick="showAAZone('fid')">Apéndice · Ciego</text>
+  <text class="q-organ" x="45" y="240" onclick="showAAZone('fid')">Ovario/Trompa D</text>
+
+  <rect id="q-hipo" class="q-cell" x="92" y="182" width="86" height="86" rx="4" onclick="showAAZone('hipo')"/>
+  <text id="ql-hipo" class="q-label" x="135" y="212" onclick="showAAZone('hipo')">HIPOGASTRIO</text>
+  <text class="q-organ" x="135" y="228" onclick="showAAZone('hipo')">Vejiga · Útero</text>
+  <text class="q-organ" x="135" y="240" onclick="showAAZone('hipo')">Recto</text>
+
+  <rect id="q-fii" class="q-cell" x="182" y="182" width="86" height="86" rx="4" onclick="showAAZone('fii')"/>
+  <text id="ql-fii" class="q-label" x="225" y="212" onclick="showAAZone('fii')">FII</text>
+  <text class="q-organ" x="225" y="228" onclick="showAAZone('fii')">Sigma · Colon desc.</text>
+  <text class="q-organ" x="225" y="240" onclick="showAAZone('fii')">Ovario/Trompa I</text>
+</svg>
+
+<div id="result-empty" class="result-empty">Tocá un cuadrante para ver los diagnósticos</div>
+
+<div id="rz-hcd" class="result-zone"><div class="card"><div class="card-body">
+  <div class="zone-title">Hipocondrio Derecho</div>
+  <div class="zone-organs">Hígado · Vesícula · Vía biliar · Flexura hepática</div>
+  <div class="prob-label alta">Probabilidad alta</div>
+  <div class="dx-item alta"><div class="dx-name">Colecistitis aguda</div><div class="dx-clave">Dolor post-prandial, fiebre, Murphy (+)</div></div>
+  <div class="dx-item alta"><div class="dx-name">Cólico biliar</div><div class="dx-clave">Sin fiebre, autolimitado, post-prandial graso</div></div>
+  <div class="prob-label media">Probabilidad media</div>
+  <div class="dx-item media"><div class="dx-name">Colangitis aguda</div><div class="dx-clave">Tríada de Charcot: fiebre + ictericia + dolor</div></div>
+  <div class="dx-item media"><div class="dx-name">Hepatitis aguda</div><div class="dx-clave">Ictericia, transaminasas ↑↑, sin Murphy</div></div>
+  <div class="dx-item media"><div class="dx-name">Absceso hepático</div><div class="dx-clave">Fiebre alta, antecedentes, hepatomegalia dolorosa</div></div>
+  <div class="prob-label baja">A descartar</div>
+  <div class="dx-item baja"><div class="dx-name">IAM inferior / derecho</div><div class="dx-clave">ECG obligatorio en todo dolor HCD</div></div>
+  <div class="dx-item baja"><div class="dx-name">Pleuritis basal derecha</div><div class="dx-clave">Dolor pleurítico, sin defensa abdominal</div></div>
+  <div class="cl cl-g" style="margin-top:12px"><div class="cl-ico">🔬</div><div class="cl-body"><span class="cl-title">Estudios de elección</span>
+    <ul class="bullets mt-8">
+      <li>ECG — siempre, inmediato</li>
+      <li>Ecografía abdominal — 1ª línea vía biliar</li>
+      <li>Laboratorio: hepatograma · amilasa · hemograma · PCR</li>
+      <li>TAC con contraste si colangitis o diagnóstico incierto</li>
     </ul>
   </div></div>
-</div>
-<div id="dab-tto" class="tab-pane">
-  <div class="card"><div class="card-body">
-    <div class="algo">
-      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Evaluación sistemática urgente</div><div class="step-body">
-        Hemograma · PCR · Hepatograma · Lipasa · Función renal · Ionograma<br>
-        Orina completa · BHCG (mujer edad fértil) · Hemocultivos si fiebre<br>
-        Ecografía abdominal como primera imagen (rápida, sin radiación)
-      </div></div></div>
-      <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Analgesia — NO retener por miedo a "enmascarar"</div><div class="step-body">
-        Evidencia: la analgesia NO altera la precisión diagnóstica. Tratar el dolor.<br>
-        <span class="drug">Ketorolac</span> <span class="dose">30 mg IV</span> o <span class="drug">Morfina</span> <span class="dose">0,1 mg/kg IV titulada</span><br>
-        Hioscina (Buscapina) para cólico suave
-      </div></div></div>
-      <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">TC abdominal con contraste</div><div class="step-body">Si duda diagnóstica, sospecha quirúrgica, o paciente obeso/mayor donde la eco es insuficiente.<br>Sensibilidad para apendicitis &gt;95%.</div></div></div>
-      <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Cirugía urgente si</div><div class="step-body">Peritonitis · Apendicitis complicada · Colecistitis gangrenosa · Obstrucción con signos de isquemia · Perforación</div></div></div>
-    </div>
+</div></div></div>
+
+<div id="rz-epi" class="result-zone"><div class="card"><div class="card-body">
+  <div class="zone-title">Epigastrio</div>
+  <div class="zone-organs">Estómago · Duodeno · Páncreas · Aorta proximal</div>
+  <div class="prob-label alta">Probabilidad alta</div>
+  <div class="dx-item alta"><div class="dx-name">Pancreatitis aguda</div><div class="dx-clave">Dolor en faja irradiado al dorso, amilasa ≥3×</div></div>
+  <div class="dx-item alta"><div class="dx-name">Úlcera péptica</div><div class="dx-clave">Dolor post/preprandial, alivio con antiácidos</div></div>
+  <div class="prob-label media">Probabilidad media</div>
+  <div class="dx-item media"><div class="dx-name">Perforación de úlcera</div><div class="dx-clave">Abdomen en tabla, inicio brusco, neumoperitoneo</div></div>
+  <div class="dx-item media"><div class="dx-name">Gastritis / ERGE</div><div class="dx-clave">AINEs, H. pylori, pirosis, sin defensa</div></div>
+  <div class="prob-label baja">A descartar</div>
+  <div class="dx-item baja"><div class="dx-name">IAM inferior / SCA</div><div class="dx-clave">ECG obligatorio — el infarto puede debutar como epigastralgia</div></div>
+  <div class="dx-item baja"><div class="dx-name">Disección aórtica</div><div class="dx-clave">Dolor desgarrante, pulsos asimétricos, HTA severa</div></div>
+  <div class="cl cl-g" style="margin-top:12px"><div class="cl-ico">🔬</div><div class="cl-body"><span class="cl-title">Estudios de elección</span>
+    <ul class="bullets mt-8">
+      <li>ECG — siempre, inmediato</li>
+      <li>Amilasa · hepatograma · hemograma · PCR</li>
+      <li>Rx tórax de pie: neumoperitoneo en perforación</li>
+      <li>TAC abdomen con contraste (pancreatitis grave, perforación)</li>
+    </ul>
   </div></div>
+</div></div></div>
+
+<div id="rz-hci" class="result-zone"><div class="card"><div class="card-body">
+  <div class="zone-title">Hipocondrio Izquierdo</div>
+  <div class="zone-organs">Bazo · Cola del páncreas · Ángulo esplénico · Estómago</div>
+  <div class="prob-label alta">Probabilidad alta</div>
+  <div class="dx-item alta"><div class="dx-name">Pancreatitis aguda</div><div class="dx-clave">Cola pancreática — amilasa ≥3×, dolor en faja</div></div>
+  <div class="dx-item alta"><div class="dx-name">Esplenomegalia dolorosa</div><div class="dx-clave">Hepatitis viral, VEB, hematológico</div></div>
+  <div class="prob-label media">Probabilidad media</div>
+  <div class="dx-item media"><div class="dx-name">Infarto esplénico</div><div class="dx-clave">FA, endocarditis, trombofilia — Kehr (+)</div></div>
+  <div class="dx-item media"><div class="dx-name">Rotura esplénica</div><div class="dx-clave">Trauma, VEB — hipotensión, Kehr, peritonismo</div></div>
+  <div class="prob-label baja">A descartar</div>
+  <div class="dx-item baja"><div class="dx-name">Úlcera gástrica perforada</div><div class="dx-clave">Abdomen en tabla, inicio brusco</div></div>
+  <div class="dx-item baja"><div class="dx-name">Pleuritis basal izquierda</div><div class="dx-clave">Dolor pleurítico, sin defensa</div></div>
+  <div class="cl cl-g" style="margin-top:12px"><div class="cl-ico">🔬</div><div class="cl-body"><span class="cl-title">Estudios de elección</span>
+    <ul class="bullets mt-8">
+      <li>Ecografía — bazo, líquido libre</li>
+      <li>Amilasa · hemograma · serologías (VEB si contexto)</li>
+      <li>TAC con contraste si estable con duda diagnóstica</li>
+      <li>Inestable → eFAST + cirugía, sin TAC</li>
+    </ul>
+  </div></div>
+</div></div></div>
+
+<div id="rz-fd" class="result-zone"><div class="card"><div class="card-body">
+  <div class="zone-title">Flanco Derecho</div>
+  <div class="zone-organs">Colon ascendente · Riñón derecho · Uréter derecho</div>
+  <div class="prob-label alta">Probabilidad alta</div>
+  <div class="dx-item alta"><div class="dx-name">Cólico renoureteral</div><div class="dx-clave">Dolor cólico irradiado a ingle, hematuria, agitación</div></div>
+  <div class="prob-label media">Probabilidad media</div>
+  <div class="dx-item media"><div class="dx-name">Pielonefritis aguda</div><div class="dx-clave">Fiebre alta, Giordano (+), dolor constante, piuria</div></div>
+  <div class="dx-item media"><div class="dx-name">Colitis / masa colónica</div><div class="dx-clave">Cambio de hábito, sangrado, contexto</div></div>
+  <div class="prob-label baja">A descartar</div>
+  <div class="dx-item baja"><div class="dx-name">Apendicitis retrocecal</div><div class="dx-clave">Simula cólico renal — signo del psoas (+)</div></div>
+  <div class="cl cl-g" style="margin-top:12px"><div class="cl-ico">🔬</div><div class="cl-body"><span class="cl-title">Estudios de elección</span>
+    <ul class="bullets mt-8">
+      <li>Orina completa · función renal · hemograma</li>
+      <li>Ecografía (hidronefrosis, cálculos grandes)</li>
+      <li>TAC abdomen-pelvis sin contraste — gold standard urolitiasis</li>
+    </ul>
+  </div></div>
+</div></div></div>
+
+<div id="rz-meso" class="result-zone"><div class="card"><div class="card-body">
+  <div class="zone-title">Mesogastrio</div>
+  <div class="zone-organs">Intestino delgado · Aorta abdominal · Vasos mesentéricos</div>
+  <div class="prob-label alta">Probabilidad alta</div>
+  <div class="dx-item alta"><div class="dx-name">Obstrucción intestinal</div><div class="dx-clave">Distensión, peristaltismo ↑, náuseas, sin eliminación de gases</div></div>
+  <div class="dx-item alta"><div class="dx-name">Apendicitis (fase inicial)</div><div class="dx-clave">Dolor periumbilical que migra a FID</div></div>
+  <div class="prob-label media">Probabilidad media</div>
+  <div class="dx-item media"><div class="dx-name">Isquemia mesentérica</div><div class="dx-clave">Dolor desproporcionado al examen, FA, lactato ↑</div></div>
+  <div class="dx-item media"><div class="dx-name">Hernia umbilical complicada</div><div class="dx-clave">Masa no reductible, signos de isquemia local</div></div>
+  <div class="prob-label baja">A descartar</div>
+  <div class="dx-item baja"><div class="dx-name">Aneurisma aórtico roto</div><div class="dx-clave">&gt;60 años, HTA, masa pulsátil — EMERGENCIA</div></div>
+  <div class="cl cl-g" style="margin-top:12px"><div class="cl-ico">🔬</div><div class="cl-body"><span class="cl-title">Estudios de elección</span>
+    <ul class="bullets mt-8">
+      <li>Rx abdomen de pie (niveles hidroaéreos)</li>
+      <li>Lactato · hemograma · PCR · función renal</li>
+      <li>TAC con contraste — isquemia, obstrucción complicada</li>
+      <li>Eco a la cabecera si sospecha aneurisma</li>
+    </ul>
+  </div></div>
+</div></div></div>
+
+<div id="rz-fi" class="result-zone"><div class="card"><div class="card-body">
+  <div class="zone-title">Flanco Izquierdo</div>
+  <div class="zone-organs">Colon descendente · Riñón izquierdo · Uréter izquierdo</div>
+  <div class="prob-label alta">Probabilidad alta</div>
+  <div class="dx-item alta"><div class="dx-name">Cólico renoureteral</div><div class="dx-clave">Dolor cólico irradiado a ingle, hematuria</div></div>
+  <div class="dx-item alta"><div class="dx-name">Diverticulitis aguda</div><div class="dx-clave">Fiebre, dolor constante, defensa localizada</div></div>
+  <div class="prob-label media">Probabilidad media</div>
+  <div class="dx-item media"><div class="dx-name">Pielonefritis izquierda</div><div class="dx-clave">Fiebre, Giordano (+), piuria</div></div>
+  <div class="dx-item media"><div class="dx-name">Colitis isquémica</div><div class="dx-clave">Adulto mayor, ateroesclerosis, sangre en MF</div></div>
+  <div class="cl cl-g" style="margin-top:12px"><div class="cl-ico">🔬</div><div class="cl-body"><span class="cl-title">Estudios de elección</span>
+    <ul class="bullets mt-8">
+      <li>Orina · hemograma · PCR · función renal</li>
+      <li>TAC abdomen-pelvis con contraste (diverticulitis)</li>
+      <li>TAC sin contraste (urolitiasis)</li>
+    </ul>
+  </div></div>
+</div></div></div>
+
+<div id="rz-fid" class="result-zone"><div class="card"><div class="card-body">
+  <div class="zone-title">Fosa Ilíaca Derecha</div>
+  <div class="zone-organs">Apéndice · Ciego · Íleon terminal · Ovario/trompa D</div>
+  <div class="prob-label alta">Probabilidad alta</div>
+  <div class="dx-item alta"><div class="dx-name">Apendicitis aguda</div><div class="dx-clave">Dolor migratorio, fiebre, Blumberg/Rovsing (+)</div></div>
+  <div class="prob-label media">Probabilidad media</div>
+  <div class="dx-item media"><div class="dx-name">EPI / Salpingitis</div><div class="dx-clave">Mujer en edad fértil, descarga, Chandelier (+)</div></div>
+  <div class="dx-item media"><div class="dx-name">Embarazo ectópico</div><div class="dx-clave">Mujer en edad fértil — BHCG urgente</div></div>
+  <div class="dx-item media"><div class="dx-name">Cólico renoureteral</div><div class="dx-clave">Hematuria, cólico irradiado a ingle</div></div>
+  <div class="dx-item media"><div class="dx-name">Enfermedad de Crohn</div><div class="dx-clave">Joven, diarrea crónica, antecedentes</div></div>
+  <div class="prob-label baja">A descartar</div>
+  <div class="dx-item baja"><div class="dx-name">Torsión ovárica</div><div class="dx-clave">Inicio brusco, náuseas intensas — eco Doppler urgente</div></div>
+  <div class="dx-item baja"><div class="dx-name">Hernia inguinal complicada</div><div class="dx-clave">Masa inguinal no reductible y dolorosa</div></div>
+  <div class="cl cl-g" style="margin-top:12px"><div class="cl-ico">🔬</div><div class="cl-body"><span class="cl-title">Estudios de elección</span>
+    <ul class="bullets mt-8">
+      <li>BHCG cuantitativa (toda mujer en edad fértil)</li>
+      <li>Hemograma · PCR · orina completa</li>
+      <li>Ecografía — 1ª línea en pediátrico y embarazada</li>
+      <li>TAC abdomen-pelvis con contraste IV — adulto, eco no concluyente</li>
+    </ul>
+  </div></div>
+</div></div></div>
+
+<div id="rz-hipo" class="result-zone"><div class="card"><div class="card-body">
+  <div class="zone-title">Hipogastrio</div>
+  <div class="zone-organs">Vejiga · Útero · Recto-sigma · Próstata</div>
+  <div class="prob-label alta">Probabilidad alta</div>
+  <div class="dx-item alta"><div class="dx-name">Retención urinaria aguda</div><div class="dx-clave">Globo vesical, imposibilidad de orinar</div></div>
+  <div class="dx-item alta"><div class="dx-name">Cistitis / ITU complicada</div><div class="dx-clave">Disuria, hematuria, fiebre variable</div></div>
+  <div class="prob-label media">Probabilidad media</div>
+  <div class="dx-item media"><div class="dx-name">EPI</div><div class="dx-clave">Mujer en edad fértil, descarga, Chandelier (+)</div></div>
+  <div class="dx-item media"><div class="dx-name">Amenaza de aborto</div><div class="dx-clave">Sangrado + dolor — BHCG + eco transvaginal</div></div>
+  <div class="prob-label baja">A descartar</div>
+  <div class="dx-item baja"><div class="dx-name">Embarazo ectópico roto</div><div class="dx-clave">Inestabilidad hemodinámica — emergencia quirúrgica</div></div>
+  <div class="cl cl-g" style="margin-top:12px"><div class="cl-ico">🔬</div><div class="cl-body"><span class="cl-title">Estudios de elección</span>
+    <ul class="bullets mt-8">
+      <li>BHCG (mujer en edad fértil)</li>
+      <li>Orina completa · urocultivo</li>
+      <li>Ecografía pelviana / transvaginal</li>
+    </ul>
+  </div></div>
+</div></div></div>
+
+<div id="rz-fii" class="result-zone"><div class="card"><div class="card-body">
+  <div class="zone-title">Fosa Ilíaca Izquierda</div>
+  <div class="zone-organs">Sigma · Colon descendente · Ovario/trompa I</div>
+  <div class="prob-label alta">Probabilidad alta</div>
+  <div class="dx-item alta"><div class="dx-name">Diverticulitis aguda</div><div class="dx-clave">"Apendicitis izquierda", fiebre, defensa localizada</div></div>
+  <div class="prob-label media">Probabilidad media</div>
+  <div class="dx-item media"><div class="dx-name">EPI / Salpingitis izquierda</div><div class="dx-clave">Mujer en edad fértil, descarga vaginal</div></div>
+  <div class="dx-item media"><div class="dx-name">Embarazo ectópico</div><div class="dx-clave">Mujer en edad fértil — BHCG urgente</div></div>
+  <div class="dx-item media"><div class="dx-name">Cólico renoureteral</div><div class="dx-clave">Hematuria, irradiación inguinal</div></div>
+  <div class="dx-item media"><div class="dx-name">Colitis isquémica</div><div class="dx-clave">Adulto mayor, ateroesclerosis</div></div>
+  <div class="prob-label baja">A descartar</div>
+  <div class="dx-item baja"><div class="dx-name">Torsión ovárica izquierda</div><div class="dx-clave">Inicio brusco — eco Doppler urgente</div></div>
+  <div class="dx-item baja"><div class="dx-name">Vólvulo de sigma</div><div class="dx-clave">Distensión masiva, Rx diagnóstica</div></div>
+  <div class="cl cl-g" style="margin-top:12px"><div class="cl-ico">🔬</div><div class="cl-body"><span class="cl-title">Estudios de elección</span>
+    <ul class="bullets mt-8">
+      <li>TAC abdomen-pelvis con contraste — 1ª línea diverticulitis</li>
+      <li>Hemograma · PCR · orina</li>
+      <li>BHCG (mujer en edad fértil)</li>
+    </ul>
+  </div></div>
+</div></div></div>
+
+</div><!-- mapa-wrap -->
+</div>
+
+<div id="abd-preg" class="tab-pane">
+<div class="card"><div class="card-body">
+  <div class="sec-hd"><div class="sec-hd-lbl">Anamnesis orientada — OPQRST</div><div class="sec-hd-line"></div></div>
+  <div class="algo">
+    <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">¿Dónde empezó el dolor y a dónde se fue?</div><div class="step-body">Migratorio (periumbilical → FID) = típico de apendicitis. Irradiación a ingle = urolitiasis. Al dorso = pancreatitis, disección aórtica.</div></div></div>
+    <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">¿Inicio gradual o brusco?</div><div class="step-body">Inicio súbito = perforación, disección, isquemia, torsión, ectópico roto. Gradual = inflamatorio (apendicitis, colecistitis, diverticulitis).</div></div></div>
+    <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">¿Constante o en cólico?</div><div class="step-body">Cólico = víscera hueca (uréter, vesícula, intestino). Constante con peritonismo = proceso inflamatorio que comprometió el peritoneo.</div></div></div>
+    <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">¿Cuánto tiempo lleva? ¿Episodios previos similares?</div><div class="step-body">Recurrentes = cólico biliar, urolitiasis, EII. Primer episodio progresivo = apendicitis, diverticulitis.</div></div></div>
+    <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">¿Fiebre? ¿Cuándo apareció?</div><div class="step-body">Fiebre que precede al dolor = infección primaria (EPI, pielonefritis). Fiebre posterior = complicación inflamatoria (apendicitis perforada).</div></div></div>
+    <div class="step"><div class="step-n">6</div><div class="step-c"><div class="step-title">¿Náuseas / vómitos? ¿Cuándo?</div><div class="step-body">En apendicitis los vómitos son posteriores al dolor. Si preceden = gastroenteritis, oclusión alta. Vómitos fecaloideos = obstrucción baja avanzada.</div></div></div>
+    <div class="step"><div class="step-n">7</div><div class="step-c"><div class="step-title">¿Eliminación de gases? ¿Última deposición?</div><div class="step-body">Ausencia de gases y deposiciones → obstrucción intestinal hasta demostrar lo contrario.</div></div></div>
+    <div class="step"><div class="step-n">8</div><div class="step-c"><div class="step-title">¿Relación con la comida?</div><div class="step-body">Post-prandial inmediato (grasas) = cólico biliar. Alivio con comida = úlcera duodenal. Empeora = úlcera gástrica, isquemia mesentérica.</div></div></div>
+    <div class="step"><div class="step-n">9</div><div class="step-c"><div class="step-title">En mujer: ¿FUM? ¿Podría estar embarazada?</div><div class="step-body">BHCG ante toda mujer en edad fértil con dolor abdominal. El embarazo ectópico puede matar y simular apendicitis.</div></div></div>
+    <div class="step"><div class="step-n">10</div><div class="step-c"><div class="step-title">¿Descarga vaginal, disuria, hematuria?</div><div class="step-body">Descarga = EPI, vaginitis. Disuria + hematuria = ITU, urolitiasis. Hematuria sin dolor = neoplasia hasta demostrar lo contrario.</div></div></div>
+    <div class="step"><div class="step-n">11</div><div class="step-c"><div class="step-title">¿Cirugías abdominales previas?</div><div class="step-body">Adherencias → obstrucción. Apendicectomía previa no descarta dolor en FID.</div></div></div>
+    <div class="step"><div class="step-n">12</div><div class="step-c"><div class="step-title">¿AINEs, anticoagulantes, corticoides?</div><div class="step-body">AINEs → gastropatía. Corticoides → enmascaran peritonismo. Anticoagulantes → hematoma retroperitoneal.</div></div></div>
+    <div class="step"><div class="step-n">13</div><div class="step-c"><div class="step-title">¿HTA, FA, ateroesclerosis conocida?</div><div class="step-body">FA → isquemia mesentérica embólica. HTA + &gt;60 años → aneurisma aórtico. Siempre ECG en dolor epigástrico.</div></div></div>
+    <div class="step"><div class="step-n">14</div><div class="step-c"><div class="step-title">¿Alcohol, cálculos biliares conocidos?</div><div class="step-body">85% de pancreatitis aguda = biliar o enólica.</div></div></div>
+  </div>
+  <div class="cl cl-b mt-12"><div class="cl-ico">💡</div><div class="cl-body"><span class="cl-title">La analgesia no enmascara el diagnóstico</span>La evidencia es clara: la administración temprana de opioides o AINEs no altera la precisión diagnóstica ni las decisiones quirúrgicas en la gran mayoría de los cuadros — retener el analgésico es una práctica obsoleta. Excepción a vigilar: en isquemia mesentérica, la mejoría del dolor puede coincidir con el período de calma propio de la enfermedad (necrosis de terminaciones nerviosas antes de la perforación), no necesariamente con el efecto del analgésico — no bajes la sospecha solo porque el dolor mejoró.</div></div>
+</div></div>
+</div>
+
+<div id="abd-signos" class="tab-pane">
+<div class="card"><div class="card-body">
+  <div class="sec-hd"><div class="sec-hd-lbl">Signos exploratorios</div><div class="sec-hd-line"></div></div>
+  <div class="signo-item"><div class="signo-name">Murphy</div><div class="signo-tech">Palpación profunda en HCD durante inspiración profunda → cese brusco por dolor.</div><div class="signo-dx">→ Colecistitis aguda (S 65%, E 87%)</div></div>
+  <div class="signo-item"><div class="signo-name">Blumberg (rebote)</div><div class="signo-tech">Presión sostenida y descompresión brusca → dolor al retirar la mano.</div><div class="signo-dx">→ Peritonismo — apendicitis, perforación, peritonitis</div></div>
+  <div class="signo-item"><div class="signo-name">McBurney</div><div class="signo-tech">Dolor máximo en punto de McBurney (1/3 externo línea EIAS–ombligo).</div><div class="signo-dx">→ Apendicitis aguda</div></div>
+  <div class="signo-item"><div class="signo-name">Rovsing</div><div class="signo-tech">Palpación de FII → dolor en FID.</div><div class="signo-dx">→ Apendicitis aguda</div></div>
+  <div class="signo-item"><div class="signo-name">Psoas</div><div class="signo-tech">Extensión pasiva del muslo derecho en decúbito lateral izquierdo → dolor en FID.</div><div class="signo-dx">→ Apendicitis retrocecal</div></div>
+  <div class="signo-item"><div class="signo-name">Obturador</div><div class="signo-tech">Flexión y rotación interna del muslo derecho con rodilla en 90° → dolor en FID/pelvis.</div><div class="signo-dx">→ Apendicitis pélvica</div></div>
+  <div class="signo-item"><div class="signo-name">Kehr</div><div class="signo-tech">Dolor referido al hombro izquierdo, exacerbado en Trendelenburg.</div><div class="signo-dx">→ Rotura esplénica, hemoperitoneo izquierdo</div></div>
+  <div class="signo-item"><div class="signo-name">Chandelier</div><div class="signo-tech">Movilización del cérvix en tacto vaginal bimanual → dolor intenso.</div><div class="signo-dx">→ Enfermedad pelviana inflamatoria (EPI)</div></div>
+  <div class="signo-item"><div class="signo-name">Grey Turner</div><div class="signo-tech">Equimosis en flancos. Aparece tardíamente (24-48h).</div><div class="signo-dx">→ Pancreatitis necrotizante grave</div></div>
+  <div class="signo-item"><div class="signo-name">Cullen</div><div class="signo-tech">Equimosis periumbilical. Aparece tardíamente.</div><div class="signo-dx">→ Pancreatitis grave, ectópico roto, hemoperitoneo</div></div>
+  <div class="signo-item"><div class="signo-name">Giordano (puño-percusión)</div><div class="signo-tech">Golpe suave con el puño sobre el ángulo costovertebral → dolor lumbar.</div><div class="signo-dx">→ Pielonefritis, cálculo renal</div></div>
+</div></div>
+</div>
+
+<div id="abd-dx" class="tab-pane">
+<div class="card"><div class="card-body">
+  <div class="sec-hd"><div class="sec-hd-lbl">Diagnóstico diferencial por cuadrante</div><div class="sec-hd-line"></div></div>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>Cuadrante</th><th>Diagnósticos principales</th></tr></thead>
+    <tbody>
+      <tr><td><strong>HCD</strong></td><td>Colecistitis · Cólico biliar · Colangitis · Hepatitis · Absceso hepático · IAM inferior</td></tr>
+      <tr><td><strong>Epigastrio</strong></td><td>Úlcera péptica · Pancreatitis · Perforación · IAM inferior · ERGE · Disección aórtica</td></tr>
+      <tr><td><strong>HCI</strong></td><td>Pancreatitis (cola) · Esplenomegalia · Infarto esplénico · Rotura esplénica</td></tr>
+      <tr><td><strong>Flanco D</strong></td><td>Cólico ureteral · Pielonefritis · Apendicitis retrocecal</td></tr>
+      <tr><td><strong>Mesogastrio</strong></td><td>Obstrucción intestinal · Apendicitis (inicio) · Isquemia mesentérica · Aneurisma aórtico</td></tr>
+      <tr><td><strong>Flanco I</strong></td><td>Cólico ureteral · Diverticulitis · Pielonefritis · Colitis isquémica</td></tr>
+      <tr><td><strong>FID</strong></td><td>Apendicitis · EPI · Embarazo ectópico · Urolitiasis · Crohn · Torsión ovárica</td></tr>
+      <tr><td><strong>Hipogastrio</strong></td><td>Retención urinaria · Cistitis · EPI · Amenaza de aborto · Diverticulitis distal</td></tr>
+      <tr><td><strong>FII</strong></td><td>Diverticulitis · EPI · Embarazo ectópico · Urolitiasis · Colitis isquémica · Torsión ovárica · Vólvulo sigma</td></tr>
+      <tr><td><strong>Difuso</strong></td><td>Peritonitis · Obstrucción avanzada · Isquemia mesentérica · Cetoacidosis · Porfiria</td></tr>
+    </tbody>
+  </table></div>
+</div></div>
+</div>
+
+<div id="abd-tto" class="tab-pane">
+<div class="card"><div class="card-body">
+  <div class="sec-hd"><div class="sec-hd-lbl">Evaluación inicial paralela</div><div class="sec-hd-line"></div></div>
+  <div class="cl cl-b"><div class="cl-ico">⚡</div><div class="cl-body"><span class="cl-title">Pedir todo al mismo tiempo — no en cascada</span>Laboratorio + imagen se solicitan en el primer contacto, en paralelo. No esperar el resultado del labo para pedir imagen.</div></div>
+  <div class="algo">
+    <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Laboratorio simultáneo con imagen</div><div class="step-body">Hemograma · PCR · Hepatograma · Amilasa · Función renal · Ionograma<br>Orina completa · BHCG (toda mujer en edad fértil) · Hemocultivos si fiebre</div></div></div>
+    <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Imagen desde el primer contacto</div><div class="step-body">Ecografía: 1ª línea (vía biliar, pelvis, pediátrico, embarazada)<br>TAC con contraste IV: adulto indeterminado, sospecha quirúrgica, eco no concluyente<br>RMN: embarazada con eco no concluyente</div></div></div>
+    <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Analgesia desde el inicio</div><div class="step-body">No retrasar. La evidencia muestra que no altera la precisión diagnóstica.</div></div></div>
+  </div>
+  <div class="sec-hd mt-12"><div class="sec-hd-lbl">Analgesia según tipo de dolor</div><div class="sec-hd-line"></div></div>
+  <div class="g2">
+    <div class="card"><div class="card-body"><div class="dx-name" style="margin-bottom:6px">Dolor nociceptivo / inflamatorio</div><span class="drug">Ketorolac</span> <span class="dose">30 mg IV</span><br>o <span class="drug">Morfina</span> <span class="dose">0,05–0,1 mg/kg IV titulada</span><br>+ Antiemético</div></div>
+    <div class="card"><div class="card-body"><div class="dx-name" style="margin-bottom:6px">Espasmo / cólico (víscera hueca)</div><span class="drug">Hioscina butilbromuro</span> <span class="dose">20 mg IV</span><br>+ <span class="drug">Diclofenac</span> <span class="dose">75 mg IM</span></div></div>
+  </div>
+  <div class="sec-hd mt-12"><div class="sec-hd-lbl">Indicaciones de cirugía urgente</div><div class="sec-hd-line"></div></div>
+  <ul class="bullets">
+    <li><strong>Peritonitis generalizada</strong> — cualquier causa</li>
+    <li><strong>Apendicitis complicada</strong> — perforada (si hay absceso, consultar con cirugía de guardia)</li>
+    <li><strong>Colecistitis gangrenosa</strong> o con perforación</li>
+    <li><strong>Obstrucción intestinal</strong> con isquemia o estrangulación</li>
+    <li><strong>Aneurisma aórtico roto</strong> — emergencia inmediata</li>
+    <li><strong>Embarazo ectópico roto</strong> con inestabilidad hemodinámica</li>
+    <li><strong>Isquemia mesentérica</strong> — sospecha → consulta inmediata con cirugía de guardia</li>
+  </ul>
+</div></div>
+</div>
+
+<div id="abd-flags" class="tab-pane">
+  <div class="cl cl-r"><div class="cl-ico">🔴</div><div class="cl-body"><span class="cl-title">Inestabilidad hemodinámica</span>TAS &lt;90, FC &gt;100, frialdad periférica → shock. Causas: ectópico roto, aneurisma, isquemia, sepsis.</div></div>
+  <div class="cl cl-r"><div class="cl-ico">🔴</div><div class="cl-body"><span class="cl-title">Abdomen en tabla / defensa generalizada</span>Peritonitis franca → cirugía urgente. Llamar a cirugía sin esperar imagen.</div></div>
+  <div class="cl cl-r"><div class="cl-ico">🔴</div><div class="cl-body"><span class="cl-title">Tríada de Charcot</span>Fiebre + ictericia + dolor en HCD = colangitis. Con hipotensión + alteración del sensorio = Péntada de Reynolds → sepsis biliar.</div></div>
+  <div class="cl cl-r"><div class="cl-ico">🔴</div><div class="cl-body"><span class="cl-title">Dolor desproporcionado al examen</span>Isquemia mesentérica: dolor severo con abdomen blando. Lactato elevado apoya, pero normal no descarta → angioTC. Ojo con el período de calma — la mejoría del dolor (espontánea o tras analgesia) no descarta isquemia, puede ser necrosis de terminaciones nerviosas antes de la perforación.</div></div>
+  <div class="cl cl-r"><div class="cl-ico">🔴</div><div class="cl-body"><span class="cl-title">Masa pulsátil en epigastrio &gt;60 años</span>Aneurisma aórtico abdominal hasta demostrar lo contrario. Eco a la cabecera + cirugía vascular inmediata.</div></div>
+  <div class="cl cl-a"><div class="cl-ico">🟠</div><div class="cl-body"><span class="cl-title">BHCG (+) + dolor FID/FII + inestabilidad</span>Embarazo ectópico roto — emergencia obstétrico-quirúrgica.</div></div>
+  <div class="cl cl-a"><div class="cl-ico">🟠</div><div class="cl-body"><span class="cl-title">Neumoperitoneo en Rx tórax de pie</span>Aire libre subdiafragmático → perforación de víscera hueca. Cirugía urgente.</div></div>
+  <div class="cl cl-a"><div class="cl-ico">🟠</div><div class="cl-body"><span class="cl-title">Lactato &gt;2 mmol/L</span>Hipoperfusión / isquemia. Combinar con contexto clínico. Escalar urgente.</div></div>
+  <div class="cl cl-a"><div class="cl-ico">🟠</div><div class="cl-body"><span class="cl-title">Vómitos fecaloideos</span>Obstrucción intestinal baja avanzada → consultar con cirugía de guardia.</div></div>
 </div>

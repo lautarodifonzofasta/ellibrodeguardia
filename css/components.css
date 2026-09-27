@@ -297,3 +297,31 @@ ul.bullets li strong { color: var(--text); }
 .green { color: var(--green); }
 .amber { color: var(--amber); }
 .acc { color: var(--acc); }
+.mapa-wrap { display: flex; flex-direction: column; gap: 12px; }
+.svg-grid { width: 100%; max-width: 360px; margin: 0 auto; }
+.q-cell { fill: var(--bg3); stroke: var(--border); stroke-width: 1.5; cursor: pointer; transition: fill var(--t); }
+.q-cell:hover { fill: var(--surface); }
+.q-cell.active { fill: var(--blue-bg); stroke: var(--acc); stroke-width: 2; }
+.q-label { font-size: 11px; font-weight: 700; fill: var(--text2); text-anchor: middle; pointer-events: none; text-transform: uppercase; letter-spacing: .04em; }
+.q-label.active { fill: var(--acc); }
+.q-organ { font-size: 9px; fill: var(--text3); text-anchor: middle; pointer-events: none; }
+.result-empty { text-align: center; color: var(--text3); font-size: 13px; padding: 24px 12px; border: 1px dashed var(--border); border-radius: var(--r); }
+.result-zone { display: none; }
+.result-zone.on { display: block; }
+.zone-title { font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+.zone-organs { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
+.prob-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin: 10px 0 5px; }
+.prob-label.alta { color: var(--red); }
+.prob-label.media { color: var(--amber); }
+.prob-label.baja { color: var(--text3); }
+.dx-item { padding: 6px 8px; background: var(--bg3); border-radius: 6px; margin-bottom: 3px; border-left: 2px solid transparent; }
+.dx-item.alta { border-left-color: var(--red); }
+.dx-item.media { border-left-color: var(--amber); }
+.dx-item.baja { border-left-color: var(--border2); }
+.dx-name { font-weight: 700; font-size: 13px; color: var(--text); }
+.dx-clave { font-size: 11.5px; color: var(--text2); line-height: 1.4; }
+.signo-item { padding: 8px 0; border-bottom: 1px solid var(--border); }
+.signo-item:last-child { border-bottom: none; }
+.signo-name { font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 3px; }
+.signo-tech { font-size: 12px; color: var(--text2); margin-bottom: 2px; line-height: 1.4; }
+.signo-dx { font-size: 11px; color: var(--acc); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }

@@ -1,9 +1,13 @@
 // Dev-only generator (not a build step — its output, sw.js, is a plain
 // committed file the browser fetches directly, same as any other asset).
-// Re-run this manually whenever files are added/removed/renamed under
-// css/, js/, content/, or icons/, then commit the updated sw.js.
-//   node tools/generate-sw.mjs [cacheVersion]
-import { readdirSync, statSync, writeFileSync } from 'node:fs';
+// Re-run this after ANY change under css/, js/, content/, or icons/ (or to
+// index.html / manifest.json), then commit the updated sw.js. The cache name
+// is a hash of those files' contents, so even a text-only edit produces a new
+// sw.js — which is what makes returning users pick the change up.
+//   node tools/generate-sw.mjs          write sw.js
+//   node tools/generate-sw.mjs --check  exit 1 if sw.js is out of date
+import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join, relative, sep } from 'node:path';
 
 const root = new URL('..', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
@@ -26,8 +30,16 @@ for (const dir of INCLUDE_DIRS) {
 }
 files = files.map(f => f.split(sep).join('/')).sort();
 
-const version = process.argv[2] || new Date().toISOString().slice(0, 10);
-const cacheName = `elg-v${version}`;
+// Line endings are normalized before hashing so a Windows checkout (CRLF)
+// and GitHub (LF) produce the same cache name.
+const TEXT_EXT = /\.(html|css|js|mjs|json|svg|txt|md|webmanifest)$/;
+const hash = createHash('sha256');
+for (const f of files) {
+  let data = readFileSync(join(root, f));
+  if (TEXT_EXT.test(f)) data = Buffer.from(data.toString('utf8').replace(/\r\n/g, '\n'));
+  hash.update(f).update('\0').update(data).update('\0');
+}
+const cacheName = `elg-${hash.digest('hex').slice(0, 10)}`;
 
 const urls = ['./', ...files];
 
@@ -39,18 +51,33 @@ const PRECACHE_URLS = ${JSON.stringify(urls, null, 2)};
 
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(PRECACHE_URLS))
+    // cache: 'reload' bypasses the browser's HTTP cache (GitHub Pages sends
+    // max-age=600), so a fresh deploy is never precached from a stale copy.
+    caches.open(CACHE_NAME).then(cache =>
+      cache.addAll(PRECACHE_URLS.map(url => new Request(url, { cache: 'reload' })))
+    )
   );
   self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-    )
+    caches.keys().then(keys => {
+      // Only this app's caches — the github.io origin is shared with other sites.
+      const old = keys.filter(k => k.startsWith('elg-') && k !== CACHE_NAME);
+      return Promise.all(old.map(k => caches.delete(k)))
+        .then(() => self.clients.claim())
+        // On an update (not a first install), pages already open were built
+        // with the previous version's CSS/JS; reload them once so they don't
+        // render new content against old code.
+        .then(() => old.length ? self.clients.matchAll({ type: 'window' }) : [])
+        .then(clients => {
+          // Not awaited: the reload's own request waits for this activation
+          // to finish, so waiting on it here would deadlock.
+          clients.forEach(c => c.navigate(c.url).catch(() => {}));
+        });
+    })
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {
@@ -62,5 +89,15 @@ self.addEventListener('fetch', event => {
 });
 `;
 
-writeFileSync(join(root, 'sw.js'), swSource);
-console.log(`Wrote sw.js — ${urls.length} URLs precached, cache name ${cacheName}`);
+const target = join(root, 'sw.js');
+if (process.argv.includes('--check')) {
+  const current = readFileSync(target, 'utf8').replace(/\r\n/g, '\n');
+  if (current !== swSource) {
+    console.error('sw.js is out of date — run: node tools/generate-sw.mjs');
+    process.exit(1);
+  }
+  console.log(`sw.js is up to date (${cacheName})`);
+} else {
+  writeFileSync(target, swSource);
+  console.log(`Wrote sw.js — ${urls.length} URLs precached, cache name ${cacheName}`);
+}
