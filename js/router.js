@@ -5,6 +5,7 @@ import { renderScoredCalculator, renderInputCalculator } from './calculators/eng
 import { SCORED_CALCULATORS } from './calculators/index.js';
 import { compute as computeSodio } from './calculators/calc-sodio.js';
 import { renderDrugReference } from './drugs.js';
+import { renderRcp } from './rcp/ui.js';
 import { setActiveSidebarItem } from './sidebar.js';
 
 const NOT_FOUND_HTML = `<div class="view active"><div style="padding:40px;text-align:center;color:var(--text3)"><div style="font-size:32px;margin-bottom:12px">🔧</div><div style="font-size:15px;font-weight:600;margin-bottom:6px">Módulo en construcción</div><div style="font-size:13px">Disponible en la próxima actualización.</div></div></div>`;
@@ -111,6 +112,9 @@ async function render(id, container) {
       renderInputCalculator(container, def, computeSodio);
     }
     return;
+  }
+  if (m?.type === 'rcp') {
+    return renderRcp(container);
   }
   if (m?.type === 'drugs') {
     if (!drugsCache) {

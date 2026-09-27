@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createEngine } from '../../js/rcp/engine.js';
 import { getStatus } from '../../js/rcp/status.js';
-import { serializeSession, deserializeSession, saveSession, loadSession, clearSession, storageKey } from '../../js/rcp/storage.js';
+import { serializeSession, deserializeSession, saveSession, loadSession, clearSession, storageKey, archiveSession, loadArchivedSession } from '../../js/rcp/storage.js';
 import { PROFILE, T0, sec, shockCycle, FakeStorage } from './helpers.mjs';
 
 const rcp = createEngine(PROFILE);
@@ -72,6 +72,17 @@ test('sessions that would break the screen are rejected on load', () => {
     mutate(s);
     assert.throws(() => deserializeSession(JSON.stringify(s)), TypeError, name);
   }
+});
+
+test('a finished session can be kept as "la RCP anterior", separate from the current one', () => {
+  const storage = new FakeStorage();
+  const old = rcp.confirmRosc(midResuscitation(), sec(300));
+  assert.equal(archiveSession(old, storage), true);
+  const fresh = rcp.startCpr(rcp.createSession({ id: 's9', now: sec(1000) }), sec(1000));
+  saveSession(fresh, storage);
+  assert.deepEqual(loadArchivedSession('real', storage), old);
+  assert.deepEqual(loadSession('real', storage), fresh);
+  assert.equal(loadArchivedSession('simulacion', storage), null);
 });
 
 test('storage failures never throw (private mode, full quota, no storage)', () => {

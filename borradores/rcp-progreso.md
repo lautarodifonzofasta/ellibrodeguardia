@@ -7,8 +7,8 @@ Pedido completo: `borradores/prompt-rcp.md`. Fuente clínica única: `borradores
 |---|---|
 | 0 · Inspección y plan | ✅ Cerrada (2026-09-27) |
 | 1 · Perfil, motor, sesión, persistencia y tests | ✅ Cerrada (2026-09-27) |
-| 2 · Pantallas del flujo completo + registro en meta.json y sw.js | ⏳ Esperando OK del autor |
-| 3 · Audio, vibración, Wake Lock, causas reversibles, vía aérea, capnografía, métricas de pausas | — |
+| 2 · Pantallas del flujo completo + registro en meta.json y sw.js | ✅ Cerrada (2026-09-27) |
+| 3 · Audio, vibración, Wake Lock, causas reversibles, vía aérea, capnografía, métricas de pausas | ⏳ Esperando OK del autor |
 
 ## Validación clínica
 
@@ -79,14 +79,40 @@ Respuestas del autor al cierre de la Fase 1 (2026-09-27):
 
 Desde cualquier estado activo: confirmar ROSC → ROSC; finalizar con motivo → ENDED. Los eventos que no cambian el estado son: droga, acceso IV/IO, vía aérea, capnografía, EtCO₂, causa reversible y otro.
 
-## Para la Fase 2
+## Fase 2 (cerrada)
 
-- Pantallas del flujo completo (secciones 6 y 7 del pedido), con los textos de `profile.messages` y los recordatorios de `status.algorithm.actions`.
-- Registro en `content/meta.json` y botón en `pcr.html`. `sw.js` se regenera con `node tools/generate-sw.mjs`.
-- Nota clínica con la plantilla del perfil (`noteTemplate`), cronología y edición auditada desde la interfaz.
-- Calculadora de rango de lidocaína por peso (`perKg`), sin redondeos.
-- Comparar `pcr.html` con el perfil AHA 2025 y marcarle las diferencias al autor.
-- Si el perfil no se puede usar (por ejemplo, una `[REVISAR]` nueva), la pantalla de inicio tiene que mostrar el motivo y no permitir iniciar.
+Archivos: `js/rcp/ui.js` (pantallas), `js/rcp/note.js` (nota clínica), bloque "MÓDULO: RCP INTERACTIVA" en `css/components.css`, vista `rcp-asistente` (tipo `rcp`) en `content/meta.json`, botón "Abrir asistente de RCP" en `pcr.html`, router, contador de módulos (67) en la portada y el README, y `sw.js` regenerado.
+
+Decisiones de la Fase 2:
+23. **Botón "Descarga"** durante las compresiones: abre el panel de descargas (lista numerada con hora y el texto de energía del .md §5). Las descargas se registran solo en el flujo del ritmo. *Decidido por el autor.*
+24. **La app no se oculta** durante la RCP. Si el usuario sale a otro módulo, al volver ve "RCP en curso · ¿Continuar?". *Decidido por el autor.*
+25. **RCP anterior:** al iniciar una RCP nueva, la terminada se guarda aparte (`elg-rcp-session-real-anterior`) y se puede ver desde el inicio, así no se pierde un registro por un toque.
+26. **Nota clínica** (plantilla del .md §10): "Por cada droga:", "Cierre con ROSC:" y "Cierre sin ROSC:" son instrucciones y no se escriben. Una droga dada en dosis distintas lleva una frase por dosis. El detalle del motivo de finalización se agrega si fue registrado. Los plurales quedan como en la plantilla ("1 descargas"). *Pregunta abierta: ¿ajustar el singular?*
+27. **Indicación de grupo** (amiodarona o lidocaína): "Registrar" abre la lista para elegir, salvo que ya haya una droga elegida.
+28. **Botones de color:** el texto usa el color del fondo de la página, con contraste medido ≥ 4,5 en los dos temas.
+29. **Lidocaína:** la dosis se registra en mg. El peso es opcional y muestra el rango con una multiplicación directa, sin redondeos (70 kg → 70–105 mg).
+
+Verificación de la Fase 2: `npm test` pasa 81/81. En Edge headless a 380 px, el recorrido del criterio de aceptación pasa 36/36: Iniciar, Box 1 sin cronómetro, FV, doble toque en "Descarga realizada" (se registra una sola), preaviso y aviso de fin de ciclo, recarga en plena RCP con "¿Continuar?", adrenalina indicada y registrada con su ventana, IV, 3ª descarga, lidocaína con rango por peso, panel de descargas, ida y vuelta a otro módulo, ROSC con confirmación, resumen, post-ROSC reservado, nota, edición auditada, copiar, offline, "RCP anterior", contraste y sin errores de consola.
+
+### Diferencias entre `pcr.html` y el perfil AHA 2025 (para el autor; no se tocó `pcr.html`)
+
+| Tema | `pcr.html` hoy | Perfil AHA 2025 (.md) |
+|---|---|---|
+| Momento del antiarrítmico | Amiodarona dentro de "Drogas (desde 2ª descarga)" | 1ª dosis en el Box 8, después de la 3ª descarga |
+| Alternativa | Solo amiodarona | Amiodarona **o lidocaína** |
+| Energía bifásica | "200 J bifásico" | La recomendada por el fabricante (por ejemplo, 120–200 J); si se desconoce, la máxima |
+| Profundidad | "5–6 cm" | "al menos 5 cm" |
+| EtCO₂ como signo de RCE | "↑ bruscamente (>40 mmHg)" | Aumento brusco, sin valor de corte absoluto |
+| Vía de la adrenalina | "1 mg IV" (IO si la IV es difícil) | "1 mg IV/IO" |
+
+## Para la Fase 3
+
+- Audio de asistencia (voz con speechSynthesis en español más un beep con Web Audio) activado en el primer toque, con los textos `voice` del perfil, solo en las transiciones y nunca en bucle. Vibración donde exista. Ajustes ON/OFF guardados.
+- Wake Lock mientras haya una RCP activa, pedido de nuevo al volver a la app.
+- Panel de causas reversibles (checklist) y recordatorio en los Box 8 y 11.
+- Eventos de vía aérea avanzada, capnografía y EtCO₂ (con el texto de referencia del .md §7, sin alertas automáticas).
+- Métricas de pausas (duración de cada una, máxima y acumulada) en la pantalla y el resumen.
+- Correr el criterio de aceptación completo de la sección 12.
 
 ## Para retomar en una conversación nueva
 

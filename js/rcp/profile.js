@@ -144,6 +144,33 @@ function checkMedications(profile) {
   }
 }
 
+// The note template's ten lines, in order, with the placeholders note.js fills.
+const NOTE_LINES = [
+  { has: ['{hora_inicio}'] },
+  { re: /\{[^{}]*\|[^{}]*\}/ },
+  { has: ['{n}', '{horas}'] },
+  { starts: 'Por cada droga: ', has: ['{droga}', '{dosis}', '{vía}', '{n}', '{horas}'] },
+  { has: ['{hora}', '. Se monitorea', 'valor (hora)'] },
+  { has: ['{lista}'] },
+  { has: ['{texto (hora)}'] },
+  { starts: 'Cierre con ROSC: ', has: ['{hora_rosc}', '{duración}', '{n}'] },
+  { starts: 'Cierre sin ROSC: ', has: ['{hora_fin}', '{motivo}', '{duración}'] },
+  {},
+];
+
+function checkNoteTemplate(t) {
+  if (!isObject(t) || !isText(t.rules) || !Array.isArray(t.lines) || t.lines.length !== NOTE_LINES.length) {
+    fail('Perfil incompleto: falta la plantilla de la nota clínica.');
+  }
+  NOTE_LINES.forEach((rule, i) => {
+    const line = t.lines[i];
+    if (!isText(line) || (rule.starts && !line.startsWith(rule.starts)) ||
+        (rule.has && !rule.has.every(p => line.includes(p))) || (rule.re && !rule.re.test(line))) {
+      fail(`Plantilla de nota: la línea ${i + 1} no tiene el formato esperado.`);
+    }
+  });
+}
+
 /**
  * Throws ProfileError unless `profile` is complete, consistent and has no
  * "[REVISAR]" marker. Results are cached per profile object.
@@ -180,6 +207,7 @@ export function assertProfileUsable(profile) {
   }
   if (!isObject(profile.messages)) fail('Perfil incompleto: faltan los textos de pantalla y voz.');
   for (const key of REQUIRED_MESSAGES) checkMessage(profile.messages[key], `"${key}"`);
+  checkNoteTemplate(profile.noteTemplate);
 
   usable.add(profile);
 }

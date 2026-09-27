@@ -23,7 +23,7 @@ const OTHER_TEXT_MAX = 200;
 
 // Which data fields an audited edit may change, per event type. The type,
 // id, seq, recordedAt, cycle and Box of an event are never editable.
-const EDITABLE_DATA = Object.freeze({
+export const EDITABLE_DATA = Object.freeze({
   CPR_STARTED: [],
   CPR_PAUSED: [],
   CPR_RESUMED: [],

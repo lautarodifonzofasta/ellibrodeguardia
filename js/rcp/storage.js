@@ -118,6 +118,35 @@ export function loadSession(mode, storage = defaultStorage()) {
   }
 }
 
+const archiveKey = mode => `${KEY_PREFIX}${mode}-anterior`;
+
+/**
+ * Keeps a finished session as "la RCP anterior" (one slot per mode) before a
+ * new one takes its place, so starting a new resuscitation never silently
+ * discards the previous record. Returns false if it couldn't be saved.
+ * @param {ResuscitationSession} session
+ */
+export function archiveSession(session, storage = defaultStorage()) {
+  if (!storage) return false;
+  try {
+    storage.setItem(archiveKey(session.mode), serializeSession(session));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/** @param {'real'|'simulacion'} mode */
+export function loadArchivedSession(mode, storage = defaultStorage()) {
+  if (!storage) return null;
+  try {
+    const text = storage.getItem(archiveKey(mode));
+    return text ? deserializeSession(text) : null;
+  } catch {
+    return null;
+  }
+}
+
 /** @param {'real'|'simulacion'} mode */
 export function clearSession(mode, storage = defaultStorage()) {
   if (!storage) return;
