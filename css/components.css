@@ -767,6 +767,7 @@ ul.bullets li strong { color: var(--text); }
 .rcp-info { background: var(--blue-bg); border-color: var(--acc); color: var(--text); }
 .rcp-ghost { background: transparent; }
 .rcp-link { background: none; border: none; color: var(--acc); text-decoration: underline; font-size: 15px; padding: 10px 0; text-align: left; min-height: 44px; }
+.rcp-link-danger { color: var(--red); }
 .rcp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0; }
 .rcp-stack { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
 .rcp-ref { font-size: 13px; line-height: 1.45; color: var(--text2); margin: 4px 0 0; padding-left: 18px; }

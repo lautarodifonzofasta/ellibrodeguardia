@@ -6,7 +6,7 @@
 
 import { createEngine, isActive, STATES, EDITABLE_DATA } from './engine.js';
 import { getStatus, summarize, chronology } from './status.js';
-import { saveSession, loadSession, archiveSession, loadArchivedSession } from './storage.js';
+import { saveSession, loadSession, archiveSession, loadArchivedSession, clearSession, clearArchivedSession } from './storage.js';
 import { buildNote, STOP_REASON_LABELS } from './note.js';
 import { profileLabel } from './profile.js';
 import { createAssist } from './assist.js';
@@ -59,6 +59,7 @@ export async function renderRcp(container) {
   let session = loadSession(MODE);
   let resumed = false;          // an active session found on open waits for "Continuar"
   let showSummary = !!session && !isActive(session);
+  let source = 'current';       // stored slot the shown session belongs to: 'current' or 'archive'
   let sheet = null;             // { type, ... } — the open panel, if any
   let saveFailed = false;
   let note = null;              // { sessionId, text } — the editable note
@@ -79,7 +80,7 @@ export async function renderRcp(container) {
   function commit(next) {
     if (!next || next === session) return;
     session = next;
-    saveFailed = !saveSession(session);
+    saveFailed = !(source === 'archive' ? archiveSession(session) : saveSession(session));
     if (!isActive(session)) showSummary = true;
     renderMain(true);
   }
@@ -360,6 +361,7 @@ export async function renderRcp(container) {
         ${badge()}
         <p class="rcp-resume-info">Tiempo total <b data-live="total">${mmss(st.totalMs)}</b> · Ciclo ${st.cycle ? st.cycle.number : '-'} · Box ${esc(st.algorithm?.box ?? '-')}</p>
         <button class="rcp-btn rcp-huge rcp-primary" data-act="resume-view">Continuar</button>
+        <button class="rcp-link rcp-link-danger" data-act="discard-ask">Descartar esta RCP</button>
       </div>`;
   }
 
@@ -404,7 +406,8 @@ export async function renderRcp(container) {
         <button class="rcp-btn rcp-primary" data-act="copy-note">Copiar</button>
         <button class="rcp-btn" data-act="rebuild-note">Rehacer desde el registro</button>
       </div>
-      <div class="rcp-stack"><button class="rcp-btn rcp-big" data-act="new">Nueva RCP</button></div>`;
+      <div class="rcp-stack"><button class="rcp-btn rcp-big" data-act="new">Nueva RCP</button>
+        <button class="rcp-link rcp-link-danger" data-act="delete-ask">Borrar esta RCP del dispositivo</button></div>`;
   }
 
   function eventLabel(e) {
@@ -449,6 +452,10 @@ export async function renderRcp(container) {
       case 'no-shock': body = confirmSheet('¿Reanudar compresiones sin descarga?', 'no-shock-confirm', 'Reanudar sin descarga'); break;
       case 'stop': body = stopSheet(); break;
       case 'stop-death': body = confirmSheet('Confirmar fallecimiento', 'stop-death-confirm', 'Confirmar'); break;
+      case 'delete': body = confirmSheet('¿Borrar esta RCP de este dispositivo?', 'delete-confirm', 'Borrar', 'rcp-danger',
+        'No se puede deshacer. Si la vas a necesitar, copiá la nota antes.'); break;
+      case 'discard': body = confirmSheet('¿Descartar la RCP en curso?', 'discard-confirm', 'Descartar', 'rcp-danger',
+        'Se borra de este dispositivo y no se puede deshacer.'); break;
       case 'edit': body = editSheet(); break;
       default: body = '';
     }
@@ -457,10 +464,10 @@ export async function renderRcp(container) {
       <button class="rcp-btn rcp-ghost rcp-close" data-act="close">Cerrar</button></div></div>`;
   }
 
-  function confirmSheet(title, action, label) {
-    return `<h2 class="rcp-h2">${esc(title)}</h2>
+  function confirmSheet(title, action, label, tone = 'rcp-primary', detail = '') {
+    return `<h2 class="rcp-h2">${esc(title)}</h2>${detail ? `<p class="rcp-sub">${esc(detail)}</p>` : ''}
       <div class="rcp-grid"><button class="rcp-btn rcp-big rcp-ghost" data-act="close">Cancelar</button>
-      <button class="rcp-btn rcp-big rcp-primary" data-act="${action}">${esc(label)}</button></div>`;
+      <button class="rcp-btn rcp-big ${tone}" data-act="${action}">${esc(label)}</button></div>`;
   }
 
   function medsSheet(st) {
@@ -609,14 +616,14 @@ export async function renderRcp(container) {
     switch (el.dataset.act) {
       case 'start':
         if (session && !isActive(session)) archiveSession(session);
-        resumed = true; showSummary = false; note = null; cuesReady = true; announced.clear(); pendingCues = [];
+        resumed = true; showSummary = false; note = null; cuesReady = true; announced.clear(); pendingCues = []; source = 'current';
         act(() => rcp.startCpr(rcp.createSession({ id: newSessionId(), mode: MODE, now }), now));
         break;
       case 'resume-view': resumed = true; assist.play(pendingCues, settings); pendingCues = []; renderMain(true); break;
       case 'show-previous': {
         if (!session || isActive(session)) {
           const prev = loadArchivedSession(MODE);
-          if (prev) { session = prev; }
+          if (prev) { session = prev; source = 'archive'; }
         }
         showSummary = true; renderMain(true);
         break;
@@ -630,6 +637,20 @@ export async function renderRcp(container) {
       case 'no-shock-ask': openSheet({ type: 'no-shock' }); break;
       case 'no-shock-confirm': closeSheet(); act(() => rcp.resumeCpr(session, now)); break;
       case 'rosc-ask': openSheet({ type: 'rosc' }); break;
+      case 'delete-ask': openSheet({ type: 'delete' }); break;
+      case 'delete-confirm':
+        closeSheet();
+        if (source === 'archive') clearArchivedSession(MODE); else clearSession(MODE);
+        session = loadSession(MODE); source = 'current'; showSummary = false; note = null;
+        renderMain(true);
+        break;
+      case 'discard-ask': openSheet({ type: 'discard' }); break;
+      case 'discard-confirm':
+        closeSheet();
+        clearSession(MODE);
+        session = null; resumed = false; showSummary = false; pendingCues = [];
+        renderMain(true);
+        break;
       case 'rosc-confirm': closeSheet(); act(() => rcp.confirmRosc(session, now)); break;
       case 'stop-ask': openSheet({ type: 'stop' }); break;
       case 'stop-death-confirm': {

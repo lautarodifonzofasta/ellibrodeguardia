@@ -147,6 +147,12 @@ export function loadArchivedSession(mode, storage = defaultStorage()) {
   }
 }
 
+/** Deletes "la RCP anterior" for `mode` (the user asked to, after confirming). */
+export function clearArchivedSession(mode, storage = defaultStorage()) {
+  if (!storage) return;
+  try { storage.removeItem(archiveKey(mode)); } catch { /* nothing to do */ }
+}
+
 /** @param {'real'|'simulacion'} mode */
 export function clearSession(mode, storage = defaultStorage()) {
   if (!storage) return;
