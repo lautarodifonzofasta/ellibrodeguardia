@@ -87,7 +87,7 @@ Decisiones de la Fase 2:
 23. **Botón "Descarga"** durante las compresiones: abre el panel de descargas (lista numerada con hora y el texto de energía del .md §5). Las descargas se registran solo en el flujo del ritmo. *Decidido por el autor.*
 24. **La app no se oculta** durante la RCP. Si el usuario sale a otro módulo, al volver ve "RCP en curso · ¿Continuar?". *Decidido por el autor.*
 25. **RCP anterior:** al iniciar una RCP nueva, la terminada se guarda aparte (`elg-rcp-session-real-anterior`) y se puede ver desde el inicio, así no se pierde un registro por un toque.
-26. **Nota clínica** (plantilla del .md §10): "Por cada droga:", "Cierre con ROSC:" y "Cierre sin ROSC:" son instrucciones y no se escriben. Una droga dada en dosis distintas lleva una frase por dosis. El detalle del motivo de finalización se agrega si fue registrado. Los plurales quedan como en la plantilla ("1 descargas"). *Pregunta abierta: ¿ajustar el singular?*
+26. **Nota clínica** (plantilla del .md §10): "Por cada droga:", "Cierre con ROSC:" y "Cierre sin ROSC:" son instrucciones y no se escriben. Una droga dada en dosis distintas lleva una frase por dosis. El detalle del motivo de finalización se agrega si fue registrado. El singular se resolvió en el punto 31.
 27. **Indicación de grupo** (amiodarona o lidocaína): "Registrar" abre la lista para elegir, salvo que ya haya una droga elegida.
 28. **Botones de color:** el texto usa el color del fondo de la página, con contraste medido ≥ 4,5 en los dos temas.
 29. **Lidocaína:** la dosis se registra en mg. El peso es opcional y muestra el rango con una multiplicación directa, sin redondeos (70 kg → 70–105 mg).
