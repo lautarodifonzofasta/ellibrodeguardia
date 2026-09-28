@@ -136,12 +136,16 @@ Decisiones de la Fase 3:
 44. **Wake Lock:** se pide mientras haya una RCP activa en pantalla, se vuelve a pedir al volver a la app y se libera al terminar o al salir del asistente.
 45. **Borrar y descartar** (pedido por el autor al probar): el resumen tiene "Borrar esta RCP del dispositivo" y "RCP en curso · ¿Continuar?" tiene "Descartar esta RCP". Los dos piden confirmación y avisan que no se puede deshacer (sugieren copiar la nota antes). Borrar la actual no toca "la RCP anterior", y al revés tampoco. Una corrección hecha sobre la RCP anterior se guarda en ese mismo registro.
 46. **Confirmación visible al registrar** (el autor probó "Nota → Registrar" y no vio cambios en pantalla): cada evento que no cambia la pantalla (droga, IV/IO, vía aérea, capnografía, EtCO₂, causa, nota) muestra 3 s abajo "✓ Registrado: … · hora", y una corrección muestra "✓ Corrección guardada". La pantalla activa suma "Registro" con los últimos 4 eventos y "Ver registro completo", que se puede corregir durante la RCP.
+47. **Ajustes del autor al probar (2026-09-28):**
+    - **Metrónomo estable.** Antes lo programaba un temporizador de JavaScript, que se atrasaba o salteaba golpes cuando la página estaba ocupada. Ahora es un sonido de un golpe que se repite en bucle (60/110 s), y el reloj de audio del teléfono lleva el tiempo. El audio se reactiva en cada toque y al volver a la app (incluido el estado "interrumpido" del iPhone tras una llamada o con la pantalla bloqueada).
+    - **Interruptores legibles.** Los ajustes muestran el nombre, "Activado" o "Desactivado" y un interruptor, en vez de "MetrónomoON". Se corrigió además el orden del CSS: los estilos base de los botones estaban declarados después de sus variantes y las pisaban (por eso la grilla de 100/110/120 salía 2 + 1).
+    - **Sin pantalla "INICIAR RCP".** El asistente abre directo en los dos relojes en cero ("sin iniciar", "sin dosis"), con el texto "Tocá «Iniciar compresiones» una vez evaluados el pulso y la ventilación." y el botón **Iniciar compresiones**. RCE, Finalizar y los eventos aparecen recién al iniciar. El texto está en el .md §9 y en el perfil (`startHint`). "RCP en curso · ¿Continuar?" no cambia.
 
 Verificación de la Fase 3:
 - `npm test` pasa 89/89.
-- En Edge headless a 380 px pasan dos pruebas: el flujo completo, 40/40, y la **aceptación de la §12**, 32/32. La de aceptación recorre: abrir, iniciar, reloj, fin de ciclo con aviso, evaluar ritmo, FV, descarga, reiniciar, siguiente ciclo, adrenalina, otra descarga, RCE, resumen, cronología y nota, con recarga en plena RCP y offline. Además verifica:
+- En Edge headless a 380 px pasan dos pruebas: el flujo completo, 40/40, y la **aceptación de la §12**, 35/35 (con los ajustes del punto 47: pantalla inicial con relojes, interruptores y un solo bucle de metrónomo a 60/110 s que se detiene al evaluar el ritmo). Borrar/descartar pasa 13/13 y la confirmación al registrar, 10/10. La de aceptación recorre: abrir, iniciar, reloj, fin de ciclo con aviso, evaluar ritmo, FV, descarga, reiniciar, siguiente ciclo, adrenalina, otra descarga, RCE, resumen, cronología y nota, con recarga en plena RCP y offline. Además verifica:
   - cada voz una sola vez, sin bucle con el ciclo vencido, y solo el aviso vencido después de una recarga;
-  - la vibración y el metrónomo (~110/min, con pausa en la evaluación del ritmo);
+  - la vibración y el metrónomo (110/min, con pausa en la evaluación del ritmo);
   - el Wake Lock pedido, vuelto a pedir y liberado;
   - los paneles, la ventilación que cambia con la vía aérea, el resaltado en el Box 8 y "audio OFF" sin voz;
   - el resumen con pausas y fracción, sin desbordes y sin errores de consola.

@@ -378,15 +378,32 @@ export async function renderRcp(container) {
     return `<div class="cl cl-r"><div class="cl-ico">⛔</div><div class="cl-body"><span class="cl-title">El asistente no se puede usar</span>${esc(loadError)}</div></div>`;
   }
 
+  /** Opens straight on the ring clocks at zero; CPR starts with "Iniciar compresiones". */
   function startHtml() {
     const previous = session && !isActive(session) ? session : loadArchivedSession(MODE);
+    const def = profile.medications.find(m => m.intervalSec);
     return `
-      <div class="rcp-start">
-        <h1 class="rcp-title">Paro cardiorrespiratorio · Adulto · AHA 2025</h1>
+      <div class="rcp-start rcp-idle">
+        <div class="rcp-topcard">
+          <div class="rcp-total"><span class="rcp-total-label">duración total</span><span class="rcp-total-time">00:00</span></div>
+          <span class="rcp-top-actions">
+            <button class="rcp-btn rcp-small rcp-ghost" data-act="settings" aria-label="Ajustes de asistencia">${settings.audio ? '🔊' : '🔇'}</button>
+          </span>
+        </div>
         ${badge()}
-        <button class="rcp-btn rcp-huge rcp-danger" data-act="start">INICIAR RCP</button>
+        <div class="rcp-prompt is-blue">${esc(profile.startHint)}</div>
+        <button class="rcp-btn rcp-huge rcp-danger" data-act="start">Iniciar compresiones</button>
+        <section class="rcp-ringcard" aria-label="Compresiones">
+          ${ringHtml('cycle', { label: 'compresiones', big: '00:00', sub: 'sin iniciar', progress: 0, tone: 'none', tick: null })}
+          <div class="rcp-ringside">
+            <div class="rcp-counters"><span><small>ciclos</small><b>0</b></span><span><small>descargas</small><b>0</b></span></div>
+          </div>
+        </section>
+        ${def ? `<section class="rcp-ringcard" aria-label="${esc(def.name)}">
+          ${ringHtml('drug', { label: def.name.toLocaleLowerCase('es'), big: '--:--', sub: 'sin dosis', progress: 0, tone: 'none', tick: def.intervalSec.min / def.intervalSec.max })}
+          <div class="rcp-ringside"><div class="rcp-counters"><span><small>dosis</small><b>0</b></span></div></div>
+        </section>` : ''}
         <p class="rcp-disclaimer">Herramienta de apoyo cognitivo. No reemplaza entrenamiento ni criterio clínico.</p>
-        <button class="rcp-link" data-act="settings">Ajustes de asistencia (audio, vibración, metrónomo)</button>
         ${previous ? `<button class="rcp-link" data-act="show-previous">Ver la RCP anterior (${esc(clock(previous.createdAt))})</button>` : ''}
       </div>`;
   }
@@ -606,8 +623,10 @@ export async function renderRcp(container) {
   }
 
   function settingsSheet() {
-    const row = (key, label) => `<button class="rcp-btn rcp-toggle" data-act="toggle" data-arg="${key}" aria-pressed="${settings[key]}">
-      <span>${label}</span><b>${settings[key] ? 'ON' : 'OFF'}</b></button>`;
+    const row = (key, label) => `<button class="rcp-btn rcp-toggle" role="switch" aria-checked="${settings[key]}" data-act="toggle" data-arg="${key}">
+      <span class="rcp-toggle-label">${label}</span>
+      <span class="rcp-toggle-state">${settings[key] ? 'Activado' : 'Desactivado'}</span>
+      <span class="rcp-switch" aria-hidden="true"><span class="rcp-switch-knob"></span></span></button>`;
     const mt = profile.metronome;
     return `<h2 class="rcp-h2">Asistencia</h2>
       <div class="rcp-stack">${row('audio', 'Audio de asistencia')}${row('vibration', 'Vibración de asistencia')}${mt ? row('metronome', 'Metrónomo') : ''}</div>

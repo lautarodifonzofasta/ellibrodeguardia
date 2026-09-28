@@ -215,6 +215,7 @@ export function assertProfileUsable(profile) {
       !profile.reversibleCauses.every(c => isObject(c) && isText(c.id) && isText(c.label))) {
     fail('Perfil incompleto: falta la lista de causas reversibles.');
   }
+  if (!isText(profile.startHint)) fail('Perfil incompleto: falta el texto de antes de iniciar.');
   if (!isObject(profile.messages)) fail('Perfil incompleto: faltan los textos de pantalla y voz.');
   for (const key of REQUIRED_MESSAGES) checkMessage(profile.messages[key], `"${key}"`);
   checkNoteTemplate(profile.noteTemplate);

@@ -9,13 +9,11 @@ const BEEP_S = 0.12;
 const BEEP_GAP_S = 0.25;
 const CLICK_HZ = 1200;
 const CLICK_S = 0.03;
-const LOOKAHEAD_MS = 25;
-const SCHEDULE_AHEAD_S = 0.12;
 
 export function createAssist() {
   let ctx = null;
   let unlocked = false;
-  let metro = null;          // { bpm, timer, nextAt }
+  let metro = null;          // { bpm, src }: a looping one-beat buffer
   let wakeLock = null;
   let wantWakeLock = false;
   let requesting = false;
@@ -32,7 +30,8 @@ export function createAssist() {
   /** Call from a tap: resumes audio and primes speech (required on iPhone). */
   function unlock() {
     const c = audio();
-    try { if (c && c.state === 'suspended') c.resume(); } catch { /* ignore */ }
+    // 'interrupted' is iPhone's state after a call or a locked screen.
+    try { if (c && c.state !== 'running') c.resume(); } catch { /* ignore */ }
     if (!unlocked) {
       try { globalThis.speechSynthesis?.speak(new SpeechSynthesisUtterance('')); } catch { /* ignore */ }
       unlocked = true;
@@ -105,28 +104,48 @@ export function createAssist() {
     }
   }
 
-  /** Starts, retunes or stops the metronome (Web Audio clock, not timers, keeps it steady). */
-  function metronome(on, bpm) {
-    if (!on || !bpm) {
-      if (metro) { clearInterval(metro.timer); metro = null; }
-      return;
+  /** One beat of audio: a short decaying click followed by silence. */
+  function beatBuffer(c, bpm) {
+    const length = Math.round(c.sampleRate * 60 / bpm);
+    const buffer = c.createBuffer(1, length, c.sampleRate);
+    const data = buffer.getChannelData(0);
+    const clickLength = Math.round(c.sampleRate * CLICK_S);
+    for (let i = 0; i < clickLength; i++) {
+      data[i] = Math.sin(2 * Math.PI * CLICK_HZ * i / c.sampleRate) * 0.35 * (1 - i / clickLength);
     }
+    return buffer;
+  }
+
+  function stopMetronome() {
+    if (!metro) return;
+    try { metro.src.stop(); } catch { /* already stopped */ }
+    try { metro.src.disconnect(); } catch { /* ignore */ }
+    metro = null;
+  }
+
+  /**
+   * Starts, retunes or stops the metronome. The beat is a looping audio
+   * buffer, so the audio hardware keeps time: no JS timer can drift, bunch
+   * or skip clicks when the page is busy.
+   */
+  function metronome(on, bpm) {
+    if (!on || !bpm) { stopMetronome(); return; }
     const c = audio();
     if (!c) return;
     if (metro && metro.bpm === bpm) return;
-    if (metro) clearInterval(metro.timer);
-    const period = 60 / bpm;
-    const state = { bpm, nextAt: c.currentTime + 0.05, timer: null };
-    state.timer = setInterval(() => {
-      while (state.nextAt < c.currentTime + SCHEDULE_AHEAD_S) {
-        tone(CLICK_HZ, state.nextAt, CLICK_S, 0.18);
-        state.nextAt += period;
-      }
-    }, LOOKAHEAD_MS);
-    metro = state;
+    stopMetronome();
+    try {
+      const src = c.createBufferSource();
+      src.buffer = beatBuffer(c, bpm);
+      src.loop = true;
+      src.connect(c.destination);
+      src.start(c.currentTime + 0.05);
+      metro = { bpm, src };
+    } catch { metro = null; }
   }
 
   async function requestWakeLock() {
+    try { if (ctx && ctx.state !== 'running') ctx.resume(); } catch { /* needs a tap on some phones */ }
     if (!wantWakeLock || wakeLock || requesting || document.visibilityState !== 'visible') return;
     requesting = true;
     try {

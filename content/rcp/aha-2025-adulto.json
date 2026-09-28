@@ -157,6 +157,8 @@
     { "id": "trombosis-coronaria", "label": "Trombosis coronaria" }
   ],
 
+  "startHint": "Tocá «Iniciar compresiones» una vez evaluados el pulso y la ventilación.",
+
   "messages": {
     "start": { "screen": "INICIAR COMPRESIONES · Conectar monitor/desfibrilador", "voice": "Iniciar compresiones. Conectar el monitor." },
     "preAlert": { "screen": "PREPARARSE PARA EVALUAR RITMO", "voice": "Prepararse para evaluar ritmo." },

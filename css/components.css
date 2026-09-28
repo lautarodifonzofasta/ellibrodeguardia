@@ -704,6 +704,24 @@ ul.bullets li strong { color: var(--text); }
 .rcp-ind-text { font-size: 17px; font-weight: 800; color: var(--text); }
 .rcp-warn { font-size: 13px; color: var(--text); border-left: 3px solid var(--red); background: var(--red-bg); padding: 8px 10px; border-radius: var(--r); margin: 10px 0; }
 
+/* Buttons: big targets, solid colours, no motion */
+.rcp-btn { display: inline-flex; align-items: center; justify-content: center; text-align: center; min-height: 56px; padding: 10px 14px; border-radius: var(--r-lg); border: 2px solid var(--border2); background: var(--bg3); color: var(--text); font-size: 17px; font-weight: 700; line-height: 1.2; }
+.rcp-btn:focus-visible { outline: 3px solid var(--acc); outline-offset: 2px; }
+.rcp-small { min-height: 44px; padding: 6px 14px; font-size: 15px; }
+.rcp-big { min-height: 72px; font-size: 19px; }
+.rcp-huge { min-height: 96px; font-size: clamp(20px, 5.8vw, 26px); font-weight: 800; }
+/* Text in the page background colour: dark on the dark theme's light accents, light on the light theme's dark ones. */
+.rcp-primary { background: var(--acc); border-color: var(--acc); color: var(--bg); }
+.rcp-danger { background: var(--red); border-color: var(--red); color: var(--bg); }
+.rcp-ok { background: var(--green); border-color: var(--green); color: var(--bg); }
+.rcp-info { background: var(--blue-bg); border-color: var(--acc); color: var(--text); }
+.rcp-ghost { background: transparent; }
+.rcp-link { background: none; border: none; color: var(--acc); text-decoration: underline; font-size: 15px; padding: 10px 0; text-align: left; min-height: 44px; }
+.rcp-link-danger { color: var(--red); }
+.rcp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0; }
+.rcp-stack { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+.rcp-ref { font-size: 13px; line-height: 1.45; color: var(--text2); margin: 4px 0 0; padding-left: 18px; }
+
 /* Top card: total duration, ROSC and Finalizar always in reach */
 .rcp-topcard { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 8px 12px; margin-bottom: 8px; }
 .rcp-total { display: flex; flex-direction: column; }
@@ -750,8 +768,15 @@ ul.bullets li strong { color: var(--text); }
 .rcp-check { min-height: 52px; font-size: 15px; flex-direction: column; align-items: flex-start; justify-content: center; text-align: left; overflow-wrap: break-word; hyphens: auto; }
 .rcp-check.is-on { border-color: var(--green); background: var(--grn-bg); opacity: 1; }
 .rcp-check small { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--text2); }
-.rcp-toggle { justify-content: space-between; width: 100%; }
-.rcp-toggle[aria-pressed="true"] { border-color: var(--acc); }
+.rcp-toggle { justify-content: flex-start; gap: 12px; width: 100%; text-align: left; }
+.rcp-toggle-label { flex: 1; }
+.rcp-toggle-state { font-size: 14px; font-weight: 600; color: var(--text2); }
+.rcp-switch { position: relative; flex: none; width: 52px; height: 30px; border-radius: 999px; background: var(--bg); border: 2px solid var(--border2); }
+.rcp-switch-knob { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--text2); }
+.rcp-toggle[aria-checked="true"] { border-color: var(--acc); }
+.rcp-toggle[aria-checked="true"] .rcp-toggle-state { color: var(--text); }
+.rcp-toggle[aria-checked="true"] .rcp-switch { background: var(--acc); border-color: var(--acc); }
+.rcp-toggle[aria-checked="true"] .rcp-switch-knob { left: 25px; background: var(--bg); }
 .rcp-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 /* Live log and the confirmation toast */
@@ -760,24 +785,6 @@ ul.bullets li strong { color: var(--text); }
 .rcp-recent-list li.is-voided { text-decoration: line-through; color: var(--text2); }
 .rcp-recent-list .rcp-chrono-time { font-size: 13px; margin-right: 6px; }
 .rcp-toast { position: fixed; left: 50%; bottom: calc(28px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 400; max-width: min(92vw, 560px); background: var(--bg2); color: var(--text); border: 2px solid var(--green); border-radius: var(--r-lg); padding: 10px 16px; font-size: 15px; font-weight: 700; box-shadow: 0 6px 24px rgba(0, 0, 0, .35); }
-
-/* Buttons: big targets, solid colours, no motion */
-.rcp-btn { display: inline-flex; align-items: center; justify-content: center; text-align: center; min-height: 56px; padding: 10px 14px; border-radius: var(--r-lg); border: 2px solid var(--border2); background: var(--bg3); color: var(--text); font-size: 17px; font-weight: 700; line-height: 1.2; }
-.rcp-btn:focus-visible { outline: 3px solid var(--acc); outline-offset: 2px; }
-.rcp-small { min-height: 44px; padding: 6px 14px; font-size: 15px; }
-.rcp-big { min-height: 72px; font-size: 19px; }
-.rcp-huge { min-height: 96px; font-size: clamp(20px, 5.8vw, 26px); font-weight: 800; }
-/* Text in the page background colour: dark on the dark theme's light accents, light on the light theme's dark ones. */
-.rcp-primary { background: var(--acc); border-color: var(--acc); color: var(--bg); }
-.rcp-danger { background: var(--red); border-color: var(--red); color: var(--bg); }
-.rcp-ok { background: var(--green); border-color: var(--green); color: var(--bg); }
-.rcp-info { background: var(--blue-bg); border-color: var(--acc); color: var(--text); }
-.rcp-ghost { background: transparent; }
-.rcp-link { background: none; border: none; color: var(--acc); text-decoration: underline; font-size: 15px; padding: 10px 0; text-align: left; min-height: 44px; }
-.rcp-link-danger { color: var(--red); }
-.rcp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0; }
-.rcp-stack { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
-.rcp-ref { font-size: 13px; line-height: 1.45; color: var(--text2); margin: 4px 0 0; padding-left: 18px; }
 
 /* Summary, chronology and note */
 .rcp-summary { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 15px; margin: 0; }

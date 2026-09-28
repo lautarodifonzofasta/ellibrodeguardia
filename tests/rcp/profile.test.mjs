@@ -84,6 +84,7 @@ test('incomplete or inconsistent profiles are refused instead of filled in', () 
     'no vascular routes': p => { p.vascularAccess.routes = []; },
     'no ventilation texts': p => { delete p.ventilation.withAirway; },
     'message without voice': p => { delete p.messages.postShock.voice; },
+    'no pre-start text': p => { delete p.startHint; },
   };
   for (const [name, mutate] of Object.entries(cases)) {
     const p = cloneProfile();

@@ -140,6 +140,7 @@ Salida del Box 8: la versión oficial en texto no dice adónde va el Box 8. Se a
 
 | Momento | Pantalla | Voz |
 |---|---|---|
+| Antes de iniciar (texto de interfaz, pedido por el autor el 2026-09-28) | Tocá «Iniciar compresiones» una vez evaluados el pulso y la ventilación. | — |
 | Inicio (Box 1) | INICIAR COMPRESIONES · Conectar monitor/desfibrilador | "Iniciar compresiones. Conectar el monitor." |
 | Preaviso | PREPARARSE PARA EVALUAR RITMO | "Prepararse para evaluar ritmo." |
 | Fin de ciclo | DETENER COMPRESIONES · EVALUAR RITMO · Cambiar compresor | "Detener compresiones. Evaluar ritmo." |
