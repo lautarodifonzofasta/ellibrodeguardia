@@ -77,7 +77,18 @@ test('nota: "Otro" stop reason uses the typed detail; duration format', () => {
   assert.equal(formatDuration(3_725_000), '62 min 5 s');
 });
 
+test('nota: singular with a single shock and a single cycle (author rule)', () => {
+  let s = rcp.confirmShock(check(rcp, started(), 'shockable', 40), sec(44));
+  s = rcp.confirmRosc(s, sec(50));
+  const lines = note(s);
+  assert.equal(lines[2], 'Se realiza 1 descarga (03:00).');
+  assert.equal(lines[3], 'Se obtiene ROSC a las 03:00, tras 50 s de RCP (1 ciclo).');
+});
+
 test('a profile whose note template lost a placeholder is refused', () => {
+  const r = cloneProfile();
+  r.noteTemplate.singular = { 'Se realizan {n} desfibrilaciones': 'Se realiza {n} desfibrilación' };
+  assert.throws(() => assertProfileUsable(r), ProfileError, 'singular fragment must exist in the template');
   const p = cloneProfile();
   p.noteTemplate.lines[2] = 'Se realizan descargas.';
   assert.throws(() => assertProfileUsable(p), ProfileError);

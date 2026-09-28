@@ -40,6 +40,8 @@ export function formatDuration(ms) {
 }
 
 const stripLabel = (line, label) => (line.startsWith(label) ? line.slice(label.length) : line);
+/** With a count of 1, swaps the template's plural fragments for the singular ones it declares. */
+const forCount = (line, n, singular = {}) => (n === 1 ? Object.entries(singular).reduce((l, [pl, sg]) => l.replace(pl, sg), line) : line);
 const fill = (line, values) => line.replace(/\{(hora_inicio|hora_rosc|hora_fin|hora|horas|n|droga|dosis|vía|lista|motivo|duración|texto \(hora\))\}/g, (_, k) => values[k]);
 
 /**
@@ -69,7 +71,8 @@ export function buildNote(session, profile, { timeZone } = {}) {
   }
 
   const shocks = of('SHOCK_DELIVERED');
-  if (shocks.length) out.push(fill(L[2], { n: shocks.length, horas: shocks.map(e => clock(e.at)).join(', ') }));
+  const singular = profile.noteTemplate.singular;
+  if (shocks.length) out.push(fill(forCount(L[2], shocks.length, singular), { n: shocks.length, horas: shocks.map(e => clock(e.at)).join(', ') }));
 
   const drugLine = stripLabel(L[3], 'Por cada droga: ');
   const groups = new Map();
@@ -102,7 +105,7 @@ export function buildNote(session, profile, { timeZone } = {}) {
   if (others.length) out.push(fill(L[6], { 'texto (hora)': others.map(e => `${e.data.text} (${clock(e.at)})`).join('; ') }));
 
   if (sum.rosc.confirmed) {
-    out.push(fill(stripLabel(L[7], 'Cierre con ROSC: '), { hora_rosc: clock(sum.rosc.at), 'duración': formatDuration(sum.durationMs), n: sum.cycles }));
+    out.push(fill(forCount(stripLabel(L[7], 'Cierre con ROSC: '), sum.cycles, singular), { hora_rosc: clock(sum.rosc.at), 'duración': formatDuration(sum.durationMs), n: sum.cycles }));
   } else if (sum.stop) {
     const label = STOP_REASON_LABELS[sum.stop.reason].toLocaleLowerCase('es');
     const reason = sum.stop.reason === 'otro' && sum.stop.detail ? sum.stop.detail

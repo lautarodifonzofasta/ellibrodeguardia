@@ -96,6 +96,9 @@ Decisiones de la Fase 2:
     - **Anillo de la droga con intervalo en el perfil (adrenalina):** cuenta desde la última dosis hasta el máximo (5 min), con una marca en el mínimo (3 min). Azul antes, verde con la ventana abierta, rojo con la ventana superada, con los textos del .md. A su lado van "Adrenalina", "Otras drogas" y el contador de dosis.
     - Las decisiones de cada estado (ritmo, descarga, reiniciar) aparecen arriba de los anillos.
     - De la referencia **no** se tomó lo que no está en el pedido (metrónomo, fracción de compresión, gestos de doble toque): queda para decidir con el autor.
+31. **Singular en la nota:** "Se realiza 1 descarga" y "(1 ciclo)". Agregado al .md §10 como regla y al perfil como `noteTemplate.singular`. *Decidido por el autor.*
+32. **Extras para la Fase 3**, pedidos por el autor: **metrónomo** (beep a ritmo de compresiones, ON/OFF, con el valor tomado del .md §6: 100–120/min) y **fracción de compresiones** (% del tiempo con compresiones, calculado con las pausas registradas, en el reloj de compresiones). El gesto de doble toque no se agrega.
+33. **`pcr.html` se alinea con el perfil AHA 2025 en una rama aparte** (`pcr-aha2025`, desde `main`), para que el autor lo valide antes de publicar. *Decidido por el autor.*
 
 Verificación de la Fase 2: `npm test` pasa 81/81. En Edge headless a 380 px, el recorrido del criterio de aceptación pasa 40/40 (con los relojes circulares): Iniciar, Box 1 sin cronómetro, FV, doble toque en "Descarga realizada" (se registra una sola), preaviso y aviso de fin de ciclo, recarga en plena RCP con "¿Continuar?", adrenalina indicada y registrada con su ventana, IV, 3ª descarga, lidocaína con rango por peso, panel de descargas, ida y vuelta a otro módulo, ROSC con confirmación, resumen, post-ROSC reservado, nota, edición auditada, copiar, offline, "RCP anterior", contraste y sin errores de consola.
 

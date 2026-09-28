@@ -155,6 +155,7 @@ Salida del Box 8: la versión oficial en texto no dice adónde va el Box 8. Se a
 ## 10. Plantilla de nota clínica
 
 Incluir solo las frases cuyos datos estén registrados. Horas en formato HH:MM. No agregar nada que no esté en el registro.
+Con una sola unidad, usar el singular: "Se realiza 1 descarga" y "(1 ciclo)" (confirmado por el autor el 2026-09-27).
 
 1. Paciente adulto en paro cardiorrespiratorio. Se inicia RCP a las {hora_inicio}.
 2. Ritmo inicial: {desfibrilable (FV/TV sin pulso) | no desfibrilable (AESP/asistolia)}.

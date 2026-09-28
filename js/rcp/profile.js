@@ -162,6 +162,10 @@ function checkNoteTemplate(t) {
   if (!isObject(t) || !isText(t.rules) || !Array.isArray(t.lines) || t.lines.length !== NOTE_LINES.length) {
     fail('Perfil incompleto: falta la plantilla de la nota clínica.');
   }
+  if (t.singular !== undefined && (!isObject(t.singular) ||
+      !Object.entries(t.singular).every(([pl, sg]) => isText(pl) && isText(sg) && t.lines.some(l => l.includes(pl))))) {
+    fail('Plantilla de nota: "singular" debe reemplazar fragmentos que existan en la plantilla.');
+  }
   NOTE_LINES.forEach((rule, i) => {
     const line = t.lines[i];
     if (!isText(line) || (rule.starts && !line.startsWith(rule.starts)) ||

@@ -185,6 +185,7 @@
 
   "noteTemplate": {
     "rules": "Incluir solo las frases cuyos datos estén registrados. Horas en formato HH:MM. No agregar nada que no esté en el registro.",
+    "singular": { "Se realizan {n} descargas": "Se realiza {n} descarga", "({n} ciclos)": "({n} ciclo)" },
     "lines": [
       "Paciente adulto en paro cardiorrespiratorio. Se inicia RCP a las {hora_inicio}.",
       "Ritmo inicial: {desfibrilable (FV/TV sin pulso) | no desfibrilable (AESP/asistolia)}.",
