@@ -127,7 +127,7 @@ Decisiones de la Fase 3:
     - Al reabrir o recargar a mitad de la RCP no se repite el pasado: solo suena, al tocar "Continuar", el aviso vencido en ese momento.
     - Al volver de segundo plano, suena una vez lo que venció mientras tanto.
 37. **Audio:** voz en español (prefiere es-AR) con beep por Web Audio. Se habilita en cada toque, algo necesario en iPhone. Sin soporte, esa parte se omite sin error.
-38. **Metrónomo:** 100, 110 o 120/min, dentro del rango de la §6, con 110 por defecto. Suena solo durante las compresiones (se detiene en las pausas), va apagado por defecto y el reloj de Web Audio lo mantiene estable. *El valor por defecto queda a confirmar por el autor.*
+38. **Metrónomo:** 100, 110 o 120/min, dentro del rango de la §6, con 110 por defecto. Suena solo durante las compresiones (se detiene en las pausas), va apagado por defecto y el reloj de Web Audio lo mantiene estable. *110/min por defecto confirmado por el autor el 2026-09-27.*
 39. **Fracción de compresiones:** 1 − pausas contadas / tiempo total, en vivo en el reloj de compresiones y en el resumen, sin umbrales ni alertas. *Pedida por el autor.*
 40. **Métricas de pausas:** cantidad, máxima y acumulada debajo de los contadores; en el resumen, además, la duración de cada una.
 41. **Vía aérea:** los dispositivos salen del .md §7 (intubación endotraqueal o dispositivo supraglótico). Se pueden registrar la capnografía y valores de EtCO₂, y se muestra el texto de referencia "solo informativo, sin alertas automáticas".
@@ -146,7 +146,7 @@ Verificación de la Fase 3:
 
 ## Pendientes
 
-- **Autor:** confirmar el metrónomo por defecto (110/min) y validar la rama `pcr-aha2025` (PCR / RCP alineado con el perfil).
+- **Autor:** revisar el asistente completo antes de publicarlo. La rama `pcr-aha2025` (PCR / RCP alineado con el perfil) fue validada por el autor el 2026-09-27 y se publica por su propio PR.
 - **Fuera de esta versión** (según el pedido): modo simulación (el campo `mode` ya existe), cuidados post-RCE, otros perfiles (ERC) y pediatría.
 
 ## Para retomar en una conversación nueva

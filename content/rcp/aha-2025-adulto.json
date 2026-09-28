@@ -75,7 +75,7 @@
   "metronome": {
     "bpmOptions": [100, 110, 120],
     "defaultBpm": 110,
-    "note": "Parámetro de interfaz dentro del rango de la guía (compresiones a 100–120/min, §6)."
+    "note": "Parámetro de interfaz dentro del rango de la guía (compresiones a 100–120/min, §6). 110/min por defecto, confirmado por el autor."
   },
 
   "ventilation": {
