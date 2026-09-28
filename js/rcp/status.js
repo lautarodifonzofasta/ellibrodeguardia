@@ -271,6 +271,11 @@ export function getStatus(session, profile, now) {
         .filter(a => !(a.doneWhen && a.doneWhen.every(done)) && !(a.hideWhenGroupExhausted && groupExhausted(a.hideWhenGroupExhausted)))
         .map(a => a.text)
       : [],
+    // Panels the visible reminders link to (e.g. "Tratar causas reversibles" → causes).
+    panels: REMINDER_STATES.includes(session.state)
+      ? box.actions.filter(a => a.panel && !(a.doneWhen && a.doneWhen.every(done)) &&
+          !(a.hideWhenGroupExhausted && groupExhausted(a.hideWhenGroupExhausted))).map(a => a.panel)
+      : [],
     note: box.note || null,
     yesLabel: box.yesLabel || null,
     noLabel: box.noLabel || null,
@@ -319,6 +324,8 @@ export function getStatus(session, profile, now) {
     startedAt: start ? start.at : null,
     endedAt: end ? end.at : null,
     totalMs: start ? Math.max(0, clockAt - start.at) : 0,
+    // Share of the resuscitation with compressions running: 1 − counted pauses / total.
+    compressionFraction: start && clockAt > start.at ? Math.max(0, Math.min(1, 1 - pauses.totalMs / (clockAt - start.at))) : null,
     algorithm,
     prompt: currentPrompt(session, profile, box, alert),
     cycle,
@@ -363,6 +370,7 @@ export function summarize(session, profile, now) {
     ],
     rosc: { confirmed: !!rosc, at: rosc ? rosc.at : null },
     stop: stop ? { reason: stop.data.reason, detail: stop.data.detail || null, at: stop.at } : null,
-    pauses: { count: st.pauses.count, maxMs: st.pauses.maxMs, totalMs: st.pauses.totalMs },
+    pauses: { count: st.pauses.count, maxMs: st.pauses.maxMs, totalMs: st.pauses.totalMs, list: st.pauses.list },
+    compressionFraction: st.compressionFraction,
   };
 }

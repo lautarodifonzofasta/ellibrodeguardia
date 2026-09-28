@@ -9,6 +9,9 @@ import { getStatus, summarize, chronology } from './status.js';
 import { saveSession, loadSession, archiveSession, loadArchivedSession } from './storage.js';
 import { buildNote, STOP_REASON_LABELS } from './note.js';
 import { profileLabel } from './profile.js';
+import { createAssist } from './assist.js';
+import { cuesFor } from './cues.js';
+import { loadSettings, saveSettings } from './settings.js';
 
 const PROFILE_URL = 'content/rcp/aha-2025-adulto.json';
 const MODE = 'real';
@@ -61,6 +64,11 @@ export async function renderRcp(container) {
   let note = null;              // { sessionId, text } — the editable note
   let lastKey = '';
   let flash = '';
+  const assist = createAssist();
+  let settings = profile ? loadSettings(profile) : null;
+  const announced = new Set();  // cue ids already played (cues.js)
+  let cuesReady = false;        // until the first status is seen, so reopening doesn't replay the past
+  let pendingCues = [];         // alerts found while waiting for the first tap ("Continuar")
 
   if (session && profile && (session.profile.id !== profile.id || session.profile.version !== profile.version)) {
     loadError = `La RCP guardada se inició con ${profileLabel(session.profile)}; este dispositivo tiene ${profileLabel(profile)}. No se puede continuar con otro perfil.`;
@@ -96,6 +104,7 @@ export async function renderRcp(container) {
       : !session || (!isActive(session) && !showSummary) ? 'start'
       : isActive(session) && !resumed ? 'continue'
       : isActive(session) ? 'active' : 'summary';
+    assistance(st, screen);
     const key = [screen, st?.state, st?.algorithm?.box, st?.alert?.kind, st?.prompt?.key,
       st?.indications.map(i => i.drugId || i.groupId + i.doseNumber).join(','),
       st?.medications.inProfile.map(m => m.windowState).join(','), saveFailed, flash].join('|');
@@ -112,6 +121,24 @@ export async function renderRcp(container) {
     updateLive(st, now);
   }
 
+  /** Voice/beep/vibration for new moments, the metronome and the screen wake lock. */
+  function assistance(st, screen) {
+    const active = !!st && isActive(session);
+    assist.keepAwake(active);
+    assist.metronome(screen === 'active' && active && settings.metronome && st.state === S.CPR_ACTIVE, settings.metronomeBpm);
+    if (!st || screen === 'start' || screen === 'error') return;
+    const cues = cuesFor(st, announced);
+    if (!cuesReady) {                // opened mid-case: keep only the alert that is due now
+      cuesReady = true;
+      pendingCues = cues.filter(c => c.beep > 0);
+      return;
+    }
+    if (screen !== 'continue' && assist.unlocked) assist.play(cues, settings);
+    else pendingCues.push(...cues);
+  }
+
+  const pausesText = st => `pausas ${st.pauses.count} · máx ${mmss(st.pauses.maxMs)} · total ${mmss(st.pauses.totalMs)}`;
+
   /** Repaints only the running clocks and rings (no re-render, so taps aren't lost). */
   function updateLive(st, now) {
     if (!st) return;
@@ -120,6 +147,8 @@ export async function renderRcp(container) {
     const ring = cycleRing(st);
     set('[data-live="cycle-big"]', ring.big);
     set('[data-live="cycle-sub"]', ring.sub);
+    set('[data-live="cycle-extra"]', ring.extra);
+    set('[data-live="pauses"]', pausesText(st));
     main.querySelectorAll('[data-ring="cycle"]').forEach(el => el.setAttribute('stroke-dashoffset', ringOffset(ring.progress)));
     const drug = ringDrug(st);
     if (drug) {
@@ -159,8 +188,13 @@ export async function renderRcp(container) {
       ${tick}</svg>`;
   }
 
-  /** What the compressions ring shows right now. */
+  /** What the compressions ring shows right now, with the compression fraction. */
   function cycleRing(st) {
+    const f = st.compressionFraction;
+    return { ...cycleRingBase(st), extra: f == null ? '' : `fracción ${Math.round(f * 100)} %` };
+  }
+
+  function cycleRingBase(st) {
     const cyc = st.cycle;
     if (!cyc) return { label: 'compresiones', big: '--:--', sub: '', progress: 0, tone: 'blue', tick: null };
     if (st.pauses.current) {
@@ -198,6 +232,7 @@ export async function renderRcp(container) {
           <span class="rcp-ring-label">${esc(r.label)}</span>
           <span class="rcp-ring-big" data-live="${name}-big">${esc(r.big)}</span>
           <span class="rcp-ring-sub" data-live="${name}-sub">${esc(r.sub)}</span>
+          ${r.extra != null ? `<span class="rcp-ring-extra" data-live="${name}-extra">${esc(r.extra)}</span>` : ''}
         </div>
       </div>`;
   }
@@ -224,8 +259,9 @@ export async function renderRcp(container) {
       <div class="rcp-topcard">
         <div class="rcp-total"><span class="rcp-total-label">duración total</span><span class="rcp-total-time" data-live="total">${mmss(st.totalMs)}</span></div>
         <span class="rcp-top-actions">
-          <button class="rcp-btn rcp-small rcp-ok" data-act="rosc-ask">ROSC</button>
+          <button class="rcp-btn rcp-small rcp-ok" data-act="rosc-ask">RCE</button>
           <button class="rcp-btn rcp-small rcp-ghost" data-act="stop-ask">Finalizar</button>
+          <button class="rcp-btn rcp-small rcp-ghost" data-act="settings" aria-label="Ajustes de asistencia">${settings.audio ? '🔊' : '🔇'}</button>
         </span>
       </div>
       ${badge()}
@@ -237,6 +273,7 @@ export async function renderRcp(container) {
           ${st.state === S.CPR_ACTIVE ? '<button class="rcp-btn rcp-primary" data-act="check">Evaluar ritmo</button>' : ''}
           <button class="rcp-btn" data-act="shocks">Descarga</button>
           <div class="rcp-counters"><span><small>ciclos</small><b>${st.cycle ? st.cycle.number : 0}</b></span><span><small>descargas</small><b>${st.shocks.length}</b></span></div>
+          <p class="rcp-pauses" data-live="pauses">${pausesText(st)}</p>
         </div>
       </section>
       ${drug ? `
@@ -250,9 +287,21 @@ export async function renderRcp(container) {
         ${drugInd ? `<p class="rcp-ring-ind">${esc(drugInd.message.screen)}</p>` : ''}
       </section>` : ''}
       ${otherInds}
-      <div class="rcp-stack"><button class="rcp-btn" data-act="other">Otro evento</button></div>
+      <button class="rcp-btn rcp-huge rcp-ok rcp-rce" data-act="rosc-ask">RCE<small>Retorno de la circulación espontánea</small></button>
+      <div class="rcp-events">
+        ${panelBtn(st, 'access', 'Acceso IV/IO')}
+        ${panelBtn(st, 'airway', 'Vía aérea / CO₂')}
+        ${panelBtn(st, 'causes', 'Causas reversibles')}
+        <button class="rcp-btn" data-act="note">Nota</button>
+      </div>
       ${reminders}
       <p class="rcp-sub">Ventilación: ${esc(st.ventilation.text)}${others.length ? ` · ${others.join(' · ')}` : ''}</p>`;
+  }
+
+  /** Event button; highlighted when a visible Box reminder points to its panel. */
+  function panelBtn(st, panel, label) {
+    const hint = st.algorithm && st.algorithm.panels.includes(panel);
+    return `<button class="rcp-btn${hint ? ' rcp-hint' : ''}" data-act="panel" data-arg="${panel}">${label}</button>`;
   }
 
   /** The big decision buttons of the states that need one (above the rings). */
@@ -299,6 +348,7 @@ export async function renderRcp(container) {
         ${badge()}
         <button class="rcp-btn rcp-huge rcp-danger" data-act="start">INICIAR RCP</button>
         <p class="rcp-disclaimer">Herramienta de apoyo cognitivo. No reemplaza entrenamiento ni criterio clínico.</p>
+        <button class="rcp-link" data-act="settings">Ajustes de asistencia (audio, vibración, metrónomo)</button>
         ${previous ? `<button class="rcp-link" data-act="show-previous">Ver la RCP anterior (${esc(clock(previous.createdAt))})</button>` : ''}
       </div>`;
   }
@@ -320,7 +370,11 @@ export async function renderRcp(container) {
       ['Ciclos', sum.cycles],
       ['Descargas', sum.shocks],
       ...sum.medications.map(m => [`Dosis de ${m.name}`, m.count]),
-      ['ROSC', sum.rosc.confirmed ? `Sí · ${clock(sum.rosc.at)}` : 'No'],
+      ['RCE', sum.rosc.confirmed ? `Sí · ${clock(sum.rosc.at)}` : 'No'],
+      ['Pausas', sum.pauses.count
+        ? `${sum.pauses.count} (${sum.pauses.list.filter(p => p.endedBy === 'CPR_RESUMED').map(p => mmss(p.ms)).join(', ')}) · máx ${mmss(sum.pauses.maxMs)} · total ${mmss(sum.pauses.totalMs)}`
+        : '0'],
+      ['Fracción de compresiones', sum.compressionFraction == null ? '—' : `${Math.round(sum.compressionFraction * 100)} %`],
     ];
     if (sum.stop) rows.push(['Finalización', `${STOP_REASON_LABELS[sum.stop.reason]}${sum.stop.detail ? ` · ${sum.stop.detail}` : ''} · ${clock(sum.stop.at)}`]);
     if (!note || note.sessionId !== session.id) note = { sessionId: session.id, text: buildNote(session, profile) };
@@ -367,7 +421,7 @@ export async function renderRcp(container) {
       case 'CAPNOGRAPHY_STARTED': return 'Capnografía';
       case 'ETCO2_VALUE': return `EtCO₂ ${d.value} ${d.unit}`;
       case 'REVERSIBLE_CAUSE_IDENTIFIED': return `Causa reversible: ${d.label}`;
-      case 'ROSC_CONFIRMED': return 'ROSC confirmado';
+      case 'ROSC_CONFIRMED': return 'RCE confirmado';
       case 'CPR_STOPPED': return `RCP finalizada: ${STOP_REASON_LABELS[d.reason]}${d.detail ? ` · ${d.detail}` : ''}`;
       case 'OTHER': return d.text;
       default: return e.type;
@@ -386,7 +440,11 @@ export async function renderRcp(container) {
       case 'meds': body = medsSheet(st); break;
       case 'med': body = medFormSheet(st); break;
       case 'shocks': body = shocksSheet(st); break;
-      case 'other': body = otherSheet(); break;
+      case 'access': body = accessSheet(); break;
+      case 'airway': body = airwaySheet(); break;
+      case 'causes': body = causesSheet(); break;
+      case 'note': body = noteSheet(); break;
+      case 'settings': body = settingsSheet(); break;
       case 'rosc': body = confirmSheet('Confirmar retorno de circulación espontánea', 'rosc-confirm', 'Confirmar'); break;
       case 'no-shock': body = confirmSheet('¿Reanudar compresiones sin descarga?', 'no-shock-confirm', 'Reanudar sin descarga'); break;
       case 'stop': body = stopSheet(); break;
@@ -446,14 +504,63 @@ export async function renderRcp(container) {
       <ul class="rcp-ref">${profile.reference.shock.map(t => `<li>${esc(t)}</li>`).join('')}</ul>`;
   }
 
-  function otherSheet() {
-    return `<h2 class="rcp-h2">Otro evento</h2>
-      <p class="rcp-sub">Acceso vascular</p>
-      <div class="rcp-grid">${profile.vascularAccess.routes.map(r => `<button class="rcp-btn rcp-big" data-act="access" data-arg="${esc(r)}">${esc(r)}</button>`).join('')}</div>
-      <form class="rcp-form" data-form="other">
-        <label>Otro (texto breve) <input name="text" maxlength="200" required autocomplete="off"></label>
+  const liveEvents = type => session.events.filter(e => e.type === type && !e.data.voided);
+
+  function accessSheet() {
+    const done = liveEvents('VASCULAR_ACCESS');
+    return `<h2 class="rcp-h2">Acceso vascular</h2>
+      <p class="rcp-sub">${esc(profile.vascularAccess.note)}</p>
+      ${done.length ? `<p class="rcp-done">✓ ${done.map(e => `${esc(e.data.route)} · ${clock(e.at)}`).join(' · ')}</p>` : ''}
+      <div class="rcp-grid">${profile.vascularAccess.routes.map(r => `<button class="rcp-btn rcp-big" data-act="access" data-arg="${esc(r)}">${esc(r)}</button>`).join('')}</div>`;
+  }
+
+  function airwaySheet() {
+    const airway = liveEvents('AIRWAY_PLACED');
+    const capno = liveEvents('CAPNOGRAPHY_STARTED');
+    const etco2 = liveEvents('ETCO2_VALUE');
+    return `<h2 class="rcp-h2">Vía aérea avanzada y capnografía</h2>
+      <p class="rcp-sub">Ventilación: ${esc(status().ventilation.text)}</p>
+      ${airway.length
+        ? `<p class="rcp-done">✓ Vía aérea avanzada · ${clock(airway[0].at)}${airway[0].data.device ? ` · ${esc(airway[0].data.device)}` : ''}</p>`
+        : `<div class="rcp-stack">${profile.airwayDevices.map(d => `<button class="rcp-btn rcp-big" data-act="airway-device" data-arg="${esc(d)}">${esc(d)}</button>`).join('')}</div>`}
+      ${capno.length ? `<p class="rcp-done">✓ Capnografía · ${clock(capno[0].at)}</p>` : '<div class="rcp-stack"><button class="rcp-btn rcp-big" data-act="capno">Capnografía iniciada</button></div>'}
+      <form class="rcp-form" data-form="etco2">
+        <label>EtCO₂ (mmHg) <input name="value" inputmode="decimal" required autocomplete="off"></label>
+        <button class="rcp-btn rcp-primary" type="submit">Registrar EtCO₂</button>
+      </form>
+      ${etco2.length ? `<p class="rcp-sub">Registradas: ${etco2.map(e => `${esc(e.data.value)} mmHg (${clock(e.at)})`).join(', ')}</p>` : ''}
+      <h2 class="rcp-h2">Referencia</h2>
+      <ul class="rcp-ref">${profile.reference.airway.map(t => `<li>${esc(t)}</li>`).join('')}
+        <li>EtCO₂ (solo informativo, sin alertas automáticas): ${esc(profile.reference.etco2)}</li></ul>`;
+  }
+
+  function causesSheet() {
+    const found = new Map(liveEvents('REVERSIBLE_CAUSE_IDENTIFIED').map(e => [e.data.causeId, e.at]));
+    return `<h2 class="rcp-h2">Causas reversibles</h2>
+      <p class="rcp-sub">Marcá las que consideraste. No bloquea el flujo; para corregir, usá "Editar" en la cronología.</p>
+      <div class="rcp-causes">${profile.reversibleCauses.map(c => found.has(c.id)
+        ? `<button class="rcp-btn rcp-check is-on" disabled aria-pressed="true">✓ ${esc(c.label)} <small>${clock(found.get(c.id))}</small></button>`
+        : `<button class="rcp-btn rcp-check" data-act="cause" data-arg="${esc(c.id)}" aria-pressed="false">${esc(c.label)}</button>`).join('')}</div>`;
+  }
+
+  function noteSheet() {
+    return `<h2 class="rcp-h2">Nota</h2>
+      <form class="rcp-form" data-form="note">
+        <label>Texto breve (queda registrado con la hora) <input name="text" maxlength="200" required autocomplete="off"></label>
         <button class="rcp-btn rcp-primary" type="submit">Registrar</button>
       </form>`;
+  }
+
+  function settingsSheet() {
+    const row = (key, label) => `<button class="rcp-btn rcp-toggle" data-act="toggle" data-arg="${key}" aria-pressed="${settings[key]}">
+      <span>${label}</span><b>${settings[key] ? 'ON' : 'OFF'}</b></button>`;
+    const mt = profile.metronome;
+    return `<h2 class="rcp-h2">Asistencia</h2>
+      <div class="rcp-stack">${row('audio', 'Audio de asistencia')}${row('vibration', 'Vibración de asistencia')}${mt ? row('metronome', 'Metrónomo') : ''}</div>
+      ${mt ? `<p class="rcp-sub">Ritmo del metrónomo</p>
+        <div class="rcp-grid rcp-grid-3">${mt.bpmOptions.map(b => `<button class="rcp-btn${settings.metronomeBpm === b ? ' rcp-primary' : ''}" data-act="bpm" data-arg="${b}" aria-pressed="${settings.metronomeBpm === b}">${b}/min</button>`).join('')}</div>
+        <p class="rcp-sub">${esc(mt.note)}</p>` : ''}
+      <p class="rcp-sub">El sonido se activa al tocar la pantalla (necesario en iPhone). La vibración no está disponible en todos los teléfonos.</p>`;
   }
 
   function stopSheet() {
@@ -498,13 +605,14 @@ export async function renderRcp(container) {
     if (!el || !container.contains(el)) return;
     const arg = el.dataset.arg;
     const now = Date.now();
+    assist.unlock();
     switch (el.dataset.act) {
       case 'start':
         if (session && !isActive(session)) archiveSession(session);
-        resumed = true; showSummary = false; note = null;
+        resumed = true; showSummary = false; note = null; cuesReady = true; announced.clear(); pendingCues = [];
         act(() => rcp.startCpr(rcp.createSession({ id: newSessionId(), mode: MODE, now }), now));
         break;
-      case 'resume-view': resumed = true; renderMain(true); break;
+      case 'resume-view': resumed = true; assist.play(pendingCues, settings); pendingCues = []; renderMain(true); break;
       case 'show-previous': {
         if (!session || isActive(session)) {
           const prev = loadArchivedSession(MODE);
@@ -533,8 +641,21 @@ export async function renderRcp(container) {
       case 'meds': openSheet({ type: 'meds' }); break;
       case 'med-open': openSheet({ type: 'med', drugId: arg }); break;
       case 'shocks': openSheet({ type: 'shocks' }); break;
-      case 'other': openSheet({ type: 'other' }); break;
+      case 'panel': openSheet({ type: arg }); break;
+      case 'note': openSheet({ type: 'note' }); break;
+      case 'settings': openSheet({ type: 'settings' }); break;
       case 'access': closeSheet(); act(() => rcp.recordVascularAccess(session, arg, now)); break;
+      case 'airway-device': if (act(() => rcp.recordAirway(session, { device: arg }, now))) renderSheet(); break;
+      case 'capno': if (act(() => rcp.recordCapnography(session, now))) renderSheet(); break;
+      case 'cause': if (act(() => rcp.recordReversibleCause(session, arg, now))) renderSheet(); break;
+      case 'toggle':
+        settings = { ...settings, [arg]: !settings[arg] };
+        saveSettings(settings); renderSheet(); renderMain(true);
+        break;
+      case 'bpm':
+        settings = { ...settings, metronomeBpm: Number(arg) };
+        saveSettings(settings); renderSheet(); renderMain(true);
+        break;
       case 'edit': openSheet({ type: 'edit', eventId: arg }); break;
       case 'close': closeSheet(); break;
       case 'copy-note': copyNote(el); break;
@@ -561,7 +682,12 @@ export async function renderRcp(container) {
           closeSheet(); commit(next);
           break;
         }
-        case 'other': { const next = rcp.recordOther(session, data.text, now); closeSheet(); commit(next); break; }
+        case 'note': { const next = rcp.recordOther(session, data.text, now); closeSheet(); commit(next); break; }
+        case 'etco2': {
+          const next = rcp.recordEtco2(session, Number(String(data.value).replace(',', '.')), now);
+          commit(next); renderSheet();
+          break;
+        }
         case 'stop':
           if (data.reason === 'fallecimiento') { sheet = { type: 'stop-death', detail: data.detail }; renderSheet(); return; }
           { const next = rcp.stopCpr(session, data.reason, now, data.detail); closeSheet(); commit(next); }
@@ -623,7 +749,8 @@ export async function renderRcp(container) {
     btn.textContent = ok ? 'Copiado' : 'No se pudo copiar: seleccioná el texto';
   }
 
-  const onVisible = () => { if (document.visibilityState === 'visible') renderMain(true); };
+  // Back from background or a locked screen: re-request the wake lock and recompute; any alert that came due plays once.
+  const onVisible = () => { if (document.visibilityState === 'visible') { assist.requestWakeLock(); renderMain(true); } };
 
   container.addEventListener('click', onClick);
   container.addEventListener('submit', onSubmit);
@@ -635,5 +762,6 @@ export async function renderRcp(container) {
   return () => {
     clearInterval(timer);
     document.removeEventListener('visibilitychange', onVisible);
+    assist.dispose();
   };
 }

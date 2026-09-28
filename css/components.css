@@ -705,7 +705,7 @@ ul.bullets li strong { color: var(--text); }
 .rcp-warn { font-size: 13px; color: var(--text); border-left: 3px solid var(--red); background: var(--red-bg); padding: 8px 10px; border-radius: var(--r); margin: 10px 0; }
 
 /* Top card: total duration, ROSC and Finalizar always in reach */
-.rcp-topcard { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 8px 12px; margin-bottom: 8px; }
+.rcp-topcard { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 8px 12px; margin-bottom: 8px; }
 .rcp-total { display: flex; flex-direction: column; }
 .rcp-total-label { font-size: 12px; color: var(--text2); }
 .rcp-total-time { font-family: var(--mono); font-size: clamp(30px, 9vw, 40px); font-weight: 800; line-height: 1.05; color: var(--text); }
@@ -737,6 +737,22 @@ ul.bullets li strong { color: var(--text); }
 .rcp-counters b { font-family: var(--mono); font-size: 28px; line-height: 1.1; color: var(--text); }
 .rcp-ring-ind { grid-column: 1 / -1; margin: 0; font-size: 17px; font-weight: 800; text-align: center; color: var(--text); border: 2px solid var(--amber); background: var(--amb-bg); border-radius: var(--r); padding: 8px; }
 .rcp-warn-btn { background: var(--amber); border-color: var(--amber); color: var(--bg); }
+.rcp-ring-extra { font-size: 12px; font-weight: 700; color: var(--text2); }
+.rcp-pauses { font-size: 11px; line-height: 1.35; color: var(--text2); text-align: center; margin: 0; }
+
+/* RCE (ROSC) button and the named event buttons */
+.rcp-rce { display: flex; flex-direction: column; width: 100%; margin: 12px 0; letter-spacing: .04em; }
+.rcp-rce small { font-size: 14px; font-weight: 700; letter-spacing: 0; margin-top: 2px; }
+.rcp-events { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 10px 0; }
+.rcp-hint { border-color: var(--amber); background: var(--amb-bg); }
+.rcp-done { font-size: 15px; font-weight: 700; color: var(--text); margin: 8px 0; }
+.rcp-causes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+.rcp-check { min-height: 52px; font-size: 15px; flex-direction: column; align-items: flex-start; justify-content: center; text-align: left; overflow-wrap: break-word; hyphens: auto; }
+.rcp-check.is-on { border-color: var(--green); background: var(--grn-bg); opacity: 1; }
+.rcp-check small { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--text2); }
+.rcp-toggle { justify-content: space-between; width: 100%; }
+.rcp-toggle[aria-pressed="true"] { border-color: var(--acc); }
+.rcp-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 /* Buttons: big targets, solid colours, no motion */
 .rcp-btn { display: inline-flex; align-items: center; justify-content: center; text-align: center; min-height: 56px; padding: 10px 14px; border-radius: var(--r-lg); border: 2px solid var(--border2); background: var(--bg3); color: var(--text); font-size: 17px; font-weight: 700; line-height: 1.2; }
@@ -751,7 +767,7 @@ ul.bullets li strong { color: var(--text); }
 .rcp-info { background: var(--blue-bg); border-color: var(--acc); color: var(--text); }
 .rcp-ghost { background: transparent; }
 .rcp-link { background: none; border: none; color: var(--acc); text-decoration: underline; font-size: 15px; padding: 10px 0; text-align: left; min-height: 44px; }
-.rcp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+.rcp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0; }
 .rcp-stack { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
 .rcp-ref { font-size: 13px; line-height: 1.45; color: var(--text2); margin: 4px 0 0; padding-left: 18px; }
 

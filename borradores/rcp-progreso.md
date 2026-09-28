@@ -8,7 +8,7 @@ Pedido completo: `borradores/prompt-rcp.md`. Fuente clínica única: `borradores
 | 0 · Inspección y plan | ✅ Cerrada (2026-09-27) |
 | 1 · Perfil, motor, sesión, persistencia y tests | ✅ Cerrada (2026-09-27) |
 | 2 · Pantallas del flujo completo + registro en meta.json y sw.js | ✅ Cerrada (2026-09-27) |
-| 3 · Audio, vibración, Wake Lock, causas reversibles, vía aérea, capnografía, métricas de pausas | ⏳ Esperando OK del autor |
+| 3 · Audio, vibración, Wake Lock, causas reversibles, vía aérea, capnografía, métricas de pausas | ✅ Cerrada (2026-09-27) |
 
 ## Validación clínica
 
@@ -113,14 +113,41 @@ Verificación de la Fase 2: `npm test` pasa 81/81. En Edge headless a 380 px, el
 | EtCO₂ como signo de RCE | "↑ bruscamente (>40 mmHg)" | Aumento brusco, sin valor de corte absoluto |
 | Vía de la adrenalina | "1 mg IV" (IO si la IV es difícil) | "1 mg IV/IO" |
 
-## Para la Fase 3
+## Fase 3 (cerrada)
 
-- Audio de asistencia (voz con speechSynthesis en español más un beep con Web Audio) activado en el primer toque, con los textos `voice` del perfil, solo en las transiciones y nunca en bucle. Vibración donde exista. Ajustes ON/OFF guardados.
-- Wake Lock mientras haya una RCP activa, pedido de nuevo al volver a la app.
-- Panel de causas reversibles (checklist) y recordatorio en los Box 8 y 11.
-- Eventos de vía aérea avanzada, capnografía y EtCO₂ (con el texto de referencia del .md §7, sin alertas automáticas).
-- Métricas de pausas (duración de cada una, máxima y acumulada) en la pantalla y el resumen.
-- Correr el criterio de aceptación completo de la sección 12.
+Archivos nuevos: `js/rcp/cues.js` (qué avisos corresponden, puro), `js/rcp/assist.js` (voz, beep, metrónomo, vibración, Wake Lock), `js/rcp/settings.js` (ajustes guardados), `tests/rcp/cues.test.mjs`. Se modificaron `js/rcp/ui.js`, `status.js`, `profile.js`, `css/components.css`, el perfil (paneles de los recordatorios, metrónomo, dispositivos de vía aérea) y el .md (metrónomo como parámetro de interfaz).
+
+Decisiones de la Fase 3:
+34. **Botón RCE:** "Otro evento" se reemplazó por un botón grande "RCE · Retorno de la circulación espontánea", con la misma confirmación de siempre. Arriba hay un RCE compacto en una barra fija, así queda siempre accesible. Las etiquetas de la interfaz dicen "RCE"; los textos del .md ("✅ ROSC", "¿SIGNOS DE ROSC?") no se tocaron. *Pedido por el autor.*
+35. **Eventos con nombre propio**, en lugar de "Otro evento": Acceso IV/IO · Vía aérea / CO₂ · Causas reversibles · Nota. Los recordatorios del Box con panel (`panel` en el perfil: access, airway, causes) resaltan su botón, por ejemplo "Causas reversibles" en los Box 8 y 11.
+36. **Avisos** (`cues.js`): cada aviso tiene una identidad (mensaje + ciclo + Box, o indicación + dosis) y suena **una sola vez**, nunca en bucle.
+    - El preaviso lleva 1 beep y vibración corta.
+    - El fin de ciclo lleva 3 beeps y vibración larga.
+    - Las demás transiciones van solo con voz, con el texto `voice` del perfil.
+    - Al reabrir o recargar a mitad de la RCP no se repite el pasado: solo suena, al tocar "Continuar", el aviso vencido en ese momento.
+    - Al volver de segundo plano, suena una vez lo que venció mientras tanto.
+37. **Audio:** voz en español (prefiere es-AR) con beep por Web Audio. Se habilita en cada toque, algo necesario en iPhone. Sin soporte, esa parte se omite sin error.
+38. **Metrónomo:** 100, 110 o 120/min, dentro del rango de la §6, con 110 por defecto. Suena solo durante las compresiones (se detiene en las pausas), va apagado por defecto y el reloj de Web Audio lo mantiene estable. *El valor por defecto queda a confirmar por el autor.*
+39. **Fracción de compresiones:** 1 − pausas contadas / tiempo total, en vivo en el reloj de compresiones y en el resumen, sin umbrales ni alertas. *Pedida por el autor.*
+40. **Métricas de pausas:** cantidad, máxima y acumulada debajo de los contadores; en el resumen, además, la duración de cada una.
+41. **Vía aérea:** los dispositivos salen del .md §7 (intubación endotraqueal o dispositivo supraglótico). Se pueden registrar la capnografía y valores de EtCO₂, y se muestra el texto de referencia "solo informativo, sin alertas automáticas".
+42. **Causas reversibles:** checklist de la §8. Una causa marcada queda con su hora y no bloquea el flujo; se corrige desde la cronología.
+43. **Ajustes:** audio y vibración activados por defecto y metrónomo apagado, guardados en `elg-rcp-settings`. Se accede desde el inicio y desde el botón 🔊 de la barra fija.
+44. **Wake Lock:** se pide mientras haya una RCP activa en pantalla, se vuelve a pedir al volver a la app y se libera al terminar o al salir del asistente.
+
+Verificación de la Fase 3:
+- `npm test` pasa 89/89.
+- En Edge headless a 380 px pasan dos pruebas: el flujo completo, 40/40, y la **aceptación de la §12**, 32/32. La de aceptación recorre: abrir, iniciar, reloj, fin de ciclo con aviso, evaluar ritmo, FV, descarga, reiniciar, siguiente ciclo, adrenalina, otra descarga, RCE, resumen, cronología y nota, con recarga en plena RCP y offline. Además verifica:
+  - cada voz una sola vez, sin bucle con el ciclo vencido, y solo el aviso vencido después de una recarga;
+  - la vibración y el metrónomo (~110/min, con pausa en la evaluación del ritmo);
+  - el Wake Lock pedido, vuelto a pedir y liberado;
+  - los paneles, la ventilación que cambia con la vía aérea, el resaltado en el Box 8 y "audio OFF" sin voz;
+  - el resumen con pausas y fracción, sin desbordes y sin errores de consola.
+
+## Pendientes
+
+- **Autor:** confirmar el metrónomo por defecto (110/min) y validar la rama `pcr-aha2025` (PCR / RCP alineado con el perfil).
+- **Fuera de esta versión** (según el pedido): modo simulación (el campo `mode` ya existe), cuidados post-RCE, otros perfiles (ERC) y pediatría.
 
 ## Para retomar en una conversación nueva
 

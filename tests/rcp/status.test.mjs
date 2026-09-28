@@ -265,9 +265,32 @@ test('resumen: duration, cycles, shocks, doses per drug, initial rhythm, ROSC an
   assert.deepEqual(sum.medications, [{ name: 'Adrenalina', count: 1 }]);
   assert.deepEqual(sum.rosc, { confirmed: true, at: sec(300) });
   assert.equal(sum.stop, null);
-  assert.deepEqual(sum.pauses, { count: 2, maxMs: 6000, totalMs: 12000 });
+  assert.deepEqual([sum.pauses.count, sum.pauses.maxMs, sum.pauses.totalMs], [2, 6000, 12000]);
+  assert.deepEqual(sum.pauses.list.map(p => p.ms), [6000, 6000]);
+  assert.equal(sum.compressionFraction, 1 - 12000 / 300000);
   const stopped = summarize(rcp.stopCpr(started(), 'otro', sec(600), 'Motivo X'), PROFILE, sec(700));
   assert.deepEqual([stopped.rosc.confirmed, stopped.stop, stopped.durationMs], [false, { reason: 'otro', detail: 'Motivo X', at: sec(600) }, 600000]);
+});
+
+test('fracción de compresiones: 1 − counted pauses / total, live during a pause', () => {
+  let s = started();
+  assert.equal(st(s, 0).compressionFraction, null, 'no time elapsed yet');
+  assert.equal(st(s, 100).compressionFraction, 1);
+  s = shockCycle(rcp, s, 40);                                  // 6 s pause
+  assert.equal(st(s, 100).compressionFraction, 1 - 6000 / 100000);
+  s = rcp.beginRhythmCheck(s, sec(166));                       // ongoing pause counts while it lasts
+  assert.equal(st(s, 176).compressionFraction, 1 - 16000 / 176000);
+});
+
+test('recordatorios que abren un panel: IV/IO → access, vía aérea → airway, causas → causes', () => {
+  let s = nonShockCycle(rcp, started(), 40);                   // Box 10
+  assert.deepEqual(st(s, 50).algorithm.panels, ['access', 'airway']);
+  s = rcp.recordVascularAccess(s, 'IV', sec(60));
+  assert.deepEqual(st(s, 61).algorithm.panels, ['airway'], 'a done reminder no longer links its panel');
+  s = check(rcp, s, 'non_shockable', 170);                     // Box 10 → ND → Box 11
+  s = rcp.resumeCpr(s, sec(176));
+  assert.deepEqual(st(s, 180).algorithm.panels, ['causes']);
+  assert.deepEqual(st(rcp.confirmRosc(s, sec(190)), 191).algorithm.panels, []);
 });
 
 test('orden cronológico: sorted by (edited) time with offsets from the start; ties keep recording order', () => {

@@ -35,6 +35,7 @@ Revisión: 2026-09. Validado por: Lautaro Di Fonzo (autor), 2026-09-27
 | Intervalo de adrenalina | Cada 3–5 min | Guía |
 | Cambio de compresor | Cada 2 min, o antes si hay fatiga: recordatorio en cada control de ritmo | Guía |
 | Preaviso de fin de ciclo | 15 s | Parámetro de interfaz |
+| Metrónomo (opcional) | 100, 110 o 120/min, por defecto 110: dentro del rango de compresiones de la §6 | Parámetro de interfaz (pedido por el autor el 2026-09-27; el valor por defecto queda a confirmar) |
 
 Estado de la ventana de adrenalina, contado desde la última dosis registrada:
 - Menos de 3 min: "Próxima en mm:ss"

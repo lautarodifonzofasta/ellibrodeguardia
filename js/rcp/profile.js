@@ -17,6 +17,8 @@ export class ProfileError extends Error {
 
 const REQUIRED_MESSAGES = ['start', 'preAlert', 'checkRhythm', 'shockable', 'postShock', 'nonShockable', 'roscCheck', 'roscConfirmed'];
 const usable = new WeakSet();
+// Screen panels a reminder can open (interface links, not clinical content).
+export const PANELS = Object.freeze(['access', 'airway', 'causes']);
 
 const isObject = v => v !== null && typeof v === 'object' && !Array.isArray(v);
 const isText = v => typeof v === 'string' && v.trim() !== '';
@@ -45,6 +47,7 @@ function checkAlgorithm(algorithm) {
     if (!Array.isArray(box.actions) || box.actions.length === 0) fail(`${where}: sin acciones.`);
     for (const a of box.actions) {
       if (!isObject(a) || !isText(a.text)) fail(`${where}: acción sin texto.`);
+      if (a.panel !== undefined && !PANELS.includes(a.panel)) fail(`${where}: panel desconocido "${a.panel}".`);
       if (a.doneWhen !== undefined &&
           (!Array.isArray(a.doneWhen) || a.doneWhen.length === 0 || !a.doneWhen.every(t => EVENT_TYPES.includes(t)))) {
         fail(`${where}: "doneWhen" inválido en "${a.text}".`);
@@ -201,6 +204,9 @@ export function assertProfileUsable(profile) {
 
   const v = profile.ventilation;
   if (!isObject(v) || !isText(v.withoutAirway) || !isText(v.withAirway)) fail('Perfil incompleto: faltan los textos de ventilación.');
+  if (!Array.isArray(profile.airwayDevices) || profile.airwayDevices.length === 0 || !profile.airwayDevices.every(isText)) {
+    fail('Perfil incompleto: faltan los dispositivos de vía aérea.');
+  }
   const va = profile.vascularAccess;
   if (!isObject(va) || !Array.isArray(va.routes) || va.routes.length === 0 || !va.routes.every(isText)) {
     fail('Perfil incompleto: faltan las vías de acceso vascular.');
@@ -212,6 +218,11 @@ export function assertProfileUsable(profile) {
   if (!isObject(profile.messages)) fail('Perfil incompleto: faltan los textos de pantalla y voz.');
   for (const key of REQUIRED_MESSAGES) checkMessage(profile.messages[key], `"${key}"`);
   checkNoteTemplate(profile.noteTemplate);
+  const mt = profile.metronome;
+  if (mt !== undefined && (!isObject(mt) || !Array.isArray(mt.bpmOptions) || mt.bpmOptions.length === 0 ||
+      !mt.bpmOptions.every(b => Number.isInteger(b) && b > 0) || !mt.bpmOptions.includes(mt.defaultBpm))) {
+    fail('Perfil: metrónomo inválido.');
+  }
 
   usable.add(profile);
 }
