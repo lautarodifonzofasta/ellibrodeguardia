@@ -673,3 +673,139 @@ ul.bullets li strong { color: var(--text); }
   .tec-no { columns: 2; column-gap: 32px; }
   .tec-no li { break-inside: avoid; }
 }
+
+/* ══ MÓDULO: RCP INTERACTIVA ══ */
+/* js/rcp/ui.js (view type "rcp"). Resuscitation mode: high contrast, large
+   type and large targets (usable with gloves), minimal navigation, no
+   animation. Everything secondary stays small so it never competes with the
+   clock and the current action. Tokens only, so light and dark both work. */
+.rcp { max-width: 720px; margin: 0 auto; padding: 12px 0 96px; } /* bottom: clears the fixed copyright strip and scroll button */
+.rcp-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+.rcp-top-actions { display: flex; gap: 8px; }
+.rcp-profile { display: inline-block; font-size: 12px; font-weight: 600; color: var(--text2); border: 1px solid var(--border2); border-radius: 999px; padding: 3px 10px; }
+
+.rcp-start { display: flex; flex-direction: column; align-items: stretch; gap: 14px; padding-top: 12px; }
+.rcp-start .rcp-profile { align-self: flex-start; }
+.rcp-title { font-size: 20px; font-weight: 800; line-height: 1.25; color: var(--text); margin: 4px 0; }
+.rcp-h2 { font-size: 16px; font-weight: 700; color: var(--text); margin: 18px 0 8px; }
+.rcp-disclaimer { font-size: 13px; color: var(--text2); margin: 0; }
+.rcp-resume-info { font-size: 16px; color: var(--text2); margin: 0; }
+.rcp-resume-info b { color: var(--text); font-family: var(--mono); }
+
+.rcp-prompt { font-size: clamp(20px, 5.6vw, 26px); font-weight: 800; line-height: 1.25; padding: 14px 16px; border-radius: var(--r-lg); border: 2px solid; margin: 8px 0; }
+.rcp-prompt.is-red { border-color: var(--red); background: var(--red-bg); color: var(--text); }
+.rcp-prompt.is-amber { border-color: var(--amber); background: var(--amb-bg); color: var(--text); }
+.rcp-prompt.is-blue { border-color: var(--acc); background: var(--blue-bg); color: var(--text); }
+.rcp-prompt.is-green { border-color: var(--green); background: var(--grn-bg); color: var(--text); }
+.rcp-sub { font-size: 13px; line-height: 1.45; color: var(--text2); margin: 6px 0; }
+.rcp-reminders { font-size: 14px; line-height: 1.5; color: var(--text2); margin: 8px 0; }
+.rcp-box { display: inline-block; font-size: 11px; font-weight: 700; color: var(--text); background: var(--bg3); border: 1px solid var(--border2); border-radius: 6px; padding: 1px 7px; margin-right: 4px; }
+.rcp-ind { display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 2px solid var(--amber); background: var(--amb-bg); border-radius: var(--r); padding: 8px 10px; margin: 8px 0; }
+.rcp-ind-text { font-size: 17px; font-weight: 800; color: var(--text); }
+.rcp-warn { font-size: 13px; color: var(--text); border-left: 3px solid var(--red); background: var(--red-bg); padding: 8px 10px; border-radius: var(--r); margin: 10px 0; }
+
+/* Top card: total duration, ROSC and Finalizar always in reach */
+.rcp-topcard { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 8px 12px; margin-bottom: 8px; }
+.rcp-total { display: flex; flex-direction: column; }
+.rcp-total-label { font-size: 12px; color: var(--text2); }
+.rcp-total-time { font-family: var(--mono); font-size: clamp(30px, 9vw, 40px); font-weight: 800; line-height: 1.05; color: var(--text); }
+
+/* Ring clocks: compressions (current cycle) and the interval drug. The SVG
+   draws only the ring; the numbers are HTML on top. The ring colour carries
+   the state (blue running, amber pre-alert / pause, red due or overdue,
+   green drug window open); the text always says it too. */
+.rcp-ringcard { display: grid; grid-template-columns: minmax(0, 1fr) minmax(112px, 38%); gap: 10px; align-items: center; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 12px; margin: 10px 0; }
+.rcp-ring { position: relative; width: 100%; max-width: 220px; aspect-ratio: 1; justify-self: center; }
+.rcp-ring-svg { display: block; width: 100%; height: 100%; }
+.rcp-ring-track { fill: none; stroke: var(--bg3); stroke-width: 9; }
+.rcp-ring-bar { fill: none; stroke: var(--acc); stroke-width: 9; stroke-linecap: round; }
+.rcp-ring-tick { stroke: var(--text2); stroke-width: 2.5; stroke-linecap: round; }
+.rcp-ring.is-amber .rcp-ring-bar { stroke: var(--amber); }
+.rcp-ring.is-red .rcp-ring-bar { stroke: var(--red); }
+.rcp-ring.is-green .rcp-ring-bar { stroke: var(--green); }
+.rcp-ring.is-none .rcp-ring-bar { stroke: transparent; }
+.rcp-ring-center { position: absolute; inset: 14%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 2px; }
+.rcp-ring-label { font-size: 12px; color: var(--text2); }
+.rcp-ring-big { font-family: var(--mono); font-size: clamp(28px, 9vw, 42px); font-weight: 800; line-height: 1; color: var(--text); }
+.rcp-ring.is-red .rcp-ring-big { color: var(--red); }
+.rcp-ring-sub { font-size: 12px; line-height: 1.25; color: var(--text2); }
+.rcp-ringside { display: flex; flex-direction: column; gap: 8px; }
+.rcp-ringside .rcp-btn { min-height: 52px; font-size: 16px; padding: 8px 10px; }
+.rcp-counters { display: flex; justify-content: space-around; gap: 6px; text-align: center; }
+.rcp-counters span { display: flex; flex-direction: column; }
+.rcp-counters small { font-size: 11px; color: var(--text2); }
+.rcp-counters b { font-family: var(--mono); font-size: 28px; line-height: 1.1; color: var(--text); }
+.rcp-ring-ind { grid-column: 1 / -1; margin: 0; font-size: 17px; font-weight: 800; text-align: center; color: var(--text); border: 2px solid var(--amber); background: var(--amb-bg); border-radius: var(--r); padding: 8px; }
+.rcp-warn-btn { background: var(--amber); border-color: var(--amber); color: var(--bg); }
+.rcp-ring-extra { font-size: 12px; font-weight: 700; color: var(--text2); }
+.rcp-pauses { font-size: 11px; line-height: 1.35; color: var(--text2); text-align: center; margin: 0; }
+
+/* RCE (ROSC) button and the named event buttons */
+.rcp-rce { display: flex; flex-direction: column; width: 100%; margin: 12px 0; letter-spacing: .04em; }
+.rcp-rce small { font-size: 14px; font-weight: 700; letter-spacing: 0; margin-top: 2px; }
+.rcp-events { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 10px 0; }
+.rcp-hint { border-color: var(--amber); background: var(--amb-bg); }
+.rcp-done { font-size: 15px; font-weight: 700; color: var(--text); margin: 8px 0; }
+.rcp-causes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+.rcp-check { min-height: 52px; font-size: 15px; flex-direction: column; align-items: flex-start; justify-content: center; text-align: left; overflow-wrap: break-word; hyphens: auto; }
+.rcp-check.is-on { border-color: var(--green); background: var(--grn-bg); opacity: 1; }
+.rcp-check small { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--text2); }
+.rcp-toggle { justify-content: space-between; width: 100%; }
+.rcp-toggle[aria-pressed="true"] { border-color: var(--acc); }
+.rcp-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Live log and the confirmation toast */
+.rcp-recent { border-top: 1px solid var(--border); margin-top: 12px; }
+.rcp-recent-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--text); }
+.rcp-recent-list li.is-voided { text-decoration: line-through; color: var(--text2); }
+.rcp-recent-list .rcp-chrono-time { font-size: 13px; margin-right: 6px; }
+.rcp-toast { position: fixed; left: 50%; bottom: calc(28px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 400; max-width: min(92vw, 560px); background: var(--bg2); color: var(--text); border: 2px solid var(--green); border-radius: var(--r-lg); padding: 10px 16px; font-size: 15px; font-weight: 700; box-shadow: 0 6px 24px rgba(0, 0, 0, .35); }
+
+/* Buttons: big targets, solid colours, no motion */
+.rcp-btn { display: inline-flex; align-items: center; justify-content: center; text-align: center; min-height: 56px; padding: 10px 14px; border-radius: var(--r-lg); border: 2px solid var(--border2); background: var(--bg3); color: var(--text); font-size: 17px; font-weight: 700; line-height: 1.2; }
+.rcp-btn:focus-visible { outline: 3px solid var(--acc); outline-offset: 2px; }
+.rcp-small { min-height: 44px; padding: 6px 14px; font-size: 15px; }
+.rcp-big { min-height: 72px; font-size: 19px; }
+.rcp-huge { min-height: 96px; font-size: clamp(20px, 5.8vw, 26px); font-weight: 800; }
+/* Text in the page background colour: dark on the dark theme's light accents, light on the light theme's dark ones. */
+.rcp-primary { background: var(--acc); border-color: var(--acc); color: var(--bg); }
+.rcp-danger { background: var(--red); border-color: var(--red); color: var(--bg); }
+.rcp-ok { background: var(--green); border-color: var(--green); color: var(--bg); }
+.rcp-info { background: var(--blue-bg); border-color: var(--acc); color: var(--text); }
+.rcp-ghost { background: transparent; }
+.rcp-link { background: none; border: none; color: var(--acc); text-decoration: underline; font-size: 15px; padding: 10px 0; text-align: left; min-height: 44px; }
+.rcp-link-danger { color: var(--red); }
+.rcp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0; }
+.rcp-stack { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+.rcp-ref { font-size: 13px; line-height: 1.45; color: var(--text2); margin: 4px 0 0; padding-left: 18px; }
+
+/* Summary, chronology and note */
+.rcp-summary { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 15px; margin: 0; }
+.rcp-summary dt { color: var(--text2); }
+.rcp-summary dd { margin: 0; font-weight: 700; color: var(--text); }
+.rcp-reserved { border: 2px dashed var(--border2); border-radius: var(--r); padding: 4px 12px 10px; margin: 14px 0; color: var(--text2); font-size: 14px; }
+.rcp-chrono { list-style: none; padding: 0; margin: 0; }
+.rcp-chrono li { display: grid; grid-template-columns: auto auto 1fr auto; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.rcp-chrono-time, .rcp-chrono-off { font-family: var(--mono); color: var(--text2); }
+.rcp-chrono-text { color: var(--text); }
+.rcp-chrono li.is-voided .rcp-chrono-text { text-decoration: line-through; color: var(--text2); }
+.rcp-edited { font-style: normal; font-size: 11px; font-weight: 700; color: var(--text); background: var(--amb-bg); border: 1px solid var(--amb-bd); border-radius: 4px; padding: 0 5px; }
+.rcp-note { width: 100%; box-sizing: border-box; font: 14px/1.5 var(--font); color: var(--text); background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--r); padding: 10px; }
+
+/* Panels over the main area */
+.rcp-sheet { position: fixed; inset: 0; z-index: 300; background: rgba(0, 0, 0, .6); display: flex; align-items: flex-end; justify-content: center; }
+.rcp-sheet-panel { width: 100%; max-width: 720px; max-height: 90vh; overflow-y: auto; box-sizing: border-box; background: var(--bg2); border-top: 2px solid var(--border2); border-radius: var(--r-xl) var(--r-xl) 0 0; padding: 12px 16px calc(20px + env(safe-area-inset-bottom, 0px)); }
+.rcp-sheet-panel .rcp-h2:first-child { margin-top: 4px; }
+.rcp-close { width: 100%; margin-top: 12px; }
+.rcp-list { list-style: none; padding: 0; margin: 0; }
+.rcp-list > li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15px; color: var(--text); }
+.rcp-med-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.rcp-med-info { font-size: 13px; color: var(--text2); margin-top: 4px; }
+.rcp-form { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+.rcp-form label { display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--text2); }
+.rcp-form input:not([type="radio"]):not([type="checkbox"]), .rcp-form select { min-height: 48px; font-size: 18px; color: var(--text); background: var(--bg); border: 1px solid var(--border2); border-radius: var(--r); padding: 6px 10px; }
+.rcp-form .rcp-radio { flex-direction: row; align-items: center; gap: 10px; min-height: 44px; font-size: 16px; color: var(--text); }
+.rcp-radio input { width: 22px; height: 22px; }
+
+/* Entry point from the PCR / RCP module */
+.rcp-open-btn { display: block; width: 100%; min-height: 56px; margin: 0 0 14px; border-radius: var(--r-lg); border: 2px solid var(--red); background: var(--red-bg); color: var(--text); font-size: 17px; font-weight: 800; }

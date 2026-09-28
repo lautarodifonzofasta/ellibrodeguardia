@@ -11,6 +11,14 @@
     "sub": "BLS · ALS · Post-RCE",
     "badge": "crit"
   },
+  "rcp-asistente": {
+    "title": "Asistente de RCP",
+    "category": "🚨 Emergencias críticas",
+    "icon": "⏱️",
+    "sub": "Paro del adulto · AHA 2025",
+    "badge": "crit",
+    "type": "rcp"
+  },
   "shock": {
     "title": "Shock",
     "category": "🚨 Emergencias críticas",
