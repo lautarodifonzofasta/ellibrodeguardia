@@ -135,6 +135,7 @@ Decisiones de la Fase 3:
 43. **Ajustes:** audio y vibración activados por defecto y metrónomo apagado, guardados en `elg-rcp-settings`. Se accede desde el inicio y desde el botón 🔊 de la barra fija.
 44. **Wake Lock:** se pide mientras haya una RCP activa en pantalla, se vuelve a pedir al volver a la app y se libera al terminar o al salir del asistente.
 45. **Borrar y descartar** (pedido por el autor al probar): el resumen tiene "Borrar esta RCP del dispositivo" y "RCP en curso · ¿Continuar?" tiene "Descartar esta RCP". Los dos piden confirmación y avisan que no se puede deshacer (sugieren copiar la nota antes). Borrar la actual no toca "la RCP anterior", y al revés tampoco. Una corrección hecha sobre la RCP anterior se guarda en ese mismo registro.
+46. **Confirmación visible al registrar** (el autor probó "Nota → Registrar" y no vio cambios en pantalla): cada evento que no cambia la pantalla (droga, IV/IO, vía aérea, capnografía, EtCO₂, causa, nota) muestra 3 s abajo "✓ Registrado: … · hora", y una corrección muestra "✓ Corrección guardada". La pantalla activa suma "Registro" con los últimos 4 eventos y "Ver registro completo", que se puede corregir durante la RCP.
 
 Verificación de la Fase 3:
 - `npm test` pasa 89/89.

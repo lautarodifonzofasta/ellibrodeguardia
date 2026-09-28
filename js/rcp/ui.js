@@ -29,6 +29,10 @@ const clock = ms => new Date(ms).toLocaleTimeString('es-AR', { hour: '2-digit', 
 const decimal = n => String(n).replace('.', ',');
 
 // Prompt colour by meaning (visual only; texts come from the profile).
+// Events that don't change the screen on their own: a toast confirms them.
+const QUIET_EVENTS = ['MEDICATION_GIVEN', 'VASCULAR_ACCESS', 'AIRWAY_PLACED', 'CAPNOGRAPHY_STARTED', 'ETCO2_VALUE', 'REVERSIBLE_CAUSE_IDENTIFIED', 'OTHER'];
+const RECENT_EVENTS = 4;
+
 const PROMPT_TONE = {
   start: 'blue', preAlert: 'amber', checkRhythm: 'red', shockable: 'red',
   postShock: 'green', nonShockable: 'blue', roscCheck: 'amber', roscConfirmed: 'green',
@@ -79,10 +83,31 @@ export async function renderRcp(container) {
 
   function commit(next) {
     if (!next || next === session) return;
+    const prevCount = session ? session.events.length : 0;
+    const corrected = !!session && next.events.length === prevCount;
     session = next;
     saveFailed = !(source === 'archive' ? archiveSession(session) : saveSession(session));
     if (!isActive(session)) showSummary = true;
     renderMain(true);
+    const added = session.events.length > prevCount ? session.events[session.events.length - 1] : null;
+    if (added && QUIET_EVENTS.includes(added.type)) toast(`✓ Registrado: ${eventLabel(added)} · ${clock(added.at)}`);
+    else if (corrected) toast('✓ Corrección guardada');
+  }
+
+  let toastTimer = null;
+  /** Short confirmation at the bottom of the screen (announced to screen readers). */
+  function toast(text) {
+    let el = container.querySelector('.rcp-toast');
+    if (!el) {
+      el = document.createElement('div');
+      el.className = 'rcp-toast';
+      el.setAttribute('role', 'status');
+      container.querySelector('.rcp').appendChild(el);
+    }
+    el.textContent = text;
+    el.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { el.hidden = true; }, 3000);
   }
 
   /** Runs an engine action; a stale tap (e.g. a double tap) is ignored. */
@@ -295,8 +320,20 @@ export async function renderRcp(container) {
         ${panelBtn(st, 'causes', 'Causas reversibles')}
         <button class="rcp-btn" data-act="note">Nota</button>
       </div>
+      ${recentHtml()}
       ${reminders}
       <p class="rcp-sub">Ventilación: ${esc(st.ventilation.text)}${others.length ? ` · ${others.join(' · ')}` : ''}</p>`;
+  }
+
+  /** The last few recorded events, newest first, with a link to the full log. */
+  function recentHtml() {
+    const events = chronology(session);
+    const last = events.slice(-RECENT_EVENTS).reverse();
+    return `<section class="rcp-recent" aria-label="Registro">
+        <h2 class="rcp-h2">Registro</h2>
+        <ol class="rcp-recent-list">${last.map(e => `<li class="${e.data.voided ? 'is-voided' : ''}"><span class="rcp-chrono-time">${clock(e.at)}</span> ${esc(eventLabel(e))}</li>`).join('')}</ol>
+        <button class="rcp-link" data-act="log">Ver registro completo (${events.length})</button>
+      </section>`;
   }
 
   /** Event button; highlighted when a visible Box reminder points to its panel. */
@@ -381,7 +418,6 @@ export async function renderRcp(container) {
     if (sum.stop) rows.push(['Finalización', `${STOP_REASON_LABELS[sum.stop.reason]}${sum.stop.detail ? ` · ${sum.stop.detail}` : ''} · ${clock(sum.stop.at)}`]);
     if (!note || note.sessionId !== session.id) note = { sessionId: session.id, text: buildNote(session, profile) };
     const title = sum.rosc.confirmed ? profile.messages.roscConfirmed.screen : 'RCP finalizada';
-    const events = chronology(session);
     return `
       <div class="rcp-top">${badge()}</div>
       <h1 class="rcp-title">${esc(title)}</h1>
@@ -393,13 +429,7 @@ export async function renderRcp(container) {
           <p>Espacio reservado para una versión futura. Todavía no tiene contenido clínico.</p>
         </div>` : ''}
       <h2 class="rcp-h2">Cronología</h2>
-      <ol class="rcp-chrono">${events.map(e => `
-        <li class="${e.data.voided ? 'is-voided' : ''}">
-          <span class="rcp-chrono-time">${clock(e.at)}</span>
-          <span class="rcp-chrono-off">+${mmss(e.offsetMs)}</span>
-          <span class="rcp-chrono-text">${esc(eventLabel(e))}${e.edited ? ' <em class="rcp-edited">editado</em>' : ''}${e.data.voided ? ' <em class="rcp-edited">anulado</em>' : ''}</span>
-          <button class="rcp-btn rcp-small rcp-ghost" data-act="edit" data-arg="${esc(e.id)}">Editar</button>
-        </li>`).join('')}</ol>
+      ${chronoHtml()}
       <h2 class="rcp-h2">Nota clínica</h2>
       <textarea class="rcp-note" data-field="note" rows="10">${esc(note.text)}</textarea>
       <div class="rcp-grid">
@@ -408,6 +438,16 @@ export async function renderRcp(container) {
       </div>
       <div class="rcp-stack"><button class="rcp-btn rcp-big" data-act="new">Nueva RCP</button>
         <button class="rcp-link rcp-link-danger" data-act="delete-ask">Borrar esta RCP del dispositivo</button></div>`;
+  }
+
+  function chronoHtml() {
+    return `<ol class="rcp-chrono">${chronology(session).map(e => `
+        <li class="${e.data.voided ? 'is-voided' : ''}">
+          <span class="rcp-chrono-time">${clock(e.at)}</span>
+          <span class="rcp-chrono-off">+${mmss(e.offsetMs)}</span>
+          <span class="rcp-chrono-text">${esc(eventLabel(e))}${e.edited ? ' <em class="rcp-edited">editado</em>' : ''}${e.data.voided ? ' <em class="rcp-edited">anulado</em>' : ''}</span>
+          <button class="rcp-btn rcp-small rcp-ghost" data-act="edit" data-arg="${esc(e.id)}">Editar</button>
+        </li>`).join('')}</ol>`;
   }
 
   function eventLabel(e) {
@@ -447,6 +487,7 @@ export async function renderRcp(container) {
       case 'airway': body = airwaySheet(); break;
       case 'causes': body = causesSheet(); break;
       case 'note': body = noteSheet(); break;
+      case 'log': body = logSheet(); break;
       case 'settings': body = settingsSheet(); break;
       case 'rosc': body = confirmSheet('Confirmar retorno de circulación espontánea', 'rosc-confirm', 'Confirmar'); break;
       case 'no-shock': body = confirmSheet('¿Reanudar compresiones sin descarga?', 'no-shock-confirm', 'Reanudar sin descarga'); break;
@@ -548,6 +589,12 @@ export async function renderRcp(container) {
       <div class="rcp-causes">${profile.reversibleCauses.map(c => found.has(c.id)
         ? `<button class="rcp-btn rcp-check is-on" disabled aria-pressed="true">✓ ${esc(c.label)} <small>${clock(found.get(c.id))}</small></button>`
         : `<button class="rcp-btn rcp-check" data-act="cause" data-arg="${esc(c.id)}" aria-pressed="false">${esc(c.label)}</button>`).join('')}</div>`;
+  }
+
+  function logSheet() {
+    return `<h2 class="rcp-h2">Registro</h2>
+      <p class="rcp-sub">Hora real y tiempo desde el inicio. Tocá "Editar" para corregir un evento: la corrección queda registrada.</p>
+      ${chronoHtml()}`;
   }
 
   function noteSheet() {
@@ -664,6 +711,7 @@ export async function renderRcp(container) {
       case 'shocks': openSheet({ type: 'shocks' }); break;
       case 'panel': openSheet({ type: arg }); break;
       case 'note': openSheet({ type: 'note' }); break;
+      case 'log': openSheet({ type: 'log' }); break;
       case 'settings': openSheet({ type: 'settings' }); break;
       case 'access': closeSheet(); act(() => rcp.recordVascularAccess(session, arg, now)); break;
       case 'airway-device': if (act(() => rcp.recordAirway(session, { device: arg }, now))) renderSheet(); break;

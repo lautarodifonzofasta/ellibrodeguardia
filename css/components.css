@@ -754,6 +754,13 @@ ul.bullets li strong { color: var(--text); }
 .rcp-toggle[aria-pressed="true"] { border-color: var(--acc); }
 .rcp-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
+/* Live log and the confirmation toast */
+.rcp-recent { border-top: 1px solid var(--border); margin-top: 12px; }
+.rcp-recent-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--text); }
+.rcp-recent-list li.is-voided { text-decoration: line-through; color: var(--text2); }
+.rcp-recent-list .rcp-chrono-time { font-size: 13px; margin-right: 6px; }
+.rcp-toast { position: fixed; left: 50%; bottom: calc(28px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 400; max-width: min(92vw, 560px); background: var(--bg2); color: var(--text); border: 2px solid var(--green); border-radius: var(--r-lg); padding: 10px 16px; font-size: 15px; font-weight: 700; box-shadow: 0 6px 24px rgba(0, 0, 0, .35); }
+
 /* Buttons: big targets, solid colours, no motion */
 .rcp-btn { display: inline-flex; align-items: center; justify-content: center; text-align: center; min-height: 56px; padding: 10px 14px; border-radius: var(--r-lg); border: 2px solid var(--border2); background: var(--bg3); color: var(--text); font-size: 17px; font-weight: 700; line-height: 1.2; }
 .rcp-btn:focus-visible { outline: 3px solid var(--acc); outline-offset: 2px; }
