@@ -133,8 +133,8 @@ Decisiones de la Fase 3:
 41. **Vía aérea:** los dispositivos salen del .md §7 (intubación endotraqueal o dispositivo supraglótico). Se pueden registrar la capnografía y valores de EtCO₂, y se muestra el texto de referencia "solo informativo, sin alertas automáticas".
 42. **Causas reversibles:** checklist de la §8. Una causa marcada queda con su hora y no bloquea el flujo; se corrige desde la cronología.
 43. **Ajustes:** audio y vibración activados por defecto y metrónomo apagado, guardados en `elg-rcp-settings`. Se accede desde el inicio y desde el botón 🔊 de la barra fija.
-45. **Borrar y descartar** (pedido por el autor al probar): el resumen tiene "Borrar esta RCP del dispositivo" y "RCP en curso · ¿Continuar?" tiene "Descartar esta RCP". Los dos piden confirmación y avisan que no se puede deshacer (sugieren copiar la nota antes). Borrar la actual no toca "la RCP anterior", y al revés tampoco. Una corrección hecha sobre la RCP anterior se guarda en ese mismo registro.
 44. **Wake Lock:** se pide mientras haya una RCP activa en pantalla, se vuelve a pedir al volver a la app y se libera al terminar o al salir del asistente.
+45. **Borrar y descartar** (pedido por el autor al probar): el resumen tiene "Borrar esta RCP del dispositivo" y "RCP en curso · ¿Continuar?" tiene "Descartar esta RCP". Los dos piden confirmación y avisan que no se puede deshacer (sugieren copiar la nota antes). Borrar la actual no toca "la RCP anterior", y al revés tampoco. Una corrección hecha sobre la RCP anterior se guarda en ese mismo registro.
 
 Verificación de la Fase 3:
 - `npm test` pasa 89/89.
