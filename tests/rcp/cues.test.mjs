@@ -15,7 +15,10 @@ test('each cue is announced once, never in a loop', () => {
   const s = started();
   const first = cuesFor(st(s, 1), announced);
   assert.deepEqual(first.map(c => c.voice), ['Iniciar compresiones. Conectar el monitor.']);
-  for (let t = 2; t < 200; t++) assert.deepEqual(cuesFor(st(s, t), announced), [], `repaint at ${t}s`);
+  // repainted 4 times a second for 5 min: the pre-alert and the alert once each
+  const later = [];
+  for (let t = 1.25; t < 300; t += 0.25) later.push(...cuesFor(st(s, t), announced).map(c => `${t}s ${c.voice}`));
+  assert.deepEqual(later, ['105s Prepararse para evaluar ritmo.', '120s Detener compresiones. Evaluar ritmo.']);
 });
 
 test('end of cycle: pre-alert (1 beep) then alert (3 beeps + vibration), once per cycle', () => {
@@ -32,6 +35,32 @@ test('end of cycle: pre-alert (1 beep) then alert (3 beeps + vibration), once pe
   s = shockCycle(rcp, s, 46 + 181);                             // cycle 3 from 233 s
   cuesFor(st(s, 234), announced);
   assert.equal(cuesFor(st(s, 233 + 106), announced).length, 1);
+});
+
+test('an early rhythm check that is cancelled does not mute the 2:00 alert', () => {
+  const announced = new Set();
+  let s = shockCycle(rcp, started(), 40);                       // cycle 2 from 46 s
+  cuesFor(st(s, 50), announced);
+  s = rcp.beginRhythmCheck(s, sec(46 + 60));
+  assert.deepEqual(cuesFor(st(s, 46 + 61), announced).map(c => [c.voice, c.beep]), [['Detener compresiones. Evaluar ritmo.', 0]]);
+  s = rcp.cancelRhythmCheck(s, sec(46 + 64));
+  assert.deepEqual(cuesFor(st(s, 46 + 65), announced), [], 'back to compressions: nothing new');
+  // a cancelled check doesn't pause the cycle clock: same 1:45 and 2:00
+  assert.deepEqual(cuesFor(st(s, 46 + 104.75), announced), []);
+  assert.deepEqual(cuesFor(st(s, 46 + 105), announced).map(c => [c.voice, c.beep]), [['Prepararse para evaluar ritmo.', 1]]);
+  assert.deepEqual(cuesFor(st(s, 46 + 119.75), announced), []);
+  const due = cuesFor(st(s, 46 + 120), announced);
+  assert.deepEqual(due.map(c => [c.voice, c.beep]), [['Detener compresiones. Evaluar ritmo.', 3]]);
+});
+
+test('after the 2:00 alert, tapping "Evaluar ritmo" does not repeat the voice', () => {
+  const announced = new Set();
+  let s = started();
+  for (let t = 1; t <= 125; t += 0.25) cuesFor(st(s, t), announced);   // start, pre-alert, alert
+  s = rcp.beginRhythmCheck(s, sec(126));
+  assert.deepEqual(cuesFor(st(s, 126.25), announced), []);
+  s = rcp.selectRhythm(s, 'shockable', sec(128));
+  assert.deepEqual(cuesFor(st(s, 128.25), announced).map(c => c.voice), ['Ritmo desfibrilable. Preparar descarga.']);
 });
 
 test('transition voices come from the profile; a user-started rhythm check is voice only', () => {

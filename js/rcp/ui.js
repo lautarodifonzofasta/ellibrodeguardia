@@ -69,7 +69,7 @@ export async function renderRcp(container) {
   let note = null;              // { sessionId, text } — the editable note
   let lastKey = '';
   let flash = '';
-  const assist = createAssist();
+  const assist = createAssist({ onVoices: () => { if (sheet?.type === 'settings') renderSheet(); } });
   let settings = profile ? loadSettings(profile) : null;
   const announced = new Set();  // cue ids already played (cues.js)
   let cuesReady = false;        // until the first status is seen, so reopening doesn't replay the past
@@ -267,7 +267,9 @@ export async function renderRcp(container) {
     const now = Date.now();
     const drug = ringDrug(st);
     const prompt = st.prompt ? `<div class="rcp-prompt is-${PROMPT_TONE[st.prompt.key] || 'blue'}" role="status">${esc(st.prompt.screen)}</div>` : '';
-    const boxNote = st.algorithm?.note && st.state === S.CPR_ACTIVE && !st.cycle?.durationMs ? `<p class="rcp-sub">${esc(st.algorithm.note)}</p>` : '';
+    // The Box note (Box 1: first rhythm check as soon as the monitor is
+    // connected) belongs to the first cycle, before any rhythm check.
+    const boxNote = st.algorithm?.note && st.state === S.CPR_ACTIVE && st.cycle?.number === 1 ? `<p class="rcp-sub">${esc(st.algorithm.note)}</p>` : '';
     const drugInd = drug ? st.indications.find(i => i.drugId === drug.drugId) : null;
     const otherInds = st.indications.filter(i => i !== drugInd).map(i => `
       <div class="rcp-ind">
@@ -378,15 +380,34 @@ export async function renderRcp(container) {
     return `<div class="cl cl-r"><div class="cl-ico">⛔</div><div class="cl-body"><span class="cl-title">El asistente no se puede usar</span>${esc(loadError)}</div></div>`;
   }
 
+  /** Opens straight on the ring clocks at zero; CPR starts with "Iniciar compresiones". */
   function startHtml() {
     const previous = session && !isActive(session) ? session : loadArchivedSession(MODE);
+    const def = profile.medications.find(m => m.intervalSec);
+    const { durationSec, preAlertSec } = profile.cycle;
+    const cycleTick = profile.algorithm.boxes[profile.algorithm.start].timed !== false ? (durationSec - preAlertSec) / durationSec : null;
     return `
-      <div class="rcp-start">
-        <h1 class="rcp-title">Paro cardiorrespiratorio · Adulto · AHA 2025</h1>
+      <div class="rcp-start rcp-idle">
+        <div class="rcp-topcard">
+          <div class="rcp-total"><span class="rcp-total-label">duración total</span><span class="rcp-total-time">00:00</span></div>
+          <span class="rcp-top-actions">
+            <button class="rcp-btn rcp-small rcp-ghost" data-act="settings" aria-label="Ajustes de asistencia">${settings.audio ? '🔊' : '🔇'}</button>
+          </span>
+        </div>
         ${badge()}
-        <button class="rcp-btn rcp-huge rcp-danger" data-act="start">INICIAR RCP</button>
+        <div class="rcp-prompt is-blue">${esc(profile.startHint)}</div>
+        <button class="rcp-btn rcp-huge rcp-danger" data-act="start">Iniciar compresiones</button>
+        <section class="rcp-ringcard" aria-label="Compresiones">
+          ${ringHtml('cycle', { label: 'compresiones', big: '00:00', sub: 'sin iniciar', progress: 0, tone: 'none', tick: cycleTick })}
+          <div class="rcp-ringside">
+            <div class="rcp-counters"><span><small>ciclos</small><b>0</b></span><span><small>descargas</small><b>0</b></span></div>
+          </div>
+        </section>
+        ${def ? `<section class="rcp-ringcard" aria-label="${esc(def.name)}">
+          ${ringHtml('drug', { label: def.name.toLocaleLowerCase('es'), big: '--:--', sub: 'sin dosis', progress: 0, tone: 'none', tick: def.intervalSec.min / def.intervalSec.max })}
+          <div class="rcp-ringside"><div class="rcp-counters"><span><small>dosis</small><b>0</b></span></div></div>
+        </section>` : ''}
         <p class="rcp-disclaimer">Herramienta de apoyo cognitivo. No reemplaza entrenamiento ni criterio clínico.</p>
-        <button class="rcp-link" data-act="settings">Ajustes de asistencia (audio, vibración, metrónomo)</button>
         ${previous ? `<button class="rcp-link" data-act="show-previous">Ver la RCP anterior (${esc(clock(previous.createdAt))})</button>` : ''}
       </div>`;
   }
@@ -606,15 +627,32 @@ export async function renderRcp(container) {
   }
 
   function settingsSheet() {
-    const row = (key, label) => `<button class="rcp-btn rcp-toggle" data-act="toggle" data-arg="${key}" aria-pressed="${settings[key]}">
-      <span>${label}</span><b>${settings[key] ? 'ON' : 'OFF'}</b></button>`;
+    const row = (key, label) => `<button class="rcp-btn rcp-toggle" role="switch" aria-checked="${settings[key]}" data-act="toggle" data-arg="${key}">
+      <span class="rcp-toggle-label">${label}</span>
+      <span class="rcp-toggle-state">${settings[key] ? 'Activado' : 'Desactivado'}</span>
+      <span class="rcp-switch" aria-hidden="true"><span class="rcp-switch-knob"></span></span></button>`;
     const mt = profile.metronome;
     return `<h2 class="rcp-h2">Asistencia</h2>
       <div class="rcp-stack">${row('audio', 'Audio de asistencia')}${row('vibration', 'Vibración de asistencia')}${mt ? row('metronome', 'Metrónomo') : ''}</div>
+      ${voiceHtml()}
       ${mt ? `<p class="rcp-sub">Ritmo del metrónomo</p>
         <div class="rcp-grid rcp-grid-3">${mt.bpmOptions.map(b => `<button class="rcp-btn${settings.metronomeBpm === b ? ' rcp-primary' : ''}" data-act="bpm" data-arg="${b}" aria-pressed="${settings.metronomeBpm === b}">${b}/min</button>`).join('')}</div>
         <p class="rcp-sub">${esc(mt.note)}</p>` : ''}
       <p class="rcp-sub">El sonido se activa al tocar la pantalla (necesario en iPhone). La vibración no está disponible en todos los teléfonos.</p>`;
+  }
+
+  /** Which voice reads the prompts; never a voice in another language. */
+  function voiceHtml() {
+    const v = assist.voiceStatus();
+    if (v.state === 'ok') {
+      return `<div class="rcp-voice"><p class="rcp-sub">Voz: <b>${esc(v.name)}</b> (${esc(v.lang)})</p>
+        <button class="rcp-btn rcp-small" data-act="test-voice">Probar voz</button></div>`;
+    }
+    if (v.state === 'loading') return '<p class="rcp-sub">Buscando una voz en español…</p>';
+    const why = v.state === 'offline'
+      ? 'Sin conexión: las voces en español de este navegador necesitan internet.'
+      : 'Este navegador no tiene una voz en español.';
+    return `<p class="rcp-warn">${why} Los avisos se ven, suenan con beep y vibran, pero sin voz (nunca se leen con una voz en otro idioma). Para tener voz: usá Chrome o Edge con internet, o agregá una voz en español en el sistema (Windows: Configuración › Hora e idioma › Voz).</p>`;
   }
 
   function stopSheet() {
@@ -721,6 +759,7 @@ export async function renderRcp(container) {
         settings = { ...settings, [arg]: !settings[arg] };
         saveSettings(settings); renderSheet(); renderMain(true);
         break;
+      case 'test-voice': assist.say('Prueba de voz.'); break;
       case 'bpm':
         settings = { ...settings, metronomeBpm: Number(arg) };
         saveSettings(settings); renderSheet(); renderMain(true);

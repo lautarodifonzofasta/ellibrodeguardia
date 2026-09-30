@@ -18,7 +18,7 @@
     "start": "1",
     "boxes": {
       "1": {
-        "kind": "cpr", "timed": false,
+        "kind": "cpr", "timed": true,
         "actions": [{ "text": "Iniciar RCP" }, { "text": "Ventilación con bolsa-máscara y O₂" }, { "text": "Conectar monitor/desfibrilador" }],
         "note": "Primer control de ritmo: apenas está conectado el monitor/desfibrilador; no espera 2 min",
         "onRhythm": { "shockable": "2", "non_shockable": "9" }
@@ -156,6 +156,8 @@
     { "id": "trombosis-pulmonar", "label": "Trombosis pulmonar" },
     { "id": "trombosis-coronaria", "label": "Trombosis coronaria" }
   ],
+
+  "startHint": "Tocá «Iniciar compresiones» una vez evaluados el pulso y la ventilación.",
 
   "messages": {
     "start": { "screen": "INICIAR COMPRESIONES · Conectar monitor/desfibrilador", "voice": "Iniciar compresiones. Conectar el monitor." },

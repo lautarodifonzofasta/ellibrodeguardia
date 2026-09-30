@@ -119,7 +119,7 @@
  * @property {'cpr'|'rhythm'|'shock'|'rosc_check'} kind
  * @property {{text: string, doneWhen?: ResuscitationEventType[], hideWhenGroupExhausted?: string}[]} actions
  *   Reminders; "doneWhen" hides one once registered, "hideWhenGroupExhausted" once that drug group reached its maximum.
- * @property {boolean} [timed]  cpr: whether the cycle has an end-of-cycle alert.
+ * @property {boolean} [timed]  cpr: whether the cycle that starts CPR in this Box has an end-of-cycle alert (a resumed cycle always has one).
  * @property {{shockable: string, non_shockable: string}} [onRhythm]  cpr: next Box after a rhythm check.
  * @property {string} [next]    rhythm / shock: next Box.
  * @property {string} [noRosc]  rosc_check: Box when there are no signs of ROSC.
