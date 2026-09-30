@@ -267,7 +267,9 @@ export async function renderRcp(container) {
     const now = Date.now();
     const drug = ringDrug(st);
     const prompt = st.prompt ? `<div class="rcp-prompt is-${PROMPT_TONE[st.prompt.key] || 'blue'}" role="status">${esc(st.prompt.screen)}</div>` : '';
-    const boxNote = st.algorithm?.note && st.state === S.CPR_ACTIVE && !st.cycle?.durationMs ? `<p class="rcp-sub">${esc(st.algorithm.note)}</p>` : '';
+    // The Box note (Box 1: first rhythm check as soon as the monitor is
+    // connected) belongs to the first cycle, before any rhythm check.
+    const boxNote = st.algorithm?.note && st.state === S.CPR_ACTIVE && st.cycle?.number === 1 ? `<p class="rcp-sub">${esc(st.algorithm.note)}</p>` : '';
     const drugInd = drug ? st.indications.find(i => i.drugId === drug.drugId) : null;
     const otherInds = st.indications.filter(i => i !== drugInd).map(i => `
       <div class="rcp-ind">
@@ -382,6 +384,8 @@ export async function renderRcp(container) {
   function startHtml() {
     const previous = session && !isActive(session) ? session : loadArchivedSession(MODE);
     const def = profile.medications.find(m => m.intervalSec);
+    const { durationSec, preAlertSec } = profile.cycle;
+    const cycleTick = profile.algorithm.boxes[profile.algorithm.start].timed !== false ? (durationSec - preAlertSec) / durationSec : null;
     return `
       <div class="rcp-start rcp-idle">
         <div class="rcp-topcard">
@@ -394,7 +398,7 @@ export async function renderRcp(container) {
         <div class="rcp-prompt is-blue">${esc(profile.startHint)}</div>
         <button class="rcp-btn rcp-huge rcp-danger" data-act="start">Iniciar compresiones</button>
         <section class="rcp-ringcard" aria-label="Compresiones">
-          ${ringHtml('cycle', { label: 'compresiones', big: '00:00', sub: 'sin iniciar', progress: 0, tone: 'none', tick: null })}
+          ${ringHtml('cycle', { label: 'compresiones', big: '00:00', sub: 'sin iniciar', progress: 0, tone: 'none', tick: cycleTick })}
           <div class="rcp-ringside">
             <div class="rcp-counters"><span><small>ciclos</small><b>0</b></span><span><small>descargas</small><b>0</b></span></div>
           </div>

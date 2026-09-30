@@ -100,7 +100,7 @@ Decisiones de la Fase 2:
 32. **Extras para la Fase 3**, pedidos por el autor: **metrónomo** (beep a ritmo de compresiones, ON/OFF, con el valor tomado del .md §6: 100–120/min) y **fracción de compresiones** (% del tiempo con compresiones, calculado con las pausas registradas, en el reloj de compresiones). El gesto de doble toque no se agrega.
 33. **`pcr.html` se alinea con el perfil AHA 2025 en una rama aparte** (`pcr-aha2025`, desde `main`), para que el autor lo valide antes de publicar. *Decidido por el autor.*
 
-Verificación de la Fase 2: `npm test` pasa 81/81. En Edge headless a 380 px, el recorrido del criterio de aceptación pasa 40/40 (con los relojes circulares): Iniciar, Box 1 sin cronómetro, FV, doble toque en "Descarga realizada" (se registra una sola), preaviso y aviso de fin de ciclo, recarga en plena RCP con "¿Continuar?", adrenalina indicada y registrada con su ventana, IV, 3ª descarga, lidocaína con rango por peso, panel de descargas, ida y vuelta a otro módulo, ROSC con confirmación, resumen, post-ROSC reservado, nota, edición auditada, copiar, offline, "RCP anterior", contraste y sin errores de consola.
+Verificación de la Fase 2: `npm test` pasa 81/81. En Edge headless a 380 px, el recorrido del criterio de aceptación pasa 40/40 (con los relojes circulares): Iniciar, Box 1 sin cronómetro, FV, doble toque en "Descarga realizada" (se registra una sola), preaviso y aviso de fin de ciclo, recarga en plena RCP con "¿Continuar?", adrenalina indicada y registrada con su ventana, IV, 3ª descarga, lidocaína con rango por peso, panel de descargas, ida y vuelta a otro módulo, ROSC con confirmación, resumen, post-ROSC reservado, nota, edición auditada, copiar, offline, "RCP anterior", contraste y sin errores de consola. *(El Box 1 tiene reloj desde el punto 48.)*
 
 ### Diferencias entre `pcr.html` y el perfil AHA 2025 (para el autor; no se tocó `pcr.html`)
 
@@ -120,7 +120,7 @@ Archivos nuevos: `js/rcp/cues.js` (qué avisos corresponden, puro), `js/rcp/assi
 Decisiones de la Fase 3:
 34. **Botón RCE:** "Otro evento" se reemplazó por un botón grande "RCE · Retorno de la circulación espontánea", con la misma confirmación de siempre. Arriba hay un RCE compacto en una barra fija, así queda siempre accesible. Las etiquetas de la interfaz dicen "RCE"; los textos del .md ("✅ ROSC", "¿SIGNOS DE ROSC?") no se tocaron. *Pedido por el autor.*
 35. **Eventos con nombre propio**, en lugar de "Otro evento": Acceso IV/IO · Vía aérea / CO₂ · Causas reversibles · Nota. Los recordatorios del Box con panel (`panel` en el perfil: access, airway, causes) resaltan su botón, por ejemplo "Causas reversibles" en los Box 8 y 11.
-36. **Avisos** (`cues.js`): cada aviso tiene una identidad (mensaje + ciclo + Box, o indicación + dosis) y suena **una sola vez**, nunca en bucle.
+36. **Avisos** (`cues.js`): cada aviso tiene una identidad (mensaje o alerta de fin de ciclo + ciclo + Box, o indicación + dosis) y suena **una sola vez**, nunca en bucle.
     - El preaviso lleva 1 beep y vibración corta.
     - El fin de ciclo lleva 3 beeps y vibración larga.
     - Las demás transiciones van solo con voz, con el texto `voice` del perfil.
@@ -140,9 +140,13 @@ Decisiones de la Fase 3:
     - **Metrónomo estable.** Antes lo programaba un temporizador de JavaScript, que se atrasaba o salteaba golpes cuando la página estaba ocupada. Ahora es un sonido de un golpe que se repite en bucle (60/110 s), y el reloj de audio del teléfono lleva el tiempo. El audio se reactiva en cada toque y al volver a la app (incluido el estado "interrumpido" del iPhone tras una llamada o con la pantalla bloqueada).
     - **Interruptores legibles.** Los ajustes muestran el nombre, "Activado" o "Desactivado" y un interruptor, en vez de "MetrónomoON". Se corrigió además el orden del CSS: los estilos base de los botones estaban declarados después de sus variantes y las pisaban (por eso la grilla de 100/110/120 salía 2 + 1).
     - **Sin pantalla "INICIAR RCP".** El asistente abre directo en los dos relojes en cero ("sin iniciar", "sin dosis"), con el texto "Tocá «Iniciar compresiones» una vez evaluados el pulso y la ventilación." y el botón **Iniciar compresiones**. RCE, Finalizar y los eventos aparecen recién al iniciar. El texto está en el .md §9 y en el perfil (`startHint`). "RCP en curso · ¿Continuar?" no cambia.
+48. **Preaviso de 15 s** (el autor reportó que no andaba, 2026-09-30). En tiempo real, sin adelantar el reloj, el preaviso sí funcionaba en los ciclos cronometrados: a 1:45 aparecía en ámbar, con 1 beep, voz y vibración. Lo probé en los Box 4 y 10, con y sin metrónomo, y con una ventana abierta. No aparecía en el primer ciclo, porque el Box 1 estaba sin reloj según el .md ("no espera 2 min").
+    - **Decisión del autor (2026-09-30):** el Box 1 también tiene reloj de 2 min, con preaviso a 1:45 y alerta a 2:00, como red de seguridad si el monitor tarda. La nota "Primer control de ritmo: apenas está conectado el monitor/desfibrilador; no espera 2 min" sigue visible durante el primer ciclo. Se registró en el .md §2.
+    - **Error corregido:** "Reanudar sin descarga" después del primer control volvía al Box 1 con un ciclo sin reloj, contra el punto 22. Ahora todo ciclo que se abre al reanudar tiene reloj.
+    - **Error corregido:** si se tocaba "Evaluar ritmo" antes de tiempo y después "Cancelar", la alerta de los 2:00 no sonaba, porque compartía el identificador con el aviso de "Evaluar ritmo". Ahora las alertas de fin de ciclo tienen su propio identificador. Una vez que sonó la alerta de los 2:00, tocar "Evaluar ritmo" no repite la voz.
 
 Verificación de la Fase 3:
-- `npm test` pasa 89/89.
+- `npm test` pasa 93/93.
 - En Edge headless a 380 px pasan dos pruebas: el flujo completo, 40/40, y la **aceptación de la §12**, 35/35 (con los ajustes del punto 47: pantalla inicial con relojes, interruptores y un solo bucle de metrónomo a 60/110 s que se detiene al evaluar el ritmo). Borrar/descartar pasa 13/13 y la confirmación al registrar, 10/10. La de aceptación recorre: abrir, iniciar, reloj, fin de ciclo con aviso, evaluar ritmo, FV, descarga, reiniciar, siguiente ciclo, adrenalina, otra descarga, RCE, resumen, cronología y nota, con recarga en plena RCP y offline. Además verifica:
   - cada voz una sola vez, sin bucle con el ciclo vencido, y solo el aviso vencido después de una recarga;
   - la vibración y el metrónomo (110/min, con pausa en la evaluación del ritmo);

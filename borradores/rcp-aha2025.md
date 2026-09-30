@@ -31,7 +31,7 @@ Revisión: 2026-09. Validado por: Lautaro Di Fonzo (autor), 2026-09-27
 | Parámetro | Valor | Origen |
 |---|---|---|
 | Duración de cada ciclo de RCP | 2 min | Guía |
-| Primer control de ritmo | Apenas está conectado el monitor/desfibrilador; no espera 2 min | Guía (Box 1) |
+| Primer control de ritmo | Apenas está conectado el monitor/desfibrilador; no espera 2 min. Si no se evaluó antes: preaviso a 1:45 y alerta a 2:00, como en los demás ciclos | Guía (Box 1). La red de seguridad de 2 min es parámetro de interfaz, decidido por el autor el 2026-09-30 |
 | Intervalo de adrenalina | Cada 3–5 min | Guía |
 | Cambio de compresor | Cada 2 min, o antes si hay fatiga: recordatorio en cada control de ritmo | Guía |
 | Preaviso de fin de ciclo | 15 s | Parámetro de interfaz |

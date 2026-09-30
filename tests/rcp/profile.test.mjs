@@ -29,8 +29,8 @@ test('the transcription keeps the source file\'s algorithm (Box table 3.1)', () 
     10: { shockable: '5', non_shockable: '11' },
     11: { shockable: '5', non_shockable: '12' }, 12: '10',
   });
-  assert.equal(b[1].timed, false, 'first rhythm check as soon as the monitor is connected');
-  for (const id of ['4', '6', '8', '10', '11']) assert.equal(b[id].timed, true);
+  // Box 1 too: a 2-min safety net if the monitor is late (author, 2026-09-30)
+  for (const id of ['1', '4', '6', '8', '10', '11']) assert.equal(b[id].timed, true);
 });
 
 test('any [REVISAR] marker, in any case, blocks the profile', () => {

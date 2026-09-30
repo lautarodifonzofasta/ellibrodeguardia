@@ -15,17 +15,46 @@ const give = (s, drugId, dose, t) => {
   return rcp.giveMedication(s, { drugId, name: def.name, dose, route: 'IV/IO' }, sec(t));
 };
 
-test('Box 1: no 2-minute countdown (first rhythm check as soon as the monitor is connected)', () => {
-  const status = st(started(), 300);
+test('Box 1: first check as soon as the monitor is connected, with the 2-min timer as a safety net', () => {
+  const s = started();
+  const status = st(s, 60);
   assert.equal(status.alert, null);
-  assert.equal(status.nextEvent, null);
-  assert.equal(status.cycle.durationMs, null);
+  assert.deepEqual(status.nextEvent, { kind: 'check_rhythm', inMs: 60000 });
+  assert.equal(status.cycle.durationMs, 120000);
   assert.deepEqual(status.prompt, { key: 'start', screen: 'INICIAR COMPRESIONES · Conectar monitor/desfibrilador', voice: 'Iniciar compresiones. Conectar el monitor.' });
+  assert.deepEqual(st(s, 105).alert, { kind: 'pre_alert', inMs: 15000 });
+  assert.equal(st(s, 105).prompt.key, 'preAlert');
+  assert.deepEqual(st(s, 120).alert, { kind: 'check_rhythm', overdueMs: 0 });
+  assert.equal(st(s, 300).cycle.overdueMs, 180000);
   assert.deepEqual(status.algorithm.actions, ['Iniciar RCP', 'Ventilación con bolsa-máscara y O₂', 'Conectar monitor/desfibrilador']);
   assert.equal(status.algorithm.note, 'Primer control de ritmo: apenas está conectado el monitor/desfibrilador; no espera 2 min');
-  // the first cycle stays untimed after leaving Box 1 for the shock
+  // leaving Box 1 for the shock: the first cycle's clock stops, with no alert
   const shock = st(check(rcp, started(), 'shockable', 40), 43);
-  assert.deepEqual([shock.cycle.number, shock.cycle.durationMs, shock.cycle.elapsedMs], [1, null, 40000]);
+  assert.deepEqual([shock.cycle.number, shock.cycle.durationMs, shock.cycle.elapsedMs, shock.alert], [1, 120000, 40000, null]);
+});
+
+test('resuming without a shock after the first check opens a timed 2-min cycle (decision 22)', () => {
+  let s = rcp.beginRhythmCheck(started(), sec(40));
+  s = rcp.selectRhythm(s, 'shockable', sec(42));
+  s = rcp.resumeCpr(s, sec(46));                              // no shock: back to Box 1, cycle 2
+  assert.deepEqual([s.box, s.cycle], ['1', 2]);
+  assert.equal(st(s, 46 + 60).cycle.durationMs, 120000);
+  assert.deepEqual(st(s, 46 + 105).alert, { kind: 'pre_alert', inMs: 15000 });
+  assert.equal(st(s, 46 + 105).prompt.key, 'preAlert');
+  assert.deepEqual(st(s, 46 + 120).alert, { kind: 'check_rhythm', overdueMs: 0 });
+});
+
+test('a Box marked untimed only affects the first cycle: a resume opens a timed cycle (decision 22)', () => {
+  const p = cloneProfile();
+  p.algorithm.boxes['1'].timed = false;
+  const eng = createEngine(p);
+  let s = eng.startCpr(eng.createSession({ id: 's1', now: T0 }), sec(0));
+  assert.deepEqual([getStatus(s, p, sec(150)).cycle.durationMs, getStatus(s, p, sec(150)).alert], [null, null]);
+  s = eng.selectRhythm(eng.beginRhythmCheck(s, sec(40)), 'shockable', sec(42));
+  s = eng.resumeCpr(s, sec(46));                                // no shock: back to Box 1, cycle 2
+  assert.deepEqual([s.box, s.cycle], ['1', 2]);
+  assert.equal(getStatus(s, p, sec(46 + 60)).cycle.durationMs, 120000);
+  assert.deepEqual(getStatus(s, p, sec(46 + 105)).alert, { kind: 'pre_alert', inMs: 15000 });
 });
 
 test('reminders show while a Box is worked, not after its shock or once CPR has ended', () => {

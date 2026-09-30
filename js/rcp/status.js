@@ -283,9 +283,8 @@ export function getStatus(session, profile, now) {
 
   // Cycle clock: starts at CPR_STARTED or at a resume that opened a new
   // cycle; it stops (for display) while compressions are paused or once CPR
-  // has ended. It never advances the cycle by itself, and a Box that isn't
-  // timed (first rhythm check as soon as the monitor is connected) has no
-  // end-of-cycle alert.
+  // has ended. It never advances the cycle by itself. A Box the profile marks
+  // as not timed has no end-of-cycle alert in the cycle that starts CPR there.
   const cycleStart = lastBySeq(session.events.filter(e =>
     e.type === 'CPR_STARTED' || (e.type === 'CPR_RESUMED' && e.data.newCycle)));
   const durationMs = profile.cycle.durationSec * 1000;
@@ -296,9 +295,11 @@ export function getStatus(session, profile, now) {
   if (cycleStart) {
     const elapsedMs = Math.max(0, cycleStopAt(session, cycleStart, clockAt) - cycleStart.at);
     const remainingMs = durationMs - elapsedMs;
-    // Whether this cycle is timed depends on the Box it started in (e.g. the
-    // first cycle in Box 1 isn't), not on where the case is now.
-    const timed = profile.algorithm.boxes[cycleStart.box].timed !== false;
+    // Whether this cycle is timed depends on the Box it started in, not on
+    // where the case is now. A cycle opened by a resume is always timed: the
+    // first rhythm check is done (decision 22: resuming without a shock opens
+    // a new 2-min cycle).
+    const timed = cycleStart.type === 'CPR_RESUMED' || profile.algorithm.boxes[cycleStart.box].timed !== false;
     cycle = {
       number: session.cycle,
       startAt: cycleStart.at,
