@@ -69,7 +69,7 @@ export async function renderRcp(container) {
   let note = null;              // { sessionId, text } — the editable note
   let lastKey = '';
   let flash = '';
-  const assist = createAssist();
+  const assist = createAssist({ onVoices: () => { if (sheet?.type === 'settings') renderSheet(); } });
   let settings = profile ? loadSettings(profile) : null;
   const announced = new Set();  // cue ids already played (cues.js)
   let cuesReady = false;        // until the first status is seen, so reopening doesn't replay the past
@@ -634,10 +634,25 @@ export async function renderRcp(container) {
     const mt = profile.metronome;
     return `<h2 class="rcp-h2">Asistencia</h2>
       <div class="rcp-stack">${row('audio', 'Audio de asistencia')}${row('vibration', 'Vibración de asistencia')}${mt ? row('metronome', 'Metrónomo') : ''}</div>
+      ${voiceHtml()}
       ${mt ? `<p class="rcp-sub">Ritmo del metrónomo</p>
         <div class="rcp-grid rcp-grid-3">${mt.bpmOptions.map(b => `<button class="rcp-btn${settings.metronomeBpm === b ? ' rcp-primary' : ''}" data-act="bpm" data-arg="${b}" aria-pressed="${settings.metronomeBpm === b}">${b}/min</button>`).join('')}</div>
         <p class="rcp-sub">${esc(mt.note)}</p>` : ''}
       <p class="rcp-sub">El sonido se activa al tocar la pantalla (necesario en iPhone). La vibración no está disponible en todos los teléfonos.</p>`;
+  }
+
+  /** Which voice reads the prompts; never a voice in another language. */
+  function voiceHtml() {
+    const v = assist.voiceStatus();
+    if (v.state === 'ok') {
+      return `<div class="rcp-voice"><p class="rcp-sub">Voz: <b>${esc(v.name)}</b> (${esc(v.lang)})</p>
+        <button class="rcp-btn rcp-small" data-act="test-voice">Probar voz</button></div>`;
+    }
+    if (v.state === 'loading') return '<p class="rcp-sub">Buscando una voz en español…</p>';
+    const why = v.state === 'offline'
+      ? 'Sin conexión: las voces en español de este navegador necesitan internet.'
+      : 'Este navegador no tiene una voz en español.';
+    return `<p class="rcp-warn">${why} Los avisos se ven, suenan con beep y vibran, pero sin voz (nunca se leen con una voz en otro idioma). Para tener voz: usá Chrome o Edge con internet, o agregá una voz en español en el sistema (Windows: Configuración › Hora e idioma › Voz).</p>`;
   }
 
   function stopSheet() {
@@ -744,6 +759,7 @@ export async function renderRcp(container) {
         settings = { ...settings, [arg]: !settings[arg] };
         saveSettings(settings); renderSheet(); renderMain(true);
         break;
+      case 'test-voice': assist.say('Prueba de voz.'); break;
       case 'bpm':
         settings = { ...settings, metronomeBpm: Number(arg) };
         saveSettings(settings); renderSheet(); renderMain(true);

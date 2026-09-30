@@ -144,10 +144,15 @@ Decisiones de la Fase 3:
     - **Decisión del autor (2026-09-30):** el Box 1 también tiene reloj de 2 min, con preaviso a 1:45 y alerta a 2:00, como red de seguridad si el monitor tarda. La nota "Primer control de ritmo: apenas está conectado el monitor/desfibrilador; no espera 2 min" sigue visible durante el primer ciclo. Se registró en el .md §2.
     - **Error corregido:** "Reanudar sin descarga" después del primer control volvía al Box 1 con un ciclo sin reloj, contra el punto 22. Ahora todo ciclo que se abre al reanudar tiene reloj.
     - **Error corregido:** si se tocaba "Evaluar ritmo" antes de tiempo y después "Cancelar", la alerta de los 2:00 no sonaba, porque compartía el identificador con el aviso de "Evaluar ritmo". Ahora las alertas de fin de ciclo tienen su propio identificador. Una vez que sonó la alerta de los 2:00, tocar "Evaluar ritmo" no repite la voz.
+49. **Voz siempre en español** (el autor la escuchó en inglés, 2026-09-30). Chrome y Edge devuelven la lista de voces vacía la primera vez y la cargan después; justo ahí sonaba "Iniciar compresiones" y, sin voz elegida, salía la voz predeterminada del sistema, que en un Windows en inglés es inglesa.
+    - La lista se pide apenas abre el asistente, y cada frase espera hasta 3 s a que cargue.
+    - La voz se elige en este orden: Argentina, el resto de Latinoamérica, España y cualquier otra en español. En cada región va primero la voz instalada en el equipo. Sin conexión, se descartan las voces online.
+    - Nunca se lee con una voz en otro idioma: si no hay voz en español, el aviso se ve, suena con beep y vibra, sin voz.
+    - Ajustes muestra la voz en uso con un botón "Probar voz". Si no hay voz en español, lo explica y dice cómo agregarla.
 
 Verificación de la Fase 3:
-- `npm test` pasa 93/93.
-- En Edge headless a 380 px pasan dos pruebas: el flujo completo, 40/40, y la **aceptación de la §12**, 35/35 (con los ajustes del punto 47: pantalla inicial con relojes, interruptores y un solo bucle de metrónomo a 60/110 s que se detiene al evaluar el ritmo). Borrar/descartar pasa 13/13 y la confirmación al registrar, 10/10. La de aceptación recorre: abrir, iniciar, reloj, fin de ciclo con aviso, evaluar ritmo, FV, descarga, reiniciar, siguiente ciclo, adrenalina, otra descarga, RCE, resumen, cronología y nota, con recarga en plena RCP y offline. Además verifica:
+- `npm test` pasa 100/100 (incluye `tests/rcp/assist.test.mjs`, la elección de voz con una síntesis simulada).
+- En Edge headless a 380 px pasan dos pruebas: el flujo completo, 40/40, y la **aceptación de la §12**, 38/38 (con los ajustes del punto 47: pantalla inicial con relojes, interruptores y un solo bucle de metrónomo a 60/110 s que se detiene al evaluar el ritmo; y del punto 49: cada frase con voz es-AR y "Probar voz"). Borrar/descartar pasa 13/13 y la confirmación al registrar, 10/10. La de aceptación recorre: abrir, iniciar, reloj, fin de ciclo con aviso, evaluar ritmo, FV, descarga, reiniciar, siguiente ciclo, adrenalina, otra descarga, RCE, resumen, cronología y nota, con recarga en plena RCP y offline. Además verifica:
   - cada voz una sola vez, sin bucle con el ciclo vencido, y solo el aviso vencido después de una recarga;
   - la vibración y el metrónomo (110/min, con pausa en la evaluación del ritmo);
   - el Wake Lock pedido, vuelto a pedir y liberado;
