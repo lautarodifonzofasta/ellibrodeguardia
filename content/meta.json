@@ -165,6 +165,12 @@
     "icon": "🧬",
     "sub": "Diagnóstico · Antiviral · Neuralgia"
   },
+  "herpes-genital": {
+    "title": "Herpes genital",
+    "category": "🔥 Infectología",
+    "icon": "🦠",
+    "sub": "Úlcera genital · Antiviral · Embarazo"
+  },
   "itu": {
     "title": "ITU / Pielonefritis",
     "category": "🔥 Infectología",
