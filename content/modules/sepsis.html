@@ -10,18 +10,21 @@
     <div class="tbl-wrap"><table class="tbl">
       <thead><tr><th></th><th>Criterio</th></tr></thead>
       <tbody>
-        <tr><td><span class="tag t-a">Sepsis</span></td><td>Infección sospechada o confirmada + SOFA ≥2 (o qSOFA ≥2 fuera de UCI)</td></tr>
+        <tr><td><span class="tag t-a">Sepsis</span></td><td>Infección sospechada o confirmada + SOFA ≥2</td></tr>
         <tr><td><span class="tag t-r">Shock séptico</span></td><td>Sepsis + hipotensión refractaria a volemización + lactato &gt;2 mmol/L + noradrenalina necesaria</td></tr>
       </tbody>
     </table></div>
-    <div class="sec-hd mt-12"><div class="sec-hd-lbl">qSOFA — screening rápido (fuera de UCI)</div><div class="sec-hd-line"></div></div>
-    <ul class="bullets">
-      <li>FR ≥22 rpm → 1 punto</li>
-      <li>Alteración del estado mental (GCS &lt;15) → 1 punto</li>
-      <li>PAS ≤100 mmHg → 1 punto</li>
-    </ul>
-    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body">qSOFA ≥2 → alta probabilidad de sepsis, iniciar bundle inmediatamente. Confirmar con SOFA completo si hay laboratorio.</div></div>
   </div></div>
+
+  <!-- qSOFA: content/calculators/calc-qsofa.json + js/calculators/calc-qsofa.js,
+       rendered here by js/router.js. -->
+  <div class="card mt-12">
+    <div class="card-header"><div class="card-ico ico-red">⚡</div><div class="card-header-text"><div class="card-title">qSOFA al lado de la cama</div><div class="card-sub">3 criterios clínicos · Sin laboratorio · Pronóstico, no diagnóstico</div></div></div>
+    <div class="card-body">
+      <div class="sep-qsofa" data-calculator="calc-qsofa"></div>
+      <div class="cl cl-r mt-12"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">qSOFA &lt; 2 no descarta sepsis</span>La SSC 2021 desaconseja usarlo como única herramienta de screening. El diagnóstico de sepsis es <strong>SOFA ≥ 2</strong> sobre el basal: continuar con la <a class="xref" href="#calc-sofa" onclick="navId('calc-sofa');return false">calculadora de SOFA</a> y pedir lactato.</div></div>
+    </div>
+  </div>
 </div>
 <div id="sep-bundle" class="tab-pane">
   <div class="card"><div class="card-body">

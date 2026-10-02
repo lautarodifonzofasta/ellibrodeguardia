@@ -9,7 +9,15 @@
 //   "hidePoints": true         no per-option point badges and no numeric score
 //   "showInitialResult": true  show interpret(0) — the "nothing marked" result —
 //                              from the start; "result" can then be omitted
-// interpret() may also return severity 'neutral' (no red/amber/green tint).
+// And for scores where every item must be answered (e.g. calc-qsofa, embedded
+// in the Sepsis module):
+//   "requireAll": true         no verdict until every group has an answer; until
+//                              then the result shows "result" (initialScore,
+//                              initialLabel, note), muted
+//   "maxScore": n              show the score as "s / n"
+// interpret() may also return severity 'neutral' (no red/amber/green tint), and
+// "detailHtml" (trusted markup from js/calculators/, e.g. line breaks and bold)
+// instead of the plain-text "detail".
 
 const SEVERITY_CLASS = { red: 'show-r', amber: 'show-a', green: 'show-g', neutral: 'show-n' };
 
@@ -42,8 +50,8 @@ function groupHtml(group, groupIndex, hidePoints) {
   return `${heading}<div class="calc-grid" data-group-type="${group.type}">${options}</div>`;
 }
 
-function resultHtml(result = {}, hidePoints) {
-  return `<div class="calc-result" data-result aria-live="polite">` +
+function resultHtml(result = {}, hidePoints, requireAll) {
+  return `<div class="calc-result${requireAll ? ' is-pending' : ''}" data-result aria-live="polite">` +
     (hidePoints ? '' : `<div class="cr-score">${result.initialScore ?? ''}</div>`) +
     `<div class="cr-label">${result.initialLabel ?? ''}</div>` +
     `<div class="cr-detail">${result.note ?? ''}</div>` +
@@ -61,22 +69,33 @@ export function renderScoredCalculator(container, definition, interpret) {
     calloutHtml(definition.intro) +
     `<div class="card"><div class="card-body">` +
     definition.groups.map((g, i) => groupHtml(g, i, hidePoints)).join('') +
-    resultHtml(definition.result, hidePoints) +
+    resultHtml(definition.result, hidePoints, definition.requireAll === true) +
     `</div></div>`;
 
   const resultEl = container.querySelector('[data-result]');
 
   function recompute() {
+    const scoreEl = resultEl.querySelector('.cr-score');
+    const detailEl = resultEl.querySelector('.cr-detail');
+    const grids = [...container.querySelectorAll('.calc-grid')];
+    if (definition.requireAll && grids.some(g => !g.querySelector('.calc-opt.sel'))) {
+      const pending = definition.result || {};
+      resultEl.className = 'calc-result is-pending';
+      if (scoreEl) scoreEl.textContent = pending.initialScore ?? '';
+      resultEl.querySelector('.cr-label').textContent = pending.initialLabel ?? '';
+      detailEl.textContent = pending.note ?? '';
+      return;
+    }
     let score = 0;
     container.querySelectorAll('.calc-opt.sel').forEach(el => {
       score += parseFloat(el.dataset.points);
     });
     const r = interpret(score);
     resultEl.className = `calc-result ${SEVERITY_CLASS[r.severity]}`;
-    const scoreEl = resultEl.querySelector('.cr-score');
-    if (scoreEl) scoreEl.textContent = score;
+    if (scoreEl) scoreEl.textContent = definition.maxScore ? `${score} / ${definition.maxScore}` : score;
     resultEl.querySelector('.cr-label').textContent = r.label;
-    resultEl.querySelector('.cr-detail').textContent = r.detail;
+    if (r.detailHtml !== undefined) detailEl.innerHTML = r.detailHtml;
+    else detailEl.textContent = r.detail;
   }
 
   function choose(opt) {
