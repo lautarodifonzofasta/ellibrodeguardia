@@ -1,0 +1,39 @@
+{
+  "id": "calc-qsofa",
+  "title": "qSOFA",
+  "requireAll": true,
+  "maxScore": 3,
+  "groups": [
+    {
+      "id": "fr",
+      "label": "FR ≥ 22/min",
+      "type": "single",
+      "options": [
+        { "label": "No", "points": 0 },
+        { "label": "Sí", "points": 1, "badge": "+1" }
+      ]
+    },
+    {
+      "id": "sns",
+      "label": "Sensorio alterado (Glasgow &lt; 15)",
+      "type": "single",
+      "options": [
+        { "label": "No", "points": 0 },
+        { "label": "Sí", "points": 1, "badge": "+1" }
+      ]
+    },
+    {
+      "id": "pas",
+      "label": "PAS ≤ 100 mmHg",
+      "type": "single",
+      "options": [
+        { "label": "No", "points": 0 },
+        { "label": "Sí", "points": 1, "badge": "+1" }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": "—",
+    "initialLabel": "Completá los 3 criterios"
+  }
+}

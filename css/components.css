@@ -254,6 +254,7 @@
 .calc-result.show-a { border-color: var(--amber); background: var(--amb-bg); }
 .calc-result.show-g { border-color: var(--green); background: var(--grn-bg); }
 .calc-result.show-n { border-color: var(--border2); background: var(--bg3); } /* severity 'neutral': no verdict color */
+.calc-result.is-pending .cr-label { color: var(--text3); } /* "requireAll": not every item answered yet */
 .cr-score { font-size: 44px; font-weight: 700; font-family: var(--mono); color: var(--text); line-height: 1; margin-bottom: 4px; }
 .cr-label { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
 .cr-detail { font-size: 12.5px; color: var(--text2); line-height: 1.5; }
@@ -673,6 +674,18 @@ ul.bullets li strong { color: var(--text); }
   .tec-no { columns: 2; column-gap: 32px; }
   .tec-no li { break-inside: avoid; }
 }
+
+/* ══ MÓDULO: SEPSIS ══ */
+/* qSOFA, rendered by js/calculators/engine.js inside the module's own card:
+   no second card frame, sentence-case criteria, No / Sí side by side. */
+.sep-qsofa > .card { background: none; border: 0; border-radius: 0; box-shadow: none; margin: 0; }
+.sep-qsofa > .card > .card-body { padding: 0; }
+.sep-qsofa .sec-hd-lbl {
+  font-size: 13px; font-weight: 700; color: var(--text);
+  text-transform: none; letter-spacing: 0; white-space: normal;
+}
+.sep-qsofa .calc-grid { flex-direction: row; }
+.sep-qsofa .calc-opt { flex: 1; }
 
 /* ══ MÓDULO: RCP INTERACTIVA ══ */
 /* js/rcp/ui.js (view type "rcp"). Resuscitation mode: high contrast, large

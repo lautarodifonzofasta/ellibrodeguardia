@@ -10,18 +10,39 @@
     <div class="tbl-wrap"><table class="tbl">
       <thead><tr><th></th><th>Criterio</th></tr></thead>
       <tbody>
-        <tr><td><span class="tag t-a">Sepsis</span></td><td>Infección sospechada o confirmada + SOFA ≥2 (o qSOFA ≥2 fuera de UCI)</td></tr>
+        <tr><td><span class="tag t-a">Sepsis</span></td><td>Infección sospechada o confirmada + SOFA ≥2</td></tr>
         <tr><td><span class="tag t-r">Shock séptico</span></td><td>Sepsis + hipotensión refractaria a volemización + lactato &gt;2 mmol/L + noradrenalina necesaria</td></tr>
       </tbody>
     </table></div>
-    <div class="sec-hd mt-12"><div class="sec-hd-lbl">qSOFA — screening rápido (fuera de UCI)</div><div class="sec-hd-line"></div></div>
-    <ul class="bullets">
-      <li>FR ≥22 rpm → 1 punto</li>
-      <li>Alteración del estado mental (GCS &lt;15) → 1 punto</li>
-      <li>PAS ≤100 mmHg → 1 punto</li>
-    </ul>
-    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body">qSOFA ≥2 → alta probabilidad de sepsis, iniciar bundle inmediatamente. Confirmar con SOFA completo si hay laboratorio.</div></div>
   </div></div>
+
+  <!-- qSOFA: content/calculators/calc-qsofa.json + js/calculators/calc-qsofa.js,
+       rendered here by js/router.js. -->
+  <div class="card mt-12">
+    <div class="card-header"><div class="card-ico ico-red">⚡</div><div class="card-header-text"><div class="card-title">qSOFA al lado de la cama</div><div class="card-sub">3 criterios clínicos · Sin laboratorio · Pronóstico, no diagnóstico</div></div></div>
+    <div class="card-body">
+      <div class="sep-qsofa" data-calculator="calc-qsofa"></div>
+      <div class="cl cl-r mt-12"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">qSOFA &lt; 2 no descarta sepsis</span>La SSC 2021 desaconseja usarlo como única herramienta de screening. El diagnóstico de sepsis es <strong>SOFA ≥ 2</strong> sobre el basal: continuar con la <a class="xref" href="#calc-sofa" onclick="navId('calc-sofa');return false">calculadora de SOFA</a> y pedir lactato.</div></div>
+    </div>
+  </div>
+
+  <div class="card mt-12">
+    <div class="card-header"><div class="card-ico ico-blue">🧪</div><div class="card-header-text"><div class="card-title">Qué pedir para un SOFA completo</div><div class="card-sub">4 de los 6 sistemas salen del laboratorio · Los otros 2, al lado de la cama</div></div></div>
+    <div class="card-body">
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>Sistema</th><th>Dato del SOFA</th><th>Qué pedir</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Respiratorio</strong></td><td>PaO₂/FiO₂</td><td>Gasometría arterial, anotando la FiO₂ al momento de la muestra</td></tr>
+          <tr><td><strong>Coagulación</strong></td><td>Plaquetas</td><td>Hemograma</td></tr>
+          <tr><td><strong>Hepático</strong></td><td>Bilirrubina total</td><td>Bilirrubina (hepatograma)</td></tr>
+          <tr><td><strong>Renal</strong></td><td>Creatinina o diuresis</td><td>Creatinina · Diuresis (ml/día)</td></tr>
+          <tr><td><strong>Cardiovascular</strong></td><td>PAM o vasopresores</td><td>Sin laboratorio: PAM y dosis de vasopresor (µg/kg/min)</td></tr>
+          <tr><td><strong>Neurológico</strong></td><td>Glasgow</td><td>Sin laboratorio: Glasgow</td></tr>
+        </tbody>
+      </table></div>
+      <div class="cl cl-b mt-12"><div class="cl-ico">ℹ️</div><div class="cl-body">Sumar <strong>lactato</strong>: no es parte del SOFA, pero define el shock séptico (&gt;2 mmol/L). Si no se conoce disfunción orgánica previa, el SOFA basal se asume 0. Con los resultados: <a class="xref" href="#calc-sofa" onclick="navId('calc-sofa');return false">calculadora de SOFA</a>.</div></div>
+    </div>
+  </div>
 </div>
 <div id="sep-bundle" class="tab-pane">
   <div class="card"><div class="card-body">
