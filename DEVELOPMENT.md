@@ -90,6 +90,8 @@ En `content/modules/`, creá un archivo nuevo con un nombre corto sin espacios n
 
 Reemplazá los textos de ejemplo por el contenido real. Si querés reproducir cajas de alerta roja/amarilla o pasos numerados como en otros módulos, lo más fácil es abrir un módulo parecido (por ejemplo `colico-renal.html`) y copiar el bloque que necesites.
 
+No escribas el título del módulo dentro del archivo: el encabezado grande (categoría, nombre y subtítulo) lo arma la app sola con los datos de `content/meta.json` (paso b).
+
 ### b) Registrarlo en `content/meta.json`
 
 Abrí `content/meta.json`. Es una lista de entradas, una por módulo. Buscá una categoría parecida a la tuya (por ejemplo `"🫁 Respiratorio"`) y agregá una entrada nueva junto a las de esa categoría, copiando el formato exacto:
@@ -194,7 +196,7 @@ Si en algún momento la app deja de andar bien después de un cambio, en GitHub 
 Estructura del proyecto, para quien ya tenga más experiencia:
 
 - `index.html` — shell de la app (sidebar, barra superior, buscador)
-- `css/` — estilos (tokens de tema, layout, componentes, responsive)
+- `css/` — estilos (tokens de tema, layout, componentes, responsive). `tokens.css` tiene los colores de los dos temas (oscuro y claro); la portada usa sus propios tokens `--hero-*` (fondo bordó). En el contenido usá siempre los tokens (`var(--red)`, `var(--text2)`…), nunca colores fijos, así se ve bien en los dos temas.
 - `content/` — el contenido real: un archivo por módulo clínico (`content/modules/`), por calculadora (`content/calculators/`) y por categoría de fármacos (`content/drugs/`), más `meta.json` con título/categoría/ícono/keywords de cada uno y `motivos.json` con los motivos de consulta del buscador
 - `js/` — router, buscador (`search-engine.js`, compartido por la portada, la lupa y el filtro lateral), motor de calculadoras y demás lógica
 - `manifest.json` / `sw.js` — instalación como app y funcionamiento offline

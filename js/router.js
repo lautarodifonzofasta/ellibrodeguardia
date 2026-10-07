@@ -54,6 +54,8 @@ async function navigate(id) {
   const token = ++navToken;
   runViewCleanup();
   updateBreadcrumb(id);
+  // The home has its own ground (bordó gradient) under a transparent topbar.
+  document.getElementById('shell')?.classList.toggle('is-home', id === 'home');
   if (sidebarEl) setActiveSidebarItem(sidebarEl, id);
 
   const wrapper = document.createElement('div');
@@ -114,6 +116,7 @@ async function render(id, container) {
     } else {
       renderInputCalculator(container, def, computeSodio);
     }
+    addViewHeader(container, m);
     return;
   }
   if (m?.type === 'rcp') {
@@ -126,6 +129,7 @@ async function render(id, container) {
       drugsCache = { index, categories };
     }
     renderDrugReference(container, drugsCache.index, drugsCache.categories);
+    addViewHeader(container, m);
     return;
   }
   // Plain content module.
@@ -135,7 +139,20 @@ async function render(id, container) {
     return;
   }
   container.innerHTML = await res.text();
+  if (m) addViewHeader(container, m);
   await mountEmbeddedCalculators(container);
+}
+
+// Page title above the content, built from content/meta.json (the same
+// category, title and subtitle the sidebar shows). The module's own HTML is
+// left untouched.
+function addViewHeader(container, m) {
+  const crit = m.badge === 'crit' ? '<span class="sb-badge b-crit">CRIT</span>' : '';
+  const sub = m.sub || crit
+    ? `<p class="view-sub">${m.sub ? `<span>${m.sub}</span>` : ''}${crit}</p>`
+    : '';
+  container.insertAdjacentHTML('afterbegin',
+    `<header class="view-hd"><p class="view-kicker">${m.category}</p><h1 class="view-title">${m.title}</h1>${sub}</header>`);
 }
 
 // A content module can embed a scored calculator with

@@ -3,19 +3,25 @@
    single media query; splitting them by concern risked breaking selectors. */
 
 @media (max-width: 768px) {
-  :root { --sb-w: 85vw; --top-h: 52px; }
+  :root { --sb-w: 85vw; --top-h: 56px; }
 
   /* ── Sidebar: drawer overlay ── */
-  #sidebar { position: fixed; top: 0; left: 0; transform: translateX(-100%); height: 100dvh; z-index: 30; }
-  #sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,.4); }
+  #sidebar { position: fixed; top: 0; left: 0; transform: translateX(-100%); height: 100dvh; z-index: 30; max-width: 340px; }
+  #sidebar.open { transform: translateX(0); box-shadow: 8px 0 40px rgba(0,0,0,.45); }
   #sb-overlay.open { display: block; }
   .tb-ham { display: flex; }
 
-  /* ── Main content ── */
-  .view { padding: 12px; }
-  .g2, .g3 { grid-template-columns: 1fr; }
+  /* ── Topbar: on a module, logo + title only (the brand name lives on the home) ── */
+  #topbar { padding: 0 14px; gap: 10px; }
+  #shell:not(.is-home) .tb-brand, #shell:not(.is-home) .tb-bc-sep { display: none !important; }
+  .tb-bc-cur { font-size: 16px; }
 
-  /* ── Tabs: full width, scroll horizontal ── */
+  /* ── Main content ── */
+  .view { padding: 16px 16px 24px; }
+  .g2, .g3 { grid-template-columns: 1fr; }
+  .view-title { font-size: 26px; letter-spacing: -.8px; }
+
+  /* ── Tabs: one row, horizontal scroll ── */
   .tabs {
     width: 100%;
     overflow-x: auto;
@@ -25,76 +31,74 @@
     padding-bottom: 2px;
   }
   .tabs::-webkit-scrollbar { display: none; }
-  .tab { padding: 7px 12px; font-size: 12px; white-space: nowrap; flex-shrink: 0; }
+  .tab { padding: 7px 10px; font-size: 12px; white-space: nowrap; flex-shrink: 0; }
+  .tabs { gap: 5px; }
 
   /* ── Cards ── */
-  .card-body { padding: 12px; }
+  .card-body { padding: 14px; }
   .card-header { padding: 12px 14px; }
-  .card-title { font-size: 13.5px; }
 
-  /* ── Tables: horizontal scroll + bigger touch targets ── */
+  /* ── Tables: horizontal scroll ── */
   .tbl-wrap { -webkit-overflow-scrolling: touch; }
-  .tbl { font-size: 12px; }
+  .tbl { font-size: 12.5px; }
   .tbl th { padding: 8px 10px; font-size: 10px; }
   .tbl td { padding: 9px 10px; }
   .tbl-name { font-size: 11.5px; }
   .tbl-dose { font-size: 11.5px; }
 
   /* ── Algorithm steps ── */
-  .step { padding: 10px 0; gap: 10px; }
-  .step-n { min-width: 26px; height: 26px; font-size: 10px; }
-  .step-title { font-size: 13px; }
-  .step-body { font-size: 12.5px; }
+  .step { gap: 10px; }
+  .step-n { min-width: 26px; height: 26px; font-size: 10.5px; }
+  .step-title { font-size: 13.5px; margin-top: 3px; }
+  .step-body { font-size: 13px; }
 
   /* ── Drug chips — allow wrap ── */
   .drug, .dose { white-space: normal; word-break: break-word; }
 
   /* ── Callouts ── */
-  .cl { padding: 10px 12px; font-size: 12.5px; gap: 8px; }
-  .cl-ico { font-size: 14px; }
-  ul.bullets li { font-size: 12.5px; }
+  .cl { padding: 12px; font-size: 13.5px; gap: 10px; }
+  ul.bullets li { font-size: 13px; }
 
   /* ── Decision boxes ── */
   .dec-split { flex-direction: column; }
   .dec-box { max-width: 100%; }
 
-  /* ── Module cards (home critical shortcuts) ── */
-  .mod-card { padding: 11px 12px; gap: 8px; }
-  .mod-card-ico { font-size: 18px; }
-  .mod-card-name { font-size: 12px; }
-  .mod-card-sub { font-size: 10px; }
-
   /* ── Calculators ── */
   .calc-opt { padding: 10px 12px; }
-  .calc-opt-lbl { font-size: 12.5px; }
-  .calc-result { padding: 14px 16px; }
+  .calc-opt-lbl { font-size: 13.5px; }
+  .calc-result { padding: 16px; }
   .cr-score { font-size: 36px; }
 
-  /* ── Search modal ── */
-  #search-modal { padding-top: 12px; align-items: flex-start; }
-  .s-box { border-radius: var(--r-lg) var(--r-lg) 0 0; margin-top: auto; }
+  /* ── Search modal: bottom sheet ── */
   #search-modal { align-items: flex-end; padding-top: 0; }
-  .s-backdrop { backdrop-filter: blur(3px); }
+  .s-box { border-radius: var(--r-xl) var(--r-xl) 0 0; margin-top: auto; }
+  .s-backdrop { backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
   .s-inp-row input { font-size: 16px; }
 
   /* ── FAB ── */
-  #fab-top { bottom: 16px; right: 14px; width: 40px; height: 40px; font-size: 16px; }
-
-  /* ── Topbar ── */
-  #topbar { padding: 0 12px; gap: 8px; }
-  .tb-bc-cur { font-size: 13px; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #fab-top { bottom: 18px; right: 14px; width: 40px; height: 40px; font-size: 16px; }
 
   /* ── Drogas table: hide less important cols ── */
   .tbl .tbl-note { display: none; }
 }
 
-/* Phones: home critical shortcuts in 2 columns */
+/* Phones: the four home shortcuts stay in one row, name only (the subtitle
+   stays available to screen readers) */
 @media (max-width: 520px) {
-  .home-crit { grid-template-columns: 1fr 1fr; }
-  .home-q { font-size: 26px; }
+  .home-title { font-size: 28px; letter-spacing: -1px; }
+  .home-q { font-size: 24px; }
+  .home-tile { min-height: 84px; padding: 12px 4px; }
+  .home-tile-sub {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+    white-space: nowrap; border: 0;
+  }
 }
 
 /* Extra small phones */
 @media (max-width: 380px) {
-  .tab { padding: 6px 10px; font-size: 11.5px; }
+  .tab { padding: 6px 10px; font-size: 12px; }
+  .home-title { font-size: 26px; }
+  .home-q { font-size: 22px; }
+  .home-tile-name { font-size: 12px; }
 }

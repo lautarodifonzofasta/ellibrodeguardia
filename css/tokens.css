@@ -1,51 +1,88 @@
 /* Design tokens: colors, spacing, typography — dark (default) + light theme overrides */
+
 :root {
   --bg:       #181c24;
-  --bg2:      #1f2433;
-  --bg3:      #252d3f;
+  --bg2:      #1e232e;
+  --bg3:      #252c3a;
   --surface:  #2c364a;
-  --border:   #313d55;
-  --border2:  #445068;
+  --border:   #2b3343;
+  --border2:  #3e4961;
   --text:     #e8edf6;
-  --text2:    #94a6c4;
-  --text3:    #606e8a;
+  --text2:    #a3b1c9;
+  --text3:    #8391ab;
   --acc:      #5aabff;
   --acc2:     #2278e0;
   --red:      #ff6b63;
-  --red-bg:   rgba(255,107,99,.13);
-  --red-bd:   rgba(255,107,99,.35);
+  --red-bg:   rgba(255,107,99,.12);
+  --red-bd:   rgba(255,107,99,.32);
   --amber:    #ffbe45;
-  --amb-bg:   rgba(255,190,69,.11);
-  --amb-bd:   rgba(255,190,69,.35);
+  --amb-bg:   rgba(255,190,69,.10);
+  --amb-bd:   rgba(255,190,69,.32);
   --green:    #4dd97a;
-  --grn-bg:   rgba(77,217,122,.11);
-  --grn-bd:   rgba(77,217,122,.35);
+  --grn-bg:   rgba(77,217,122,.10);
+  --grn-bd:   rgba(77,217,122,.32);
   --blue-bg:  rgba(90,171,255,.11);
-  --blue-bd:  rgba(90,171,255,.35);
+  --blue-bd:  rgba(90,171,255,.30);
   --purple:   #cc9fff;
   --pur-bg:   rgba(204,159,255,.11);
-  --pur-bd:   rgba(204,159,255,.35);
+  --pur-bd:   rgba(204,159,255,.32);
   --teal:     #3de87a;
   --pink:     #ff8f87;
+
+  /* Brand accent (coral): logo text, active menu item, home icons, sub-tabs */
+  --coral:    #ff8a73;
+  --coral-bg: rgba(255,138,115,.12);
+  --coral-bd: rgba(255,138,115,.30);
+  /* Drug-chip text: a lighter blue than --acc, easier to read inside the chip */
+  --chip:     #9fcbff;
+  /* Glass: translucent controls (round buttons, pills, options) over any ground */
+  --glass:    rgba(255,255,255,.04);
+  --glass-bd: rgba(148,166,196,.18);
+  --sb-bg:    #161a22;
+  --shadow:   0 1px 2px rgba(0,0,0,.2), 0 12px 28px -18px rgba(0,0,0,.65);
+
+  /* Home (portada): warm bordó ground, its own text colors and glass */
+  --hero-bg:
+    radial-gradient(90% 45% at 100% 34%, rgba(232,92,64,.36) 0%, rgba(232,92,64,0) 70%),
+    radial-gradient(110% 50% at 0% 0%, rgba(128,34,42,.85) 0%, rgba(128,34,42,0) 72%),
+    linear-gradient(180deg, #3a1a1f 0%, #29161b 48%, #1c1519 100%);
+  --hero-fg:       #f6eeec;
+  --hero-fg2:      rgba(246,238,236,.72);
+  --hero-acc:      #ff8a73;
+  --hero-glass:    rgba(255,255,255,.07);
+  --hero-glass-bd: rgba(255,255,255,.14);
+  --hero-tile-bd:  rgba(255,138,115,.30);
+  --hero-field:    rgba(22,10,12,.55);
+  --hero-field-bd: rgba(255,255,255,.14);
+  --hero-field-fg: #ffffff;
+  --hero-field-ph: rgba(255,255,255,.66);
+  --hero-field-ico: rgba(255,255,255,.78);
+  --hero-card:
+    radial-gradient(70% 90% at 100% 0%, rgba(255,190,140,.5) 0%, rgba(255,190,140,0) 60%),
+    linear-gradient(120deg, #a92c27 0%, #cb4330 52%, #e8704a 100%);
+  --hero-why:      #9fcbff;
+  --hero-aviso:    #ffc861;
+
   --font:     -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto, sans-serif;
   --mono:     'SF Mono', 'Fira Code', Consolas, 'Courier New', monospace;
-  --r:        8px;
-  --r-lg:     12px;
-  --r-xl:     16px;
+  --r:        10px;
+  --r-lg:     16px;
+  --r-xl:     20px;
+  --r-pill:   999px;
   --t:        .15s ease;
-  --sb-w:     260px;
+  --sb-w:     300px;
   --top-h:    56px;
 }
 [data-theme="light"] {
-  --bg:       #f0f4fa;
+  --bg:       #f4f6fa;
   --bg2:      #ffffff;
-  --bg3:      #e6ecf5;
+  --bg3:      #eef1f6;
   --surface:  #ffffff;
-  --border:   #c8d3e4;
-  --border2:  #96a8bf;
-  --text:     #0f1c33;
-  --text2:    #3d5170;
-  --text3:    #728299;
+  --border:   #dfe4ec;
+  --border2:  #b4bfd0;
+  --text:     #141a26;
+  --text2:    #3d4a60;
+  --text3:    #5d6a82;
   --acc:      #1358c8;
   --acc2:     #0c44a0;
   --red:      #c41e28;
@@ -62,4 +99,31 @@
   --purple:   #5e34b0;
   --pur-bg:   rgba(94,52,176,.07);
   --pur-bd:   rgba(94,52,176,.24);
+
+  --coral:    #bf432e;
+  --coral-bg: rgba(191,67,46,.08);
+  --coral-bd: rgba(191,67,46,.26);
+  --chip:     #1358c8;
+  --glass:    #ffffff;
+  --glass-bd: rgba(24,34,56,.12);
+  --sb-bg:    #ffffff;
+  --shadow:   0 1px 2px rgba(20,30,50,.04), 0 12px 28px -18px rgba(20,30,50,.22);
+
+  --hero-bg:
+    radial-gradient(90% 45% at 100% 34%, rgba(255,138,115,.30) 0%, rgba(255,138,115,0) 70%),
+    radial-gradient(110% 50% at 0% 0%, rgba(214,104,96,.16) 0%, rgba(214,104,96,0) 72%),
+    linear-gradient(180deg, #fbf1ee 0%, #f8efec 48%, #f5efee 100%);
+  --hero-fg:       #2a1a1d;
+  --hero-fg2:      #6e5a5c;
+  --hero-acc:      #bf432e;
+  --hero-glass:    rgba(255,255,255,.7);
+  --hero-glass-bd: rgba(42,26,29,.09);
+  --hero-tile-bd:  rgba(191,67,46,.24);
+  --hero-field:    rgba(255,255,255,.95);
+  --hero-field-bd: rgba(255,255,255,.6);
+  --hero-field-fg: #2a1a1d;
+  --hero-field-ph: #866a6a;
+  --hero-field-ico: #9e4a3c;
+  --hero-why:      #1358c8;
+  --hero-aviso:    #8a5a00;
 }

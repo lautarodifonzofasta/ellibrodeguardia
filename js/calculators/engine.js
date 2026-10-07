@@ -67,7 +67,7 @@ export function renderScoredCalculator(container, definition, interpret) {
   const hidePoints = definition.hidePoints === true;
   container.innerHTML =
     calloutHtml(definition.intro) +
-    `<div class="card"><div class="card-body">` +
+    `<div class="card calc-card"><div class="card-body">` +
     definition.groups.map((g, i) => groupHtml(g, i, hidePoints)).join('') +
     resultHtml(definition.result, hidePoints, definition.requireAll === true) +
     `</div></div>`;
@@ -142,7 +142,7 @@ export function renderInputCalculator(container, definition, compute) {
 
   container.innerHTML =
     calloutHtml(definition.intro) +
-    `<div class="card"><div class="card-body">` +
+    `<div class="card calc-card"><div class="card-body">` +
     `<div class="calc-inputs">${inputsHtml}</div>` +
     `<div data-sodio-out style="margin-top:14px;padding:12px;background:var(--bg3);border-radius:10px;border:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.8">${definition.placeholder}</div>` +
     `</div></div>`;
