@@ -14,6 +14,9 @@
   /* ── Topbar: on a module, logo + title only (the brand name lives on the home) ── */
   #topbar { padding: 0 14px; gap: 10px; }
   #shell:not(.is-home) .tb-brand, #shell:not(.is-home) .tb-bc-sep { display: none !important; }
+  /* Home with the install button showing (Android): the hero already says the
+     name, so the topbar keeps the logo instead of running under the buttons. */
+  #shell.is-home:has(#btn-install.visible) .tb-brand { display: none; }
   .tb-bc-cur { font-size: 16px; }
 
   /* ── Main content ── */
