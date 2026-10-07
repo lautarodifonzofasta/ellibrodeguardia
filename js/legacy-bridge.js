@@ -7,9 +7,11 @@
 // addEventListener instead; nothing here should be called from new code.
 // Exception: new content modules written in the same inline-handler style as
 // their siblings may register a small, documented global here (showAAZone for
-// dolor-abdominal, ptGo for politrauma) instead of shipping their own script.
+// dolor-abdominal, ptGo for politrauma, calcBISAP/copyBISAP/resetBISAP from
+// js/calculators/bisap.js for pancreatitis) instead of shipping their own script.
 import { goTo } from './router.js';
 import { compute as computeGestationalAge } from './calculators/gestational-age.js';
+import { calcBISAP, copyBISAP, resetBISAP } from './calculators/bisap.js';
 
 export function installLegacyBridge() {
   window.switchTab = switchTab;
@@ -19,6 +21,9 @@ export function installLegacyBridge() {
   window.calcEG = calcEG;
   window.showAAZone = showAAZone;
   window.ptGo = ptGo;
+  window.calcBISAP = calcBISAP;
+  window.copyBISAP = copyBISAP;
+  window.resetBISAP = resetBISAP;
 }
 
 // Ported verbatim from legacy-index.html:1371-1386. Reads sibling tabs'

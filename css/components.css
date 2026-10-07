@@ -801,6 +801,33 @@ ul.bullets li strong { color: var(--text); }
 .sep-qsofa .calc-grid { flex-direction: row; }
 .sep-qsofa .calc-opt { flex: 1; }
 
+/* ══ MÓDULO: PANCREATITIS ══ */
+/* BISAP (js/calculators/bisap.js): one row per criterion whose point lights
+   up when met; SIRS counts 2 of 4 below its row. The author's layout, with
+   theme colours instead of fixed ones. */
+.bisap-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.bisap-row:last-child { border-bottom: 0; }
+.bisap-row label { display: flex; align-items: center; gap: 10px; cursor: pointer; flex: 1; line-height: 1.35; }
+.bisap-row input[type=checkbox] { width: 20px; height: 20px; flex-shrink: 0; accent-color: var(--red); }
+.bisap-lt { font-weight: 700; min-width: 1.2em; color: var(--red); }
+.bisap-sub { font-size: .82em; opacity: .7; display: block; }
+.bisap-num { display: flex; gap: 6px; align-items: center; }
+.bisap-num input, .bisap-num select { font: inherit; padding: 6px 8px; border-radius: 6px; border: 1px solid var(--border2); background: transparent; color: inherit; width: 84px; }
+.bisap-num select { width: auto; }
+.bisap-pt { font-weight: 700; min-width: 2.2em; text-align: right; opacity: .35; }
+.bisap-pt.on { opacity: 1; color: var(--red); }
+.bisap-sirs { margin: 4px 0 4px 30px; padding: 6px 10px; border-left: 2px solid var(--border2); }
+.bisap-sirs label { display: flex; align-items: center; gap: 10px; font-size: .9em; padding: 4px 0; cursor: pointer; } /* one criterion per line */
+.bisap-sirs input[type=checkbox] { width: 20px; height: 20px; flex-shrink: 0; accent-color: var(--red); }
+.bisap-out { margin-top: 14px; padding: 14px; border-radius: 10px; border: 2px solid var(--border2); text-align: center; }
+.bisap-out.lo { border-color: var(--green); }
+.bisap-out.hi { border-color: var(--red); }
+.bisap-score { font-size: 2.6em; font-weight: 800; line-height: 1; }
+.bisap-risk { font-weight: 700; margin-top: 4px; }
+.bisap-note { margin-top: 10px; padding: 8px 10px; border-radius: 6px; background: var(--bg3); font-size: .85em; text-align: left; word-break: break-word; }
+.bisap-btns { display: flex; gap: 8px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
+.bisap-btns button { font: inherit; padding: 7px 14px; border-radius: 6px; border: 1px solid var(--border2); background: transparent; color: inherit; cursor: pointer; }
+
 /* ══ MÓDULO: RCP INTERACTIVA ══ */
 /* js/rcp/ui.js (view type "rcp"). Resuscitation mode: high contrast, large
    type and large targets (usable with gloves), minimal navigation, no
