@@ -16,7 +16,7 @@
 <meta name="disclaimer" content="El Libro de Guardia es una herramienta de referencia clínica. No reemplaza el juicio médico profesional. Las decisiones clínicas son responsabilidad exclusiva del profesional de la salud.">
 <meta name="author" content="Di Fonzo Lautaro">
 <meta name="copyright" content="© 2026 Di Fonzo Lautaro. Todos los derechos reservados.">
-<meta name="description" content="El Libro de Guardia — Guía clínica de manejo rápido para residentes. Creado por Di Fonzo Lautaro.">
+<meta name="description" content="El Libro de Guardia — Asistente de guardia: guía clínica de manejo rápido. Creado por Di Fonzo Lautaro.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="El Libro de Guardia">
 <meta property="og:description" content="Guía clínica offline para guardia médica. © 2026 Di Fonzo Lautaro">
@@ -27,7 +27,7 @@
 <meta name="apple-mobile-web-app-title" content="El Libro">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#181c24" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#f0f4fa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f4f6fa" media="(prefers-color-scheme: light)">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -48,7 +48,7 @@
   <div class="s-backdrop"></div>
   <div class="s-box">
     <div class="s-inp-row">
-      <span style="font-size:18px;color:var(--text3)">🔍</span>
+      <svg class="s-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
       <input id="s-inp" type="text" placeholder="Buscar patología, síntoma, fármaco..." autocomplete="off">
       <span class="s-esc">ESC</span>
     </div>
@@ -62,10 +62,11 @@
 <!-- SIDEBAR -->
 <nav id="sidebar">
   <div class="sb-logo">
-    <img src="icons/logo.png" style="width:40px;height:40px;object-fit:contain;border-radius:8px" alt="">
+    <img class="sb-logo-img" src="icons/logo.png" alt="">
     <div>
-      <div class="sb-logo-name"><span style="color:var(--text)">El Libro </span><span style="color:#E63030">de Guardia</span></div>
-      <div class="sb-logo-sub">Para Residentes · Di Fonzo L.</div>
+      <div class="sb-logo-name"><span>El Libro </span><span class="brand-acc">de Guardia</span></div>
+      <div class="sb-logo-sub">Asistente de guardia</div>
+      <div class="sb-logo-author">Di Fonzo L.</div>
     </div>
     <div class="sb-theme-btn" id="theme-btn" title="Cambiar tema">🌙</div>
   </div>
@@ -82,18 +83,18 @@
 <!-- MAIN SHELL -->
 <div id="shell">
   <div id="topbar">
-    <button class="tb-ham" id="ham-btn">☰</button>
+    <button class="tb-ham" id="ham-btn" type="button" aria-label="Abrir menú"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14M5 12h14M10 16h9"/></svg></button>
     <div class="tb-breadcrumb">
-      <span class="tb-bc-root" id="bc-root" style="display:flex;align-items:center;gap:8px">
-        <img src="icons/logo.png" style="width:24px;height:24px;object-fit:contain;border-radius:4px" alt="">
-        <span style="color:var(--text)">El Libro </span><span style="color:#E63030">de Guardia</span>
+      <span class="tb-bc-root" id="bc-root">
+        <img class="tb-logo" src="icons/logo.png" alt="">
+        <span class="tb-brand"><span>El Libro </span><span class="brand-acc">de Guardia</span></span>
       </span>
       <span class="tb-bc-sep" id="bc-sep" style="display:none">/</span>
       <span class="tb-bc-cur" id="bc-cur"></span>
     </div>
     <div class="tb-right">
       <button id="btn-install" title="Instalar como app">⬇ Instalar</button>
-      <button class="tb-search-btn" id="tb-search-btn" title="Buscar (Ctrl+K)" aria-label="Buscar">🔍</button>
+      <button class="tb-search-btn" id="tb-search-btn" type="button" title="Buscar (Ctrl+K)" aria-label="Buscar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
       <span class="tb-kbd" id="tb-kbd-hint" style="cursor:pointer;display:none">⌘K</span>
     </div>
   </div>

@@ -2,6 +2,7 @@
 // hand-duplicated markup — this is also what fixes the pre-existing bug
 // where 8 modules were only in the sidebar HTML and not in the old META
 // object (invisible to search): now there's exactly one source of truth.
+import { search } from './search-engine.js';
 
 const BADGE_LABEL = { crit: 'CRIT', calc: 'CALC', ref: 'REF' };
 
@@ -30,9 +31,13 @@ export function setActiveSidebarItem(container, id) {
   container.querySelectorAll('.sb-item').forEach(el => el.classList.toggle('active', el.dataset.view === id));
 }
 
-export function filterSidebar(container, query) {
-  const q = query.toLowerCase();
+// Same engine as the home and the search modal (synonyms, typos); the plain
+// text match is kept on top, so nothing that matched before disappears.
+// Category labels stay visible, as before.
+export function filterSidebar(container, query, index) {
+  const q = query.trim().toLowerCase();
+  const hits = q && index ? new Set((search(index, query) ?? []).map(r => r.id)) : null;
   container.querySelectorAll('.sb-item').forEach(el => {
-    el.style.display = !q || el.textContent.toLowerCase().includes(q) ? '' : 'none';
+    el.style.display = !q || hits?.has(el.dataset.view) || el.textContent.toLowerCase().includes(q) ? '' : 'none';
   });
 }

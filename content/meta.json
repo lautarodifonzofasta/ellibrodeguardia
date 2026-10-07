@@ -9,7 +9,8 @@
     "category": "🚨 Emergencias críticas",
     "icon": "💓",
     "sub": "BLS · ALS · Post-RCE",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["paro cardíaco", "paro cardiorrespiratorio", "PCR", "RCP", "reanimación", "resucitación", "FV", "fibrilación ventricular", "TV sin pulso", "asistolia", "AESP", "actividad eléctrica sin pulso", "BLS", "ACLS", "ALS", "post-RCE", "RCE", "desfibrilación", "compresiones", "masaje cardíaco", "causas reversibles", "Hs y Ts", "sin pulso", "no respira"]
   },
   "rcp-asistente": {
     "title": "Asistente de RCP",
@@ -17,394 +18,461 @@
     "icon": "⏱️",
     "sub": "Paro del adulto · AHA 2025",
     "badge": "crit",
-    "type": "rcp"
+    "type": "rcp",
+    "keywords": ["asistente", "cronómetro", "metrónomo", "registro del paro", "nota del paro", "paro cardíaco", "RCP", "ciclos de 2 minutos", "Code Assist"]
   },
   "shock": {
     "title": "Shock",
     "category": "🚨 Emergencias críticas",
     "icon": "🩸",
     "sub": "Clasificación · Anafilaxis · Neumotórax",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["hipotensión", "presión baja", "tensión baja", "shock hipovolémico", "shock cardiogénico", "shock obstructivo", "shock distributivo", "neumotórax a tensión", "taponamiento cardíaco", "vasopresores", "noradrenalina", "lactato", "hipoperfusión"]
   },
   "politrauma": {
     "title": "Politrauma",
     "category": "🚨 Emergencias críticas",
     "icon": "🚑",
     "sub": "Revisión primaria y secundaria",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["politraumatizado", "trauma", "traumatismo", "accidente de tránsito", "choque", "moto", "caída de altura", "atropellado", "herida de arma blanca", "herida de bala", "xABCDE", "ABCDE", "ATLS", "torniquete", "hemorragia exanguinante", "eFAST", "FAST", "control de daños", "faja pélvica", "revisión primaria", "revisión secundaria"]
   },
   "dolor-toracico": {
     "title": "Dolor torácico",
     "category": "🫀 Cardiovascular",
     "icon": "❤️",
     "sub": "IAM, TEP, aorta, pericardio",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["dolor de pecho", "dolor en el pecho", "precordialgia", "dolor precordial", "opresión en el pecho", "puntada en el pecho", "IAM", "infarto", "SCA", "síndrome coronario agudo", "angina", "SCACEST", "SCASEST", "supradesnivel del ST", "troponina", "disección aórtica", "aorta", "pericarditis"]
   },
   "arritmias": {
     "title": "Palpitaciones / Arritmias",
     "category": "🫀 Cardiovascular",
-    "icon": "⚡"
+    "icon": "⚡",
+    "keywords": ["palpitaciones", "taquicardia", "arritmia", "FA", "fibrilación auricular", "aleteo auricular", "flutter", "TSV", "taquicardia supraventricular", "TV", "taquicardia ventricular", "bradicardia", "bloqueo AV", "marcapasos", "cardioversión", "adenosina", "corazón acelerado"]
   },
   "ic-aguda": {
     "title": "IC aguda / Edema agudo",
     "category": "🫀 Cardiovascular",
     "icon": "💙",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["insuficiencia cardíaca", "IC", "ICC", "edema agudo de pulmón", "EAP", "edema pulmonar", "crepitantes", "ortopnea", "Forrester", "furosemida", "nitroglicerina", "VMNI", "CPAP", "se ahoga acostado"]
   },
   "crisis-hta": {
     "title": "Crisis hipertensiva",
     "category": "🫀 Cardiovascular",
-    "icon": "📈"
+    "icon": "📈",
+    "keywords": ["hipertensión", "HTA", "presión alta", "tensión alta", "presión elevada", "urgencia hipertensiva", "emergencia hipertensiva", "180/110", "labetalol", "nitroprusiato", "nifedipina", "captopril", "pseudocrisis hipertensiva"]
   },
   "sincope": {
     "title": "Síncope",
     "category": "🫀 Cardiovascular",
-    "icon": "😵"
+    "icon": "😵",
+    "keywords": ["desmayo", "se desmayó", "lipotimia", "pérdida de conocimiento", "perdió el conocimiento", "presíncope", "vasovagal", "ortostático", "QT largo", "Brugada", "WPW"]
   },
   "disnea": {
     "title": "Disnea aguda",
     "category": "🫁 Respiratorio",
     "icon": "🫁",
     "sub": "Algoritmo diferencial",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["falta de aire", "le falta el aire", "ahogo", "se ahoga", "dificultad respiratoria", "dificultad para respirar", "insuficiencia respiratoria", "desaturación", "saturación baja", "hipoxemia", "taquipnea", "neumotórax"]
   },
   "tep": {
     "title": "TEP",
     "category": "🫁 Respiratorio",
     "icon": "🩸",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["tromboembolismo pulmonar", "embolia pulmonar", "dímero D", "angiotomografía", "angioTAC", "Wells", "PESI", "trombólisis", "anticoagulación", "heparina"]
   },
   "tvp": {
     "title": "TVP",
     "category": "🫁 Respiratorio",
     "icon": "🩸",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["trombosis venosa profunda", "trombosis", "pierna hinchada", "edema de pierna", "dolor de pantorrilla", "flegmasia", "eco Doppler", "enoxaparina", "HBPM"]
   },
   "neumonia": {
     "title": "Neumonía",
     "category": "🫁 Respiratorio",
-    "icon": "🦠"
+    "icon": "🦠",
+    "keywords": ["NAC", "neumonía de la comunidad", "pulmonía", "tos con fiebre", "condensación", "infiltrado", "expectoración", "CURB-65", "PSI", "amoxicilina", "ceftriaxona", "claritromicina"]
   },
   "epoc": {
     "title": "EPOC exacerbado",
     "category": "🫁 Respiratorio",
-    "icon": "💨"
+    "icon": "💨",
+    "keywords": ["EPOC reagudizado", "exacerbación de EPOC", "enfisema", "bronquitis crónica", "tabaquista", "hipercapnia", "VMNI", "BiPAP", "ipratropio"]
   },
   "asma": {
     "title": "Asma severa",
     "category": "🫁 Respiratorio",
-    "icon": "🌬️"
+    "icon": "🌬️",
+    "keywords": ["crisis asmática", "broncoespasmo", "sibilancias", "silbidos en el pecho", "salbutamol", "nebulizaciones", "corticoides", "sulfato de magnesio", "pico flujo", "peak flow"]
   },
   "acv": {
     "title": "ACV / TIA",
     "category": "🧠 Neurológico",
     "icon": "🧠",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["ataque cerebrovascular", "accidente cerebrovascular", "stroke", "ictus", "TIA", "AIT", "derrame cerebral", "hemiparesia", "hemiplejía", "debilidad de un lado", "foco neurológico", "déficit focal", "boca torcida", "no puede hablar", "afasia", "disartria", "trombólisis", "alteplasa", "trombectomía", "código ACV", "NIHSS"]
   },
   "convulsiones": {
     "title": "Convulsiones / Status",
     "category": "🧠 Neurológico",
     "icon": "⚡",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["convulsión", "convulsiona", "crisis convulsiva", "epilepsia", "status epiléptico", "estatus", "estado de mal epiléptico", "ataque epiléptico", "crisis tónico-clónica", "diazepam", "midazolam", "lorazepam", "levetiracetam", "valproato", "fenitoína", "benzodiacepinas"]
   },
   "tec": {
     "title": "TEC",
     "category": "🧠 Neurológico",
     "icon": "⛑️",
     "sub": "Traumatismo encefalocraneano",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["traumatismo encefalocraneano", "trauma de cráneo", "golpe en la cabeza", "se golpeó la cabeza", "cabeza", "cráneo", "TAC de cerebro", "TAC de cráneo", "regla canadiense", "Nueva Orleans", "PECARN", "hematoma subdural", "hematoma epidural", "conmoción cerebral", "neuroprotección", "herniación", "manitol"]
   },
   "cefalea": {
     "title": "Cefalea",
     "category": "🧠 Neurológico",
-    "icon": "🤕"
+    "icon": "🤕",
+    "keywords": ["dolor de cabeza", "jaqueca", "migraña", "HSA", "hemorragia subaracnoidea", "cefalea en trueno", "el peor dolor de cabeza", "arteritis temporal", "cefalea tensional", "sumatriptán"]
   },
   "alt-sensorio": {
     "title": "Alteración del sensorio",
     "category": "🧠 Neurológico",
-    "icon": "😶‍🌫️"
+    "icon": "😶‍🌫️",
+    "keywords": ["sensorio", "deterioro del sensorio", "obnubilado", "somnoliento", "estupor", "coma", "inconsciente", "no responde", "confusión", "desorientado", "AEIOU TIPS", "alcohol", "borracho", "Wernicke", "tiamina"]
   },
   "delirium": {
     "title": "Delirium",
     "category": "🧠 Neurológico",
     "icon": "🧠",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["delirio", "síndrome confusional agudo", "confuso", "desorientado", "adulto mayor confuso", "CAM", "haloperidol", "quetiapina"]
   },
   "sepsis": {
     "title": "Sepsis / Shock séptico",
     "category": "🔥 Infectología",
     "icon": "🦠",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["séptico", "shock séptico", "infección grave", "bacteriemia", "qSOFA", "SOFA", "lactato", "hemocultivos", "antibióticos", "ATB", "primera hora", "bundle", "foco infeccioso"]
   },
   "anafilaxia": {
     "title": "Anafilaxia",
     "category": "🔥 Infectología",
     "icon": "🚨",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["anafilaxis", "alergia", "reacción alérgica", "shock anafiláctico", "urticaria", "ronchas", "habones", "angioedema", "edema de glotis", "se le cierra la garganta", "picadura", "abeja", "avispa", "alergia alimentaria", "maní", "adrenalina", "epinefrina", "autoinyector"]
   },
   "fiebre": {
     "title": "Fiebre sin foco",
     "category": "🔥 Infectología",
-    "icon": "🌡️"
+    "icon": "🌡️",
+    "keywords": ["febril", "temperatura", "síndrome febril", "fiebre sin foco", "inmunosuprimido", "inmunodeprimido", "quimioterapia", "esplenectomizado", "neutropenia", "dengue", "viajero"]
   },
   "meningitis": {
     "title": "Meningitis",
     "category": "🔥 Infectología",
     "icon": "🧬",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["meningismo", "rigidez de nuca", "Kernig", "Brudzinski", "punción lumbar", "LCR", "líquido cefalorraquídeo", "encefalitis", "meningococo", "meningococcemia", "petequias", "fiebre y cefalea", "dexametasona"]
   },
   "celulitis": {
     "title": "Celulitis / Erisipela",
     "category": "🔥 Infectología",
     "icon": "🦵",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["erisipela", "pierna roja", "infección de piel", "absceso", "fascitis necrotizante", "impétigo", "cefalexina", "clindamicina"]
   },
   "herpes-zoster": {
     "title": "Herpes Zóster",
     "category": "🔥 Infectología",
     "icon": "🧬",
-    "sub": "Diagnóstico · Antiviral · Neuralgia"
+    "sub": "Diagnóstico · Antiviral · Neuralgia",
+    "keywords": ["zóster", "culebrilla", "vesículas en banda", "dermatoma", "neuralgia postherpética", "zóster oftálmico", "aciclovir", "valaciclovir"]
   },
   "herpes-genital": {
     "title": "Herpes genital",
     "category": "🔥 Infectología",
     "icon": "🦠",
-    "sub": "Úlcera genital · Antiviral · Embarazo"
+    "sub": "Úlcera genital · Antiviral · Embarazo",
+    "keywords": ["herpes", "herpes vulvar", "herpes simple", "HSV", "úlcera genital", "llaga genital", "vesículas genitales", "ITS", "ETS", "VDRL", "sífilis", "VIH", "HIV", "aciclovir", "valaciclovir"]
   },
   "itu": {
     "title": "ITU / Pielonefritis",
     "category": "🔥 Infectología",
-    "icon": "💧"
+    "icon": "💧",
+    "keywords": ["infección urinaria", "infección de orina", "cistitis", "pielonefritis", "disuria", "ardor al orinar", "polaquiuria", "urocultivo", "bacteriuria", "nitrofurantoína", "fosfomicina"]
   },
   "faringoamig": {
     "title": "Faringoamigdalitis",
     "category": "🔥 Infectología",
-    "icon": "🤒"
+    "icon": "🤒",
+    "keywords": ["faringitis", "amigdalitis", "anginas", "dolor de garganta", "odinofagia", "placas", "estreptococo", "Centor", "McIsaac", "absceso periamigdalino", "penicilina"]
   },
   "dolor-abdominal": {
     "title": "Dolor abdominal agudo",
     "category": "🤢 Abdominal",
-    "icon": "🤢"
+    "icon": "🤢",
+    "keywords": ["dolor de panza", "dolor de estómago", "abdomen agudo", "apendicitis", "obstrucción intestinal", "perforación", "peritonitis", "isquemia mesentérica", "diverticulitis", "vómitos", "fosa ilíaca derecha", "cuadrantes"]
   },
   "colico-renal": {
     "title": "Cólico renal",
     "category": "🤢 Abdominal",
-    "icon": "💎"
+    "icon": "💎",
+    "keywords": ["litiasis renal", "cálculo renal", "piedras en el riñón", "urolitiasis", "nefrolitiasis", "hematuria", "dolor de riñón", "ketorolac", "diclofenac"]
   },
   "colico-biliar": {
     "title": "Cólico biliar / Colecistitis",
     "category": "🤢 Abdominal",
-    "icon": "🫐"
+    "icon": "🫐",
+    "keywords": ["colecistitis", "vesícula", "litiasis biliar", "colelitiasis", "colangitis", "coledocolitiasis", "Murphy", "Tokio", "hipocondrio derecho"]
   },
   "pancreatitis": {
     "title": "Pancreatitis aguda",
     "category": "🤢 Abdominal",
-    "icon": "🔥"
+    "icon": "🔥",
+    "keywords": ["páncreas", "amilasa", "lipasa", "dolor en cinturón", "Atlanta", "BISAP"]
   },
   "hemorragia-digestiva": {
     "title": "Hemorragia digestiva",
     "category": "🤢 Abdominal",
     "icon": "🩸",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["HDA", "HDB", "sangrado digestivo", "sangrado", "hematemesis", "vómito con sangre", "melena", "materia fecal negra", "hematoquecia", "rectorragia", "várices", "úlcera péptica", "omeprazol", "terlipresina", "Blatchford", "endoscopía"]
   },
   "higado-descompensado": {
     "title": "Hígado descompensado",
     "category": "🤢 Abdominal",
     "icon": "🟡",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["cirrosis", "cirrótico", "hígado", "hepatopatía", "ascitis", "encefalopatía hepática", "ictericia", "PBE", "peritonitis bacteriana espontánea", "lactulosa", "paracentesis", "síndrome hepatorrenal"]
   },
   "cad": {
     "title": "CAD / SHHNC",
     "category": "🍬 Endocrinológico",
     "icon": "🍬",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["cetoacidosis", "cetoacidosis diabética", "estado hiperosmolar", "hiperglucemia", "glucemia alta", "diabetes descompensada", "cetonas", "insulina", "acidosis"]
   },
   "hipoglucemia": {
     "title": "Hipoglucemia",
     "category": "🍬 Endocrinológico",
     "icon": "📉",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["glucemia baja", "glucosa baja", "azúcar baja", "dextrosa", "glucagón", "diabético", "sulfonilureas"]
   },
   "tiroides": {
     "title": "Crisis tiroidea",
     "category": "🍬 Endocrinológico",
-    "icon": "🦋"
+    "icon": "🦋",
+    "keywords": ["tormenta tiroidea", "hipertiroidismo", "tirotoxicosis", "coma mixedematoso", "hipotiroidismo", "metimazol", "propiltiouracilo", "Burch-Wartofsky"]
   },
   "hiponatremia": {
     "title": "Hiponatremia",
     "category": "🍬 Endocrinológico",
     "icon": "🧂",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["sodio", "sodio bajo", "natremia", "SIADH", "solución hipertónica", "SF 3%", "mielinólisis", "desmielinización osmótica"]
   },
   "hiperkalemia": {
     "title": "Hiperkalemia",
     "category": "🍬 Endocrinológico",
     "icon": "⚡",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["hiperpotasemia", "potasio", "potasio alto", "kalemia", "gluconato de calcio", "insulina con dextrosa", "T picudas", "diálisis"]
   },
   "falla-renal": {
     "title": "Falla renal aguda",
     "category": "🫘 Nefrología",
     "icon": "🫘",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["insuficiencia renal aguda", "lesión renal aguda", "IRA", "creatinina alta", "uremia", "oliguria", "anuria", "no orina", "diálisis", "KDIGO", "nefrotóxicos"]
   },
   "ginecoobs": {
     "title": "Emergencias ginecobstétricas",
     "category": "🤰 Ginecobstétrico",
     "icon": "🤰",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["embarazo", "embarazada", "gestante", "sangrado vaginal", "metrorragia", "aborto", "embarazo ectópico", "ectópico", "β-hCG", "DPPNI", "desprendimiento de placenta", "placenta previa", "hemorragia posparto", "mola"]
   },
   "hta-gestacional": {
     "title": "HTA gestacional",
     "category": "🤰 Ginecobstétrico",
     "icon": "📈",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["preeclampsia", "eclampsia", "hipertensión del embarazo", "HELLP", "sulfato de magnesio", "hidralazina"]
   },
   "rpm-puerperal": {
     "title": "RPM y patología puerperal",
     "category": "🤰 Ginecobstétrico",
     "icon": "🫧",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["RPM", "rotura prematura de membranas", "rompió bolsa", "bolsa rota", "líquido amniótico", "puerperio", "posparto", "endometritis", "mastitis", "fiebre puerperal", "corioamnionitis"]
   },
   "hepato-embarazo": {
     "title": "Hepatopatías del embarazo",
     "category": "🤰 Ginecobstétrico",
-    "icon": "🫀"
+    "icon": "🫀",
+    "keywords": ["colestasis del embarazo", "hígado graso agudo del embarazo", "HELLP", "prurito en el embarazo", "transaminasas en el embarazo"]
   },
   "abuso-sexual": {
     "title": "Abuso sexual — Protocolo",
     "category": "🤰 Ginecobstétrico",
     "icon": "⚖️",
-    "badge": "crit"
+    "badge": "crit",
+    "keywords": ["violación", "violencia sexual", "agresión sexual", "profilaxis posexposición", "PPE", "anticoncepción de emergencia", "cadena de custodia", "denuncia"]
   },
   "gineco-infecciones": {
     "title": "Infecciones genitales / EPI",
     "category": "🤰 Ginecobstétrico",
-    "icon": "🔬"
+    "icon": "🔬",
+    "keywords": ["EPI", "enfermedad pélvica inflamatoria", "flujo vaginal", "vaginitis", "vaginosis", "candidiasis", "tricomonas", "cervicitis", "clamidia", "Chlamydia", "gonococo", "gonorrea", "dolor pélvico", "absceso tuboovárico"]
   },
   "vertigo": {
     "title": "Vértigo",
     "category": "👂 ORL / Oftalmología",
     "icon": "🌀",
-    "sub": "Central vs periférico"
+    "sub": "Central vs periférico",
+    "keywords": ["mareo", "mareado", "todo da vueltas", "inestabilidad", "nistagmo", "VPPB", "vértigo posicional", "neuronitis vestibular", "Ménière", "HINTS", "Dix-Hallpike", "Epley", "fosa posterior", "cerebelo", "dimenhidrinato"]
   },
   "otitis": {
     "title": "Otitis",
     "category": "👂 ORL / Oftalmología",
-    "icon": "👂"
+    "icon": "👂",
+    "keywords": ["dolor de oído", "otalgia", "oído", "otitis media", "otitis externa", "otorrea", "mastoiditis", "tímpano"]
   },
   "sinusitis": {
     "title": "Sinusitis",
     "category": "👂 ORL / Oftalmología",
-    "icon": "👃"
+    "icon": "👃",
+    "keywords": ["rinosinusitis", "senos paranasales", "dolor facial", "congestión nasal", "rinorrea purulenta"]
   },
   "ojo-rojo": {
     "title": "Ojo rojo",
     "category": "👂 ORL / Oftalmología",
-    "icon": "👁️"
+    "icon": "👁️",
+    "keywords": ["ojo", "conjuntivitis", "glaucoma agudo", "uveítis", "queratitis", "úlcera corneal", "dolor ocular", "visión borrosa", "lentes de contacto", "fotofobia"]
   },
   "lumbalgia": {
     "title": "Lumbalgia",
     "category": "🦴 Musculoesquelético",
     "icon": "🦴",
-    "sub": "Banderas rojas + estudio"
+    "sub": "Banderas rojas + estudio",
+    "keywords": ["dolor lumbar", "dolor de espalda", "dolor de cintura", "lumbago", "ciática", "hernia de disco", "Lasègue", "cauda equina", "silla de montar", "retención urinaria", "espondilodiscitis", "compresión medular", "banderas rojas"]
   },
   "agitacion": {
     "title": "Agitación psicomotriz",
     "category": "🧬 Psiquiátrico / Toxicología",
-    "icon": "🌀"
+    "icon": "🌀",
+    "keywords": ["agitado", "excitación psicomotriz", "violento", "agresivo", "contención", "contención mecánica", "sedación", "haloperidol", "midazolam", "olanzapina", "ketamina", "brote psicótico", "psicosis"]
   },
   "intoxicaciones": {
     "title": "Intoxicaciones",
     "category": "🧬 Psiquiátrico / Toxicología",
-    "icon": "☠️"
+    "icon": "☠️",
+    "keywords": ["intoxicado", "sobredosis", "intento de suicidio", "ingesta", "tomó pastillas", "toxidrome", "antídoto", "carbón activado", "paracetamol", "flumazenil", "opioides", "naloxona", "organofosforados", "monóxido de carbono", "CO", "cocaína", "metanol", "etilenglicol", "litio", "digoxina"]
   },
   "panico": {
     "title": "Crisis de pánico",
     "category": "🧬 Psiquiátrico / Toxicología",
-    "icon": "😰"
+    "icon": "😰",
+    "keywords": ["pánico", "ataque de pánico", "ansiedad", "crisis de ansiedad", "angustia", "ataque de nervios", "hiperventilación", "alprazolam", "clonazepam"]
   },
   "calc-gcs": {
     "title": "Glasgow (GCS)",
     "category": "🧮 Calculadoras",
     "icon": "🧠",
     "badge": "calc",
-    "type": "calculator"
+    "type": "calculator",
+    "keywords": ["Glasgow", "GCS", "escala de Glasgow", "nivel de conciencia"]
   },
   "calc-sofa": {
     "title": "SOFA Score",
     "category": "🧮 Calculadoras",
     "icon": "🦠",
     "badge": "calc",
-    "type": "calculator"
+    "type": "calculator",
+    "keywords": ["SOFA", "qSOFA", "disfunción orgánica"]
   },
   "calc-wells-tep": {
     "title": "Wells TEP",
     "category": "🧮 Calculadoras",
     "icon": "🩸",
     "badge": "calc",
-    "type": "calculator"
+    "type": "calculator",
+    "keywords": ["Wells", "probabilidad de TEP", "dímero D"]
   },
   "calc-curb65": {
     "title": "CURB-65",
     "category": "🧮 Calculadoras",
     "icon": "🫁",
     "badge": "calc",
-    "type": "calculator"
+    "type": "calculator",
+    "keywords": ["CURB-65", "CURB65", "gravedad de neumonía"]
   },
   "calc-heart": {
     "title": "HEART Score",
     "category": "🧮 Calculadoras",
     "icon": "❤️",
     "badge": "calc",
-    "type": "calculator"
+    "type": "calculator",
+    "keywords": ["HEART", "riesgo de dolor torácico"]
   },
   "calc-chads": {
     "title": "CHA₂DS₂-VASc",
     "category": "🧮 Calculadoras",
     "icon": "🩺",
     "badge": "calc",
-    "type": "calculator"
+    "type": "calculator",
+    "keywords": ["CHA2DS2-VASc", "CHADS", "anticoagular FA", "fibrilación auricular"]
   },
   "calc-nihss": {
     "title": "NIHSS",
     "category": "🧮 Calculadoras",
     "icon": "🧬",
-    "badge": "calc"
+    "badge": "calc",
+    "keywords": ["NIHSS", "escala de ACV", "gravedad del ACV"]
   },
   "calc-psi": {
     "title": "PSI / PORT",
     "category": "🧮 Calculadoras",
     "icon": "🫁",
-    "badge": "calc"
+    "badge": "calc",
+    "keywords": ["PSI", "PORT", "Fine", "gravedad de neumonía"]
   },
   "calc-wells-tvp": {
     "title": "Wells TVP",
     "category": "💊 Referencia",
     "icon": "🧮",
     "badge": "calc",
-    "type": "calculator"
+    "type": "calculator",
+    "keywords": ["Wells TVP", "Wells", "probabilidad de TVP", "dímero D"]
   },
   "calc-blatchford": {
     "title": "Score Blatchford",
     "category": "💊 Referencia",
     "icon": "🧮",
     "badge": "calc",
-    "type": "calculator"
+    "type": "calculator",
+    "keywords": ["Glasgow-Blatchford", "Blatchford", "riesgo de hemorragia digestiva"]
   },
   "calc-sodio": {
     "title": "Corrección de sodio",
     "category": "💊 Referencia",
     "icon": "🧮",
     "badge": "calc",
-    "type": "calculator"
+    "type": "calculator",
+    "keywords": ["corrección de sodio", "sodio", "déficit de agua libre", "Adrogué-Madias", "hipernatremia"]
   },
   "drogas": {
     "title": "Drogas de emergencia",
     "category": "💊 Referencia",
     "icon": "💊",
-    "sub": "80+ fármacos con dosis",
+    "sub": "53 fármacos con dosis",
     "badge": "ref",
-    "type": "drugs"
+    "type": "drugs",
+    "keywords": ["fármacos", "medicamentos", "vademécum", "dosis"]
   }
 }

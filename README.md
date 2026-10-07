@@ -1,6 +1,6 @@
 # El Libro de Guardia
 
-> Guía clínica de manejo rápido para residentes de medicina
+> Asistente de guardia: guía clínica de manejo rápido
 > **Autor:** Di Fonzo Lautaro · [@ellibro.deguardia](https://instagram.com/ellibro.deguardia)
 
 [Licencia: Propietaria](./LICENSE)
@@ -11,7 +11,7 @@
 
 ## ¿Qué es?
 
-El Libro de Guardia es una aplicación web offline diseñada para médicos residentes. Contiene módulos clínicos de manejo rápido, calculadoras y referencia de fármacos para usar directamente en la guardia, sin conexión a internet.
+El Libro de Guardia es un asistente de guardia: una aplicación web offline para médicos. Contiene módulos clínicos de manejo rápido, calculadoras y referencia de fármacos para usar directamente en la guardia, sin conexión a internet.
 
 🔗 App disponible en: [lautarodifonzofasta.github.io/ellibrodeguardia](https://lautarodifonzofasta.github.io/ellibrodeguardia/)
 
@@ -30,7 +30,7 @@ El Libro de Guardia es una aplicación web offline diseñada para médicos resid
 | 🧮 Calculadoras | GCS, SOFA, Wells, CURB-65, HEART, NIHSS y más |
 | 💊 Referencia | Drogas de emergencia con dosis |
 
-68 módulos · 11 calculadoras · 100+ fármacos con dosis
+68 módulos · 11 calculadoras · 53 fármacos con dosis
 
 ---
 
@@ -100,4 +100,4 @@ Documentación técnica (estructura del proyecto, cómo previsualizar en local, 
 
 ---
 
-Creado con ❤️ para los residentes argentinos
+Creado con ❤️ para los médicos de guardia argentinos

@@ -1,7 +1,7 @@
 {
   "name": "El Libro de Guardia",
   "short_name": "El Libro",
-  "description": "Guía clínica offline de manejo rápido para residentes de medicina.",
+  "description": "Asistente de guardia offline: guía clínica de manejo rápido.",
   "lang": "es-AR",
   "start_url": "./",
   "scope": "./",

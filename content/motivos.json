@@ -1,0 +1,288 @@
+[
+  {
+    "title": "Dolor torácico",
+    "aliases": ["dolor de pecho", "precordialgia", "opresión en el pecho", "puntada en el pecho"],
+    "opens": ["dolor-toracico"],
+    "dontMiss": [
+      { "label": "SCA", "module": "dolor-toracico" },
+      { "label": "Disección aórtica", "module": "dolor-toracico" },
+      { "label": "TEP", "module": "tep" },
+      { "label": "Neumotórax a tensión", "module": "shock" },
+      { "label": "Taponamiento", "module": "shock" },
+      { "label": "Rotura esofágica", "module": null }
+    ]
+  },
+  {
+    "title": "Disnea",
+    "aliases": ["falta de aire", "ahogo", "dificultad para respirar", "se ahoga"],
+    "opens": ["disnea"],
+    "dontMiss": [
+      { "label": "TEP", "module": "tep" },
+      { "label": "Edema agudo de pulmón", "module": "ic-aguda" },
+      { "label": "Neumotórax", "module": "disnea" },
+      { "label": "Anafilaxia", "module": "anafilaxia" },
+      { "label": "SCA", "module": "dolor-toracico" },
+      { "label": "Asma casi fatal", "module": "asma" }
+    ]
+  },
+  {
+    "title": "Mareo / vértigo",
+    "aliases": ["mareo", "vértigo", "todo da vueltas", "inestabilidad", "mareado"],
+    "opens": ["vertigo", "sincope"],
+    "dontMiss": [
+      { "label": "ACV de fosa posterior", "module": "vertigo" },
+      { "label": "Arritmia", "module": "arritmias" },
+      { "label": "Hipoglucemia", "module": "hipoglucemia" },
+      { "label": "Hemorragia digestiva", "module": "hemorragia-digestiva" },
+      { "label": "Intoxicación por CO", "module": "intoxicaciones" }
+    ]
+  },
+  {
+    "title": "Síncope",
+    "aliases": ["desmayo", "se desmayó", "pérdida de conocimiento", "lipotimia"],
+    "opens": ["sincope"],
+    "dontMiss": [
+      { "label": "Arritmia", "module": "arritmias" },
+      { "label": "TEP", "module": "tep" },
+      { "label": "Hemorragia digestiva", "module": "hemorragia-digestiva" },
+      { "label": "Embarazo ectópico", "module": "ginecoobs" },
+      { "label": "Disección aórtica", "module": "dolor-toracico" },
+      { "label": "Estenosis aórtica", "module": null }
+    ]
+  },
+  {
+    "title": "Cefalea",
+    "aliases": ["dolor de cabeza", "migraña", "jaqueca"],
+    "opens": ["cefalea"],
+    "dontMiss": [
+      { "label": "Hemorragia subaracnoidea", "module": "cefalea" },
+      { "label": "Meningitis", "module": "meningitis" },
+      { "label": "ACV hemorrágico", "module": "acv" },
+      { "label": "Crisis hipertensiva", "module": "crisis-hta" },
+      { "label": "Preeclampsia", "module": "hta-gestacional" },
+      { "label": "Intoxicación por CO", "module": "intoxicaciones" },
+      { "label": "Trombosis venosa cerebral", "module": null }
+    ]
+  },
+  {
+    "title": "Dolor abdominal",
+    "aliases": ["dolor de panza", "dolor de estómago", "abdomen agudo"],
+    "opens": ["dolor-abdominal"],
+    "dontMiss": [
+      { "label": "Embarazo ectópico", "module": "ginecoobs" },
+      { "label": "Aneurisma de aorta", "module": "dolor-abdominal" },
+      { "label": "Isquemia mesentérica", "module": "dolor-abdominal" },
+      { "label": "IAM inferior", "module": "dolor-toracico" },
+      { "label": "Cetoacidosis", "module": "cad" },
+      { "label": "Pancreatitis", "module": "pancreatitis" }
+    ]
+  },
+  {
+    "title": "Fiebre",
+    "aliases": ["febril", "temperatura", "fiebre sin foco"],
+    "opens": ["fiebre", "sepsis"],
+    "dontMiss": [
+      { "label": "Sepsis", "module": "sepsis" },
+      { "label": "Meningitis o meningococcemia", "module": "meningitis" },
+      { "label": "Inmunosuprimido con fiebre", "module": "fiebre" },
+      { "label": "Pielonefritis", "module": "itu" },
+      { "label": "Fascitis necrotizante", "module": "celulitis" },
+      { "label": "Fiebre puerperal", "module": "rpm-puerperal" }
+    ]
+  },
+  {
+    "title": "Confusión o sensorio alterado",
+    "aliases": ["confusión", "confuso", "desorientado", "somnoliento", "no responde", "obnubilado"],
+    "opens": ["alt-sensorio", "delirium"],
+    "dontMiss": [
+      { "label": "Hipoglucemia", "module": "hipoglucemia" },
+      { "label": "ACV", "module": "acv" },
+      { "label": "Intoxicación", "module": "intoxicaciones" },
+      { "label": "Meningitis o encefalitis", "module": "meningitis" },
+      { "label": "Hiponatremia", "module": "hiponatremia" },
+      { "label": "TEC oculto", "module": "tec" },
+      { "label": "Sepsis", "module": "sepsis" }
+    ]
+  },
+  {
+    "title": "Convulsión",
+    "aliases": ["convulsiona", "crisis convulsiva", "status", "ataque epiléptico"],
+    "opens": ["convulsiones"],
+    "dontMiss": [
+      { "label": "Hipoglucemia", "module": "hipoglucemia" },
+      { "label": "Eclampsia", "module": "hta-gestacional" },
+      { "label": "Hiponatremia", "module": "hiponatremia" },
+      { "label": "TEC", "module": "tec" },
+      { "label": "Meningitis", "module": "meningitis" },
+      { "label": "Abstinencia o intoxicación", "module": "intoxicaciones" }
+    ]
+  },
+  {
+    "title": "Debilidad de un lado",
+    "aliases": ["hemiparesia", "boca torcida", "no puede hablar", "déficit focal", "foco neurológico"],
+    "opens": ["acv"],
+    "dontMiss": [
+      { "label": "Hipoglucemia", "module": "acv" },
+      { "label": "Crisis epiléptica con déficit posictal", "module": "acv" },
+      { "label": "Disección aórtica, antes de trombolizar", "module": "dolor-toracico" },
+      { "label": "Compresión medular si son las dos piernas", "module": "lumbalgia" }
+    ]
+  },
+  {
+    "title": "Palpitaciones",
+    "aliases": ["taquicardia", "corazón acelerado", "late rápido"],
+    "opens": ["arritmias"],
+    "dontMiss": [
+      { "label": "Hipertiroidismo", "module": "tiroides" },
+      { "label": "Hiperkalemia", "module": "hiperkalemia" },
+      { "label": "TEP", "module": "tep" },
+      { "label": "Sangrado oculto", "module": "hemorragia-digestiva" },
+      { "label": "Intoxicación", "module": "intoxicaciones" },
+      { "label": "Pánico, solo por descarte", "module": "panico" }
+    ]
+  },
+  {
+    "title": "Presión alta",
+    "aliases": ["hipertensión", "presión elevada", "tensión alta", "HTA", "180/110"],
+    "opens": ["crisis-hta"],
+    "dontMiss": [
+      { "label": "Disección aórtica", "module": "dolor-toracico" },
+      { "label": "ACV", "module": "acv" },
+      { "label": "SCA", "module": "dolor-toracico" },
+      { "label": "Edema agudo de pulmón", "module": "ic-aguda" },
+      { "label": "Preeclampsia", "module": "hta-gestacional" },
+      { "label": "Intoxicación simpaticomimética", "module": "intoxicaciones" }
+    ]
+  },
+  {
+    "title": "Vómito con sangre o melena",
+    "aliases": ["hematemesis", "melena", "sangrado digestivo", "materia fecal negra", "vómito con sangre"],
+    "opens": ["hemorragia-digestiva"],
+    "dontMiss": [
+      { "label": "Shock hemorrágico", "module": "shock" },
+      { "label": "Várices en el cirrótico", "module": "higado-descompensado" },
+      { "label": "Anticoagulado o antiagregado", "module": null }
+    ]
+  },
+  {
+    "title": "Dolor de espalda",
+    "aliases": ["dolor lumbar", "lumbalgia", "dolor de cintura", "ciática"],
+    "opens": ["lumbalgia", "colico-renal"],
+    "dontMiss": [
+      { "label": "Aneurisma de aorta", "module": "lumbalgia" },
+      { "label": "Cauda equina", "module": "lumbalgia" },
+      { "label": "Espondilodiscitis", "module": "lumbalgia" },
+      { "label": "Absceso epidural", "module": null },
+      { "label": "Pielonefritis", "module": "itu" },
+      { "label": "Metástasis", "module": "lumbalgia" }
+    ]
+  },
+  {
+    "title": "Pierna hinchada o roja",
+    "aliases": ["edema de pierna", "dolor de pantorrilla", "pierna roja", "pierna hinchada"],
+    "opens": ["tvp", "celulitis"],
+    "dontMiss": [
+      { "label": "TEP asociado", "module": "tep" },
+      { "label": "Fascitis necrotizante", "module": "celulitis" },
+      { "label": "Flegmasia", "module": "tvp" },
+      { "label": "Isquemia arterial aguda", "module": null },
+      { "label": "Síndrome compartimental", "module": null }
+    ]
+  },
+  {
+    "title": "Ojo rojo",
+    "aliases": ["conjuntivitis", "dolor de ojo", "dolor ocular"],
+    "opens": ["ojo-rojo"],
+    "dontMiss": [
+      { "label": "Glaucoma agudo", "module": "ojo-rojo" },
+      { "label": "Queratitis", "module": "ojo-rojo" },
+      { "label": "Uveítis", "module": "ojo-rojo" },
+      { "label": "Quemadura química", "module": null }
+    ]
+  },
+  {
+    "title": "Dolor de garganta",
+    "aliases": ["odinofagia", "anginas", "amigdalitis", "placas"],
+    "opens": ["faringoamig"],
+    "dontMiss": [
+      { "label": "Absceso periamigdalino", "module": "faringoamig" },
+      { "label": "Epiglotitis", "module": null },
+      { "label": "Angina de Ludwig", "module": null }
+    ]
+  },
+  {
+    "title": "Ardor al orinar",
+    "aliases": ["disuria", "infección urinaria", "cistitis"],
+    "opens": ["itu"],
+    "dontMiss": [
+      { "label": "Pielonefritis", "module": "itu" },
+      { "label": "Cólico renal infectado", "module": "colico-renal" },
+      { "label": "ITS", "module": "gineco-infecciones" },
+      { "label": "Embarazo", "module": "ginecoobs" }
+    ]
+  },
+  {
+    "title": "Úlcera genital",
+    "aliases": ["llaga genital", "herpes", "herpes vulvar", "vesículas genitales"],
+    "opens": ["herpes-genital"],
+    "dontMiss": [
+      { "label": "Sífilis", "module": "herpes-genital" },
+      { "label": "VIH", "module": "herpes-genital" },
+      { "label": "Mpox", "module": "herpes-genital" }
+    ]
+  },
+  {
+    "title": "Embarazada con dolor o sangrado",
+    "aliases": ["embarazada", "sangrado vaginal", "embarazo"],
+    "opens": ["ginecoobs", "hta-gestacional"],
+    "dontMiss": [
+      { "label": "Embarazo ectópico", "module": "ginecoobs" },
+      { "label": "Desprendimiento de placenta", "module": "ginecoobs" },
+      { "label": "Preeclampsia y eclampsia", "module": "hta-gestacional" },
+      { "label": "Rotura prematura de membranas", "module": "rpm-puerperal" },
+      { "label": "HELLP", "module": "hta-gestacional" }
+    ]
+  },
+  {
+    "title": "Reacción alérgica",
+    "aliases": ["alergia", "urticaria", "ronchas", "picadura", "labios hinchados"],
+    "opens": ["anafilaxia"],
+    "dontMiss": [
+      { "label": "Edema de glotis", "module": "anafilaxia" },
+      { "label": "Shock", "module": "shock" }
+    ]
+  },
+  {
+    "title": "Golpe en la cabeza",
+    "aliases": ["golpe en la cabeza", "se golpeó la cabeza", "TEC", "trauma de cráneo"],
+    "opens": ["tec", "politrauma"],
+    "dontMiss": [
+      { "label": "Paciente anticoagulado", "module": "tec" },
+      { "label": "Intoxicación que no deja evaluar", "module": "tec" },
+      { "label": "Lesión cervical", "module": "politrauma" }
+    ]
+  },
+  {
+    "title": "Intoxicación o ingesta",
+    "aliases": ["tomó pastillas", "sobredosis", "ingesta", "intoxicado"],
+    "opens": ["intoxicaciones"],
+    "dontMiss": [
+      { "label": "Coingesta de paracetamol", "module": "intoxicaciones" },
+      { "label": "Hipoglucemia", "module": "hipoglucemia" },
+      { "label": "TEC oculto", "module": "tec" },
+      { "label": "Riesgo suicida", "module": null }
+    ]
+  },
+  {
+    "title": "Paciente agitado",
+    "aliases": ["agitado", "violento", "agresivo", "excitado"],
+    "opens": ["agitacion", "delirium"],
+    "dontMiss": [
+      { "label": "Hipoglucemia", "module": "hipoglucemia" },
+      { "label": "Hipoxemia", "module": "disnea" },
+      { "label": "TEC", "module": "tec" },
+      { "label": "Intoxicación o abstinencia", "module": "intoxicaciones" },
+      { "label": "Sepsis", "module": "sepsis" }
+    ]
+  }
+]

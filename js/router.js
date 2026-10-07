@@ -7,10 +7,12 @@ import { compute as computeSodio } from './calculators/calc-sodio.js';
 import { renderDrugReference } from './drugs.js';
 import { renderRcp } from './rcp/ui.js';
 import { setActiveSidebarItem } from './sidebar.js';
+import { mountHome } from './home.js';
 
 const NOT_FOUND_HTML = `<div class="view active"><div style="padding:40px;text-align:center;color:var(--text3)"><div style="font-size:32px;margin-bottom:12px">🔧</div><div style="font-size:15px;font-weight:600;margin-bottom:6px">Módulo en construcción</div><div style="font-size:13px">Disponible en la próxima actualización.</div></div></div>`;
 
 let meta = null;
+let searchIndex = null;
 let sidebarEl = null;
 let screen = null;
 let bcCur = null;
@@ -24,8 +26,9 @@ let drugsCache = null;
 let viewCleanup = null;
 let navToken = 0;
 
-export function initRouter({ meta: metaData, sidebarEl: sb, screenEl, bcCurEl, bcSepEl, onNavigate }) {
+export function initRouter({ meta: metaData, searchIndex: index, sidebarEl: sb, screenEl, bcCurEl, bcSepEl, onNavigate }) {
   meta = metaData;
+  searchIndex = index;
   sidebarEl = sb;
   screen = screenEl;
   bcCur = bcCurEl;
@@ -51,6 +54,8 @@ async function navigate(id) {
   const token = ++navToken;
   runViewCleanup();
   updateBreadcrumb(id);
+  // The home has its own ground (bordó gradient) under a transparent topbar.
+  document.getElementById('shell')?.classList.toggle('is-home', id === 'home');
   if (sidebarEl) setActiveSidebarItem(sidebarEl, id);
 
   const wrapper = document.createElement('div');
@@ -101,7 +106,7 @@ function updateBreadcrumb(id) {
 async function render(id, container) {
   if (id === 'home') {
     container.innerHTML = await fetchText('content/home.html');
-    return;
+    return mountHome(container, searchIndex);
   }
   const m = meta[id];
   if (m?.type === 'calculator') {
@@ -111,6 +116,7 @@ async function render(id, container) {
     } else {
       renderInputCalculator(container, def, computeSodio);
     }
+    addViewHeader(container, m);
     return;
   }
   if (m?.type === 'rcp') {
@@ -123,6 +129,7 @@ async function render(id, container) {
       drugsCache = { index, categories };
     }
     renderDrugReference(container, drugsCache.index, drugsCache.categories);
+    addViewHeader(container, m);
     return;
   }
   // Plain content module.
@@ -132,7 +139,20 @@ async function render(id, container) {
     return;
   }
   container.innerHTML = await res.text();
+  if (m) addViewHeader(container, m);
   await mountEmbeddedCalculators(container);
+}
+
+// Page title above the content, built from content/meta.json (the same
+// category, title and subtitle the sidebar shows). The module's own HTML is
+// left untouched.
+function addViewHeader(container, m) {
+  const crit = m.badge === 'crit' ? '<span class="sb-badge b-crit">CRIT</span>' : '';
+  const sub = m.sub || crit
+    ? `<p class="view-sub">${m.sub ? `<span>${m.sub}</span>` : ''}${crit}</p>`
+    : '';
+  container.insertAdjacentHTML('afterbegin',
+    `<header class="view-hd"><p class="view-kicker">${m.category}</p><h1 class="view-title">${m.title}</h1>${sub}</header>`);
 }
 
 // A content module can embed a scored calculator with
