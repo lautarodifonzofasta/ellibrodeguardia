@@ -99,7 +99,8 @@ Abrí `content/meta.json`. Es una lista de entradas, una por módulo. Buscá una
   "title": "Crisis asmática",
   "category": "🫁 Respiratorio",
   "icon": "🌬️",
-  "sub": "Texto corto opcional debajo del título"
+  "sub": "Texto corto opcional debajo del título",
+  "keywords": ["broncoespasmo", "sibilancias", "silbidos en el pecho", "salbutamol"]
 },
 ```
 
@@ -108,8 +109,9 @@ Puntos importantes de JSON (así se llama este formato) para no romperlo:
 - Cada línea, salvo la última del bloque, termina con una coma `,`.
 - Los `{` y `}` tienen que quedar en pares — VS Code los resalta si hacés clic al lado de uno.
 - `"sub"` y `"badge"` son opcionales — podés borrar esa línea entera si no la necesitás (pero no dejes una coma de más al final del bloque).
+- `"keywords"` son las palabras con las que alguien buscaría el módulo además del título: siglas, sinónimos y cómo lo dice el paciente («falta de aire», «se desmayó»). No hace falta repetirlas sin tilde ni en plural: el buscador ya lo resuelve. `npm test` avisa si un módulo no tiene keywords.
 
-Guardá, recargá el navegador, y el módulo nuevo debería aparecer en la categoría correspondiente del menú lateral y en el buscador (Ctrl/Cmd+K).
+Guardá, recargá el navegador, y el módulo nuevo debería aparecer en la categoría correspondiente del menú lateral, en el buscador de la portada y en la lupa (Ctrl/Cmd+K).
 
 ---
 
@@ -136,7 +138,34 @@ Para editar una dosis o agregar un fármaco nuevo, copiá el formato de uno exis
 
 ---
 
-## 8. Guardar tus cambios para siempre (GitHub)
+## 8. Editar los motivos de consulta del buscador
+
+Cuando alguien escribe un síntoma en la portada («mareo», «dolor de pecho»), el buscador muestra el módulo que corresponde y, debajo, la línea **No te olvides** con los diagnósticos a descartar. Eso sale de `content/motivos.json`, un bloque por motivo de consulta:
+
+```json
+{
+  "title": "Mareo / vértigo",
+  "aliases": ["mareo", "vértigo", "todo da vueltas", "inestabilidad", "mareado"],
+  "opens": ["vertigo", "sincope"],
+  "dontMiss": [
+    { "label": "ACV de fosa posterior", "module": "vertigo" },
+    { "label": "Arritmia", "module": "arritmias" },
+    { "label": "Hipoglucemia", "module": "hipoglucemia" },
+    { "label": "Hemorragia digestiva", "module": "hemorragia-digestiva" },
+    { "label": "Intoxicación por CO", "module": "intoxicaciones" }
+  ]
+}
+```
+
+- `"aliases"`: cómo se escribe ese motivo en la guardia.
+- `"opens"`: los módulos que muestra, en orden; el primero lleva la línea «No te olvides».
+- `"dontMiss"`: los diagnósticos, en orden de importancia. **Se ven los 4 primeros**; el resto queda en reserva. `"module"` es el módulo al que lleva cada uno, o `null` si todavía no tiene módulo (se ve como texto sin enlace).
+
+`npm test` revisa que cada módulo que nombres exista.
+
+---
+
+## 9. Guardar tus cambios para siempre (GitHub)
 
 Todo lo anterior edita los archivos en tu compu — todavía no quedó guardado en GitHub (que es donde vive la versión "oficial" que después se publica). Para eso, lo más simple para alguien sin experiencia en la terminal es **GitHub Desktop**:
 
@@ -151,7 +180,7 @@ Si en algún momento la app deja de andar bien después de un cambio, en GitHub 
 
 ---
 
-## 9. Si algo se rompe
+## 10. Si algo se rompe
 
 - La página se ve en blanco o no navega: abrí las herramientas de desarrollador del navegador (F12), pestaña **Console**, y fijate si hay un mensaje en rojo. Casi siempre indica qué archivo tiene el problema.
 - Un módulo o calculadora no carga: lo más común es un error de JSON (falta una coma, comillas, o `{`/`}` sin cerrar) — VS Code suele subrayarlo en rojo apenas lo abrís.
@@ -166,8 +195,8 @@ Estructura del proyecto, para quien ya tenga más experiencia:
 
 - `index.html` — shell de la app (sidebar, barra superior, buscador)
 - `css/` — estilos (tokens de tema, layout, componentes, responsive)
-- `content/` — el contenido real: un archivo por módulo clínico (`content/modules/`), por calculadora (`content/calculators/`) y por categoría de fármacos (`content/drugs/`), más `meta.json` con título/categoría/ícono de cada uno
-- `js/` — router, buscador, motor de calculadoras y demás lógica
+- `content/` — el contenido real: un archivo por módulo clínico (`content/modules/`), por calculadora (`content/calculators/`) y por categoría de fármacos (`content/drugs/`), más `meta.json` con título/categoría/ícono/keywords de cada uno y `motivos.json` con los motivos de consulta del buscador
+- `js/` — router, buscador (`search-engine.js`, compartido por la portada, la lupa y el filtro lateral), motor de calculadoras y demás lógica
 - `manifest.json` / `sw.js` — instalación como app y funcionamiento offline
 - `tools/` — scripts de desarrollo (servidor local, generación del service worker)
 

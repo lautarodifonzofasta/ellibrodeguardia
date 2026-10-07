@@ -7,10 +7,12 @@ import { compute as computeSodio } from './calculators/calc-sodio.js';
 import { renderDrugReference } from './drugs.js';
 import { renderRcp } from './rcp/ui.js';
 import { setActiveSidebarItem } from './sidebar.js';
+import { mountHome } from './home.js';
 
 const NOT_FOUND_HTML = `<div class="view active"><div style="padding:40px;text-align:center;color:var(--text3)"><div style="font-size:32px;margin-bottom:12px">🔧</div><div style="font-size:15px;font-weight:600;margin-bottom:6px">Módulo en construcción</div><div style="font-size:13px">Disponible en la próxima actualización.</div></div></div>`;
 
 let meta = null;
+let searchIndex = null;
 let sidebarEl = null;
 let screen = null;
 let bcCur = null;
@@ -24,8 +26,9 @@ let drugsCache = null;
 let viewCleanup = null;
 let navToken = 0;
 
-export function initRouter({ meta: metaData, sidebarEl: sb, screenEl, bcCurEl, bcSepEl, onNavigate }) {
+export function initRouter({ meta: metaData, searchIndex: index, sidebarEl: sb, screenEl, bcCurEl, bcSepEl, onNavigate }) {
   meta = metaData;
+  searchIndex = index;
   sidebarEl = sb;
   screen = screenEl;
   bcCur = bcCurEl;
@@ -101,7 +104,7 @@ function updateBreadcrumb(id) {
 async function render(id, container) {
   if (id === 'home') {
     container.innerHTML = await fetchText('content/home.html');
-    return;
+    return mountHome(container, searchIndex);
   }
   const m = meta[id];
   if (m?.type === 'calculator') {

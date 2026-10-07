@@ -1,14 +1,14 @@
-// Search modal — same Ctrl/Cmd+K substring-match UX as the legacy doSearch(),
-// but built from meta.json so it covers every module (fixing the 8-module
-// gap) instead of the old hand-maintained META object.
+// Search modal (Ctrl/Cmd+K). Same look as before; the matching now comes from
+// js/search-engine.js — the same engine as the home search box and the sidebar
+// filter — so it understands synonyms, abbreviations and typos.
+import { search } from './search-engine.js';
 
-export function buildSearchIndex(meta) {
-  return Object.entries(meta)
-    .filter(([id]) => id !== 'home')
-    .map(([id, m]) => ({ id, title: m.title, category: m.category, icon: m.icon }));
-}
+const MAX_RESULTS = 12;
 
 export function initSearch({ modal, input, results, openBtn, kbdHint, index, onNavigate }) {
+  // With an empty box the modal lists every entry, in meta.json order.
+  const allIds = Object.keys(index.meta).filter(id => id !== 'home');
+
   function open() {
     modal.classList.add('open');
     setTimeout(() => input.focus(), 50);
@@ -19,21 +19,20 @@ export function initSearch({ modal, input, results, openBtn, kbdHint, index, onN
     input.value = '';
   }
   function render(query) {
-    const q = query.toLowerCase();
-    const items = q
-      ? index.filter(m => m.title.toLowerCase().includes(q) || m.category.toLowerCase().includes(q) || m.id.toLowerCase().includes(q))
-      : index;
-    if (!items.length) {
-      results.innerHTML = `<div class="s-empty">Sin resultados para "${query}"</div>`;
+    const found = search(index, query);
+    const ids = found ? found.map(r => r.id) : allIds;
+    if (!ids.length) {
+      results.innerHTML = `<div class="s-empty">Sin resultados para "${esc(query)}"</div>`;
       return;
     }
-    results.innerHTML = items.slice(0, 12).map(m =>
-      `<div class="s-item" data-id="${m.id}">` +
-      `<span class="s-item-ico">${m.icon}</span>` +
-      `<div><div class="s-item-name">${m.title}</div><div class="s-item-cat">${m.category}</div></div>` +
-      `<span class="s-item-arr">→</span>` +
-      `</div>`
-    ).join('');
+    results.innerHTML = ids.slice(0, MAX_RESULTS).map(id => {
+      const m = index.meta[id];
+      return `<div class="s-item" data-id="${id}">` +
+        `<span class="s-item-ico">${m.icon}</span>` +
+        `<div><div class="s-item-name">${m.title}</div><div class="s-item-cat">${m.category}</div></div>` +
+        `<span class="s-item-arr">→</span>` +
+        `</div>`;
+    }).join('');
   }
 
   openBtn.addEventListener('click', open);
@@ -53,4 +52,8 @@ export function initSearch({ modal, input, results, openBtn, kbdHint, index, onN
   });
 
   return { open, close };
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }

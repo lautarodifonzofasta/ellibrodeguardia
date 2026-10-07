@@ -4,7 +4,8 @@
 // handlers are still needed, scoped to unmodified extracted content.
 import { installLegacyBridge } from './legacy-bridge.js';
 import { renderSidebar, filterSidebar } from './sidebar.js';
-import { buildSearchIndex, initSearch } from './search.js';
+import { buildSearchIndex } from './search-engine.js';
+import { initSearch } from './search.js';
 import { initTheme } from './theme.js';
 import { initRouter, goTo } from './router.js';
 
@@ -17,7 +18,12 @@ const bcCur = document.getElementById('bc-cur');
 const bcSep = document.getElementById('bc-sep');
 
 async function boot() {
-  const meta = await fetch('content/meta.json').then(r => r.json());
+  const [meta, motivos] = await Promise.all([
+    fetch('content/meta.json').then(r => r.json()),
+    loadMotivos(),
+  ]);
+  // One index for the home search box, the search modal and the sidebar filter.
+  const searchIndex = buildSearchIndex(meta, motivos);
 
   renderSidebar(sbScroll, meta);
   sbScroll.addEventListener('click', e => {
@@ -25,12 +31,11 @@ async function boot() {
     if (item) goTo(item.dataset.view);
   });
 
-  document.getElementById('sb-filter-inp').addEventListener('input', e => filterSidebar(sbScroll, e.target.value));
+  document.getElementById('sb-filter-inp').addEventListener('input', e => filterSidebar(sbScroll, e.target.value, searchIndex));
   document.getElementById('bc-root').addEventListener('click', () => goTo('home'));
 
   initTheme(document.getElementById('theme-btn'));
 
-  const searchIndex = buildSearchIndex(meta);
   initSearch({
     modal: document.getElementById('search-modal'),
     input: document.getElementById('s-inp'),
@@ -52,6 +57,7 @@ async function boot() {
 
   initRouter({
     meta,
+    searchIndex,
     sidebarEl: sbScroll,
     screenEl: screen,
     bcCurEl: bcCur,
@@ -60,6 +66,18 @@ async function boot() {
       if (window.innerWidth <= 768) closeSidebar();
     },
   });
+}
+
+// Chief complaints add synonyms and the «No te olvides» line to the search.
+// If the file can't load, search keeps working with titles and keywords.
+async function loadMotivos() {
+  try {
+    const res = await fetch('content/motivos.json');
+    return res.ok ? await res.json() : [];
+  } catch (err) {
+    console.warn('content/motivos.json no disponible:', err.message);
+    return [];
+  }
 }
 
 function initSidebarToggle() {
