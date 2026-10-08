@@ -1,0 +1,49 @@
+/* Intro (splash) — markup in index.html, animation in js/splash.js.
+   Covers the app from the first paint, so the home never flashes before it.
+   If the script never runs, the fallback animation below hides it anyway. */
+#splash {
+  --sp-bg: #0b0d12;
+  --sp-glow: rgba(240,49,49,.20);
+  --sp-red: #f03131;
+  --sp-fg: #f2f4f8;
+  --sp-fg2: #8b93a6;
+  --sp-accent: #f03131;
+  position: fixed; inset: 0; z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background: radial-gradient(60% 45% at 50% 42%, var(--sp-glow) 0%, transparent 70%), var(--sp-bg);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none; -webkit-user-select: none;
+  animation: splash-fallback .4s ease 3.6s forwards;
+}
+[data-theme="light"] #splash {
+  --sp-bg: #fbf6f5;
+  --sp-glow: rgba(240,49,49,.12);
+  --sp-red: #ec2f2f;
+  --sp-fg: #141a26;
+  --sp-fg2: #6e5a5c;
+  --sp-accent: #d42a2a;
+}
+html.no-splash #splash { display: none; }
+@keyframes splash-fallback { to { opacity: 0; visibility: hidden; } }
+
+.splash-in {
+  display: flex; flex-direction: column; align-items: center;
+  transform-origin: 50% 40%;
+}
+.splash-logo { display: block; width: min(80vw, 380px); height: auto; overflow: visible; color: var(--sp-red); }
+.splash-title {
+  margin-top: calc(min(80vw, 380px) * -.1); /* the logo's stem leaves room below the cross */
+  font-family: var(--font); font-weight: 800; letter-spacing: -1px; line-height: 1.1;
+  font-size: clamp(26px, 7.6vw, 40px);
+  color: var(--sp-fg); white-space: nowrap;
+  opacity: 0;
+}
+.splash-title em { font-style: normal; color: var(--sp-accent); }
+.splash-tag {
+  margin-top: 10px;
+  font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--sp-fg2);
+  opacity: 0;
+}

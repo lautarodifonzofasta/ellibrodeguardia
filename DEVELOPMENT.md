@@ -199,6 +199,7 @@ Estructura del proyecto, para quien ya tenga más experiencia:
 - `css/` — estilos (tokens de tema, layout, componentes, responsive). `tokens.css` tiene los colores de los dos temas (oscuro y claro); la portada usa sus propios tokens `--hero-*` (fondo bordó). En el contenido usá siempre los tokens (`var(--red)`, `var(--text2)`…), nunca colores fijos, así se ve bien en los dos temas.
 - `content/` — el contenido real: un archivo por módulo clínico (`content/modules/`), por calculadora (`content/calculators/`) y por categoría de fármacos (`content/drugs/`), más `meta.json` con título/categoría/ícono/keywords de cada uno y `motivos.json` con los motivos de consulta del buscador
 - `js/` — router, buscador (`search-engine.js`, compartido por la portada, la lupa y el filtro lateral), motor de calculadoras y demás lógica
+- Intro al abrir la app: el dibujo está en `index.html` (el libro es el logo calcado de la animación original), la animación en `js/splash.js` y los estilos en `css/splash.css`. Sale una vez por sesión, se saltea con un toque y no aparece si se entra por un enlace directo a un módulo.
 - `manifest.json` / `sw.js` — instalación como app y funcionamiento offline
 - `tools/` — scripts de desarrollo (servidor local, generación del service worker)
 
