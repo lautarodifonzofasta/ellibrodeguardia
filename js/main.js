@@ -2,6 +2,7 @@
 // PWA install prompt. Everything here uses addEventListener + data attributes
 // (no inline onclick) — see legacy-bridge.js for the one place old-style
 // handlers are still needed, scoped to unmodified extracted content.
+import { runSplash } from './splash.js';
 import { installLegacyBridge } from './legacy-bridge.js';
 import { renderSidebar, filterSidebar } from './sidebar.js';
 import { buildSearchIndex } from './search-engine.js';
@@ -9,6 +10,7 @@ import { initSearch } from './search.js';
 import { initTheme } from './theme.js';
 import { initRouter, goTo } from './router.js';
 
+runSplash();
 installLegacyBridge();
 
 const sidebarEl = document.getElementById('sidebar');
