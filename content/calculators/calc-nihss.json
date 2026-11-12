@@ -1,0 +1,221 @@
+{
+  "id": "calc-nihss",
+  "title": "NIHSS",
+  "requireAll": true,
+  "maxScore": 42,
+  "resettable": true,
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "NIHSS — National Institutes of Health Stroke Scale",
+    "text": "Cuantifica el déficit neurológico del ACV: 0 = normal, 42 = máximo. La trombólisis se indica por déficit discapacitante, no por un puntaje mínimo.<br>Evaluar en el orden de la escala y anotar cada ítem al terminarlo, sin volver atrás. Puntuar lo que el paciente hace, no lo que se cree que puede hacer. No insistir ni ayudarlo, salvo donde se indica."
+  },
+  "groups": [
+    {
+      "id": "nihss-1a",
+      "code": "1a",
+      "label": "1a. Nivel de conciencia",
+      "type": "single",
+      "hint": "Si el tubo endotraqueal, el idioma o un trauma impiden evaluarlo del todo, igual hay que elegir. 3 solo si no hay ningún movimiento (salvo posturas reflejas) ante el estímulo doloroso. Con 3 se fijan 1b, 1c, 7, 8 y 9.",
+      "options": [
+        { "label": "Alerta, responde con viveza", "points": 0 },
+        { "label": "No alerta, pero se despierta con un estímulo mínimo y obedece, responde o reacciona", "points": 1 },
+        { "label": "No alerta: necesita estímulos repetidos para prestar atención, u obnubilado: necesita estímulos fuertes o dolorosos para moverse (movimientos no estereotipados)", "points": 2 },
+        {
+          "label": "Coma: solo respuestas motoras reflejas o autonómicas, o sin respuesta, flácido y arrefléxico",
+          "points": 3,
+          "forces": { "nihss-1b": 2, "nihss-1c": 2, "nihss-7": 0, "nihss-8": 2, "nihss-9": 3 },
+          "forceNote": "Fijado por coma (1a = 3)"
+        }
+      ]
+    },
+    {
+      "id": "nihss-1b",
+      "code": "1b",
+      "label": "1b. Preguntas: mes y edad",
+      "type": "single",
+      "hint": "Sin crédito por respuestas aproximadas; vale solo la primera respuesta, sin ayudar. Afásico o estuporoso que no comprende → 2. No puede hablar por intubación, trauma orotraqueal, disartria grave, barrera idiomática u otra causa que no sea afasia → 1.",
+      "options": [
+        { "label": "Responde las dos correctamente", "points": 0 },
+        { "label": "Responde una correctamente", "points": 1 },
+        { "label": "No responde ninguna correctamente", "points": 2 }
+      ]
+    },
+    {
+      "id": "nihss-1c",
+      "code": "1c",
+      "label": "1c. Órdenes: abrir y cerrar los ojos; apretar y soltar la mano sana",
+      "type": "single",
+      "hint": "Vale el intento inequívoco que no se completa por debilidad. Si no responde, mostrarle la orden con gestos. Si no puede usar las manos, dar otra orden simple. Vale solo el primer intento.",
+      "options": [
+        { "label": "Realiza las dos correctamente", "points": 0 },
+        { "label": "Realiza una correctamente", "points": 1 },
+        { "label": "No realiza ninguna", "points": 2 }
+      ]
+    },
+    {
+      "id": "nihss-2",
+      "code": "2",
+      "label": "2. Mirada conjugada (solo horizontal)",
+      "type": "single",
+      "hint": "Desviación conjugada que se vence con movimiento voluntario o reflejo (oculocefálico) → 1. Paresia aislada del III, IV o VI par → 1. Se puede evaluar en todo paciente afásico. Sin pruebas calóricas.",
+      "options": [
+        { "label": "Normal", "points": 0 },
+        { "label": "Paresia parcial de la mirada: anormal en uno o ambos ojos, sin desviación forzada ni paresia total", "points": 1 },
+        { "label": "Desviación forzada, o paresia total que no se vence con la maniobra oculocefálica", "points": 2 }
+      ]
+    },
+    {
+      "id": "nihss-3",
+      "code": "3",
+      "label": "3. Campos visuales",
+      "type": "single",
+      "hint": "Por confrontación (contar dedos o amenaza), cuadrantes superiores e inferiores, cada ojo por separado. 1 solo si hay asimetría clara, incluida la cuadrantopsia. Ceguera o enucleación de un ojo: se evalúa el otro. Ciego por cualquier causa → 3.",
+      "options": [
+        { "label": "Sin pérdida visual", "points": 0 },
+        { "label": "Hemianopsia parcial", "points": 1 },
+        { "label": "Hemianopsia completa", "points": 2 },
+        { "label": "Hemianopsia bilateral (ceguera, incluida la cortical)", "points": 3 }
+      ]
+    },
+    {
+      "id": "nihss-4",
+      "code": "4",
+      "label": "4. Parálisis facial",
+      "type": "single",
+      "hint": "Mostrar los dientes, levantar las cejas y cerrar los ojos con fuerza (se puede mostrar con gestos). Paciente poco reactivo o que no comprende: simetría de la mueca ante el estímulo doloroso.",
+      "options": [
+        { "label": "Movimientos normales y simétricos", "points": 0 },
+        { "label": "Paresia menor: surco nasogeniano borrado, asimetría al sonreír", "points": 1 },
+        { "label": "Parálisis parcial: total o casi total de la mitad inferior de la cara", "points": 2 },
+        { "label": "Parálisis completa de uno o ambos lados: sin movimiento en la parte superior ni inferior de la cara", "points": 3 }
+      ]
+    },
+    {
+      "id": "nihss-5a",
+      "code": "5a",
+      "label": "5a. Motor — brazo izquierdo",
+      "type": "single",
+      "hint": "Vale para 5a y 5b. Brazos extendidos con las palmas hacia abajo: 90° sentado o 45° acostado; contar 10 s. Empezar por el lado sano. Al afásico, alentarlo con la voz y con gestos, sin estímulo doloroso.",
+      "options": [
+        { "label": "Sin caída: mantiene 90° (o 45°) los 10 s", "points": 0 },
+        { "label": "Cae antes de los 10 s, sin tocar la cama ni otro apoyo", "points": 1 },
+        { "label": "Algún esfuerzo contra la gravedad: no llega o no se mantiene a 90° (o 45°) y cae a la cama", "points": 2 },
+        { "label": "Sin esfuerzo contra la gravedad: el brazo cae", "points": 3 },
+        { "label": "Sin movimiento", "points": 4 },
+        { "label": "No evaluable: amputación o artrodesis del hombro", "points": 0, "untestable": true }
+      ]
+    },
+    {
+      "id": "nihss-5b",
+      "code": "5b",
+      "label": "5b. Motor — brazo derecho",
+      "type": "single",
+      "options": [
+        { "label": "Sin caída: mantiene 90° (o 45°) los 10 s", "points": 0 },
+        { "label": "Cae antes de los 10 s, sin tocar la cama ni otro apoyo", "points": 1 },
+        { "label": "Algún esfuerzo contra la gravedad: no llega o no se mantiene a 90° (o 45°) y cae a la cama", "points": 2 },
+        { "label": "Sin esfuerzo contra la gravedad: el brazo cae", "points": 3 },
+        { "label": "Sin movimiento", "points": 4 },
+        { "label": "No evaluable: amputación o artrodesis del hombro", "points": 0, "untestable": true }
+      ]
+    },
+    {
+      "id": "nihss-6a",
+      "code": "6a",
+      "label": "6a. Motor — pierna izquierda",
+      "type": "single",
+      "hint": "Vale para 6a y 6b. Siempre acostado boca arriba: pierna a 30°; contar 5 s. Empezar por el lado sano. Al afásico, alentarlo con la voz y con gestos, sin estímulo doloroso.",
+      "options": [
+        { "label": "Sin caída: mantiene 30° los 5 s", "points": 0 },
+        { "label": "Cae antes de los 5 s, sin tocar la cama", "points": 1 },
+        { "label": "Algún esfuerzo contra la gravedad, pero cae a la cama antes de los 5 s", "points": 2 },
+        { "label": "Sin esfuerzo contra la gravedad: cae a la cama de inmediato", "points": 3 },
+        { "label": "Sin movimiento", "points": 4 },
+        { "label": "No evaluable: amputación o artrodesis de la cadera", "points": 0, "untestable": true }
+      ]
+    },
+    {
+      "id": "nihss-6b",
+      "code": "6b",
+      "label": "6b. Motor — pierna derecha",
+      "type": "single",
+      "options": [
+        { "label": "Sin caída: mantiene 30° los 5 s", "points": 0 },
+        { "label": "Cae antes de los 5 s, sin tocar la cama", "points": 1 },
+        { "label": "Algún esfuerzo contra la gravedad, pero cae a la cama antes de los 5 s", "points": 2 },
+        { "label": "Sin esfuerzo contra la gravedad: cae a la cama de inmediato", "points": 3 },
+        { "label": "Sin movimiento", "points": 4 },
+        { "label": "No evaluable: amputación o artrodesis de la cadera", "points": 0, "untestable": true }
+      ]
+    },
+    {
+      "id": "nihss-7",
+      "code": "7",
+      "label": "7. Ataxia de miembros",
+      "type": "single",
+      "hint": "Índice-nariz-índice y talón-rodilla de los dos lados, con los ojos abiertos (si hay defecto de campo, en el campo sano). Cuenta solo si es desproporcionada a la debilidad. Si no comprende o está pléjico → 0. Ciego: tocarse la nariz desde el brazo extendido.",
+      "options": [
+        { "label": "Ausente", "points": 0 },
+        { "label": "Presente en un miembro", "points": 1 },
+        { "label": "Presente en dos miembros", "points": 2 },
+        { "label": "No evaluable: amputación o artrodesis", "points": 0, "untestable": true }
+      ]
+    },
+    {
+      "id": "nihss-8",
+      "code": "8",
+      "label": "8. Sensibilidad",
+      "type": "single",
+      "hint": "Pinchazo en brazos (no manos), piernas, tronco y cara, comparando lados; en el obnubilado o afásico, retirada o mueca ante el estímulo doloroso. Solo cuenta la pérdida atribuible al ACV. 2 solo si la pérdida grave se demuestra con claridad: el estuporoso o afásico probablemente puntúe 0 o 1. ACV de tronco con pérdida bilateral, o sin respuesta y cuadripléjico → 2.",
+      "options": [
+        { "label": "Normal, sin pérdida sensitiva", "points": 0 },
+        { "label": "Pérdida leve a moderada: siente el pinchazo menos agudo o romo del lado afectado, o no siente dolor superficial pero sí que lo tocan", "points": 1 },
+        { "label": "Pérdida grave o total: no se da cuenta de que lo tocan en la cara, el brazo y la pierna", "points": 2 }
+      ]
+    },
+    {
+      "id": "nihss-9",
+      "code": "9",
+      "label": "9. Lenguaje",
+      "type": "single",
+      "hint": "Describir una lámina, nombrar objetos y leer frases; también cuenta la comprensión de las órdenes previas. Si la visión lo impide: identificar objetos en la mano, repetir y hablar. Intubado: pedirle que escriba. 3 solo si está mudo y no cumple ninguna orden simple.",
+      "options": [
+        { "label": "Sin afasia, normal", "points": 0 },
+        { "label": "Afasia leve a moderada: pérdida evidente de fluidez o comprensión, pero por su respuesta se puede saber de qué lámina u objeto habla", "points": 1 },
+        { "label": "Afasia grave: expresión fragmentaria; el que escucha lleva el peso de la comunicación y no puede saber de qué material habla", "points": 2 },
+        { "label": "Mudo, afasia global: sin habla útil ni comprensión auditiva", "points": 3 }
+      ]
+    },
+    {
+      "id": "nihss-10",
+      "code": "10",
+      "label": "10. Disartria",
+      "type": "single",
+      "hint": "Hacerle leer o repetir una lista de palabras, sin decirle por qué. Con afasia grave, evaluar la articulación del habla espontánea. No evaluable solo si está intubado o hay otra barrera física para hablar.",
+      "options": [
+        { "label": "Normal", "points": 0 },
+        { "label": "Leve a moderada: arrastra algunas palabras y, en el peor de los casos, se le entiende con dificultad", "points": 1 },
+        { "label": "Grave: habla ininteligible (sin afasia o desproporcionada a ella), o mudo/anártrico", "points": 2 },
+        { "label": "No evaluable: intubado u otra barrera física para hablar", "points": 0, "untestable": true }
+      ]
+    },
+    {
+      "id": "nihss-11",
+      "code": "11",
+      "label": "11. Extinción e inatención (negligencia)",
+      "type": "single",
+      "hint": "Usar lo observado en los ítems anteriores o la estimulación bilateral simultánea. Pérdida visual grave con estímulos cutáneos normales → 0. Afásico que atiende a los dos lados → 0. La negligencia visuoespacial y la anosognosia cuentan como anormales. Nunca es no evaluable.",
+      "options": [
+        { "label": "Sin alteraciones", "points": 0 },
+        { "label": "Inatención visual, táctil, auditiva, espacial o personal, o extinción a la estimulación bilateral simultánea, en una modalidad", "points": 1 },
+        { "label": "Hemi-inatención profunda o extinción en más de una modalidad: no reconoce su propia mano o se orienta solo hacia un lado del espacio", "points": 2 }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": "—",
+    "initialLabel": "Completá los 15 ítems",
+    "note": "0: sin déficit · 1–4: menor · 5–15: moderado · 16–20: moderado a grave · ≥21: grave"
+  }
+}
