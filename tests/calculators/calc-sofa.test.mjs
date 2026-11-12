@@ -14,6 +14,10 @@ test('SOFA boundaries', () => {
 });
 
 test('SOFA distinguishes the two red bands by detail text', () => {
-  assert.match(interpret(7).detail, /50-70%/);
-  assert.match(interpret(11).detail, />95%/);
+  assert.notEqual(interpret(7).detail, interpret(11).detail);
+  assert.match(interpret(11).detail, /inmediata/);
+});
+
+test('SOFA shows no mortality percentages', () => {
+  for (let s = 0; s <= 24; s++) assert.doesNotMatch(interpret(s).detail, /%/);
 });

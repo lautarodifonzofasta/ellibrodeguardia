@@ -154,13 +154,21 @@ export function renderInputCalculator(container, definition, compute) {
     const values = {};
     for (const id of ids) values[id] = parseFloat(container.querySelector(`#${id}`).value);
     const r = compute({ actual: values['na-actual'], target: values['na-obj'], weightKg: values['na-peso'], sexFactor: values['na-sexo'] });
-    if (!r) return;
+    if (!r) {
+      // Incomplete input, or a target at/below the current value: show the
+      // placeholder instead of leaving a stale result on screen.
+      out.innerHTML = definition.placeholder;
+      return;
+    }
     out.innerHTML =
+      (r.capped
+        ? `<span style="color:var(--red)"><strong>Objetivo limitado a ${r.targetUsed} mEq/L:</strong> no corregir más de +10 mEq/L en 24 h.</span><br>`
+        : '') +
       `<strong>ACT estimada:</strong> ${r.act.toFixed(1)} L<br>` +
       `<strong>Déficit de Na⁺:</strong> ${r.deficit} mEq<br>` +
       `<strong>Volumen SF 3%:</strong> ${r.volumeMl} ml totales<br>` +
       `<strong>Velocidad:</strong> ${r.rateMlPerHour} ml/h × 24h<br>` +
-      `<span style="color:var(--red)">⚠ Controlar Na⁺ cada 4–6h. No superar +10 mEq/L en 24h.</span>`;
+      `<span style="color:var(--red)">⚠ Controlar Na⁺ cada 4–6h. No superar +10 mEq/L en 24h (+8 si alcoholismo, desnutrición, hipopotasemia o hepatopatía).</span>`;
   }
 
   container.addEventListener('input', recompute);

@@ -16,7 +16,7 @@
     },
     {
       "name": "Fentanilo",
-      "indication": "Dolor severo, inducción, IAB",
+      "indication": "Dolor severo, inducción, IOT",
       "dose": "1–2 mcg/kg IV · 50–100 mcg IV titulado",
       "caution": "Rigidez torácica (dosis altas), IR (acumulación)"
     },
@@ -66,7 +66,7 @@
       "name": "Ondansetrón (Zofran)",
       "indication": "Náuseas/vómitos",
       "dose": "4–8 mg IV lento c/8h · 4 mg SL",
-      "caution": "QT largo (leve). Seguro en embarazo."
+      "caution": "QT largo. Embarazo: 2ª línea, evitar antes de las 10 semanas si es posible."
     },
     {
       "name": "Metoclopramida (Primperán)",
