@@ -4,8 +4,8 @@
   "intro": {
     "kind": "b",
     "icon": "ℹ️",
-    "title": "Corrección de sodio — máx +10 mEq/L en 24h (crónica) o +12 mEq/L (aguda <48h)",
-    "text": ""
+    "title": "Corrección de sodio — máx +10 mEq/L en 24 h (+8 si alto riesgo de desmielinización)",
+    "text": "La calculadora limita el objetivo a +10 mEq/L sobre el valor actual. Sintomática grave (convulsiones, coma): bolo de 150 ml de SF 3% en 20 min, ver módulo Hiponatremia."
   },
   "inputs": [
     { "id": "na-actual", "label": "Na⁺ actual (mEq/L)", "type": "number", "default": 120, "min": 100, "max": 145 },

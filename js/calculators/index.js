@@ -14,6 +14,7 @@ import { interpret as wellsTvp } from './calc-wells-tvp.js';
 import { interpret as blatchford } from './calc-blatchford.js';
 import { interpret as tacCraneo } from './calc-tac-craneo.js';
 import { interpret as qsofa } from './calc-qsofa.js';
+import { interpret as nihss } from './calc-nihss.js';
 
 export const SCORED_CALCULATORS = {
   'calc-gcs': gcs,
@@ -26,4 +27,5 @@ export const SCORED_CALCULATORS = {
   'calc-blatchford': blatchford,
   'calc-tac-craneo': tacCraneo,
   'calc-qsofa': qsofa,
+  'calc-nihss': nihss,
 };

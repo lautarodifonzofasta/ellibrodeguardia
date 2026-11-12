@@ -10,35 +10,25 @@
   "groups": [
     {
       "id": "bu",
-      "label": "Urea en sangre (mmol/L)",
+      "label": "Urea en sangre (mg/dl)",
       "type": "single",
       "options": [
-        { "label": "<6,5", "points": 0 },
-        { "label": "6,5–8,0", "points": 2 },
-        { "label": "8,0–10,0", "points": 3 },
-        { "label": "10,0–25,0", "points": 4 },
-        { "label": ">25,0", "points": 6 }
+        { "label": "<39 (<6,5 mmol/L)", "points": 0 },
+        { "label": "39–47", "points": 2 },
+        { "label": "48–59", "points": 3 },
+        { "label": "60–149", "points": 4 },
+        { "label": "≥150 (≥25 mmol/L)", "points": 6 }
       ]
     },
     {
-      "id": "hbm",
-      "label": "Hemoglobina en hombre (g/dl)",
+      "id": "hb",
+      "label": "Hemoglobina (g/dl)",
       "type": "single",
       "options": [
-        { "label": "≥13", "points": 0 },
-        { "label": "12–12,9", "points": 1 },
-        { "label": "10–11,9", "points": 3 },
-        { "label": "<10", "points": 6 }
-      ]
-    },
-    {
-      "id": "hbf",
-      "label": "Hemoglobina en mujer (g/dl)",
-      "type": "single",
-      "options": [
-        { "label": "≥12", "points": 0 },
-        { "label": "10–11,9", "points": 1 },
-        { "label": "<10", "points": 6 }
+        { "label": "Hombre ≥13 · Mujer ≥12", "points": 0 },
+        { "label": "Hombre 12–12,9 · Mujer 10–11,9", "points": 1 },
+        { "label": "Hombre 10–11,9", "points": 3 },
+        { "label": "<10 (ambos sexos)", "points": 6 }
       ]
     },
     {

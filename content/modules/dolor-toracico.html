@@ -47,7 +47,7 @@
     <div class="card-header"><div class="card-ico ico-blue">🔍</div><div class="card-header-text"><div class="card-title">Algoritmo — Primeros 10 minutos</div></div></div>
     <div class="card-body">
       <div class="algo">
-        <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">ECG de 12 derivaciones ≤10 min</div><div class="step-body">Buscar: SDST ≥1mm en ≥2 derivadas contiguas → <strong>IAM con supradesnivel = activar cateterismo urgente</strong><br>BRI nuevo o presumiblemente nuevo = equivalente IAM. SDST en aVR + SDST difuso → sospecha disección o SCA-SDST.</div></div></div>
+        <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">ECG de 12 derivaciones ≤10 min</div><div class="step-body">Buscar: SDST ≥1mm en ≥2 derivadas contiguas → <strong>IAM con supradesnivel = activar cateterismo urgente</strong><br>BRI nuevo o presumiblemente nuevo = equivalente IAM. SDST en aVR + infradesnivel difuso del ST → sospechar lesión de tronco o de 3 vasos.</div></div></div>
         <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Historia clínica dirigida (OPQRST)</div><div class="step-body"><strong>Onset</strong> (inicio súbito vs gradual) · <strong>Pleuritic</strong> vs opresivo · <strong>Quality</strong> · <strong>Radiation</strong> · <strong>Severity</strong> · <strong>Time</strong> · Factores de riesgo CV · Medicación.</div></div></div>
         <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Examen físico dirigido</div><div class="step-body">PA en ambos brazos · Pulsos periféricos · Ingurgitación yugular · MV bilateral · Frote pericárdico · Dolor a la palpación torácica · Signos de TVP.</div></div></div>
         <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Laboratorio inicial</div><div class="step-body">Troponina I/T (alta sensibilidad) · D-dímero si sospecha TEP · Hemograma · Coagulación · Gases arteriales si disnea · LDH/CPK.</div></div></div>
@@ -111,9 +111,12 @@
         <div class="step"><div class="step-n">E</div><div class="step-c"><div class="step-title">Si no hay hemodinamia disponible — Trombolisis</div><div class="step-body">
           Ventana ≤12h + tiempo puerta-balón anticipado &gt;120 min<br>
           <span class="drug">Tenecteplase (TNK)</span> <span class="dose">IV según peso:</span><br>
-          &lt;60kg: 30mg · 60–70kg: 35mg · 70–80kg: 40mg · 80–90kg: 45mg · &gt;90kg: 50mg<br>
+          &lt;60kg: 30mg · 60–70kg: 35mg · 70–80kg: 40mg · 80–90kg: 45mg · &gt;90kg: 50mg · <strong>≥75 años: mitad de dosis</strong><br>
           <span class="drug">Alteplase</span> <span class="dose">15 mg IV bolo + 0,75 mg/kg en 30 min + 0,5 mg/kg en 60 min (max 100 mg)</span><br>
-          <strong>Contraindicaciones absolutas:</strong> ACV hemorrágico previo, TCE reciente &lt;3m, cirugía mayor &lt;3 semanas, hemorragia activa
+          <span class="drug">Estreptoquinasa</span> <span class="dose">1.500.000 UI IV en 30–60 min</span><br>
+          <strong>Con fibrinolítico, la antiagregación cambia:</strong> <span class="drug">AAS</span> + <span class="drug">Clopidogrel</span> <span class="dose">300 mg</span> (75 mg sin carga en &gt;75 años). No ticagrelor ni prasugrel<br>
+          <span class="drug">Enoxaparina</span> <span class="dose">30 mg IV + 1 mg/kg SC c/12h</span> (≥75 años: sin bolo IV y 0,75 mg/kg c/12h)<br>
+          <strong>Contraindicaciones absolutas:</strong> hemorragia intracraneal o ACV de causa desconocida en cualquier momento · ACV isquémico &lt;6 meses · neoplasia o malformación del SNC · trauma mayor, cirugía mayor o TCE &lt;1 mes · hemorragia digestiva &lt;1 mes · diátesis hemorrágica · disección aórtica
         </div></div></div>
       </div>
     </div></div>
@@ -122,7 +125,7 @@
   <div id="dt-scasest" class="tab-pane">
     <div class="card"><div class="card-body">
       <div class="algo">
-        <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">Estratificación con HEART Score</div><div class="step-body">≥7: alto riesgo → internación + cateterismo &lt;24h<br>4–6: moderado → internación + cateterismo &lt;72h<br>≤3: bajo → alta con seguimiento si troponinas negativas × 2</div></div></div>
+        <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">Estratificación con HEART Score</div><div class="step-body">≥7: alto riesgo → internación + cardiología<br>4–6: moderado → observación o internación, troponinas seriadas y estudio funcional o anatómico<br>≤3: bajo → alta con seguimiento si troponinas negativas × 2<br>SCA sin SDST confirmado: el momento del cateterismo lo definen la inestabilidad (inmediato), GRACE &gt;140 o cambios dinámicos de troponina/ST (&lt;24 h)</div></div></div>
         <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Antiagregación</div><div class="step-body">
           <span class="drug">AAS</span> <span class="dose">300 mg VO carga → 100 mg/día</span><br>
           + <span class="drug">Ticagrelor</span> <span class="dose">180 mg carga → 90 mg c/12h</span> (si se va a cateterismo)<br>

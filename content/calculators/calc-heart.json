@@ -62,6 +62,6 @@
   "result": {
     "initialScore": 0,
     "initialLabel": "Completá todas las secciones",
-    "note": "≤3: bajo (MACE <2%) · 4–6: moderado · ≥7: alto (MACE >65%)"
+    "note": "≤3: bajo (MACE <2%) · 4–6: moderado · ≥7: alto (MACE 50–65%)"
   }
 }

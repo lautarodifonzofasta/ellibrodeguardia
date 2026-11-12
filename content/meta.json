@@ -433,6 +433,7 @@
     "category": "🧮 Calculadoras",
     "icon": "🧬",
     "badge": "calc",
+    "type": "calculator",
     "keywords": ["NIHSS", "escala de ACV", "gravedad del ACV"]
   },
   "calc-psi": {
