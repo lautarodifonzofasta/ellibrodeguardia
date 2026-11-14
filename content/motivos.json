@@ -34,7 +34,7 @@
       { "label": "Arritmia", "module": "arritmias" },
       { "label": "Hipoglucemia", "module": "hipoglucemia" },
       { "label": "Hemorragia digestiva", "module": "hemorragia-digestiva" },
-      { "label": "Intoxicación por CO", "module": "intoxicaciones" }
+      { "label": "Intoxicación por CO", "module": "monoxido" }
     ]
   },
   {
@@ -60,7 +60,7 @@
       { "label": "ACV hemorrágico", "module": "acv" },
       { "label": "Crisis hipertensiva", "module": "crisis-hta" },
       { "label": "Preeclampsia", "module": "hta-gestacional" },
-      { "label": "Intoxicación por CO", "module": "intoxicaciones" },
+      { "label": "Intoxicación por CO", "module": "monoxido" },
       { "label": "Trombosis venosa cerebral", "module": null }
     ]
   },
@@ -283,6 +283,28 @@
       { "label": "TEC", "module": "tec" },
       { "label": "Intoxicación o abstinencia", "module": "intoxicaciones" },
       { "label": "Sepsis", "module": "sepsis" }
+    ]
+  },
+  {
+    "title": "Diarrea y vómitos",
+    "aliases": ["diarrea", "vómitos", "gastroenteritis", "descompostura", "deshidratado"],
+    "opens": ["gastroenteritis"],
+    "dontMiss": [
+      { "label": "Apendicitis", "module": "dolor-abdominal" },
+      { "label": "Cetoacidosis", "module": "cad" },
+      { "label": "Intoxicación por CO", "module": "monoxido" },
+      { "label": "Sepsis", "module": "sepsis" },
+      { "label": "Isquemia mesentérica", "module": "dolor-abdominal" }
+    ]
+  },
+  {
+    "title": "No puede orinar",
+    "aliases": ["retención de orina", "globo vesical", "no orina", "no puede hacer pis"],
+    "opens": ["rao"],
+    "dontMiss": [
+      { "label": "Cauda equina", "module": "lumbalgia" },
+      { "label": "Prostatitis aguda", "module": "itu" },
+      { "label": "Falla renal obstructiva", "module": "falla-renal" }
     ]
   }
 ]

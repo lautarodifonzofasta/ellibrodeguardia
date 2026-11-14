@@ -1,22 +1,182 @@
-
-<div class="cl cl-r"><div class="cl-ico">🩸</div><div class="cl-body"><span class="cl-title">2 vías IV gruesas + tipo y crossmatch. No esperar para actuar. Score Blatchford orienta urgencia.</span></div></div>
+<div class="cl cl-r"><div class="cl-ico">🩸</div><div class="cl-body"><span class="cl-title">Primero la hemodinamia, después el estudio</span>Dos vías gruesas, compatibilizar y reanimar. La endoscopía se hace con el paciente reanimado.</div></div>
 <div class="tabs">
-  <div class="tab on" data-tab-grp="hda" onclick="switchTab(this,'hda','hda-dx')">🔍 Evaluación</div>
-  <div class="tab" data-tab-grp="hda" onclick="switchTab(this,'hda','hda-tto')">💊 Manejo</div>
+  <div class="tab on" data-tab-grp="hd" onclick="switchTab(this,'hd','hd-ini')">🚨 Inicio</div>
+  <div class="tab" data-tab-grp="hd" onclick="switchTab(this,'hd','hd-alta')">⬆️ Alta no varicosa</div>
+  <div class="tab" data-tab-grp="hd" onclick="switchTab(this,'hd','hd-var')">🍷 Várices</div>
+  <div class="tab" data-tab-grp="hd" onclick="switchTab(this,'hd','hd-baja')">⬇️ Baja</div>
+  <div class="tab" data-tab-grp="hd" onclick="switchTab(this,'hd','hd-tx')">🩸 Transfusión</div>
+  <div class="tab" data-tab-grp="hd" onclick="switchTab(this,'hd','hd-algo')">🧭 Algoritmos</div>
 </div>
-<div id="hda-dx" class="tab-pane on"><div class="card"><div class="card-body">
-  <div class="algo">
-    <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">HDA — proximal al ángulo de Treitz</div><div class="step-body">Hematemesis · Melena · Causas: úlcera péptica (60%), várices, Mallory-Weiss</div></div></div>
-    <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">HDB — distal al ángulo de Treitz</div><div class="step-body">Hematoquecia · Rectorragia · Causas: diverticulosis, angiodisplasia, hemorroides</div></div></div>
-    <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Inestabilidad → actuar ya</div><div class="step-body">FC &gt;100 · PAS &lt;90 · Hb &lt;8 · Sangrado activo → transfundir si Hb &lt;7 (o &lt;9 si coronariopatía)</div></div></div>
-    <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Blatchford (HDA)</div><div class="step-body">Score 0 → ambulatorio posible · &gt;0 → internar · &gt;6 → endoscopía urgente · Ver calc</div></div></div>
-  </div>
-</div></div></div>
-<div id="hda-tto" class="tab-pane"><div class="card"><div class="card-body">
-  <div class="algo">
-    <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Estabilizar</div><div class="step-body">2 vías 14–16G · Tipo y crossmatch · <span class="drug">SF 0,9%</span> <span class="dose">500 ml IV rápido</span> si inestable</div></div></div>
-    <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">IBP inmediato (HDA)</div><div class="step-body"><span class="drug">Omeprazol</span> <span class="dose">80 mg IV bolo</span> → <span class="dose">8 mg/h</span> · Si várices: <span class="drug">Terlipresina</span> <span class="dose">2 mg c/4h</span> + <span class="drug">Ceftriaxona</span> <span class="dose">1 g/día</span></div></div></div>
-    <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Transfusión</div><div class="step-body">Objetivo Hb &gt;7 (o &gt;9 si cardiopatía) · PFC si KPTT &gt;1,5× · Plaquetas si &lt;50.000</div></div></div>
-    <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Endoscopía</div><div class="step-body">HDA: &lt;24h (o &lt;12h si inestable) · HDB: electiva</div></div></div>
-  </div>
-</div></div></div>
+<div id="hd-ini" class="tab-pane on">
+<div class="card"><div class="card-body">
+<div class="sec-hd"><div class="sec-hd-lbl">Cómo se presenta</div><div class="sec-hd-line"></div></div>
+<div class="tbl-wrap mt-8"><table class="tbl">
+  <thead><tr><th>Presentación</th><th>Origen probable</th><th>Tener en cuenta</th></tr></thead>
+  <tbody>
+    <tr><td>Hematemesis o vómito en borra de café</td><td><span class="tag t-r">Alto</span></td><td>Proximal al ángulo de Treitz</td></tr>
+    <tr><td>Melena</td><td><span class="tag t-r">Alto</span> (la mayoría)</td><td>También intestino delgado o colon derecho con tránsito lento</td></tr>
+    <tr><td>Hematoquecia</td><td><span class="tag t-a">Bajo</span></td><td><strong>Con inestabilidad, hasta 15% es de origen alto</strong></td></tr>
+    <tr><td>Sangre roja escasa con la deposición</td><td><span class="tag t-g">Anorrectal</span></td><td>Hemorroides, fisura. Tacto rectal igual</td></tr>
+    <tr><td>Síncope, anemia o shock sin sangrado visible</td><td>Cualquiera</td><td>Tacto rectal siempre</td></tr>
+  </tbody>
+</table></div>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Gravedad: mirar antes de pedir</div><div class="sec-hd-line"></div></div>
+<ul class="bullets">
+  <li>FC &gt;100 · PAS &lt;100 mmHg · hipotensión ortostática · síncope</li>
+  <li><strong>Índice de shock (FC / PAS) ≥1</strong>: sangrado importante aunque la PAS sea «normal»</li>
+  <li>Sangrado activo visible · lactato alto · sensorio alterado</li>
+  <li>La primera Hb subestima la pérdida: tarda horas en caer</li>
+</ul>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Qué pedir</div><div class="sec-hd-line"></div></div>
+<ul class="bullets">
+  <li>Hemograma · grupo, factor y compatibilización · coagulograma</li>
+  <li>Urea y creatinina: <strong>relación urea/creatinina &gt;65</strong> (BUN/Cr &gt;30) orienta a origen alto</li>
+  <li>Hepatograma · ionograma · lactato o gases si hay inestabilidad</li>
+  <li>ECG en mayores de 50 años o coronarios</li>
+  <li>Rx de tórax si se sospecha perforación o aspiración</li>
+</ul>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Qué preguntar</div><div class="sec-hd-line"></div></div>
+<ul class="bullets">
+  <li>AINE, AAS, antiagregantes, <strong>anticoagulantes (hora de la última dosis)</strong></li>
+  <li>Hepatopatía, alcohol, várices conocidas, sangrados previos</li>
+  <li>Vómitos repetidos antes de la hematemesis (Mallory-Weiss)</li>
+  <li>Cirugía de aorta (fístula aortoentérica) · pérdida de peso · polipectomía reciente</li>
+</ul>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Primeros minutos</div><div class="sec-hd-line"></div></div>
+<div class="algo">
+  <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Dos vías periféricas gruesas (14–16G)</div><div class="step-body">Muestras y compatibilización en el mismo acto.</div></div></div>
+  <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Reanimar</div><div class="step-body"><span class="drug">Ringer lactato</span> o <span class="drug">SF 0,9%</span> en bolos de <span class="dose">500 ml</span> y reevaluar. En cirrótico no sobre-reanimar: alcanza PAS 90–100 mmHg.</div></div></div>
+  <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Shock que no revierte</div><div class="step-body">Hemoderivados sin esperar la Hb y protocolo de transfusión masiva (<a class="xref" href="#politrauma" onclick="navId('politrauma');return false">ver Politrauma</a>).</div></div></div>
+  <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Vía aérea</div><div class="step-body">Intubar antes de la endoscopía si hay hematemesis masiva con sensorio alterado.</div></div></div>
+  <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">Estratificar</div><div class="step-body">Sangrado alto: Blatchford. Sangrado bajo: Oakland. Están en la pestaña Algoritmos.</div></div></div>
+</div>
+<div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">No de rutina</span>Sonda nasogástrica · ácido tranexámico (HALT-IT: sin beneficio y más trombosis venosa) · plasma para «corregir» el INR del cirrótico.</div></div>
+</div></div>
+</div>
+<div id="hd-alta" class="tab-pane">
+<div class="card"><div class="card-body">
+<div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Úlcera péptica, erosiones, Mallory-Weiss, esofagitis, tumor</span>Si hay cirrosis o hipertensión portal, tratar como varicosa hasta que la endoscopía diga otra cosa.</div></div>
+<div class="algo">
+  <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">IBP intravenoso</div><div class="step-body"><span class="drug">Omeprazol</span> <span class="dose">80 mg IV en bolo</span> → <span class="dose">8 mg/h</span> en infusión, o <span class="dose">40 mg IV c/12h</span>. Reduce estigmas de sangrado en la endoscopía; <strong>no debe demorarla</strong>.</div></div></div>
+  <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Procinético antes de la endoscopía</div><div class="step-body">En sangrado grave o activo: <span class="drug">Eritromicina</span> <span class="dose">250 mg IV</span>, 30–120 min antes. Si no hay: <span class="drug">Metoclopramida</span> <span class="dose">10 mg IV</span> (ESGE 2026). Mirar el QT.</div></div></div>
+  <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Endoscopía</div><div class="step-body"><strong>Dentro de las 24 h</strong>, después de reanimar. No hace falta antes de las 12 h, salvo que siga inestable pese a la reanimación (ESGE 2026).</div></div></div>
+  <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Antitrombóticos</div><div class="step-body">Ver pestaña Transfusión. La AAS de prevención secundaria no se suspende.</div></div></div>
+</div>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Después de la endoscopía: clasificación de Forrest</div><div class="sec-hd-line"></div></div>
+<div class="tbl-wrap mt-8"><table class="tbl">
+  <thead><tr><th>Forrest</th><th>Hallazgo</th><th>Conducta</th></tr></thead>
+  <tbody>
+    <tr><td>Ia · Ib</td><td>Sangrado en chorro · en napa</td><td><span class="tag t-r">Alto riesgo</span> Terapia endoscópica + IBP en dosis altas 72 h</td></tr>
+    <tr><td>IIa</td><td>Vaso visible</td><td><span class="tag t-r">Alto riesgo</span> Igual que Ia/Ib</td></tr>
+    <tr><td>IIb</td><td>Coágulo adherido</td><td><span class="tag t-a">Intermedio</span> IBP en dosis altas; terapia endoscópica según el caso</td></tr>
+    <tr><td>IIc · III</td><td>Mancha plana · base limpia</td><td><span class="tag t-g">Bajo riesgo</span> IBP oral una vez al día, dieta y alta precoz</td></tr>
+  </tbody>
+</table></div>
+<ul class="bullets">
+  <li><strong>IBP en dosis altas</strong>: bolo de 80 mg + 8 mg/h por 72 h (o 40 mg IV c/12h); luego VO c/12h hasta completar 2 semanas y después una vez al día</li>
+  <li>Buscar y erradicar <em>H. pylori</em>. Suspender AINE</li>
+  <li><strong>Resangrado</strong>: segunda endoscopía → embolización arterial → cirugía</li>
+</ul>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Alta desde la guardia</div><div class="sec-hd-line"></div></div>
+<p><strong>Blatchford 0–1</strong>, sin comorbilidad grave y con acceso a endoscopía ambulatoria en pocos días. Con Blatchford ≥2: internar.</p>
+</div></div>
+</div>
+<div id="hd-var" class="tab-pane">
+<div class="card"><div class="card-body">
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Cirrótico que sangra = várices hasta demostrar lo contrario</span>El vasoactivo y el antibiótico se indican en la guardia, antes de la endoscopía.</div></div>
+<div class="algo">
+  <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Vasoactivo ya</div><div class="step-body"><span class="drug">Terlipresina</span> <span class="dose">2 mg IV c/4h</span> (bajar a 1 mg c/4h con el sangrado controlado) · o <span class="drug">Octreótido</span> <span class="dose">50 mcg IV en bolo → 50 mcg/h</span> · o <span class="drug">Somatostatina</span> <span class="dose">250 mcg en bolo → 250 mcg/h</span>. Mantener 2–5 días. Terlipresina: cuidado en coronarios, isquemia periférica e hiponatremia.</div></div></div>
+  <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Antibiótico profiláctico</div><div class="step-body"><span class="drug">Ceftriaxona</span> <span class="dose">1 g IV/día</span>, hasta 7 días. Baja infecciones, resangrado y mortalidad.</div></div></div>
+  <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Transfusión restrictiva</div><div class="step-body">Transfundir con Hb ≤7 g/dl; objetivo <strong>7–8 g/dl</strong>. Sobretransfundir sube la presión portal. No corregir el INR con plasma.</div></div></div>
+  <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Endoscopía dentro de las 12 h</div><div class="step-body">Tras reanimar. Eritromicina previa. Vía aérea protegida si hay encefalopatía o hematemesis masiva. Ligadura con bandas.</div></div></div>
+  <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">Sangrado que no se controla</div><div class="step-body">Balón de Sengstaken-Blakemore (máximo 24 h, con vía aérea asegurada) o stent esofágico como puente → TIPS de rescate.</div></div></div>
+  <div class="step"><div class="step-n">6</div><div class="step-c"><div class="step-title">TIPS preventivo</div><div class="step-body">Dentro de las 72 h (mejor 24 h) en Child C de 10–13 puntos o Child B &gt;7 con sangrado activo en la endoscopía.</div></div></div>
+  <div class="step"><div class="step-n">7</div><div class="step-c"><div class="step-title">Lo que acompaña</div><div class="step-body"><span class="drug">Lactulosa</span> para prevenir encefalopatía. Suspender betabloqueantes si PAS &lt;90. Evitar nefrotóxicos. Suspender el IBP una vez confirmadas las várices, salvo otra indicación.</div></div></div>
+</div>
+<p>Descompensaciones asociadas: <a class="xref" href="#higado-descompensado" onclick="navId('higado-descompensado');return false">módulo Hígado descompensado</a>.</p>
+</div></div>
+</div>
+<div id="hd-baja" class="tab-pane">
+<div class="card"><div class="card-body">
+<div class="sec-hd"><div class="sec-hd-lbl">Causas</div><div class="sec-hd-line"></div></div>
+<div class="tbl-wrap mt-8"><table class="tbl">
+  <thead><tr><th>Causa</th><th>Pista</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Diverticular</strong> (la más frecuente)</td><td>Indolora, abundante, brusca. Cede sola en 3 de cada 4</td></tr>
+    <tr><td>Colitis isquémica</td><td>Dolor cólico y luego diarrea con sangre; mayor de 60, vascular, hipotensión previa</td></tr>
+    <tr><td>Angiodisplasia</td><td>Anciano, insuficiencia renal, estenosis aórtica; recurrente</td></tr>
+    <tr><td>Anorrectal (hemorroides, fisura)</td><td>Sangre roja al final de la deposición; dolor si es fisura</td></tr>
+    <tr><td>Pospolipectomía</td><td>Hasta 2 semanas después</td></tr>
+    <tr><td>Cáncer o pólipos</td><td>Cambio de hábito, anemia ferropénica, pérdida de peso</td></tr>
+    <tr><td>Colitis infecciosa o inflamatoria</td><td>Diarrea con sangre, fiebre, tenesmo</td></tr>
+  </tbody>
+</table></div>
+<div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">¿Seguro que es bajo?</span>Hematoquecia con inestabilidad, urea/creatinina &gt;65, antecedente de úlcera, várices o AINE: <strong>endoscopía alta primero</strong>.</div></div>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Conducta</div><div class="sec-hd-line"></div></div>
+<div class="algo">
+  <div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">Estratificar con Oakland</div><div class="step-body"><strong>≤8 puntos</strong>: alta con estudio ambulatorio. &gt;8: internar. El puntaje acompaña al criterio clínico, no lo reemplaza.</div></div></div>
+  <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Inestable o sangrado activo importante</div><div class="step-body"><strong>Angio-TC</strong> de abdomen y pelvis como primer estudio (sin contraste oral). Con extravasación: embolización por radiología intervencionista, idealmente dentro de los 90 min.</div></div></div>
+  <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Estable internado</div><div class="step-body">Colonoscopía durante la internación, con buena preparación. <strong>No hace falta de urgencia</strong>: hacerla antes de las 24 h no mejoró resangrado ni mortalidad (ACG 2023).</div></div></div>
+  <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Puede no necesitar colonoscopía</div><div class="step-body">Si el sangrado cedió y hay una colonoscopía de buena calidad en los últimos 12 meses con divertículos y sin neoplasia.</div></div></div>
+  <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">Transfusión</div><div class="step-body">Umbral Hb 7 g/dl (8 con enfermedad cardiovascular). Sin ácido tranexámico.</div></div></div>
+  <div class="step"><div class="step-n">6</div><div class="step-c"><div class="step-title">Cirugía</div><div class="step-body">Último recurso, y con el sitio de sangrado localizado.</div></div></div>
+</div>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Al alta de un sangrado diverticular</div><div class="sec-hd-line"></div></div>
+<ul class="bullets">
+  <li>Suspender AINE</li>
+  <li>AAS en prevención primaria: suspender. En prevención secundaria: mantener</li>
+</ul>
+</div></div>
+</div>
+<div id="hd-tx" class="tab-pane">
+<div class="card"><div class="card-body">
+<div class="sec-hd"><div class="sec-hd-lbl">Criterios de transfusión de glóbulos rojos</div><div class="sec-hd-line"></div></div>
+<div class="tbl-wrap mt-8"><table class="tbl">
+  <thead><tr><th>Situación</th><th>Transfundir con</th><th>Objetivo</th></tr></thead>
+  <tbody>
+    <tr><td>Estable, sin enfermedad cardiovascular</td><td>Hb ≤7 g/dl</td><td>7–9 g/dl</td></tr>
+    <tr><td>Enfermedad cardiovascular aguda o crónica</td><td>Hb ≤8 g/dl</td><td>≥10 g/dl</td></tr>
+    <tr><td>Várices / cirrosis</td><td>Hb ≤7 g/dl</td><td>7–8 g/dl</td></tr>
+    <tr><td><strong>Inestable o sangrado masivo</strong></td><td><strong>Por clínica, sin esperar la Hb</strong></td><td>Perfusión; protocolo de transfusión masiva</td></tr>
+  </tbody>
+</table></div>
+<ul class="bullets">
+  <li><strong>Plaquetas</strong>: con sangrado activo grave y recuento &lt;50.000/mm³. No transfundir por estar antiagregado</li>
+  <li><strong>Plasma</strong>: en transfusión masiva (relación 1:1:1). No para corregir el INR del cirrótico</li>
+  <li><strong>Fibrinógeno</strong> &lt;150 mg/dl en sangrado masivo: crioprecipitados o concentrado</li>
+  <li>Calcio iónico en transfusión masiva: reponer</li>
+</ul>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Anticoagulados y antiagregados</div><div class="sec-hd-line"></div></div>
+<div class="tbl-wrap mt-8"><table class="tbl">
+  <thead><tr><th>Fármaco</th><th>Conducta</th></tr></thead>
+  <tbody>
+    <tr><td>Acenocumarol / warfarina</td><td>Suspender. Sangrado grave: <span class="drug">Vitamina K</span> <span class="dose">5–10 mg IV lento</span> + <span class="drug">Complejo protrombínico 4F</span> <span class="dose">25–50 UI/kg</span> (plasma <span class="dose">10–15 ml/kg</span> si no hay). Con INR &lt;2,5 no demorar la endoscopía</td></tr>
+    <tr><td>Rivaroxabán · apixabán · dabigatrán</td><td>Suspender y anotar la hora de la última toma. La mayoría solo necesita tiempo. Riesgo de vida: <span class="drug">Idarucizumab</span> <span class="dose">5 g IV</span> para dabigatrán; <span class="drug">Complejo protrombínico 4F</span> <span class="dose">50 UI/kg</span> (o andexanet) para anti-Xa. Carbón activado si la toma fue hace &lt;2–4 h</td></tr>
+    <tr><td>Heparina sódica</td><td>Suspender. <span class="drug">Protamina</span> <span class="dose">1 mg por cada 100 UI</span> de las últimas 2–3 h (máx 50 mg)</td></tr>
+    <tr><td>Enoxaparina</td><td><span class="drug">Protamina</span> <span class="dose">1 mg por mg</span> si la dosis fue hace &lt;8 h (reversión parcial)</td></tr>
+    <tr><td>AAS en prevención secundaria</td><td><strong>No suspender</strong>, o reiniciar apenas haya hemostasia (dentro de 3–5 días)</td></tr>
+    <tr><td>AAS en prevención primaria</td><td>Suspender</td></tr>
+    <tr><td>Doble antiagregación (stent)</td><td>Mantener AAS, pausar el inhibidor P2Y12 y <strong>hablar con cardiología</strong> antes de suspender</td></tr>
+  </tbody>
+</table></div>
+<p>Reinicio de la anticoagulación: en general alrededor de los 7 días con el sangrado controlado; antes si el riesgo trombótico es alto.</p>
+</div></div>
+</div>
+<div id="hd-algo" class="tab-pane">
+<div class="card"><div class="card-body">
+<div class="sec-hd"><div class="sec-hd-lbl">Hemorragia digestiva alta</div><div class="sec-hd-line"></div></div>
+<div class="algo">
+  <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">¿Inestable?</div><div class="step-body">Reanimar → vasoactivo + ceftriaxona si es cirrótico → IBP → endoscopía en cuanto se estabilice (urgente si no se estabiliza).</div></div></div>
+  <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Estable: Blatchford</div><div class="step-body"><strong>0–1</strong> → alta y endoscopía ambulatoria. <strong>≥2</strong> → internar, IBP y endoscopía dentro de las 24 h.</div></div></div>
+  <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Según la endoscopía</div><div class="step-body">Forrest Ia–IIb: terapia endoscópica + IBP en dosis altas 72 h. IIc–III: IBP oral y alta precoz. Várices: ligadura + vasoactivo 2–5 días.</div></div></div>
+</div>
+<p>Calculadora: <a class="xref" href="#calc-blatchford" onclick="navId('calc-blatchford');return false">Score Blatchford</a>.</p>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Hemorragia digestiva baja</div><div class="sec-hd-line"></div></div>
+<div class="algo">
+  <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">¿Inestable?</div><div class="step-body">Reanimar → ¿puede ser alta? endoscopía alta → <strong>angio-TC</strong> → embolización si hay extravasación.</div></div></div>
+  <div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Estable: Oakland</div><div class="step-body"><strong>≤8</strong> → alta y estudio ambulatorio. <strong>&gt;8</strong> → internar y colonoscopía no urgente.</div></div></div>
+</div>
+<p>Oakland: edad, sexo, internación previa por sangrado bajo, sangre en el tacto, FC, PAS y Hb. Con 8 puntos o menos, alta segura.</p>
+<p class="src-line">Fuentes: ESGE 2021 y actualización 2026 (hemorragia por úlcera péptica) · ACG 2021 (hemorragia digestiva alta) · ACG 2023 (hemorragia digestiva baja) · Baveno VII (2022) · Villanueva et al., NEJM 2013 · HALT-IT, Lancet 2020 · Oakland et al., Lancet Gastroenterol Hepatol 2017. Revisión: 2026-11.</p>
+</div></div>
+</div>

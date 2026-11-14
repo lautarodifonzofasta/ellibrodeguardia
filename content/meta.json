@@ -102,13 +102,13 @@
     "title": "EPOC exacerbado",
     "category": "🫁 Respiratorio",
     "icon": "💨",
-    "keywords": ["EPOC reagudizado", "exacerbación de EPOC", "enfisema", "bronquitis crónica", "tabaquista", "hipercapnia", "VMNI", "BiPAP", "ipratropio"]
+    "keywords": ["EPOC reagudizado", "exacerbación de EPOC", "enfisema", "bronquitis crónica", "tabaquista", "hipercapnia", "VMNI", "VNI", "BiPAP", "ipratropio", "acidosis respiratoria", "alto flujo"]
   },
   "asma": {
-    "title": "Asma severa",
+    "title": "Crisis asmática",
     "category": "🫁 Respiratorio",
     "icon": "🌬️",
-    "keywords": ["crisis asmática", "broncoespasmo", "sibilancias", "silbidos en el pecho", "salbutamol", "nebulizaciones", "corticoides", "sulfato de magnesio", "pico flujo", "peak flow"]
+    "keywords": ["asma severa", "asma aguda", "broncoespasmo", "sibilancias", "silbidos en el pecho", "salbutamol", "nebulizaciones", "corticoides", "sulfato de magnesio", "pico flujo", "peak flow"]
   },
   "acv": {
     "title": "ACV / TIA",
@@ -240,7 +240,13 @@
     "category": "🤢 Abdominal",
     "icon": "🩸",
     "badge": "crit",
-    "keywords": ["HDA", "HDB", "sangrado digestivo", "sangrado", "hematemesis", "vómito con sangre", "melena", "materia fecal negra", "hematoquecia", "rectorragia", "várices", "úlcera péptica", "omeprazol", "terlipresina", "Blatchford", "endoscopía"]
+    "keywords": ["HDA", "HDB", "sangrado digestivo", "sangrado", "hematemesis", "vómito con sangre", "melena", "materia fecal negra", "hematoquecia", "rectorragia", "várices", "úlcera péptica", "omeprazol", "terlipresina", "Blatchford", "Oakland", "Forrest", "endoscopía", "transfusión", "anticoagulado que sangra", "angio-TC", "diverticular"]
+  },
+  "gastroenteritis": {
+    "title": "Gastroenteritis aguda y deshidratación",
+    "category": "🤢 Abdominal",
+    "icon": "💧",
+    "keywords": ["diarrea", "vómitos", "gastroenterocolitis", "GEA", "deshidratado", "sales de rehidratación", "rehidratación oral", "loperamida", "disentería", "diarrea con sangre", "intoxicación alimentaria", "síndrome urémico hemolítico"]
   },
   "higado-descompensado": {
     "title": "Hígado descompensado",
@@ -289,6 +295,12 @@
     "icon": "🫘",
     "badge": "crit",
     "keywords": ["insuficiencia renal aguda", "lesión renal aguda", "IRA", "creatinina alta", "uremia", "oliguria", "anuria", "no orina", "diálisis", "KDIGO", "nefrotóxicos"]
+  },
+  "rao": {
+    "title": "Retención aguda de orina",
+    "category": "🫘 Nefrología",
+    "icon": "🚽",
+    "keywords": ["RAO", "no puede orinar", "globo vesical", "sonda vesical", "sondaje", "Foley", "próstata", "hiperplasia prostática", "tamsulosina", "cauda equina", "poliuria posobstructiva"]
   },
   "ginecoobs": {
     "title": "Emergencias ginecobstétricas",
@@ -373,6 +385,13 @@
     "category": "🧬 Psiquiátrico / Toxicología",
     "icon": "☠️",
     "keywords": ["intoxicado", "sobredosis", "intento de suicidio", "ingesta", "tomó pastillas", "toxidrome", "antídoto", "carbón activado", "paracetamol", "flumazenil", "opioides", "naloxona", "organofosforados", "monóxido de carbono", "CO", "cocaína", "metanol", "etilenglicol", "litio", "digoxina"]
+  },
+  "monoxido": {
+    "title": "Monóxido de carbono",
+    "category": "🧬 Psiquiátrico / Toxicología",
+    "icon": "🔥",
+    "badge": "crit",
+    "keywords": ["intoxicación por CO", "carboxihemoglobina", "COHb", "estufa", "calefón", "brasero", "inhalación de humo", "cámara hiperbárica", "oxígeno al 100%", "cefalea con convivientes"]
   },
   "panico": {
     "title": "Crisis de pánico",
