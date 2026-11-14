@@ -1,0 +1,18 @@
+{
+  "id": "calc-gases",
+  "title": "Gases en EPOC",
+  "form": true,
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "Gases en la exacerbación de EPOC",
+    "text": "Dice si hay acidosis respiratoria (indicación de VNI) y si la retención es aguda o crónica."
+  },
+  "inputs": [
+    { "id": "ph", "label": "pH", "type": "number", "min": 6.8, "max": 7.8, "step": 0.01, "placeholder": "7,30" },
+    { "id": "pco2", "label": "PaCO₂", "unit": "mmHg", "type": "number", "min": 10, "max": 150, "step": 1, "placeholder": "60" },
+    { "id": "hco3", "label": "HCO₃", "unit": "mEq/L", "type": "number", "min": 5, "max": 60, "step": 1, "placeholder": "Opcional" },
+    { "id": "po2", "label": "PaO₂", "unit": "mmHg", "type": "number", "min": 20, "max": 600, "step": 1, "placeholder": "Opcional" }
+  ],
+  "placeholder": "Cargá pH y PaCO₂."
+}

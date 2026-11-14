@@ -1,0 +1,14 @@
+{
+  "id": "asma-primera-hora",
+  "title": "Reloj de la primera hora",
+  "intro": "Marca las tres rondas de salbutamol cada 20 minutos, el corticoide y la reevaluación a la hora. Al final se copia el registro para la evolución.",
+  "graceMin": 5,
+  "steps": [
+    { "id": "o2", "atMin": 0, "label": "Oxígeno titulado", "detail": "Objetivo SpO₂ 92–95%", "noteText": "Oxígeno titulado para SpO₂ 92–95%" },
+    { "id": "saba1", "atMin": 0, "label": "Salbutamol, 1ª ronda", "detail": "4–10 puffs con aerocámara o 2,5–5 mg nebulizado" },
+    { "id": "ctc", "atMin": 0, "graceMin": 60, "label": "Corticoide sistémico", "detail": "Prednisona 40–50 mg VO (o hidrocortisona 200 mg IV). Dentro de la primera hora" },
+    { "id": "saba2", "after": "saba1", "afterMin": 20, "label": "Salbutamol, 2ª ronda", "detail": "Sumar ipratropio si es moderada o grave" },
+    { "id": "saba3", "after": "saba2", "afterMin": 20, "label": "Salbutamol, 3ª ronda", "detail": "" },
+    { "id": "reeval", "atMin": 60, "graceMin": 10, "label": "Reevaluar: síntomas, SpO₂ y PEF", "detail": "PEF ≥60%: alta posible · 40–59%: seguir · <40%: internar", "noteText": "Reevaluación a la hora (síntomas, SpO₂, PEF)" }
+  ]
+}

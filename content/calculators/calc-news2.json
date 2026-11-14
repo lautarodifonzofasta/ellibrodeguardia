@@ -1,0 +1,106 @@
+{
+  "id": "calc-news2",
+  "title": "NEWS2",
+  "requireAll": true,
+  "maxScore": 20,
+  "resettable": true,
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "NEWS2 — National Early Warning Score 2",
+    "text": "Detecta el deterioro clínico del adulto con siete parámetros. No vale en menores de 16 años ni en embarazadas. Un solo parámetro en 3 ya exige revisión urgente."
+  },
+  "groups": [
+    {
+      "id": "news-fr",
+      "label": "Frecuencia respiratoria (por min)",
+      "type": "single",
+      "options": [
+        { "label": "≤8", "points": 3 },
+        { "label": "9–11", "points": 1 },
+        { "label": "12–20", "points": 0 },
+        { "label": "21–24", "points": 2 },
+        { "label": "≥25", "points": 3 }
+      ]
+    },
+    {
+      "id": "news-spo2",
+      "label": "SpO₂",
+      "type": "single",
+      "hint": "Escala 2 solo en la falla respiratoria hipercápnica (por ejemplo EPOC retenedor) con objetivo 88–92% indicado por un médico. En el resto, escala 1.",
+      "options": [
+        { "label": "Escala 1 · ≥96%", "points": 0 },
+        { "label": "Escala 1 · 94–95%", "points": 1 },
+        { "label": "Escala 1 · 92–93%", "points": 2 },
+        { "label": "Escala 1 · ≤91%", "points": 3 },
+        { "label": "Escala 2 · 88–92%, o ≥93% respirando aire", "points": 0 },
+        { "label": "Escala 2 · 86–87%", "points": 1 },
+        { "label": "Escala 2 · 84–85%", "points": 2 },
+        { "label": "Escala 2 · ≤83%", "points": 3 },
+        { "label": "Escala 2 · 93–94% con oxígeno", "points": 1 },
+        { "label": "Escala 2 · 95–96% con oxígeno", "points": 2 },
+        { "label": "Escala 2 · ≥97% con oxígeno", "points": 3 }
+      ]
+    },
+    {
+      "id": "news-o2",
+      "label": "Oxígeno suplementario",
+      "type": "single",
+      "options": [
+        { "label": "Respira aire", "points": 0 },
+        { "label": "Recibe oxígeno", "points": 2 }
+      ]
+    },
+    {
+      "id": "news-pas",
+      "label": "Presión arterial sistólica (mmHg)",
+      "type": "single",
+      "options": [
+        { "label": "≤90", "points": 3 },
+        { "label": "91–100", "points": 2 },
+        { "label": "101–110", "points": 1 },
+        { "label": "111–219", "points": 0 },
+        { "label": "≥220", "points": 3 }
+      ]
+    },
+    {
+      "id": "news-fc",
+      "label": "Frecuencia cardíaca (por min)",
+      "type": "single",
+      "options": [
+        { "label": "≤40", "points": 3 },
+        { "label": "41–50", "points": 1 },
+        { "label": "51–90", "points": 0 },
+        { "label": "91–110", "points": 1 },
+        { "label": "111–130", "points": 2 },
+        { "label": "≥131", "points": 3 }
+      ]
+    },
+    {
+      "id": "news-conciencia",
+      "label": "Conciencia",
+      "type": "single",
+      "options": [
+        { "label": "Alerta", "points": 0 },
+        { "label": "Confusión nueva, responde solo a la voz o al dolor, o no responde", "points": 3 }
+      ]
+    },
+    {
+      "id": "news-temp",
+      "label": "Temperatura (°C)",
+      "type": "single",
+      "options": [
+        { "label": "≤35,0", "points": 3 },
+        { "label": "35,1–36,0", "points": 1 },
+        { "label": "36,1–38,0", "points": 0 },
+        { "label": "38,1–39,0", "points": 1 },
+        { "label": "≥39,1", "points": 2 }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": "—",
+    "initialLabel": "Completá los 7 parámetros",
+    "note": "0–4: bajo · un parámetro en 3: bajo-medio · 5–6: medio · ≥7: alto"
+  }
+}

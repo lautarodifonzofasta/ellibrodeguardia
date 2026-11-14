@@ -455,6 +455,38 @@
     "type": "calculator",
     "keywords": ["NIHSS", "escala de ACV", "gravedad del ACV"]
   },
+  "calc-news2": {
+    "title": "NEWS2",
+    "category": "🧮 Calculadoras",
+    "icon": "🧮",
+    "badge": "calc",
+    "type": "calculator",
+    "keywords": ["National Early Warning Score", "score de alerta temprana", "deterioro clínico", "signos vitales", "riesgo de sepsis"]
+  },
+  "calc-oakland": {
+    "title": "Score Oakland",
+    "category": "🧮 Calculadoras",
+    "icon": "🧮",
+    "badge": "calc",
+    "type": "calculator",
+    "keywords": ["Oakland", "hemorragia digestiva baja", "hematoquecia", "alta segura"]
+  },
+  "calc-pef": {
+    "title": "Pico flujo (PEF)",
+    "category": "🧮 Calculadoras",
+    "icon": "🧮",
+    "badge": "calc",
+    "type": "calculator",
+    "keywords": ["PEF", "pico flujo", "peak flow", "flujo espiratorio pico", "porcentaje del predicho"]
+  },
+  "calc-gases": {
+    "title": "Gases en EPOC",
+    "category": "🧮 Calculadoras",
+    "icon": "🧮",
+    "badge": "calc",
+    "type": "calculator",
+    "keywords": ["gasometría", "gases en sangre", "pH", "PaCO2", "acidosis respiratoria", "hipercapnia", "indicación de VNI"]
+  },
   "calc-psi": {
     "title": "PSI / PORT",
     "category": "🧮 Calculadoras",

@@ -1,0 +1,93 @@
+{
+  "id": "calc-oakland",
+  "title": "Score Oakland",
+  "requireAll": true,
+  "maxScore": 35,
+  "resettable": true,
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "Oakland — hemorragia digestiva baja",
+    "text": "Identifica a quién se puede dar de alta con estudio ambulatorio: 8 puntos o menos."
+  },
+  "groups": [
+    {
+      "id": "oak-edad",
+      "label": "Edad (años)",
+      "type": "single",
+      "options": [
+        { "label": "<40", "points": 0 },
+        { "label": "40–69", "points": 1 },
+        { "label": "≥70", "points": 2 }
+      ]
+    },
+    {
+      "id": "oak-sexo",
+      "label": "Sexo",
+      "type": "single",
+      "options": [
+        { "label": "Mujer", "points": 0 },
+        { "label": "Varón", "points": 1 }
+      ]
+    },
+    {
+      "id": "oak-previa",
+      "label": "Internación previa por hemorragia digestiva baja",
+      "type": "single",
+      "options": [
+        { "label": "No", "points": 0 },
+        { "label": "Sí", "points": 1 }
+      ]
+    },
+    {
+      "id": "oak-tacto",
+      "label": "Sangre en el tacto rectal",
+      "type": "single",
+      "options": [
+        { "label": "No", "points": 0 },
+        { "label": "Sí", "points": 1 }
+      ]
+    },
+    {
+      "id": "oak-fc",
+      "label": "Frecuencia cardíaca (por min)",
+      "type": "single",
+      "options": [
+        { "label": "<70", "points": 0 },
+        { "label": "70–89", "points": 1 },
+        { "label": "90–109", "points": 2 },
+        { "label": "≥110", "points": 3 }
+      ]
+    },
+    {
+      "id": "oak-pas",
+      "label": "Presión arterial sistólica (mmHg)",
+      "type": "single",
+      "options": [
+        { "label": "<90", "points": 5 },
+        { "label": "90–119", "points": 4 },
+        { "label": "120–129", "points": 3 },
+        { "label": "130–159", "points": 2 },
+        { "label": "≥160", "points": 0 }
+      ]
+    },
+    {
+      "id": "oak-hb",
+      "label": "Hemoglobina (g/dl)",
+      "type": "single",
+      "options": [
+        { "label": "<7", "points": 22 },
+        { "label": "7–8,9", "points": 17 },
+        { "label": "9–10,9", "points": 13 },
+        { "label": "11–12,9", "points": 8 },
+        { "label": "13–15,9", "points": 4 },
+        { "label": "≥16", "points": 0 }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": "—",
+    "initialLabel": "Completá los 7 ítems",
+    "note": "≤8: alta con estudio ambulatorio · >8: internar"
+  }
+}

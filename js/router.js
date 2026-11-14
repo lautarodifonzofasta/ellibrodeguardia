@@ -2,7 +2,9 @@
 // nav()/navId() (which just swapped innerHTML with no URL/history at all):
 // every view now has a real, deep-linkable, back-button-friendly URL.
 import { renderScoredCalculator, renderInputCalculator } from './calculators/engine.js';
-import { SCORED_CALCULATORS } from './calculators/index.js';
+import { SCORED_CALCULATORS, FORM_CALCULATORS } from './calculators/index.js';
+import { renderFormCalculator } from './calculators/form-engine.js';
+import { mountAssist } from './assist/view.js';
 import { compute as computeSodio } from './calculators/calc-sodio.js';
 import { renderDrugReference } from './drugs.js';
 import { renderRcp } from './rcp/ui.js';
@@ -113,6 +115,8 @@ async function render(id, container) {
     const def = await fetchJson(`content/calculators/${id}.json`);
     if (def.groups) {
       renderScoredCalculator(container, def, SCORED_CALCULATORS[id]);
+    } else if (FORM_CALCULATORS[id]) {
+      renderFormCalculator(container, def, FORM_CALCULATORS[id]);
     } else {
       renderInputCalculator(container, def, computeSodio);
     }
@@ -141,6 +145,7 @@ async function render(id, container) {
   container.innerHTML = await res.text();
   if (m) addViewHeader(container, m);
   await mountEmbeddedCalculators(container);
+  return mountEmbeddedAssists(container);
 }
 
 // Page title above the content, built from content/meta.json (the same
@@ -164,14 +169,38 @@ async function mountEmbeddedCalculators(container) {
   await Promise.all([...slots].map(async slot => {
     const id = slot.dataset.calculator;
     try {
+      const def = await fetchJson(`content/calculators/${id}.json`);
+      if (FORM_CALCULATORS[id]) {
+        renderFormCalculator(slot, def, FORM_CALCULATORS[id]);
+        return;
+      }
       const interpret = SCORED_CALCULATORS[id];
-      if (!interpret) throw new Error('not in SCORED_CALCULATORS');
-      renderScoredCalculator(slot, await fetchJson(`content/calculators/${id}.json`), interpret);
+      if (!interpret) throw new Error('not in SCORED_CALCULATORS or FORM_CALCULATORS');
+      renderScoredCalculator(slot, def, interpret);
     } catch (err) {
       console.error(`Failed to mount embedded calculator "${id}":`, err);
       slot.innerHTML = '<div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body">No se pudo cargar el checklist. Recargá la página.</div></div>';
     }
   }));
+}
+
+// A content module can embed a timed assistant with <div data-assist="id">:
+// content/assist/<id>.json holds the protocol and js/assist/ runs it. Returns
+// one cleanup function that stops every timer when the user leaves the view.
+async function mountEmbeddedAssists(container) {
+  const slots = [...container.querySelectorAll('[data-assist]')];
+  if (!slots.length) return undefined;
+  const cleanups = await Promise.all(slots.map(async slot => {
+    const id = slot.dataset.assist;
+    try {
+      return mountAssist(slot, await fetchJson(`content/assist/${id}.json`));
+    } catch (err) {
+      console.error(`Failed to mount assistant "${id}":`, err);
+      slot.innerHTML = '<div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body">No se pudo cargar el asistente. Recargá la página.</div></div>';
+      return null;
+    }
+  }));
+  return () => cleanups.forEach(fn => typeof fn === 'function' && fn());
 }
 
 async function fetchText(path) {

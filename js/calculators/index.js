@@ -15,6 +15,10 @@ import { interpret as blatchford } from './calc-blatchford.js';
 import { interpret as tacCraneo } from './calc-tac-craneo.js';
 import { interpret as qsofa } from './calc-qsofa.js';
 import { interpret as nihss } from './calc-nihss.js';
+import { interpret as news2 } from './calc-news2.js';
+import { interpret as oakland } from './calc-oakland.js';
+import { compute as pef } from './calc-pef.js';
+import { compute as gases } from './calc-gases.js';
 
 export const SCORED_CALCULATORS = {
   'calc-gcs': gcs,
@@ -28,4 +32,13 @@ export const SCORED_CALCULATORS = {
   'calc-tac-craneo': tacCraneo,
   'calc-qsofa': qsofa,
   'calc-nihss': nihss,
+  'calc-news2': news2,
+  'calc-oakland': oakland,
+};
+
+// Free-input calculators rendered by js/calculators/form-engine.js: the JSON
+// lists the fields ("form": true) and compute(values) returns the verdict.
+export const FORM_CALCULATORS = {
+  'calc-pef': pef,
+  'calc-gases': gases,
 };
