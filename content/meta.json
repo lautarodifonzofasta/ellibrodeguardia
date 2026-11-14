@@ -289,6 +289,14 @@
     "badge": "crit",
     "keywords": ["hiperpotasemia", "potasio", "potasio alto", "kalemia", "gluconato de calcio", "insulina con dextrosa", "T picudas", "diálisis"]
   },
+  "escroto-agudo": {
+    "title": "Escroto agudo",
+    "category": "🫘 Nefrología",
+    "icon": "⏱️",
+    "sub": "Torsión testicular · epididimitis · orquiepididimitis",
+    "badge": "crit",
+    "keywords": ["torsión testicular", "dolor testicular", "dolor de testículo", "testículo hinchado", "dolor escrotal", "epididimitis", "orquiepididimitis", "orquitis", "torsión de hidátide", "TWIST", "detorsión manual", "reflejo cremastérico", "gangrena de Fournier"]
+  },
   "falla-renal": {
     "title": "Falla renal aguda",
     "category": "🫘 Nefrología",

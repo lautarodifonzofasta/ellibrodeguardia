@@ -73,6 +73,7 @@
       { "label": "Aneurisma de aorta", "module": "dolor-abdominal" },
       { "label": "Isquemia mesentérica", "module": "dolor-abdominal" },
       { "label": "IAM inferior", "module": "dolor-toracico" },
+      { "label": "Torsión testicular", "module": "escroto-agudo" },
       { "label": "Cetoacidosis", "module": "cad" },
       { "label": "Pancreatitis", "module": "pancreatitis" }
     ]
@@ -219,6 +220,18 @@
       { "label": "Cólico renal infectado", "module": "colico-renal" },
       { "label": "ITS", "module": "gineco-infecciones" },
       { "label": "Embarazo", "module": "ginecoobs" }
+    ]
+  },
+  {
+    "title": "Dolor testicular",
+    "aliases": ["dolor de testículo", "testículo hinchado", "dolor escrotal", "escroto hinchado"],
+    "opens": ["escroto-agudo"],
+    "dontMiss": [
+      { "label": "Torsión testicular", "module": "escroto-agudo" },
+      { "label": "Gangrena de Fournier", "module": "escroto-agudo" },
+      { "label": "Hernia inguinal estrangulada", "module": "escroto-agudo" },
+      { "label": "Cólico renal (dolor referido)", "module": "colico-renal" },
+      { "label": "Aneurisma de aorta abdominal", "module": "dolor-abdominal" }
     ]
   },
   {

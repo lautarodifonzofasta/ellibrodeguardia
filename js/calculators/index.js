@@ -2,12 +2,14 @@
 // and content/meta.json) to its pure scoring-interpretation function.
 // A calculator can also live only inside a content module, with no meta.json
 // entry of its own: calc-tac-craneo is embedded in content/modules/tec.html
-// via <div data-calculator="calc-tac-craneo"> (mounted by js/router.js), and
-// calc-qsofa in content/modules/sepsis.html.
+// via <div data-calculator="calc-tac-craneo"> (mounted by js/router.js),
+// calc-qsofa in content/modules/sepsis.html, and calc-twist in
+// content/modules/escroto-agudo.html.
 import { interpret as gcs } from './calc-gcs.js';
 import { interpret as sofa } from './calc-sofa.js';
 import { interpret as wellsTep } from './calc-wells-tep.js';
 import { interpret as curb65 } from './calc-curb65.js';
+import { interpret as twist } from './calc-twist.js';
 import { interpret as heart } from './calc-heart.js';
 import { interpret as chads } from './calc-chads.js';
 import { interpret as wellsTvp } from './calc-wells-tvp.js';
@@ -25,6 +27,7 @@ export const SCORED_CALCULATORS = {
   'calc-sofa': sofa,
   'calc-wells-tep': wellsTep,
   'calc-curb65': curb65,
+  'calc-twist': twist,
   'calc-heart': heart,
   'calc-chads': chads,
   'calc-wells-tvp': wellsTvp,

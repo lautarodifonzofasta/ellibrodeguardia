@@ -1,0 +1,66 @@
+{
+  "id": "calc-twist",
+  "title": "TWIST",
+  "requireAll": true,
+  "maxScore": 7,
+  "resettable": true,
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "TWIST — sospecha de torsión testicular",
+    "text": "Cinco hallazgos del examen. Desarrollado en niños y adolescentes y validado en adultos. No reemplaza el criterio clínico: ante la duda, consulta quirúrgica."
+  },
+  "groups": [
+    {
+      "id": "twist-tumefaccion",
+      "label": "Tumefacción testicular",
+      "type": "single",
+      "options": [
+        { "label": "No", "points": 0 },
+        { "label": "Sí", "points": 2 }
+      ]
+    },
+    {
+      "id": "twist-duro",
+      "label": "Testículo duro a la palpación",
+      "type": "single",
+      "options": [
+        { "label": "No", "points": 0 },
+        { "label": "Sí", "points": 2 }
+      ]
+    },
+    {
+      "id": "twist-cremasterico",
+      "label": "Reflejo cremastérico",
+      "type": "single",
+      "hint": "Rozar la cara interna del muslo: el testículo de ese lado tiene que ascender.",
+      "options": [
+        { "label": "Presente", "points": 0 },
+        { "label": "Ausente", "points": 1 }
+      ]
+    },
+    {
+      "id": "twist-nauseas",
+      "label": "Náuseas o vómitos",
+      "type": "single",
+      "options": [
+        { "label": "No", "points": 0 },
+        { "label": "Sí", "points": 1 }
+      ]
+    },
+    {
+      "id": "twist-alto",
+      "label": "Testículo elevado en el escroto",
+      "type": "single",
+      "options": [
+        { "label": "No", "points": 0 },
+        { "label": "Sí", "points": 1 }
+      ]
+    }
+  ],
+  "result": {
+    "initialScore": "—",
+    "initialLabel": "Completá los 5 hallazgos",
+    "note": "0–2: riesgo bajo · 3–4: intermedio · 5–7: alto"
+  }
+}
