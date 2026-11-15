@@ -111,3 +111,17 @@ test('a chief complaint pointing to a missing module is ignored, without breakin
   const idx = buildSearchIndex(meta, [{ title: 'Prueba', aliases: [], opens: ['no-existe'], dontMiss: [] }]);
   assert.deepEqual(search(idx, 'prueba'), []);
 });
+
+// 'score', 'puntaje', 'escala' and 'calculadora' only say «this is a score»: several
+// titles start with one, so they must not decide the result on their own.
+test('generic score words do not hijack the search', () => {
+  const topAny = q => search(index, q)?.[0]?.id;
+  assert.equal(topAny('score bisap'), 'pancreatitis');
+  assert.equal(topAny('score twist'), 'escroto-agudo');
+  assert.equal(topAny('score nihss'), 'calc-nihss');
+  assert.equal(topAny('score de centor'), 'faringoamig');
+  assert.equal(topAny('escala de acv'), 'calc-nihss');
+  assert.equal(topAny('escala de glasgow'), 'calc-gcs');
+  assert.equal(topAny('score oakland'), 'calc-oakland');
+  assert.ok(search(index, 'score')?.length > 0, 'the word alone still lists the scores');
+});

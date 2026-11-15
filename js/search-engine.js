@@ -122,8 +122,16 @@ function existsDirectly(vocabulary, q) {
   return vocabulary.some(t => tokenScore(q, t, false) > 0);
 }
 
+// Words that only say "this is a score" ("score BISAP", "escala de Glasgow").
+// Several titles start with one ("Score Oakland"), so on their own they made
+// "score bisap" bring Score Oakland first. They still add a little to the
+// score, but coverage is counted on the specific words of the query.
+const GENERIC = new Set(['score', 'puntaje', 'escala', 'calculadora']);
+const isGeneric = q => GENERIC.has(q) || (q.endsWith('s') && GENERIC.has(q.slice(0, -1)));
+
 // An entry's score: the best of the whole phrase and the word-by-word sum.
-// `coverage` = the share of the query words it matched.
+// `coverage` = the share of the query words it matched (the specific ones,
+// when the query has any).
 function scoreEntry(entry, queryTokens, queryJoined, typoTokens) {
   let phrase = 0;
   let phraseField = null;
@@ -140,6 +148,7 @@ function scoreEntry(entry, queryTokens, queryJoined, typoTokens) {
   let matched = 0;
   let best = 0;
   let bestField = null;
+  const specific = queryTokens.filter(q => !isGeneric(q)).length;
   for (const q of queryTokens) {
     let top = 0;
     let topField = null;
@@ -150,12 +159,13 @@ function scoreEntry(entry, queryTokens, queryJoined, typoTokens) {
       }
     }
     if (top > 0) {
-      matched++;
-      sum += top;
-      if (top > best) { best = top; bestField = topField; }
+      const generic = specific > 0 && isGeneric(q);
+      if (!generic) matched++;
+      sum += generic ? top / 2 : top;
+      if (!generic && top > best) { best = top; bestField = topField; }
     }
   }
-  const coverage = matched / queryTokens.length;
+  const coverage = matched / (specific || queryTokens.length);
   const byWords = (sum * 10 / queryTokens.length) * coverage * coverage;
   return phrase >= byWords
     ? { score: phrase, coverage: phrase ? 1 : coverage, field: phraseField }

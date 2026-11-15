@@ -52,7 +52,7 @@
   },
   {
     "title": "Cefalea",
-    "aliases": ["dolor de cabeza", "migraña", "jaqueca"],
+    "aliases": ["dolor de cabeza", "le duele la cabeza", "migraña", "jaqueca"],
     "opens": ["cefalea"],
     "dontMiss": [
       { "label": "Hemorragia subaracnoidea", "module": "cefalea" },
@@ -72,8 +72,8 @@
       { "label": "Embarazo ectópico", "module": "ginecoobs" },
       { "label": "Aneurisma de aorta", "module": "dolor-abdominal" },
       { "label": "Isquemia mesentérica", "module": "dolor-abdominal" },
-      { "label": "IAM inferior", "module": "dolor-toracico" },
       { "label": "Torsión testicular", "module": "escroto-agudo" },
+      { "label": "IAM inferior", "module": "dolor-toracico" },
       { "label": "Cetoacidosis", "module": "cad" },
       { "label": "Pancreatitis", "module": "pancreatitis" }
     ]
@@ -157,11 +157,11 @@
   },
   {
     "title": "Vómito con sangre o melena",
-    "aliases": ["hematemesis", "melena", "sangrado digestivo", "materia fecal negra", "vómito con sangre"],
+    "aliases": ["hematemesis", "melena", "sangrado digestivo", "materia fecal negra", "vómito con sangre", "vómito en borra de café", "caca negra", "rectorragia", "hematoquecia", "sangre en la materia fecal", "deposiciones con sangre", "sangrado por el ano", "sangrado rectal", "sangrado anal"],
     "opens": ["hemorragia-digestiva"],
     "dontMiss": [
       { "label": "Shock hemorrágico", "module": "shock" },
-      { "label": "Várices en el cirrótico", "module": "higado-descompensado" },
+      { "label": "Várices en el cirrótico", "module": "hemorragia-digestiva" },
       { "label": "Anticoagulado o antiagregado", "module": null }
     ]
   },
@@ -227,11 +227,11 @@
     "aliases": ["dolor de testículo", "testículo hinchado", "dolor escrotal", "escroto hinchado"],
     "opens": ["escroto-agudo"],
     "dontMiss": [
-      { "label": "Torsión testicular", "module": "escroto-agudo" },
       { "label": "Gangrena de Fournier", "module": "escroto-agudo" },
       { "label": "Hernia inguinal estrangulada", "module": "escroto-agudo" },
       { "label": "Cólico renal (dolor referido)", "module": "colico-renal" },
-      { "label": "Aneurisma de aorta abdominal", "module": "dolor-abdominal" }
+      { "label": "Aneurisma de aorta abdominal", "module": "dolor-abdominal" },
+      { "label": "Torsión testicular", "module": "escroto-agudo" }
     ]
   },
   {
@@ -300,7 +300,7 @@
   },
   {
     "title": "Diarrea y vómitos",
-    "aliases": ["diarrea", "vómitos", "gastroenteritis", "descompostura", "deshidratado"],
+    "aliases": ["diarrea", "vómitos", "gastroenteritis", "descompostura", "deshidratado", "descompuesto de la panza", "flojo de vientre", "deposiciones líquidas", "caca líquida"],
     "opens": ["gastroenteritis"],
     "dontMiss": [
       { "label": "Apendicitis", "module": "dolor-abdominal" },
@@ -312,11 +312,11 @@
   },
   {
     "title": "No puede orinar",
-    "aliases": ["retención de orina", "globo vesical", "no orina", "no puede hacer pis"],
+    "aliases": ["retención de orina", "globo vesical", "no orina", "no puede hacer pis", "retención urinaria", "vejiga llena"],
     "opens": ["rao"],
     "dontMiss": [
       { "label": "Cauda equina", "module": "lumbalgia" },
-      { "label": "Prostatitis aguda", "module": "itu" },
+      { "label": "Prostatitis aguda", "module": null },
       { "label": "Falla renal obstructiva", "module": "falla-renal" }
     ]
   }
