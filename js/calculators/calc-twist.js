@@ -11,7 +11,7 @@ export function interpret(score) {
     return {
       severity: 'red',
       label: 'Riesgo alto',
-      detail: 'Tratar como torsión: cirugía o urología de inmediato, sin esperar la ecografía.',
+      detail: 'Con menos de 48 h de dolor: cirugía o urología de inmediato, sin esperar la ecografía. Con 48 h o más: consulta quirúrgica urgente y eco Doppler.',
     };
   }
   if (score >= 3) {
@@ -26,6 +26,6 @@ export function interpret(score) {
     label: 'Riesgo bajo',
     // Pooled data from Qin & Qu (J Urol 2022), as tabulated in Am Fam Physician
     // 2022;106(6): torsion in 15/691 low-risk patients (2.2%).
-    detail: 'Torsión poco probable (cerca del 2% en el metaanálisis): buscar otra causa. Eco Doppler si queda la duda. Un puntaje bajo no descarta la torsión intermitente.',
+    detail: 'Torsión poco probable (alrededor de 2%; un puntaje bajo no la descarta). Si persiste la sospecha clínica, consulta quirúrgica como en riesgo alto. Un eco Doppler normal no descarta la torsión.',
   };
 }

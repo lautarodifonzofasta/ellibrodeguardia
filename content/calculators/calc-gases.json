@@ -6,7 +6,7 @@
     "kind": "b",
     "icon": "ℹ️",
     "title": "Gases en la exacerbación de EPOC",
-    "text": "Dice si hay acidosis respiratoria (indicación de VNI) y si la retención es aguda o crónica."
+    "text": "Dice si hay acidosis respiratoria (indicación de VNI) y si la retención es aguda o crónica. En la acidosis metabólica, si la compensación respiratoria alcanza (fórmula de Winter)."
   },
   "inputs": [
     { "id": "ph", "label": "pH", "type": "number", "min": 6.8, "max": 7.8, "step": 0.01, "placeholder": "7,30" },

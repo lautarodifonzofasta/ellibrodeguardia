@@ -17,9 +17,11 @@ test('Blatchford has one haemoglobin group and its maximum is 23', () => {
   assert.equal(max, 23);
 });
 
-test('Blatchford boundaries (source uses s===0, not s<=0)', () => {
+// ESGE and ACG: 0–1 can go home with outpatient endoscopy; 2 or more is admitted.
+test('Blatchford bands: 0–1 discharge, 2–6 admit, 7 or more high risk', () => {
   assert.equal(interpret(0).severity, 'green');
-  assert.equal(interpret(1).severity, 'amber');
+  assert.equal(interpret(1).severity, 'green');
+  assert.equal(interpret(2).severity, 'amber');
   assert.equal(interpret(6).severity, 'amber');
   assert.equal(interpret(7).severity, 'red');
 });

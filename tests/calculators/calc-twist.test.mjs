@@ -37,9 +37,9 @@ test('TWIST: five required findings, each with a zero-point answer, maximum 7', 
   assert.equal(definition.maxScore, 7);
 });
 
-test('high risk tells the reader not to wait for the ultrasound; low risk still warns about intermittent torsion', () => {
+test('high risk tells the reader not to wait for the ultrasound; low risk says a low score does not rule torsion out', () => {
   assert.match(interpret(6).detail, /sin esperar la ecografía/);
-  assert.match(interpret(1).detail, /intermitente/);
+  assert.match(interpret(1).detail, /no la descarta/);
 });
 
 test('TWIST is registered and embedded in the Escroto agudo module', () => {
