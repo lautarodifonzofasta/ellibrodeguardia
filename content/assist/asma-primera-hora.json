@@ -1,0 +1,14 @@
+{
+  "id": "asma-primera-hora",
+  "title": "Reloj de la primera hora",
+  "intro": "Marca las tres rondas de salbutamol cada 20 minutos, el corticoide y la reevaluación a la hora. Al final se copia el registro para la evolución.",
+  "graceMin": 5,
+  "steps": [
+    { "id": "o2", "atMin": 0, "skippable": true, "label": "Oxígeno titulado", "detail": "Si SpO₂ &lt;92%: objetivo 92–95%", "noteText": "Oxígeno titulado para SpO₂ 92–95%" },
+    { "id": "saba1", "atMin": 0, "label": "Salbutamol, 1ª ronda", "detail": "4–10 puffs con aerocámara o 2,5–5 mg nebulizado. Moderada o grave: + ipratropio 4–8 puffs o 0,5 mg nebulizado" },
+    { "id": "ctc", "atMin": 0, "graceMin": 60, "skippable": true, "label": "Corticoide sistémico", "detail": "Salvo crisis leve: prednisona 40–50 mg VO (o hidrocortisona 200 mg IV). Dentro de la primera hora" },
+    { "id": "saba2", "after": "saba1", "afterMin": 20, "label": "Salbutamol, 2ª ronda", "detail": "Con ipratropio si es moderada o grave, o si responde mal" },
+    { "id": "saba3", "after": "saba2", "afterMin": 20, "label": "Salbutamol, 3ª ronda", "detail": "Con ipratropio si es moderada o grave, o si responde mal" },
+    { "id": "reeval", "atMin": 60, "graceMin": 10, "label": "Reevaluar: síntomas, SpO₂ y PEF", "detail": "PEF &gt;60%: alta posible · 40–60%: seguir · &lt;40% (o &lt;25% al ingreso): internar", "noteText": "Reevaluación a la hora (síntomas, SpO₂, PEF)" }
+  ]
+}

@@ -10,8 +10,8 @@
   "drugs": [
     {
       "name": "Adrenalina (Epinefrina)",
-      "indication": "PCR, anafilaxis, asma severa",
-      "dose": "PCR: 1 mg IV c/3–5 min · Anafilaxis: 0,3–0,5 mg IM · Asma: 0,3 mg SC",
+      "indication": "PCR, anafilaxis",
+      "dose": "PCR: 1 mg IV c/3–5 min · Anafilaxis: 0,3–0,5 mg IM",
       "caution": "Taquiarritmias"
     },
     {

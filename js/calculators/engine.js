@@ -36,7 +36,9 @@
 //                              option chosen by a force does not force others
 //   "resettable": true         a button that clears every answer (asks for a
 //                              second tap first)
-// interpret(score, context) always gets context = { untestable: [codes] };
+// interpret(score, context) always gets context = { untestable: [codes],
+// points: [points of each selected option] } (calc-news2 uses points to spot
+// a single parameter scoring 3);
 // calculators that don't use it simply ignore the second argument.
 
 const SEVERITY_CLASS = { red: 'show-r', amber: 'show-a', green: 'show-g', neutral: 'show-n' };
@@ -150,14 +152,16 @@ export function renderScoredCalculator(container, definition, interpret) {
     }
     let score = 0;
     const untestable = [];
+    const points = [];
     container.querySelectorAll('.calc-opt.sel').forEach(el => {
       score += parseFloat(el.dataset.points);
+      points.push(parseFloat(el.dataset.points));
       if (optionDef(el).untestable) {
         const g = groupDefs.get(el.dataset.group);
         untestable.push(g.code ?? g.label ?? el.dataset.group);
       }
     });
-    const r = interpret(score, { untestable });
+    const r = interpret(score, { untestable, points });
     resultEl.className = `calc-result ${SEVERITY_CLASS[r.severity]}`;
     if (scoreEl) scoreEl.textContent = definition.maxScore ? `${score} / ${definition.maxScore}` : score;
     resultEl.querySelector('.cr-label').textContent = r.label;

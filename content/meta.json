@@ -76,7 +76,7 @@
     "icon": "🫁",
     "sub": "Algoritmo diferencial",
     "badge": "crit",
-    "keywords": ["falta de aire", "le falta el aire", "ahogo", "se ahoga", "dificultad respiratoria", "dificultad para respirar", "insuficiencia respiratoria", "desaturación", "saturación baja", "hipoxemia", "taquipnea", "neumotórax"]
+    "keywords": ["falta de aire", "le falta el aire", "ahogo", "se ahoga", "dificultad respiratoria", "dificultad para respirar", "insuficiencia respiratoria", "desaturación", "saturación baja", "hipoxemia", "taquipnea", "neumotórax", "no puede respirar"]
   },
   "tep": {
     "title": "TEP",
@@ -102,13 +102,13 @@
     "title": "EPOC exacerbado",
     "category": "🫁 Respiratorio",
     "icon": "💨",
-    "keywords": ["EPOC reagudizado", "exacerbación de EPOC", "enfisema", "bronquitis crónica", "tabaquista", "hipercapnia", "VMNI", "BiPAP", "ipratropio"]
+    "keywords": ["EPOC reagudizado", "exacerbación de EPOC", "enfisema", "bronquitis crónica", "tabaquista", "hipercapnia", "VMNI", "VNI", "BiPAP", "ipratropio", "acidosis respiratoria", "alto flujo", "ventilación no invasiva", "retenedor de CO2", "GOLD"]
   },
   "asma": {
-    "title": "Asma severa",
+    "title": "Crisis asmática",
     "category": "🫁 Respiratorio",
     "icon": "🌬️",
-    "keywords": ["crisis asmática", "broncoespasmo", "sibilancias", "silbidos en el pecho", "salbutamol", "nebulizaciones", "corticoides", "sulfato de magnesio", "pico flujo", "peak flow"]
+    "keywords": ["asma severa", "asma aguda", "broncoespasmo", "sibilancias", "silbidos en el pecho", "salbutamol", "nebulizaciones", "corticoides", "sulfato de magnesio", "pico flujo", "peak flow", "ataque de asma", "status asmático", "le chifla el pecho", "reloj de la primera hora", "GINA"]
   },
   "acv": {
     "title": "ACV / TIA",
@@ -122,7 +122,7 @@
     "category": "🧠 Neurológico",
     "icon": "⚡",
     "badge": "crit",
-    "keywords": ["convulsión", "convulsiona", "crisis convulsiva", "epilepsia", "status epiléptico", "estatus", "estado de mal epiléptico", "ataque epiléptico", "crisis tónico-clónica", "diazepam", "midazolam", "lorazepam", "levetiracetam", "valproato", "fenitoína", "benzodiacepinas"]
+    "keywords": ["convulsión", "convulsiona", "crisis convulsiva", "epilepsia", "status epiléptico", "estatus", "estado de mal epiléptico", "primera crisis convulsiva", "ataque epiléptico", "crisis tónico-clónica", "diazepam", "midazolam", "lorazepam", "levetiracetam", "valproato", "fenitoína", "benzodiacepinas"]
   },
   "tec": {
     "title": "TEC",
@@ -130,7 +130,7 @@
     "icon": "⛑️",
     "sub": "Traumatismo encefalocraneano",
     "badge": "crit",
-    "keywords": ["traumatismo encefalocraneano", "trauma de cráneo", "golpe en la cabeza", "se golpeó la cabeza", "cabeza", "cráneo", "TAC de cerebro", "TAC de cráneo", "regla canadiense", "Nueva Orleans", "PECARN", "hematoma subdural", "hematoma epidural", "conmoción cerebral", "neuroprotección", "herniación", "manitol"]
+    "keywords": ["traumatismo encefalocraneano", "trauma de cráneo", "golpe en la cabeza", "se golpeó la cabeza", "cabeza", "cráneo", "TAC de cerebro", "TAC de cráneo", "regla canadiense", "Nueva Orleans", "PECARN", "hematoma subdural", "hematoma epidural", "conmoción cerebral", "neuroprotección", "herniación", "manitol", "Canadian CT Head Rule"]
   },
   "cefalea": {
     "title": "Cefalea",
@@ -215,7 +215,7 @@
     "title": "Dolor abdominal agudo",
     "category": "🤢 Abdominal",
     "icon": "🤢",
-    "keywords": ["dolor de panza", "dolor de estómago", "abdomen agudo", "apendicitis", "obstrucción intestinal", "perforación", "peritonitis", "isquemia mesentérica", "diverticulitis", "vómitos", "fosa ilíaca derecha", "cuadrantes"]
+    "keywords": ["dolor de panza", "dolor de estómago", "abdomen agudo", "apendicitis", "obstrucción intestinal", "perforación", "peritonitis", "isquemia mesentérica", "diverticulitis", "vómitos", "fosa ilíaca derecha", "cuadrantes", "torsión ovárica", "torsión de ovario", "torsión anexial"]
   },
   "colico-renal": {
     "title": "Cólico renal",
@@ -240,7 +240,13 @@
     "category": "🤢 Abdominal",
     "icon": "🩸",
     "badge": "crit",
-    "keywords": ["HDA", "HDB", "sangrado digestivo", "sangrado", "hematemesis", "vómito con sangre", "melena", "materia fecal negra", "hematoquecia", "rectorragia", "várices", "úlcera péptica", "omeprazol", "terlipresina", "Blatchford", "endoscopía"]
+    "keywords": ["HDA", "HDB", "sangrado digestivo", "sangrado", "hematemesis", "vómito con sangre", "melena", "materia fecal negra", "hematoquecia", "rectorragia", "várices", "úlcera péptica", "omeprazol", "terlipresina", "Blatchford", "Oakland", "Forrest", "endoscopía", "transfusión", "anticoagulado que sangra", "angio-TC", "diverticular", "hemorragia digestiva alta", "hemorragia digestiva baja", "octreótido", "Baveno"]
+  },
+  "gastroenteritis": {
+    "title": "Gastroenteritis aguda y deshidratación",
+    "category": "🤢 Abdominal",
+    "icon": "💧",
+    "keywords": ["diarrea", "vómitos", "gastroenterocolitis", "GEA", "deshidratado", "sales de rehidratación", "rehidratación oral", "loperamida", "disentería", "diarrea con sangre", "intoxicación alimentaria", "síndrome urémico hemolítico", "SUH", "SRO", "comió algo en mal estado", "comida en mal estado"]
   },
   "higado-descompensado": {
     "title": "Hígado descompensado",
@@ -283,12 +289,26 @@
     "badge": "crit",
     "keywords": ["hiperpotasemia", "potasio", "potasio alto", "kalemia", "gluconato de calcio", "insulina con dextrosa", "T picudas", "diálisis"]
   },
+  "escroto-agudo": {
+    "title": "Escroto agudo",
+    "category": "🫘 Nefrología",
+    "icon": "⏱️",
+    "sub": "Torsión testicular · epididimitis · orquiepididimitis",
+    "badge": "crit",
+    "keywords": ["torsión testicular", "dolor testicular", "dolor de testículo", "testículo hinchado", "dolor escrotal", "epididimitis", "orquiepididimitis", "orquitis", "torsión de hidátide", "TWIST", "detorsión manual", "reflejo cremastérico", "gangrena de Fournier", "torsión", "eco Doppler testicular", "golpe en los testículos"]
+  },
   "falla-renal": {
     "title": "Falla renal aguda",
     "category": "🫘 Nefrología",
     "icon": "🫘",
     "badge": "crit",
     "keywords": ["insuficiencia renal aguda", "lesión renal aguda", "IRA", "creatinina alta", "uremia", "oliguria", "anuria", "no orina", "diálisis", "KDIGO", "nefrotóxicos"]
+  },
+  "rao": {
+    "title": "Retención aguda de orina",
+    "category": "🫘 Nefrología",
+    "icon": "🚽",
+    "keywords": ["RAO", "no puede orinar", "globo vesical", "sonda vesical", "sondaje", "Foley", "próstata", "hiperplasia prostática", "tamsulosina", "cauda equina", "poliuria posobstructiva", "HPB", "cistostomía"]
   },
   "ginecoobs": {
     "title": "Emergencias ginecobstétricas",
@@ -374,6 +394,13 @@
     "icon": "☠️",
     "keywords": ["intoxicado", "sobredosis", "intento de suicidio", "ingesta", "tomó pastillas", "toxidrome", "antídoto", "carbón activado", "paracetamol", "flumazenil", "opioides", "naloxona", "organofosforados", "monóxido de carbono", "CO", "cocaína", "metanol", "etilenglicol", "litio", "digoxina"]
   },
+  "monoxido": {
+    "title": "Monóxido de carbono",
+    "category": "🧬 Psiquiátrico / Toxicología",
+    "icon": "🔥",
+    "badge": "crit",
+    "keywords": ["intoxicación por CO", "carboxihemoglobina", "COHb", "estufa", "calefón", "brasero", "inhalación de humo", "cámara hiperbárica", "oxígeno al 100%", "cefalea con convivientes", "familia con dolor de cabeza", "incendio", "ambiente mal ventilado"]
+  },
   "panico": {
     "title": "Crisis de pánico",
     "category": "🧬 Psiquiátrico / Toxicología",
@@ -434,7 +461,39 @@
     "icon": "🧬",
     "badge": "calc",
     "type": "calculator",
-    "keywords": ["NIHSS", "escala de ACV", "gravedad del ACV"]
+    "keywords": ["NIHSS", "escala de ACV", "gravedad del ACV", "NIH Stroke Scale"]
+  },
+  "calc-news2": {
+    "title": "NEWS2",
+    "category": "🧮 Calculadoras",
+    "icon": "🧮",
+    "badge": "calc",
+    "type": "calculator",
+    "keywords": ["National Early Warning Score", "score de alerta temprana", "deterioro clínico", "signos vitales", "riesgo de sepsis"]
+  },
+  "calc-oakland": {
+    "title": "Score Oakland",
+    "category": "🧮 Calculadoras",
+    "icon": "🧮",
+    "badge": "calc",
+    "type": "calculator",
+    "keywords": ["Oakland", "hemorragia digestiva baja", "hematoquecia", "alta segura", "HDB"]
+  },
+  "calc-pef": {
+    "title": "Pico flujo (PEF)",
+    "category": "🧮 Calculadoras",
+    "icon": "🧮",
+    "badge": "calc",
+    "type": "calculator",
+    "keywords": ["PEF", "pico flujo", "peak flow", "flujo espiratorio pico", "porcentaje del predicho", "flujómetro", "peakflow"]
+  },
+  "calc-gases": {
+    "title": "Gases en EPOC",
+    "category": "🧮 Calculadoras",
+    "icon": "🧮",
+    "badge": "calc",
+    "type": "calculator",
+    "keywords": ["gasometría", "gases en sangre", "pH", "PaCO2", "acidosis respiratoria", "hipercapnia", "indicación de VNI", "EAB", "estado ácido-base"]
   },
   "calc-psi": {
     "title": "PSI / PORT",
@@ -457,7 +516,7 @@
     "icon": "🧮",
     "badge": "calc",
     "type": "calculator",
-    "keywords": ["Glasgow-Blatchford", "Blatchford", "riesgo de hemorragia digestiva"]
+    "keywords": ["Glasgow-Blatchford", "Blatchford", "riesgo de hemorragia digestiva", "HDA", "score de hemorragia digestiva alta"]
   },
   "calc-sodio": {
     "title": "Corrección de sodio",

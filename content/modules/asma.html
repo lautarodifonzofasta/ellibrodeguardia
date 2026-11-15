@@ -1,84 +1,119 @@
-
-<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Crisis asmática grave puede ser fatal — tratar agresivamente desde el inicio</span></div></div>
+<div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Clasificar, tratar y volver a medir a la hora</span>La crisis grave puede matar: salbutamol, ipratropio y corticoide sin demora.</div></div>
 <div class="tabs">
-  <div class="tab on" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-clas')">📊 Clasificación</div>
-  <div class="tab" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-tto')">💊 Tratamiento</div>
-  <div class="tab" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-intern')">🏥 Internación / Alta</div>
-  <div class="tab" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-riesgo')">⚠️ Alto riesgo</div>
+  <div class="tab on" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-clas')">📊 Gravedad</div>
+  <div class="tab" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-tto')">💊 Primera hora</div>
+  <div class="tab" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-reev')">🔁 Reevaluar</div>
+  <div class="tab" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-grave')">🫁 No responde</div>
+  <div class="tab" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-alta')">🏠 Alta</div>
+  <div class="tab" data-tab-grp="asma" onclick="switchTab(this,'asma','asma-riesgo')">⚠️ Riesgo</div>
 </div>
 <div id="asma-clas" class="tab-pane on">
-  <div class="card"><div class="card-body">
-    <div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Clasificar ANTES de tratar — GINA 2024</span></div></div>
-    <div class="tbl-wrap mt-8"><table class="tbl">
-      <thead><tr><th>Parámetro</th><th><span class="tag t-g">Leve</span></th><th><span class="tag t-a">Moderada</span></th><th><span class="tag t-r">Grave</span></th><th><span class="tag t-r">Riesgo vital</span></th></tr></thead>
-      <tbody>
-        <tr><td><strong>Disnea</strong></td><td>Al caminar</td><td>Al hablar</td><td>En reposo</td><td>Tórax silencioso</td></tr>
-        <tr><td><strong>Habla</strong></td><td>Frases completas</td><td>Frases cortas</td><td>Palabras sueltas</td><td>No puede hablar</td></tr>
-        <tr><td><strong>Conciencia</strong></td><td>Normal</td><td>Agitado</td><td>Muy agitado</td><td>Somnoliento/Confuso</td></tr>
-        <tr><td><strong>FR</strong></td><td>&lt;20 rpm</td><td>20-30 rpm</td><td>&gt;30 rpm</td><td>Bradipnea (fatiga)</td></tr>
-        <tr><td><strong>SatO₂</strong></td><td>&gt;95%</td><td>91-95%</td><td>&lt;90%</td><td>&lt;90% con O₂</td></tr>
-        <tr><td><strong>PEF</strong></td><td>&gt;70%</td><td>40-69%</td><td>&lt;40%</td><td>No puede</td></tr>
-        <tr><td><strong>Destino</strong></td><td>Ambulatorio</td><td>Urgencias</td><td>Internación</td><td>UCI</td></tr>
-      </tbody>
-    </table></div>
-    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Tórax silencioso = alarma máxima</span>Sin sibilancias en crisis grave = obstrucción casi total, NO mejoría. UCI inmediata.</div></div>
-  </div></div>
+<div class="card"><div class="card-body">
+<div class="tbl-wrap mt-8"><table class="tbl">
+  <thead><tr><th></th><th><span class="tag t-a">Leve a moderada</span></th><th><span class="tag t-r">Grave</span></th><th><span class="tag t-r">Riesgo vital</span></th></tr></thead>
+  <tbody>
+    <tr><td><strong>Habla</strong></td><td>Frases</td><td>Palabras sueltas</td><td>No puede</td></tr>
+    <tr><td><strong>Postura y ánimo</strong></td><td>Prefiere estar sentado, tranquilo</td><td>Inclinado hacia adelante, agitado</td><td>Somnoliento o confuso</td></tr>
+    <tr><td><strong>FR</strong></td><td>Aumentada</td><td>&gt;30/min</td><td>Bradipnea, agotamiento</td></tr>
+    <tr><td><strong>Músculos accesorios</strong></td><td>No</td><td>Sí</td><td>Respiración paradojal</td></tr>
+    <tr><td><strong>FC</strong></td><td>100–120/min</td><td>&gt;120/min</td><td>Bradicardia</td></tr>
+    <tr><td><strong>SpO₂ (aire)</strong></td><td>90–95%</td><td>&lt;90%</td><td>Cianosis</td></tr>
+    <tr><td><strong>PEF</strong></td><td>&gt;50% del predicho o mejor personal</td><td>≤50%</td><td>No lo puede hacer</td></tr>
+    <tr><td><strong>Auscultación</strong></td><td>Sibilancias</td><td>Sibilancias intensas</td><td><strong>Tórax silencioso</strong></td></tr>
+  </tbody>
+</table></div>
+<div class="cl cl-r mt-8"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Tórax silencioso, somnolencia o PaCO₂ normal o alta</span>No es mejoría: es agotamiento. UCI y preparar la vía aérea.</div></div>
+<div class="mt-8" data-calculator="calc-pef"></div>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Qué pedir</div><div class="sec-hd-line"></div></div>
+<ul class="bullets">
+  <li>SpO₂ continua y <strong>PEF antes y después</strong> del tratamiento</li>
+  <li>Gases: solo si PEF &lt;50%, SpO₂ &lt;92%, no responde o se deteriora. No de rutina</li>
+  <li>Rx de tórax: solo si se sospecha neumotórax o neumonía, o no responde</li>
+</ul>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Lo que simula</div><div class="sec-hd-line"></div></div>
+<p><strong>Anafilaxia</strong> (adrenalina primero: <a class="xref" href="#anafilaxia" onclick="navId('anafilaxia');return false">ver módulo</a>) · insuficiencia cardíaca · TEP · cuerpo extraño · obstrucción laríngea · neumotórax.</p>
+</div></div>
 </div>
 <div id="asma-tto" class="tab-pane">
-  <div class="card"><div class="card-body">
-    <div class="sec-hd"><div class="sec-hd-lbl">Leve a moderada — primera hora (GINA 2024)</div><div class="sec-hd-line"></div></div>
-    <div class="algo">
-      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">SABA</div><div class="step-body"><span class="drug">Salbutamol</span> <span class="dose">4-8 puffs c/20 min × 3</span> con aerocámara · O nebulizado <span class="dose">2,5-5 mg c/20 min × 3</span></div></div></div>
-      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Ipratropio — agregar en moderada/grave</div><div class="step-body"><span class="drug">Ipratropio</span> <span class="dose">4-8 puffs c/20 min</span> o <span class="dose">0,5 mg nebulizado</span> · Reduce hospitalizaciones</div></div></div>
-      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Corticoides — iniciar en 1ª hora</div><div class="step-body"><span class="drug">Prednisona</span> <span class="dose">40-60 mg VO</span> · o <span class="drug">Hidrocortisona</span> <span class="dose">200 mg IV</span> · o <span class="drug">Metilprednisolona</span> <span class="dose">125 mg IV</span></div></div></div>
-      <div class="step"><div class="step-n crit">4</div><div class="step-c"><div class="step-title">O₂ — objetivo SatO₂ 93-95%</div><div class="step-body">No dar 100% de rutina — evitar hipercapnia silenciosa</div></div></div>
-    </div>
-    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Grave — sin respuesta al tratamiento inicial</div><div class="sec-hd-line"></div></div>
-    <div class="algo">
-      <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Sulfato de magnesio IV — GINA 2024</div><div class="step-body"><span class="drug">Sulfato de magnesio</span> <span class="dose">2 g IV en 20 min</span> · Si no responde en 1ª hora · <strong>GINA 2025: NO usar forma nebulizada</strong></div></div></div>
-      <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Adrenalina — solo compromiso vital</div><div class="step-body"><span class="drug">Adrenalina 1:1000</span> <span class="dose">0,3-0,5 mg SC/IM</span></div></div></div>
-      <div class="step"><div class="step-n crit">3</div><div class="step-c"><div class="step-title">Ventilación mecánica</div><div class="step-body">IOT si: coma · paro respiratorio · fatiga sin mejoría · Llamar UCI</div></div></div>
-    </div>
-    <div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">NO usar en crisis aguda</span>Sedantes · Mucolíticos · ATB (salvo infección documentada)</div></div>
-  </div></div>
+<div class="card"><div class="card-body">
+<div class="mt-8" data-assist="asma-primera-hora"></div>
+<div class="algo">
+  <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Oxígeno titulado</div><div class="step-body">Objetivo <strong>SpO₂ 92–95%</strong> (embarazada: &gt;95%). No dar oxígeno al 100% de rutina.</div></div></div>
+  <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Salbutamol</div><div class="step-body"><span class="drug">Salbutamol</span> <span class="dose">4–10 puffs con aerocámara cada 20 min, 3 veces</span>. O nebulizado <span class="dose">2,5–5 mg (10–20 gotas de la solución al 0,5%) cada 20 min, 3 veces</span>. En leve a moderada, la aerocámara rinde igual que la nebulización.</div></div></div>
+  <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Ipratropio</div><div class="step-body">En moderada o grave, o si responde mal: <span class="drug">Ipratropio</span> <span class="dose">4–8 puffs cada 20 min, 3 veces</span> o <span class="dose">0,5 mg nebulizado</span> junto con el salbutamol.</div></div></div>
+  <div class="step"><div class="step-n crit">4</div><div class="step-c"><div class="step-title">Corticoide sistémico en la primera hora</div><div class="step-body">En todas salvo las leves: <span class="drug">Prednisona</span> <span class="dose">40–50 mg VO</span>. La vía oral rinde igual que la intravenosa. Si no tolera: <span class="drug">Hidrocortisona</span> <span class="dose">200 mg IV</span> o <span class="drug">Metilprednisolona</span> <span class="dose">40–60 mg IV</span>.</div></div></div>
+  <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">Si usa budesonida/formoterol de rescate</div><div class="step-body">Puede seguir usándolo: en estudios de guardia, en dosis altas, fue tan eficaz y seguro como el salbutamol (GINA 2026).</div></div></div>
+  <div class="step"><div class="step-n">6</div><div class="step-c"><div class="step-title">A la hora: reevaluar</div><div class="step-body">Síntomas, SpO₂ y PEF. Ver pestaña Reevaluar.</div></div></div>
 </div>
-<div id="asma-intern" class="tab-pane">
-  <div class="card"><div class="card-body">
-    <div class="sec-hd"><div class="sec-hd-lbl">Criterios de internación — GINA 2024</div><div class="sec-hd-line"></div></div>
-    <ul class="bullets">
-      <li>SatO₂ &lt;90% persistente con O₂</li>
-      <li>PEF &lt;40% tras 1h de tratamiento</li>
-      <li>Sin mejoría tras 1-3 dosis de SABA</li>
-      <li>Antecedente de intubación por asma</li>
-    </ul>
-    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Criterios de UCI</div><div class="sec-hd-line"></div></div>
-    <ul class="bullets">
-      <li>Tórax silencioso · Cianosis · Compromiso de conciencia</li>
-      <li>PaCO₂ &gt;45 mmHg (falla ventilatoria)</li>
-    </ul>
-    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Al alta — GINA 2024</div><div class="sec-hd-line"></div></div>
-    <ul class="bullets">
-      <li><span class="drug">Prednisona</span> <span class="dose">40-60 mg/día VO × 5-7 días</span></li>
-      <li>Revisar técnica de inhalador + aerocámara</li>
-      <li><strong>Iniciar corticoide inhalado antes del alta — NO enviar sin CI</strong></li>
-      <li>Derivar en 1-2 semanas · Plan de acción escrito</li>
-    </ul>
-  </div></div>
+<div class="cl cl-a mt-8"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">No usar</span>Sedantes · antibióticos de rutina · aminofilina · mucolíticos · magnesio nebulizado.</div></div>
+</div></div>
+</div>
+<div id="asma-reev" class="tab-pane">
+<div class="card"><div class="card-body">
+<div class="tbl-wrap mt-8"><table class="tbl">
+  <thead><tr><th>PEF a la hora</th><th>Conducta</th></tr></thead>
+  <tbody>
+    <tr><td><span class="tag t-g">&gt;60–80%</span> y mejoría sostenida</td><td>Alta con plan (pestaña Alta)</td></tr>
+    <tr><td><span class="tag t-a">40–60%</span></td><td>Seguir tratando y observar. Alta posible según factores de riesgo y seguimiento</td></tr>
+    <tr><td><span class="tag t-r">&lt;40%</span> (o &lt;25% al ingreso)</td><td>Internación</td></tr>
+    <tr><td><span class="tag t-r">Deterioro, somnolencia, tórax silencioso, PaCO₂ ≥45</span></td><td>UCI</td></tr>
+  </tbody>
+</table></div>
+<p>Mientras tanto: salbutamol cada 1–4 h según respuesta, oxígeno para SpO₂ 92–95% y control frecuente.</p>
+</div></div>
+</div>
+<div id="asma-grave" class="tab-pane">
+<div class="card"><div class="card-body">
+<div class="algo">
+  <div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Nebulización continua</div><div class="step-body"><span class="drug">Salbutamol</span> <span class="dose">10–15 mg/h</span> con <span class="drug">Ipratropio</span>, impulsados con oxígeno.</div></div></div>
+  <div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Sulfato de magnesio</div><div class="step-body"><span class="drug">Sulfato de magnesio</span> <span class="dose">2 g IV en 20 min</span>, dosis única. En la grave que no responde a la primera hora.</div></div></div>
+  <div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Corticoide intravenoso</div><div class="step-body">Si no lo recibió o no tolera la vía oral.</div></div></div>
+  <div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Adrenalina</div><div class="step-body"><span class="dose">0,3–0,5 mg IM</span> <strong>solo</strong> si hay anafilaxia o angioedema asociados.</div></div></div>
+  <div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">VNI</div><div class="step-body">Evidencia débil. Solo prueba corta en paciente colaborador y monitorizado, sin demorar la intubación.</div></div></div>
+  <div class="step"><div class="step-n crit">6</div><div class="step-c"><div class="step-title">Intubación</div><div class="step-body">Decisión clínica: agotamiento, deterioro del sensorio, hipercapnia progresiva, paro inminente. <span class="drug">Ketamina</span> <span class="dose">1–2 mg/kg</span> + <span class="drug">Rocuronio</span> <span class="dose">1,2 mg/kg</span>. Tubo ≥8. Tener volumen y vasopresor listos: la hipotensión posintubación es frecuente.</div></div></div>
+  <div class="step"><div class="step-n">7</div><div class="step-c"><div class="step-title">Ventilación</div><div class="step-body">Volumen corriente 6–8 ml/kg de peso ideal · FR 10–12 · espiración larga (I:E 1:4 o más) · PEEP baja · meseta &lt;30 cmH₂O · tolerar hipercapnia (pH ≥7,20).</div></div></div>
+  <div class="step"><div class="step-n">8</div><div class="step-c"><div class="step-title">Hipotensión brusca en el respirador</div><div class="step-body">Desconectar y dejar exhalar (atrapamiento aéreo). Si no mejora: descartar neumotórax.</div></div></div>
+</div>
+</div></div>
+</div>
+<div id="asma-alta" class="tab-pane">
+<div class="card"><div class="card-body">
+<div class="sec-hd"><div class="sec-hd-lbl">Criterios</div><div class="sec-hd-line"></div></div>
+<ul class="bullets">
+  <li>Síntomas mínimos, PEF &gt;60–80%, SpO₂ &gt;94% al aire</li>
+  <li>No necesita salbutamol más seguido que cada 3–4 h</li>
+  <li>Sabe usar el inhalador y tiene con qué comprarlo</li>
+</ul>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Receta</div><div class="sec-hd-line"></div></div>
+<ul class="bullets">
+  <li><span class="drug">Prednisona</span> <span class="dose">40–50 mg/día por 5–7 días</span>, sin descenso</li>
+  <li><strong>Corticoide inhalado siempre.</strong> Preferido: budesonida/formoterol como mantenimiento y rescate. Alternativa: corticoide inhalado + LABA diario y salbutamol de rescate</li>
+  <li>Aerocámara y revisión de la técnica</li>
+  <li>Plan de acción por escrito</li>
+</ul>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Seguimiento</div><div class="sec-hd-line"></div></div>
+<ul class="bullets">
+  <li><strong>Control dentro de la semana</strong></li>
+  <li>Volver si necesita el rescate más seguido que cada 3–4 h, si usa más de 12 inhalaciones de budesonida/formoterol en un día o si no mejora en 2–3 días</li>
+</ul>
+</div></div>
 </div>
 <div id="asma-riesgo" class="tab-pane">
-  <div class="card"><div class="card-body">
-    <div class="sec-hd"><div class="sec-hd-lbl">Factores de riesgo de asma fatal — GINA 2024</div><div class="sec-hd-line"></div></div>
-    <ul class="bullets">
-      <li>Antecedente de intubación o UCI por asma</li>
-      <li>≥1 crisis grave en el último año</li>
-      <li>Uso excesivo de SABA (&gt;1 canister/mes)</li>
-      <li>Sin corticoides inhalados · Mala adherencia</li>
-    </ul>
-    <div class="cl cl-b mt-8"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">GINA 2024 — SABA solo ya NO es primera línea</span>Preferir budesonida/formoterol a demanda (AIR therapy).<br>En guardia: SABA + iniciar CI al alta siempre.</div></div>
-    <div class="sec-hd mt-12"><div class="sec-hd-lbl">Asma en embarazo</div><div class="sec-hd-line"></div></div>
-    <ul class="bullets">
-      <li>Tratar igual — hipoxia fetal supera el riesgo del tratamiento</li>
-      <li>Objetivo SatO₂ &gt;95% · Salbutamol · Corticoides · MgSO₄: seguros</li>
-    </ul>
-  </div></div>
+<div class="card"><div class="card-body">
+<div class="sec-hd"><div class="sec-hd-lbl">Factores de riesgo de muerte por asma</div><div class="sec-hd-line"></div></div>
+<ul class="bullets">
+  <li>Intubación o UCI previa por asma</li>
+  <li>Internación o consulta a guardia por asma en el último año</li>
+  <li>Uso actual o reciente de corticoides orales</li>
+  <li>Sin corticoide inhalado, o mala adherencia</li>
+  <li>Sobreuso de salbutamol (más de un envase por mes)</li>
+  <li>Sin plan de acción escrito</li>
+  <li>Enfermedad psiquiátrica o problemas psicosociales</li>
+  <li>Alergia alimentaria</li>
+</ul>
+<p>Con cualquiera de ellos: umbral bajo para internar y control muy cercano.</p>
+<div class="sec-hd mt-12"><div class="sec-hd-lbl">Embarazo</div><div class="sec-hd-line"></div></div>
+<p>Tratar igual. La hipoxia fetal es más peligrosa que cualquier fármaco de la crisis. SpO₂ &gt;95% y monitoreo fetal.</p>
+<p class="src-line">Fuentes: GINA 2026 (Global Strategy for Asthma Management and Prevention, y Summary Guide). Revisión: 2026-11.</p>
+</div></div>
 </div>

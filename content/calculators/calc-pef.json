@@ -1,0 +1,26 @@
+{
+  "id": "calc-pef",
+  "title": "Pico flujo (PEF)",
+  "form": true,
+  "intro": {
+    "kind": "b",
+    "icon": "ℹ️",
+    "title": "PEF como porcentaje del mejor valor personal o del predicho",
+    "text": "Tomar el mejor de tres intentos. Si el paciente conoce su mejor valor, cargarlo; si no, se estima con sexo, edad y talla."
+  },
+  "inputs": [
+    { "id": "pef", "label": "PEF medido", "unit": "L/min", "type": "number", "min": 30, "max": 900, "step": 10, "placeholder": "250" },
+    { "id": "moment", "label": "Momento", "type": "select", "default": "arrival", "options": [
+      { "value": "arrival", "label": "Al ingreso" },
+      { "value": "hour", "label": "A la hora de tratamiento" }
+    ] },
+    { "id": "best", "label": "Mejor valor personal", "unit": "L/min", "type": "number", "min": 100, "max": 900, "step": 10, "placeholder": "Opcional" },
+    { "id": "sex", "label": "Sexo", "type": "select", "default": "m", "options": [
+      { "value": "m", "label": "Varón" },
+      { "value": "f", "label": "Mujer" }
+    ] },
+    { "id": "age", "label": "Edad", "unit": "años", "type": "number", "min": 15, "max": 85, "step": 1 },
+    { "id": "height", "label": "Talla", "unit": "cm", "type": "number", "min": 120, "max": 220, "step": 1 }
+  ],
+  "placeholder": "Cargá el PEF medido y el mejor valor personal, o edad y talla para estimar el predicho."
+}

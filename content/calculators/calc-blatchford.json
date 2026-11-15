@@ -5,7 +5,7 @@
     "kind": "b",
     "icon": "ℹ️",
     "title": "Score de Blatchford — riesgo en hemorragia digestiva alta",
-    "text": "Score 0: puede considerarse ambulatorio. >6: endoscopía urgente."
+    "text": "Score 0–1: alta con endoscopía ambulatoria (ESGE, ACG). 2 o más: internar."
   },
   "groups": [
     {
@@ -58,6 +58,6 @@
   "result": {
     "initialScore": 0,
     "initialLabel": "Completá urea, hemoglobina y PAS",
-    "note": "0: ambulatorio · 1–6: internar · >6: endoscopía urgente"
+    "note": "0–1: alta · 2–6: internar · ≥7: alto riesgo"
   }
 }

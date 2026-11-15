@@ -40,7 +40,7 @@
     {
       "name": "Ciprofloxacina (Cipro)",
       "indication": "Gram- incluyendo Pseudomonas, ITU",
-      "dose": "400 mg c/12h IV · 500 mg c/12h VO"
+      "dose": "400 mg c/12h IV · 500 mg c/12h VO (Pseudomonas: 750 mg c/12h VO)"
     },
     {
       "name": "Levofloxacina",

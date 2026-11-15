@@ -34,7 +34,7 @@
       { "label": "Arritmia", "module": "arritmias" },
       { "label": "Hipoglucemia", "module": "hipoglucemia" },
       { "label": "Hemorragia digestiva", "module": "hemorragia-digestiva" },
-      { "label": "Intoxicación por CO", "module": "intoxicaciones" }
+      { "label": "Intoxicación por CO", "module": "monoxido" }
     ]
   },
   {
@@ -52,7 +52,7 @@
   },
   {
     "title": "Cefalea",
-    "aliases": ["dolor de cabeza", "migraña", "jaqueca"],
+    "aliases": ["dolor de cabeza", "le duele la cabeza", "migraña", "jaqueca"],
     "opens": ["cefalea"],
     "dontMiss": [
       { "label": "Hemorragia subaracnoidea", "module": "cefalea" },
@@ -60,7 +60,7 @@
       { "label": "ACV hemorrágico", "module": "acv" },
       { "label": "Crisis hipertensiva", "module": "crisis-hta" },
       { "label": "Preeclampsia", "module": "hta-gestacional" },
-      { "label": "Intoxicación por CO", "module": "intoxicaciones" },
+      { "label": "Intoxicación por CO", "module": "monoxido" },
       { "label": "Trombosis venosa cerebral", "module": null }
     ]
   },
@@ -72,6 +72,7 @@
       { "label": "Embarazo ectópico", "module": "ginecoobs" },
       { "label": "Aneurisma de aorta", "module": "dolor-abdominal" },
       { "label": "Isquemia mesentérica", "module": "dolor-abdominal" },
+      { "label": "Torsión testicular", "module": "escroto-agudo" },
       { "label": "IAM inferior", "module": "dolor-toracico" },
       { "label": "Cetoacidosis", "module": "cad" },
       { "label": "Pancreatitis", "module": "pancreatitis" }
@@ -156,11 +157,11 @@
   },
   {
     "title": "Vómito con sangre o melena",
-    "aliases": ["hematemesis", "melena", "sangrado digestivo", "materia fecal negra", "vómito con sangre"],
+    "aliases": ["hematemesis", "melena", "sangrado digestivo", "materia fecal negra", "vómito con sangre", "vómito en borra de café", "caca negra", "rectorragia", "hematoquecia", "sangre en la materia fecal", "deposiciones con sangre", "sangrado por el ano", "sangrado rectal", "sangrado anal"],
     "opens": ["hemorragia-digestiva"],
     "dontMiss": [
       { "label": "Shock hemorrágico", "module": "shock" },
-      { "label": "Várices en el cirrótico", "module": "higado-descompensado" },
+      { "label": "Várices en el cirrótico", "module": "hemorragia-digestiva" },
       { "label": "Anticoagulado o antiagregado", "module": null }
     ]
   },
@@ -219,6 +220,18 @@
       { "label": "Cólico renal infectado", "module": "colico-renal" },
       { "label": "ITS", "module": "gineco-infecciones" },
       { "label": "Embarazo", "module": "ginecoobs" }
+    ]
+  },
+  {
+    "title": "Dolor testicular",
+    "aliases": ["dolor de testículo", "testículo hinchado", "dolor escrotal", "escroto hinchado"],
+    "opens": ["escroto-agudo"],
+    "dontMiss": [
+      { "label": "Gangrena de Fournier", "module": "escroto-agudo" },
+      { "label": "Hernia inguinal estrangulada", "module": "escroto-agudo" },
+      { "label": "Cólico renal (dolor referido)", "module": "colico-renal" },
+      { "label": "Aneurisma de aorta abdominal", "module": "dolor-abdominal" },
+      { "label": "Torsión testicular", "module": "escroto-agudo" }
     ]
   },
   {
@@ -283,6 +296,28 @@
       { "label": "TEC", "module": "tec" },
       { "label": "Intoxicación o abstinencia", "module": "intoxicaciones" },
       { "label": "Sepsis", "module": "sepsis" }
+    ]
+  },
+  {
+    "title": "Diarrea y vómitos",
+    "aliases": ["diarrea", "vómitos", "gastroenteritis", "descompostura", "deshidratado", "descompuesto de la panza", "flojo de vientre", "deposiciones líquidas", "caca líquida"],
+    "opens": ["gastroenteritis"],
+    "dontMiss": [
+      { "label": "Apendicitis", "module": "dolor-abdominal" },
+      { "label": "Cetoacidosis", "module": "cad" },
+      { "label": "Intoxicación por CO", "module": "monoxido" },
+      { "label": "Sepsis", "module": "sepsis" },
+      { "label": "Isquemia mesentérica", "module": "dolor-abdominal" }
+    ]
+  },
+  {
+    "title": "No puede orinar",
+    "aliases": ["retención de orina", "globo vesical", "no orina", "no puede hacer pis", "retención urinaria", "vejiga llena"],
+    "opens": ["rao"],
+    "dontMiss": [
+      { "label": "Cauda equina", "module": "lumbalgia" },
+      { "label": "Prostatitis aguda", "module": null },
+      { "label": "Falla renal obstructiva", "module": "falla-renal" }
     ]
   }
 ]
