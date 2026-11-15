@@ -17,13 +17,13 @@
     {
       "name": "Ipratropio (Atrovent)",
       "indication": "EPOC, asma (combinado)",
-      "dose": "Nebuliz: 0,5 mg c/6–8h · Inhaler: 2 puff c/6h",
+      "dose": "Crisis asmática: 0,5 mg nebulizado o 4–8 puffs c/20 min × 3, con salbutamol · EPOC: 0,5 mg nebulizado o 4–8 puffs c/4–6h",
       "caution": "Retención urinaria, glaucoma"
     },
     {
       "name": "Metilprednisolona (Solu-Medrol)",
       "indication": "Asma severa, EPOC, IC, alergia",
-      "dose": "Asma: 125 mg IV · EPOC: 40 mg IV c/12h",
+      "dose": "Asma: 40–60 mg IV · EPOC: 40 mg IV c/12h",
       "caution": "Hiperglucemia, infección"
     },
     {
@@ -34,9 +34,9 @@
     },
     {
       "name": "Aminofilina (Teofilina)",
-      "indication": "EPOC/Asma refractaria (2ª línea)",
+      "indication": "No recomendada en la crisis asmática ni en la exacerbación de EPOC (GINA, GOLD)",
       "dose": "6 mg/kg IV en 30 min (si no tomaba) → 0,5 mg/kg/h",
-      "caution": "Taquiarritmias, convulsiones si > nivel"
+      "caution": "Más efectos adversos que beneficio en la crisis. Taquiarritmias, convulsiones si nivel alto"
     },
     {
       "name": "Ketamina",
