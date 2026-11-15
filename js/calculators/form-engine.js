@@ -7,6 +7,11 @@
 //   "inputs": [{ "id", "label", "type": "number" | "select", "unit"?, "min"?,
 //                "max"?, "step"?, "placeholder"?, "default"?, "options"? }]
 //   "placeholder": text shown until compute() has enough to work with
+// A "number" field is drawn as <input type="text" inputmode="decimal">, not
+// type="number": with type="number" some browsers reject "7,30" when the
+// device language uses a point, and the field reads as empty. readValues()
+// accepts a comma or a point. "min"/"max"/"step" stay in the JSON for
+// reference but are not rendered: compute() checks the ranges itself.
 // compute(values) gets every field by id — numbers as Number (an empty or
 // invalid field is undefined), selects as their string value — and returns
 // null (not enough data) or
@@ -31,8 +36,8 @@ function fieldHtml(inp) {
       .join('');
     return `<div class="calc-input-row">${label}<select id="${escapeAttr(inp.id)}" data-field="${escapeAttr(inp.id)}">${options}</select></div>`;
   }
-  return `<div class="calc-input-row">${label}<input type="number" inputmode="decimal" id="${escapeAttr(inp.id)}" data-field="${escapeAttr(inp.id)}"` +
-    attr('value', inp.default) + attr('min', inp.min) + attr('max', inp.max) + attr('step', inp.step) + attr('placeholder', inp.placeholder) + `></div>`;
+  return `<div class="calc-input-row">${label}<input type="text" inputmode="decimal" id="${escapeAttr(inp.id)}" data-field="${escapeAttr(inp.id)}"` +
+    attr('value', inp.default) + attr('placeholder', inp.placeholder) + `></div>`;
 }
 
 /** Reads the form into the object compute() receives. Exported for tests. */
@@ -43,7 +48,10 @@ export function readValues(definition, getRaw) {
     if (inp.type === 'select') {
       values[inp.id] = raw;
     } else {
-      const n = raw === '' || raw === null || raw === undefined ? NaN : Number(String(raw).replace(',', '.'));
+      // A text field: blank or spaces-only is empty (Number(' ') would be 0),
+      // and only plain decimals count ("0x10" or "1e3" are not a reading).
+      const s = raw === null || raw === undefined ? '' : String(raw).trim();
+      const n = /^[+-]?(\d+([.,]\d*)?|[.,]\d+)$/.test(s) ? Number(s.replace(',', '.')) : NaN;
       values[inp.id] = Number.isFinite(n) ? n : undefined;
     }
   }

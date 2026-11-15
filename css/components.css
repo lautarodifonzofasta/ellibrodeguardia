@@ -1005,9 +1005,14 @@ ul.bullets li strong { color: var(--text); }
 .as-step.as-overdue .as-state { color: var(--red); }
 .as-step.as-done { border-color: var(--grn-bd); background: var(--grn-bg); }
 .as-step.as-done .as-state { color: var(--green); }
+.as-step.as-skipped { border-color: var(--border2); opacity: .75; }
+.as-step.as-skipped .as-state { color: var(--text3); }
 .as-step.as-waiting, .as-step.as-upcoming { opacity: .8; }
 .as-btn { font: inherit; font-size: 13px; font-weight: 600; padding: 8px 14px; min-height: 36px; border-radius: 10px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); cursor: pointer; }
 .as-btn:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
 .as-btn.as-start { width: 100%; background: var(--acc); border-color: var(--acc); color: var(--bg); }
 .as-btn.as-undo { color: var(--text3); background: transparent; }
+.as-btn[data-skip] { font-size: 12px; padding: 6px 10px; min-height: 32px; }
 .as-foot { display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; margin-top: 12px; }
+.as-note { display: block; width: 100%; box-sizing: border-box; margin: 0; font: 14px/1.5 var(--font); color: var(--text); background: var(--bg); border: 1px solid var(--border2); border-radius: 10px; padding: 10px; resize: vertical; }
+.as-note:focus { border-color: var(--acc); }

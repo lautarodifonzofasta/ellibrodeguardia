@@ -13,6 +13,12 @@ test('readValues: numbers (comma or point), empty fields and selects', () => {
   assert.deepEqual(readValues(def, id => raw[id]), { a: 7.3, b: undefined, c: undefined, s: 'hour' });
 });
 
+test('readValues: a comma decimal typed in a text field becomes a number, surrounding spaces ignored', () => {
+  const def = { inputs: [{ id: 'hco3', type: 'number' }, { id: 'ph', type: 'number' }] };
+  const raw = { hco3: '24,5', ph: ' 7,28 ' };
+  assert.deepEqual(readValues(def, id => raw[id]), { hco3: 24.5, ph: 7.28 });
+});
+
 test('every form calculator has a JSON definition with "form": true and inputs', () => {
   for (const id of Object.keys(FORM_CALCULATORS)) {
     const def = load(id);
@@ -31,4 +37,12 @@ test('every calculator JSON is registered in exactly one engine (calc-sodio keep
     assert.equal(Boolean(def.groups), id in SCORED_CALCULATORS, `${id}: scored registry`);
     assert.equal(def.form === true, id in FORM_CALCULATORS, `${id}: form registry`);
   }
+});
+
+// A text field holding only spaces is empty, not 0 (Number(' ') === 0), and
+// only plain decimals count as a reading.
+test('readValues: blank, spaces-only and non-decimal text are undefined', () => {
+  const def = { inputs: ['a', 'b', 'c', 'd', 'e'].map(id => ({ id, type: 'number' })) };
+  const raw = { a: '  ', b: '	', c: '0x10', d: '1e3', e: '-0,5' };
+  assert.deepEqual(readValues(def, id => raw[id]), { a: undefined, b: undefined, c: undefined, d: undefined, e: -0.5 });
 });

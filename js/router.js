@@ -179,7 +179,7 @@ async function mountEmbeddedCalculators(container) {
       renderScoredCalculator(slot, def, interpret);
     } catch (err) {
       console.error(`Failed to mount embedded calculator "${id}":`, err);
-      slot.innerHTML = '<div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body">No se pudo cargar el checklist. Recargá la página.</div></div>';
+      slot.innerHTML = '<div class="cl cl-a"><div class="cl-ico">⚠️</div><div class="cl-body">No se pudo cargar la calculadora. Recargá la página.</div></div>';
     }
   }));
 }
