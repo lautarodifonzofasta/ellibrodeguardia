@@ -46,6 +46,22 @@ const homeBox = [
   ['golpe en los testículos', 'escroto-agudo'],
   ['torsión', 'escroto-agudo'],
   ['torsión ovárica', 'dolor-abdominal'],
+  ['se cortó la mano', 'heridas'],
+  ['necesita puntos', 'heridas'],
+  ['sutura', 'heridas'],
+  ['antitetánica', 'heridas'],
+  ['clavo oxidado', 'heridas'],
+  ['lo mordió un perro', 'mordeduras'],
+  ['mordedura de gato', 'mordeduras'],
+  ['murciélago', 'mordeduras'],
+  ['antirrábica', 'mordeduras'],
+  ['se torció el tobillo', 'trauma-menor'],
+  ['esguince', 'trauma-menor'],
+  ['fractura expuesta', 'trauma-menor'],
+  ['se le salió el hombro', 'trauma-menor'],
+  ['escafoides', 'trauma-menor'],
+  ['golpe en la cabeza', 'tec'],
+  ['herida de arma blanca', 'politrauma'],
 ];
 
 const anyBox = [
