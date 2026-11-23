@@ -382,6 +382,34 @@
     "sub": "Banderas rojas + estudio",
     "keywords": ["dolor lumbar", "dolor de espalda", "dolor de cintura", "lumbago", "ciática", "hernia de disco", "Lasègue", "cauda equina", "silla de montar", "retención urinaria", "espondilodiscitis", "compresión medular", "banderas rojas"]
   },
+  "heridas": {
+    "title": "Heridas y suturas",
+    "category": "🩹 Heridas y trauma",
+    "icon": "🩹",
+    "sub": "Cierre · antitetánica · antibióticos",
+    "keywords": ["herida", "herida cortante", "corte", "se cortó", "tajo", "laceración", "sutura", "suturar", "puntos", "necesita puntos", "retiro de puntos", "sacar los puntos", "hilo", "antitetánica", "vacuna antitetánica", "tétanos", "doble adultos", "gammaglobulina antitetánica", "clavo oxidado", "herida punzante", "pinchazo", "cuerpo extraño", "astilla", "vidrio", "lidocaína", "anestesia local", "adhesivo tisular", "cierre diferido", "herida sucia", "herida contaminada", "profilaxis antibiótica", "cefalexina"]
+  },
+  "mordeduras": {
+    "title": "Mordeduras y rabia",
+    "category": "🩹 Heridas y trauma",
+    "icon": "🐕",
+    "sub": "Perro, gato, humana · antirrábica (Argentina)",
+    "keywords": ["mordedura", "mordedura de perro", "lo mordió un perro", "me mordió un perro", "mordida", "mordedura de gato", "arañazo de gato", "mordedura humana", "murciélago", "rabia", "antirrábica", "vacuna antirrábica", "gammaglobulina antirrábica", "profilaxis postexposición", "accidente potencialmente rábico", "zoonosis", "observación del animal", "Pasteurella", "amoxicilina clavulánico", "pelea nudillo", "Zagreb", "Essen", "rata", "mono"]
+  },
+  "trauma-menor": {
+    "title": "Esguinces, fracturas y luxaciones",
+    "category": "🩹 Heridas y trauma",
+    "icon": "🦶",
+    "sub": "Ottawa · inmovilización · lo que no espera",
+    "keywords": ["esguince", "torcedura", "se torció el tobillo", "se dobló el pie", "tobillo hinchado", "fractura", "se quebró", "fisura", "luxación", "hombro salido", "se le salió el hombro", "dislocado", "yeso", "valva", "férula", "inmovilización", "cabestrillo", "Ottawa", "tobillo", "rodilla", "muñeca", "escafoides", "tabaquera anatómica", "fractura expuesta", "síndrome compartimental", "Gustilo", "golpe en la mano", "dedo en martillo", "fractura de cadera", "rótula", "clavícula", "Maisonneuve", "Lisfranc", "Aquiles", "traumatismo de miembro"]
+  },
+  "imagenes-trauma": {
+    "title": "¿Qué imagen pido?",
+    "category": "🩹 Heridas y trauma",
+    "icon": "🩻",
+    "sub": "Trauma de miembros: primer estudio y el que sigue",
+    "keywords": ["radiografía", "qué radiografía pido", "qué placa pido", "placa", "rx", "rx de tobillo", "rx de rodilla", "rx de muñeca", "rx de hombro", "rx de pie", "rx de cadera", "proyecciones", "frente y perfil", "oblicua", "mortaja", "axial", "resonancia", "resonancia de rodilla", "RMN", "RM", "tomografía", "TC", "ecografía de partes blandas", "menisco", "lesión meniscal", "ligamento cruzado", "manguito rotador", "qué estudio pido", "imágenes", "estudio de imágenes"]
+  },
   "agitacion": {
     "title": "Agitación psicomotriz",
     "category": "🧬 Psiquiátrico / Toxicología",

@@ -1,6 +1,7 @@
 {
   "id": "calc-gcs",
   "title": "Glasgow (GCS)",
+  "requireAll": true,
   "intro": {
     "kind": "b",
     "icon": "ℹ️",
@@ -46,7 +47,7 @@
     }
   ],
   "result": {
-    "initialScore": 3,
+    "initialScore": "—",
     "initialLabel": "Seleccioná una opción por sección",
     "note": "E + V + M (mínimo 3, máximo 15)"
   }

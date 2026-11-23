@@ -319,5 +319,39 @@
       { "label": "Prostatitis aguda", "module": null },
       { "label": "Falla renal obstructiva", "module": "falla-renal" }
     ]
+  },
+  {
+    "title": "Herida o corte",
+    "aliases": ["herida cortante", "se cortó", "corte", "tajo", "necesita puntos", "hay que suturar", "se clavó un clavo", "pinchazo", "herida en la mano", "herida en la cara"],
+    "opens": ["heridas"],
+    "dontMiss": [
+      { "label": "Lesión de tendón o nervio", "module": "heridas" },
+      { "label": "Cuerpo extraño", "module": "heridas" },
+      { "label": "Fractura expuesta", "module": "trauma-menor" },
+      { "label": "Vacuna antitetánica", "module": "heridas" }
+    ]
+  },
+  {
+    "title": "Mordedura",
+    "aliases": ["lo mordió un perro", "me mordió un perro", "mordedura de perro", "mordedura de gato", "mordedura humana", "arañazo de gato", "lo mordió un murciélago", "tocó un murciélago"],
+    "opens": ["mordeduras"],
+    "dontMiss": [
+      { "label": "Rabia", "module": "mordeduras" },
+      { "label": "Mordedura sobre el nudillo", "module": "mordeduras" },
+      { "label": "Tétanos", "module": "heridas" },
+      { "label": "Sepsis en esplenectomizado", "module": "mordeduras" }
+    ]
+  },
+  {
+    "title": "Torcedura, golpe o caída",
+    "aliases": ["se torció el tobillo", "torcedura", "esguince", "se dobló el pie", "se cayó y le duele la muñeca", "se le salió el hombro", "se quebró", "golpe en la rodilla", "no puede apoyar el pie", "se cayó y no puede caminar"],
+    "opens": ["trauma-menor"],
+    "dontMiss": [
+      { "label": "Fractura expuesta", "module": "trauma-menor" },
+      { "label": "Síndrome compartimental", "module": "trauma-menor" },
+      { "label": "Lesión vascular", "module": "trauma-menor" },
+      { "label": "Fractura de cadera", "module": "trauma-menor" },
+      { "label": "Escafoides", "module": "trauma-menor" }
+    ]
   }
 ]

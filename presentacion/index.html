@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MQLCBXX8SN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MQLCBXX8SN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Libro de Guardia</title>
+<meta name="description" content="Lo que tu guardia necesita. Una guía clínica de consulta rápida para médicos que hacen guardia: del síntoma a la conducta, con calculadoras y asistente de RCP. Funciona sin señal.">
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:title" content="El Libro de Guardia">
+<meta property="og:description" content="Lo que tu guardia necesita. Del síntoma a la conducta, en tu teléfono y sin señal.">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/logo.png">
+<link rel="preload" href="fonts/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('js')</script>
+<style>
+@font-face{font-family:'Bebas Neue';src:url(fonts/bebas-neue.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Barlow';src:url(fonts/barlow-400.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Barlow';src:url(fonts/barlow-500.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Barlow';src:url(fonts/barlow-600.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Barlow Condensed';src:url(fonts/barlow-condensed-600.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Space Grotesk';src:url(fonts/space-grotesk-500.woff2) format('woff2');font-weight:500;font-display:swap}
+
+:root{
+  /* Una guardia de 24 horas contada con el scroll: titulares enormes alineados a la
+     izquierda, un teléfono que queda fijo mientras cambian sus pantallas y, arriba,
+     el reloj de la guardia que avanza de 08:00 a 08:00. Marca: libro de marca. */
+  --negro:#0a0a0a; --tinta:#141414; --linea:#272727;
+  --hueso:#f3f0ea; --gris:#98948d;
+  --rojo:#d0403a; --rojo-texto:#e2574f;
+  --verde:#3fbf7f; --ambar:#e8a33a;
+  --display:'Bebas Neue','Arial Narrow',Impact,sans-serif;
+  --texto:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --etiqueta:'Barlow Condensed','Arial Narrow',system-ui,sans-serif;
+  --dato:'Space Grotesk',ui-monospace,'SF Mono',Menlo,monospace;
+  --margen:24px; --barra:56px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--negro)}
+body{margin:0;background:var(--negro);color:var(--hueso);font:400 17px/1.5 var(--texto);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+h1,h2,h3,p,ol,ul,dl,dd{margin:0;padding:0}
+ol,ul{list-style:none}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--hueso);outline-offset:3px;border-radius:4px}
+.oculto{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* ---------- barra: marca + reloj de guardia ---------- */
+.barra{position:fixed;inset:0 0 auto 0;z-index:20;height:var(--barra);display:flex;align-items:center;justify-content:space-between;padding:0 var(--margen);background:rgba(10,10,10,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font:500 17px/1 var(--dato);letter-spacing:-.01em}
+.marca img{width:28px;height:28px}
+.marca b{font-weight:500;color:var(--rojo-texto)}
+.reloj{display:flex;align-items:center;gap:8px;font:500 17px/1 var(--dato);font-variant-numeric:tabular-nums}
+.reloj i{width:8px;height:8px;border-radius:50%;background:var(--rojo);animation:latido 1.6s ease-in-out infinite}
+.avance{position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--rojo);transform:scaleX(0);transform-origin:0 50%}
+@keyframes latido{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ---------- piezas comunes ---------- */
+.cont{max-width:1120px;margin:0 auto}
+.sec{padding:104px var(--margen)}
+.hora{display:flex;align-items:baseline;gap:10px;font:600 17px/1.2 var(--etiqueta);letter-spacing:.01em;color:var(--gris)}
+.hora span{font:500 15px/1 var(--dato);color:var(--rojo-texto);font-variant-numeric:tabular-nums}
+.grande{font:400 clamp(58px,16.5vw,132px)/.88 var(--display);letter-spacing:.005em;text-wrap:balance;margin:14px 0 20px}
+.lead{font-size:19px;line-height:1.45;color:var(--gris);max-width:34em}
+.lead strong{color:var(--hueso);font-weight:500}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border-radius:999px;background:var(--rojo);color:#fff;text-decoration:none;font:600 19px/1 var(--texto);transition:transform .18s ease,background .18s ease}
+.btn:hover{background:#dc4a44}
+.btn:active{transform:scale(.97)}
+.js [data-in]{opacity:var(--e,1);transform:translateY(calc((1 - var(--e,1)) * 34px))}
+
+/* ---------- 08:00 · portada ---------- */
+.hero{padding:calc(var(--barra) + 28px) var(--margen) 64px;overflow:hidden}
+.titular{font:400 min(24.4vw,252px)/.86 var(--display);letter-spacing:.004em;margin:16px 0 22px}
+.titular .ln{display:block;overflow:hidden;padding-top:.05em;will-change:transform}
+.titular .ln>span{display:block;white-space:nowrap;animation:sube .9s cubic-bezier(.16,1,.3,1) both}
+.titular .ln:nth-child(2)>span{animation-delay:.09s}
+.titular .ln:nth-child(3)>span{animation-delay:.18s}
+.punto{display:inline-block;width:.17em;height:.17em;margin-left:.05em;border-radius:50%;background:var(--rojo);animation:aparece .5s cubic-bezier(.34,1.56,.64,1) .95s both}
+.hero .bajada{font-size:19px;line-height:1.42;max-width:30em;color:var(--hueso);animation:entra .8s ease .35s both}
+.acciones{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:26px;animation:entra .8s ease .5s both}
+.acciones .nota{font:600 16px/1.3 var(--etiqueta);color:var(--gris)}
+@keyframes sube{from{transform:translateY(104%)}to{transform:none}}
+@keyframes aparece{from{transform:scale(0)}to{transform:none}}
+@keyframes entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- 08:40 · qué es ---------- */
+.que{padding-top:56px}
+.scrub{font:500 clamp(27px,7.4vw,46px)/1.16 var(--texto);letter-spacing:-.012em;max-width:19em;margin-top:18px}
+.scrub .w{opacity:var(--o,1)}
+.ficha{margin-top:64px;border-top:1px solid var(--linea);max-width:760px}
+.ficha div{display:grid;grid-template-columns:104px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--linea)}
+.ficha dt{font:600 18px/1.3 var(--etiqueta);color:var(--rojo-texto)}
+.ficha dd{font-size:18px;line-height:1.4}
+
+/* ---------- recorrido: cuatro momentos, cada uno con su pantalla ---------- */
+.rec{--alto:min(78vh,720px);padding:24px var(--margen) 0;overflow:hidden}
+.paso{display:flex;flex-direction:column;align-items:center;gap:26px;padding:56px 0 20px}
+.paso-tx{width:100%;max-width:440px}
+.paso h2{font:400 clamp(46px,13vw,84px)/.9 var(--display);margin:10px 0 10px}
+.paso-tx p:last-child{font-size:18px;line-height:1.4;color:var(--gris)}
+.tel{position:relative;width:min(82vw,350px);height:min(116vw,480px);will-change:transform}
+.tel::before{content:"";position:absolute;inset:-8% -34% 6%;background:radial-gradient(closest-side,rgba(208,64,58,.36),transparent);z-index:-1}
+.tel-pant{position:absolute;inset:0;border-radius:44px 44px 0 0;background:#1b1b1b;box-shadow:inset 0 0 0 1px #3c3c3c;overflow:hidden;-webkit-mask-image:linear-gradient(#000 86%,transparent);mask-image:linear-gradient(#000 86%,transparent)}
+.tel-pant img{position:absolute;left:6px;top:6px;width:calc(100% - 12px);max-width:none;height:calc(100% - 6px);object-fit:cover;object-position:50% 0;border-radius:38px 38px 0 0;background:#181c24}
+.paso.abajo .tel-pant img{object-position:50% 100%}
+
+/* ---------- 05:40 · calculadora viva ---------- */
+.curb{margin-top:34px;max-width:520px}
+.op{display:flex;align-items:center;gap:14px;min-height:60px;padding:10px 16px;margin-bottom:8px;border:1px solid var(--linea);border-radius:14px;background:var(--tinta);cursor:pointer;transition:border-color .15s,background .15s,transform .12s;-webkit-tap-highlight-color:transparent}
+.op:active{transform:scale(.985)}
+.op input{position:absolute;opacity:0;width:1px;height:1px}
+.caja{flex:none;width:24px;height:24px;border-radius:50%;border:2px solid #4a4a4a;display:grid;place-items:center;transition:border-color .15s,background .15s}
+.caja::after{content:"";width:10px;height:10px;border-radius:50%;background:#fff;transform:scale(0);transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
+.op .tx{flex:1;font-size:17px;line-height:1.25}
+.op .tx b{color:var(--rojo-texto);font-weight:600}
+.op .mas{font:500 14px/1 var(--dato);color:var(--gris)}
+.op:has(input:checked){border-color:var(--rojo);background:#1d1212}
+.op:has(input:checked) .caja{border-color:var(--rojo);background:var(--rojo)}
+.op:has(input:checked) .caja::after{transform:none}
+.op:has(input:checked) .mas{color:var(--rojo-texto)}
+.op:has(input:focus-visible){outline:3px solid var(--hueso);outline-offset:2px}
+.res{--c:var(--gris);display:flex;align-items:center;gap:18px;margin-top:14px;padding:16px 20px;border-radius:18px;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);background:color-mix(in srgb,var(--c) 10%,var(--negro));transition:border-color .25s,background .25s}
+.res[data-sev="verde"]{--c:var(--verde)} .res[data-sev="ambar"]{--c:var(--ambar)} .res[data-sev="rojo"]{--c:var(--rojo-texto)}
+.res .num{font:400 84px/.8 var(--display);min-width:.5em;color:var(--c);transition:color .25s;padding-top:.06em}
+.res .num.salta{animation:salta .32s cubic-bezier(.34,1.56,.64,1)}
+.res b{display:block;font:600 20px/1.2 var(--texto);color:var(--c)}
+.res span span{display:block;font-size:16px;line-height:1.35;color:var(--hueso);margin-top:3px}
+.curb .pie{margin-top:12px;font:600 16px/1.3 var(--etiqueta);color:var(--gris)}
+@keyframes salta{from{transform:scale(.6)}to{transform:none}}
+
+/* ---------- 06:10 · módulos ---------- */
+.mod{padding-left:0;padding-right:0;overflow:hidden}
+.mod .cont{padding:0 var(--margen)}
+.cinta{margin-top:26px;display:grid;gap:4px}
+.fila{display:flex;align-items:center;gap:.32em;white-space:nowrap;font:400 clamp(54px,15vw,124px)/.95 var(--display);will-change:transform}
+.fila span{display:inline-flex;align-items:center;gap:.32em}
+.fila span::after{content:"";width:.15em;height:.15em;border-radius:50%;background:var(--rojo);flex:none}
+.fila.hueca{color:transparent;-webkit-text-stroke:1px #6d6a65}
+.cifras{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:52px;max-width:760px}
+.cifras li{border-top:2px solid var(--rojo);padding-top:12px}
+.cifras b{display:block;font:500 clamp(40px,12vw,76px)/1 var(--dato);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.cifras span{display:block;margin-top:6px;font:600 16px/1.2 var(--etiqueta);color:var(--gris)}
+
+/* ---------- 06:25 · módulos que se abren ---------- */
+.acord{margin-top:34px;max-width:720px;border-bottom:1px solid var(--linea)}
+.mdl{border-top:1px solid var(--linea)}
+.mdl h3{margin:0}
+.mdl-btn{all:unset;box-sizing:border-box;display:flex;width:100%;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:14px 0 10px;cursor:pointer;font:400 clamp(38px,10.6vw,58px)/1 var(--display);letter-spacing:.01em;color:var(--gris);transition:color .2s;-webkit-tap-highlight-color:transparent}
+.mdl-btn:hover,.mdl.desplegado .mdl-btn{color:var(--hueso)}
+.mdl-btn:focus-visible{outline:3px solid var(--hueso);outline-offset:2px;border-radius:4px}
+.mdl-mas{position:relative;flex:none;width:26px;height:26px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.mdl-mas::before,.mdl-mas::after{content:"";position:absolute;left:0;right:0;top:50%;height:3px;margin-top:-1.5px;border-radius:2px;background:var(--rojo)}
+.mdl-mas::after{transform:rotate(90deg)}
+.mdl.desplegado .mdl-mas{transform:rotate(45deg)}
+.mdl-panel{display:grid;grid-template-rows:1fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
+.mdl-in{min-height:0;overflow:hidden}
+.js .mdl:not(.desplegado) .mdl-panel{grid-template-rows:0fr}
+.js .mdl:not(.desplegado) .mdl-in{visibility:hidden;transition:visibility 0s .5s}
+.vista{margin:6px 0 24px;padding:14px 12px 0;border-radius:20px;background:var(--bg);border:1px solid var(--border);color:var(--text);font:400 14px/1.5 var(--font);text-align:left}
+.vista-in{position:relative;max-height:660px;overflow:hidden}
+.vista.larga .vista-in::after{content:"";position:absolute;inset:auto 0 0 0;height:96px;background:linear-gradient(rgba(24,28,36,0),var(--bg));pointer-events:none}
+.vista-mas{display:flex;align-items:center;justify-content:center;min-height:54px;margin:0 -12px;border-top:1px solid var(--border);color:var(--coral);font:600 16px/1.2 var(--texto);text-decoration:none}
+.vista-mas:hover{background:var(--coral-bg)}
+.vista{--acc:#5aabff;--amb-bd:rgba(255,190,69,.32);--amb-bg:rgba(255,190,69,.10);--amber:#ffbe45;--bg:#181c24;--bg2:#1e232e;--bg3:#252c3a;--blue-bd:rgba(90,171,255,.30);--blue-bg:rgba(90,171,255,.11);--border:#2b3343;--border2:#3e4961;--chip:#9fcbff;--coral:#ff8a73;--coral-bd:rgba(255,138,115,.30);--coral-bg:rgba(255,138,115,.12);--font:-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto, sans-serif;--glass:rgba(255,255,255,.04);--glass-bd:rgba(148,166,196,.18);--mono:'SF Mono', 'Fira Code', Consolas, 'Courier New', monospace;--r-lg:16px;--r-pill:999px;--red:#ff766f;--red-bd:rgba(255,107,99,.32);--red-bg:rgba(255,107,99,.12);--shadow:0 1px 2px rgba(0,0,0,.2), 0 12px 28px -18px rgba(0,0,0,.65);--t:.15s ease;--text:#e8edf6;--text2:#a3b1c9;--text3:#8694ad}.vista .card{background: var(--bg2); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; margin-bottom: 14px; box-shadow: var(--shadow);}.vista .card-body{padding: 16px;}.vista .card-body + .card-body{border-top: 1px solid var(--border);}.vista .tabs{display: flex; gap: 6px; margin-bottom: 16px; max-width: 100%; flex-wrap: wrap;}.vista .tab{padding: 7px 13px; font-size: 12.5px; font-weight: 500; line-height: 1.35; color: var(--text2); background: var(--glass); border: 1px solid var(--glass-bd); border-radius: var(--r-pill); cursor: pointer; transition: background var(--t), color var(--t), border-color var(--t); user-select: none;}@media (hover: hover){.vista .tab:hover{color: var(--text); border-color: var(--border2);}}.vista .tab.on{background: var(--text); border-color: var(--text); color: var(--bg); font-weight: 600;}.vista .tab-pane .tab.on{background: var(--coral-bg); border-color: var(--coral-bd); color: var(--coral);}.vista .tab-pane{display: none; animation: fadein .15s ease;}.vista .tab-pane.on{display: block;}.vista .cl{border-radius: var(--r-lg); padding: 14px; display: flex; gap: 12px; font-size: 14px; line-height: 1.55; border: 1px solid; margin-bottom: 12px;}.vista .cl-ico{font-size: 16px; line-height: 1.4; flex-shrink: 0;}.vista .cl-body{flex: 1; min-width: 0;}.vista .cl-title{font-weight: 700; display: block; margin-bottom: 4px; font-size: 12px; line-height: 1.45; letter-spacing: .03em; text-transform: uppercase;}.vista .cl-r{background: var(--red-bg); border-color: var(--red-bd); color: var(--red);}.vista .cl-r .cl-body,.vista .cl-r .cl-body p,.vista .cl-r .cl-body li{color: var(--text);}.vista .cl-a{background: var(--amb-bg); border-color: var(--amb-bd); color: var(--amber);}.vista .cl-a .cl-body,.vista .cl-a .cl-body p,.vista .cl-a .cl-body li{color: var(--text);}.vista .cl-b{background: var(--blue-bg); border-color: var(--blue-bd); color: var(--acc);}.vista .cl-b .cl-body,.vista .cl-b .cl-body p,.vista .cl-b .cl-body li{color: var(--text);}.vista .cl-r .cl-title{color: var(--red);}.vista .cl-a .cl-title{color: var(--amber);}.vista .cl-b .cl-title{color: var(--acc);}.vista .algo{display: flex; flex-direction: column; gap: 0;}.vista .step{display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: flex-start;}.vista .step:first-child{padding-top: 2px;}.vista .step:last-child{border-bottom: none; padding-bottom: 2px;}.vista .step-n{min-width: 28px; height: 28px; padding: 0 6px; border-radius: var(--r-pill); background: var(--glass); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--text2); flex-shrink: 0;}.vista .step-n.crit{background: var(--red-bg); border-color: var(--red-bd); color: var(--red);}.vista .step-c{flex: 1; min-width: 0;}.vista .step-title{font-weight: 700; color: var(--text); font-size: 14px; line-height: 1.35; margin: 4px 0;}.vista .step-body{font-size: 13.5px; color: var(--text2); line-height: 1.7;}.vista .drug{display: inline-flex; align-items: center; gap: 4px; font-family: var(--mono); font-size: 11.5px; font-weight: 600; line-height: 1.6; background: var(--blue-bg); color: var(--chip); border: 1px solid var(--blue-bd); padding: 0 8px; border-radius: var(--r-pill); white-space: nowrap;}.vista .dose{font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--amber); white-space: normal; word-break: break-word; line-height: 1.5; display: inline;}.vista .tbl-wrap{overflow-x: auto; border-radius: 14px; border: 1px solid var(--border); background: var(--bg2); margin-bottom: 12px;}.vista .tbl{width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.45;}.vista .tbl th{text-align: left; vertical-align: bottom; padding: 9px 12px; font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text3); background: var(--bg3); border-bottom: 1px solid var(--border);}.vista .tbl td{padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: top;}.vista .tbl tr:last-child td{border-bottom: none;}@media (hover: hover){.vista .tbl tr:hover td{background: var(--bg3);}}.vista .tbl-name{font-family: var(--mono); font-weight: 700; color: var(--text); font-size: 12px;}.vista .sec-hd{display: flex; align-items: center; gap: 10px; margin: 20px 0 10px;}.vista .sec-hd:first-child{margin-top: 0;}.vista .sec-hd-lbl{font-size: 11px; font-weight: 700; color: var(--text3); letter-spacing: .08em; text-transform: uppercase; line-height: 1.45; min-width: 0;}.vista .sec-hd-line{flex: 1; min-width: 16px; height: 1px; background: var(--border);}.vista .g2{display: grid; grid-template-columns: 1fr 1fr; gap: 14px;}.vista .mt-8{margin-top: 8px;}.vista .mt-12{margin-top: 12px;}.vista ul.bullets{padding-left: 18px;}.vista ul.bullets li{margin-bottom: 6px; font-size: 13.5px; color: var(--text2); line-height: 1.6;}.vista ul.bullets li::marker{color: var(--text3);}.vista .cl-r ul.bullets li::marker{color: var(--red);}.vista .cl-a ul.bullets li::marker{color: var(--amber);}.vista .cl-b ul.bullets li::marker{color: var(--acc);}.vista ul.bullets li strong{color: var(--text);}.vista .xref{color: var(--acc); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px;}@media (hover: hover){.vista .xref:hover{text-decoration-thickness: 2px;}}.vista .xref:focus-visible{outline: 2px solid var(--acc); outline-offset: 2px; border-radius: 2px;}.vista .src-line{margin: 22px 0 16px; font-size: 11px; line-height: 1.5; color: var(--text2);}@keyframes fadein{from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); }}@media (prefers-reduced-motion: reduce){.vista .tab-pane{animation: none;}}@media (max-width: 768px){.vista .g2{grid-template-columns: 1fr;}.vista .tabs{width: 100%; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px;}.vista .tabs::-webkit-scrollbar{display: none;}.vista .tab{padding: 7px 10px; font-size: 12px; white-space: nowrap; flex-shrink: 0;}.vista .tabs{gap: 5px;}.vista .card-body{padding: 14px;}.vista .tbl-wrap{-webkit-overflow-scrolling: touch;}.vista .tbl{font-size: 12.5px;}.vista .tbl th{padding: 8px 10px; font-size: 10px;}.vista .tbl td{padding: 9px 10px;}.vista .tbl-name{font-size: 11.5px;}.vista .step{gap: 10px;}.vista .step-n{min-width: 26px; height: 26px; font-size: 10.5px;}.vista .step-title{font-size: 13.5px; margin-top: 3px;}.vista .step-body{font-size: 13px;}.vista .drug,.vista .dose{white-space: normal; word-break: break-word;}.vista .cl{padding: 12px; font-size: 13.5px; gap: 10px;}.vista ul.bullets li{font-size: 13px;}}@media (max-width: 380px){.vista .tab{padding: 6px 10px; font-size: 12px;}}
+
+/* ---------- 06:50 · sin señal ---------- */
+.asc{margin-top:36px;max-width:520px;border:1px solid var(--linea);border-radius:22px;background:var(--tinta);padding:22px}
+.asc-arriba{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.piso small{display:block;font:600 15px/1 var(--etiqueta);color:var(--gris);margin-bottom:8px}
+.piso span{display:block;font:500 76px/.9 var(--dato);letter-spacing:-.04em;color:var(--rojo-texto);font-variant-numeric:tabular-nums;min-width:2.1ch}
+.senal{text-align:right}
+.barras{display:inline-flex;align-items:flex-end;gap:6px;height:54px}
+.barras i{width:12px;border-radius:3px;background:var(--hueso);transition:background .3s,opacity .3s}
+.barras i:nth-child(1){height:30%}.barras i:nth-child(2){height:53%}.barras i:nth-child(3){height:76%}.barras i:nth-child(4){height:100%}
+.barras i.off{background:#3a3a3a}
+.senal p{margin-top:8px;font:600 16px/1 var(--etiqueta);color:var(--gris)}
+.abierto{display:flex;align-items:center;gap:10px;margin-top:20px;padding-top:18px;border-top:1px solid var(--linea);font-size:17px;font-weight:500}
+.abierto i{width:10px;height:10px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 5px rgba(63,191,127,.18)}
+
+/* ---------- 07:30 · guías: la biblioteca ---------- */
+.biblio{display:grid;gap:34px;margin-top:44px;max-width:560px}
+.estante{display:flex;align-items:flex-end;gap:5px;height:262px;padding:0 5px;border-bottom:7px solid var(--hueso);border-radius:0 0 2px 2px}
+.libro{--c:#222;--t:var(--hueso);--b:rgba(243,240,234,.5);position:relative;flex:var(--w,1) 1 0;min-width:0;height:var(--h,90%);display:flex;align-items:center;justify-content:space-between;padding:32px 0 30px;writing-mode:vertical-rl;color:var(--t);border-radius:6px 6px 1px 1px;background:linear-gradient(90deg,rgba(0,0,0,.45),rgba(255,255,255,.14) 15%,rgba(255,255,255,0) 44%,rgba(0,0,0,.34)),var(--c);box-shadow:inset 0 2px 0 rgba(255,255,255,.16);transform-origin:0 100%;transform:rotate(var(--lean,0deg));will-change:transform}
+.libro::before,.libro::after{content:"";position:absolute;left:0;right:0;height:10px;border-top:2px solid var(--b);border-bottom:2px solid var(--b)}
+.libro::before{top:11px}
+.libro::after{bottom:10px}
+.libro b{font:400 26px/1 var(--display);letter-spacing:.045em;transform:rotate(180deg);white-space:nowrap}
+.libro em{font:600 16px/1 var(--etiqueta);font-style:normal;letter-spacing:.02em;opacity:.84;transform:rotate(180deg);white-space:nowrap}
+.libro.r{--c:var(--rojo);--t:#fff;--b:rgba(255,255,255,.62)}
+.libro.h{--c:var(--hueso);--t:#161616;--b:var(--rojo)}
+.libro.v{--c:#6d1c19;--b:rgba(243,240,234,.46)}
+.libro.g{--c:#3d3b38}
+.libro.n{--c:#202020;--b:var(--rojo-texto);box-shadow:inset 0 0 0 1px #3c3c3c}
+.libro.inclinado{margin-right:32px}
+.guias{overflow:hidden}
+.aviso{margin-top:28px;font-size:15px;line-height:1.45;color:var(--gris);max-width:36em}
+
+/* ---------- 08:00 · cierre ---------- */
+.fin{padding-top:72px;padding-bottom:48px}
+.fin .cont{position:relative;display:flex;flex-direction:column;align-items:flex-start}
+#logo{position:absolute;right:-8px;top:-34px;width:min(37vw,170px)}
+.splash-in{width:100%}
+.splash-logo{display:block;width:100%;height:auto;overflow:visible;color:var(--rojo)}
+.fin .grande{margin-top:16px}
+.instalar{margin-top:34px;font-size:16px;line-height:1.5;color:var(--gris);max-width:32em}
+.instalar strong{color:var(--hueso);font-weight:500}
+.pie{margin-top:64px;padding-top:20px;border-top:1px solid var(--linea);width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font:600 16px/1.3 var(--etiqueta);color:var(--gris)}
+.pie a{color:var(--hueso)}
+
+/* ---------- pantallas anchas ---------- */
+@media (min-width:900px){
+  :root{--margen:48px}
+  .sec{padding-top:150px;padding-bottom:150px}
+  .hero{padding-top:calc(var(--barra) + 80px);padding-bottom:110px}
+  .titular{font-size:min(17.5vw,252px)}
+  .paso{flex-direction:row;justify-content:center;gap:104px;padding:70px 0}
+  .paso:nth-child(even){flex-direction:row-reverse}
+  .paso-tx{flex:0 0 440px}
+  .tel{flex:none;width:auto;height:var(--alto);aspect-ratio:390/800}
+  .tel-pant{border-radius:calc(var(--alto) * .066);-webkit-mask-image:none;mask-image:none}
+  .tel-pant img,.paso.abajo .tel-pant img{height:calc(100% - 12px);border-radius:calc(var(--alto) * .056);object-position:50% 0}
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+  .dos .curb,.dos .asc{margin-top:0}
+  .biblio{grid-template-columns:1fr 1fr;gap:0 40px;max-width:1060px}
+  .estante{height:310px}
+  .libro b{font-size:30px}
+  .libro em{font-size:18px}
+  .sec.fin{padding-top:120px;padding-bottom:56px}
+  #logo{width:300px;right:40px;top:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js [data-in]{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <a class="marca" href="../" data-cta="barra"><img src="img/logo.png" alt="" width="28" height="28"><span>El Libro <b>de Guardia</b></span></a>
+  <div class="reloj" title="Hora de la guardia"><i aria-hidden="true"></i><span id="reloj" aria-hidden="true">08:00</span></div>
+  <div class="avance" id="avance" aria-hidden="true"></div>
+</header>
+
+<main>
+
+<section class="hero" id="portada" data-hora="08:00">
+  <div class="cont">
+    <p class="hora"><span>08:00</span> Empieza la guardia</p>
+    <h1 class="titular" aria-label="Lo que tu guardia necesita."><span class="ln" aria-hidden="true"><span>Lo que</span></span><span class="ln" aria-hidden="true"><span>tu guardia</span></span><span class="ln" aria-hidden="true"><span>necesita<i class="punto"></i></span></span></h1>
+    <p class="bajada">El Libro de Guardia es una guía clínica para resolver rápido lo que entra por la puerta. En tu teléfono, también sin señal.</p>
+    <div class="acciones">
+      <a class="btn" href="../" data-cta="portada">Abrir la app</a>
+      <span class="nota">Para médicos y profesionales de la salud</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec que" data-hora="08:40">
+  <div class="cont">
+    <p class="hora"><span>08:40</span> Primer paciente</p>
+    <p class="scrub" id="scrub">El paciente ya está adelante tuyo y no hay tiempo de abrir un libro. El Libro de Guardia te lleva del síntoma a la conducta: qué descartar primero, qué pedir, qué indicar y a qué dosis.</p>
+    <dl class="ficha">
+      <div data-in><dt>Qué es</dt><dd>Una guía clínica de consulta rápida, en forma de app.</dd></div>
+      <div data-in><dt>Para quién</dt><dd>Médicos y residentes que hacen guardia en Argentina.</dd></div>
+      <div data-in><dt>Para qué</dt><dd>Decidir más rápido y dejar menos cosas libradas a la memoria.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="rec" id="recorrido" aria-label="Recorrido por la app">
+  <article class="paso" data-hora="10:15">
+    <div class="paso-tx"><p class="hora"><span>10:15</span> Entra un dolor de pecho</p><h2>Escribís el síntoma.</h2><p>El buscador te abre el módulo y te recuerda lo que no se te puede pasar: SCA, disección aórtica, TEP, neumotórax a tensión.</p></div>
+    <div class="tel"><div class="tel-pant"><img src="img/buscador.jpg" width="600" height="1231" alt="Buscador de la app: al escribir «dolor de pecho» aparece el módulo Dolor torácico con la lista de diagnósticos que no hay que olvidar"></div></div>
+  </article>
+  <article class="paso" data-hora="14:40">
+    <div class="paso-tx"><p class="hora"><span>14:40</span> La guardia está llena</p><h2>Leés lo justo.</h2><p>Cada módulo va al grano: banderas rojas, algoritmo diagnóstico y tratamiento, separados en pestañas.</p></div>
+    <div class="tel"><div class="tel-pant"><img src="img/modulo.jpg" width="600" height="1231" loading="lazy" alt="Módulo Dolor torácico con las pestañas Banderas rojas, Algoritmo diagnóstico y Tratamiento"></div></div>
+  </article>
+  <article class="paso" data-hora="03:20">
+    <div class="paso-tx"><p class="hora"><span>03:20</span> Paro en la cama 4</p><h2>Te lleva el ritmo.</h2><p>El asistente de RCP cronometra los ciclos de dos minutos, cuenta las descargas y lleva el reloj de la adrenalina. Sigue AHA 2025.</p></div>
+    <div class="tel"><div class="tel-pant"><img src="img/rcp.jpg" width="600" height="1231" loading="lazy" alt="Asistente de RCP con el cronómetro de compresiones, el control de ritmo, las descargas y la adrenalina"></div></div>
+  </article>
+  <article class="paso abajo" data-hora="05:05">
+    <div class="paso-tx"><p class="hora"><span>05:05</span> Un TEC que no abre los ojos</p><h2>Hace la cuenta.</h2><p>Marcás lo que ves y la calculadora te da el puntaje y qué significa. Glasgow, NIHSS, NEWS2, Wells y más.</p></div>
+    <div class="tel"><div class="tel-pant"><img src="img/calc.jpg" width="600" height="1231" loading="lazy" alt="Calculadora de Glasgow con el resultado 8, coma severo"></div></div>
+  </article>
+</section>
+
+<section class="sec" data-hora="05:40">
+  <div class="cont dos">
+    <div>
+      <p class="hora"><span>05:40</span> Neumonía en la cama 9</p>
+      <h2 class="grande">Probala acá.</h2>
+      <p class="lead">Esta es la <strong>CURB-65</strong> de la app. Tocá los criterios que tiene el paciente.</p>
+    </div>
+    <form class="curb" id="curb" data-in>
+      <label class="op" for="curb-c"><input type="checkbox" id="curb-c"><span class="caja"></span><span class="tx"><b>C</b>onfusión de nueva aparición</span><span class="mas">+1</span></label>
+      <label class="op" for="curb-u"><input type="checkbox" id="curb-u"><span class="caja"></span><span class="tx"><b>U</b>rea &gt;44 mg/dl (BUN &gt;19 mg/dl)</span><span class="mas">+1</span></label>
+      <label class="op" for="curb-r"><input type="checkbox" id="curb-r"><span class="caja"></span><span class="tx"><b>R</b>espiración: FR ≥30 rpm</span><span class="mas">+1</span></label>
+      <label class="op" for="curb-b"><input type="checkbox" id="curb-b"><span class="caja"></span><span class="tx"><b>B</b>P: PAS &lt;90 o PAD ≤60 mmHg</span><span class="mas">+1</span></label>
+      <label class="op" for="curb-65"><input type="checkbox" id="curb-65"><span class="caja"></span><span class="tx">Edad ≥<b>65</b> años</span><span class="mas">+1</span></label>
+      <output class="res" id="curb-res" for="curb-c curb-u curb-r curb-b curb-65" aria-live="polite"><span class="num" id="curb-num">0</span><span><b id="curb-rot">Seleccioná los criterios presentes</b><span id="curb-det">1 punto por cada criterio.</span></span></output>
+      <p class="pie">0–1: ambulatorio · 2: internación en sala · 3–5: UCI</p>
+    </form>
+  </div>
+</section>
+
+<section class="sec mod" data-hora="06:10">
+  <div class="cont">
+    <p class="hora"><span>06:10</span> Y sigue entrando gente</p>
+    <h2 class="grande">Lo que entre por la puerta.</h2>
+    <p class="oculto">Algunos de los módulos: dolor torácico, ACV, sepsis, anafilaxia, shock, politrauma, síncope, crisis asmática, EPOC, neumonía, convulsiones, hemorragia digestiva, pancreatitis, cólico renal, hiperkalemia, crisis hipertensiva, hipoglucemia, meningitis, intoxicaciones, monóxido de carbono, vértigo y escroto agudo.</p>
+  </div>
+  <div class="cinta" id="cinta" aria-hidden="true">
+    <div class="fila" data-v="-1"><span>Dolor torácico</span><span>ACV</span><span>Sepsis</span><span>Anafilaxia</span><span>Shock</span><span>Politrauma</span><span>Síncope</span><span>TEP</span></div>
+    <div class="fila hueca" data-v="1"><span>Hiperkalemia</span><span>Cólico renal</span><span>Pancreatitis</span><span>Hemorragia digestiva</span><span>Convulsiones</span><span>Neumonía</span><span>EPOC</span><span>Crisis asmática</span></div>
+    <div class="fila" data-v="-1"><span>Crisis hipertensiva</span><span>Hipoglucemia</span><span>Meningitis</span><span>Intoxicaciones</span><span>Monóxido de carbono</span><span>Vértigo</span><span>Escroto agudo</span></div>
+  </div>
+  <div class="cont">
+    <ul class="cifras" id="cifras">
+      <li><b data-n="64">64</b><span>módulos clínicos</span></li>
+      <li><b data-n="20">20</b><span>calculadoras</span></li>
+      <li><b data-n="53">53</b><span>fármacos con dosis</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" data-hora="06:25">
+  <div class="cont">
+    <p class="hora"><span>06:25</span> Una picadura de abeja en el box 2</p>
+    <h2 class="grande">Miralo por dentro.</h2>
+    <p class="lead">Tocá un módulo. Es el contenido de la app, <strong>tal cual lo vas a leer en la guardia.</strong></p>
+    <div class="acord" id="acord">
+      <div class="mdl desplegado" data-in>
+        <h3><button type="button" class="mdl-btn" id="mdl-b-anafilaxia" aria-expanded="true" aria-controls="mdl-p-anafilaxia" data-mod="anafilaxia"><span>Anafilaxia</span><i class="mdl-mas" aria-hidden="true"></i></button></h3>
+        <div class="mdl-panel" id="mdl-p-anafilaxia" role="region" aria-labelledby="mdl-b-anafilaxia"><div class="mdl-in">
+          <div class="vista"><div class="vista-in"><div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Adrenalina IM es el tratamiento de primera línea. No perder tiempo con antihistamínicos.</span></div></div><div class="tabs"><div class="tab on" data-tab-grp="ana" data-pane="pv-ana-dx" role="button" tabindex="0">🔍 Diagnóstico</div><div class="tab" data-tab-grp="ana" data-pane="pv-ana-tto" role="button" tabindex="0">💊 Tratamiento</div></div><div id="pv-ana-dx" class="tab-pane on"><div class="card"><div class="card-body"><div class="sec-hd"><div class="sec-hd-lbl">Es anafilaxia si se cumple una de estas dos</div><div class="sec-hd-line"></div></div><div class="algo"><div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Piel o mucosas + otro sistema</div><div class="step-body">
+      Inicio agudo (minutos a pocas horas) de <strong>urticaria, prurito, eritema o edema de labios, lengua o úvula</strong>, más <strong>al menos uno</strong>:<br><strong>Respiratorio:</strong> disnea · sibilancias · estridor · hipoxemia<br><strong>Circulatorio:</strong> hipotensión · síncope · colapso<br><strong>Digestivo grave:</strong> dolor cólico intenso · vómitos repetidos (sobre todo si el alérgeno no fue un alimento)
+    </div></div></div><div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Sin piel, tras un alérgeno conocido o muy probable</div><div class="step-body">
+      Alcanza con <strong>uno</strong>, de inicio agudo:<br><strong>Hipotensión</strong> · <strong>Broncoespasmo</strong> · <strong>Compromiso laríngeo</strong> (estridor, cambio de la voz, odinofagia)
+    </div></div></div></div><div class="cl cl-a mt-12"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">Que no haya lesiones en la piel no la descarta</span>El diagnóstico es clínico: si cumple un criterio, se trata.</div></div><ul class="bullets mt-12"><li><strong>Hipotensión en el adulto:</strong> PAS &lt;90 mmHg o caída &gt;30% respecto del basal</li><li><strong>Causas frecuentes:</strong> alimentos (maní, mariscos) · medicamentos (penicilina, AINE, contraste) · veneno de insectos · látex</li></ul></div></div></div><div id="pv-ana-tto" class="tab-pane"><div class="card"><div class="card-body"><div class="algo"><div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Adrenalina IM — INMEDIATO</div><div class="step-body"><span class="drug">Adrenalina 1:1000</span><span class="dose">0,3–0,5 mg IM</span> cara anterolateral del muslo · Repetir c/5–15 min<br>Shock: <span class="drug">Adrenalina</span><span class="dose">0,1 mg IV</span> (1 ml de 1:10.000) lento</div></div></div><div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Posición + volumen</div><div class="step-body">Decúbito supino piernas elevadas · <span class="drug">SF 0,9%</span><span class="dose">500–1000 ml IV rápido</span> · O₂ 10–15 L/min</div></div></div><div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Segunda línea</div><div class="step-body"><span class="drug">Difenhidramina</span><span class="dose">25–50 mg IV</span> · <span class="drug">Metilprednisolona</span><span class="dose">125 mg IV</span> · Salbutamol nebulizado si broncoespasmo</div></div></div><div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Observación 6h mínimo</div><div class="step-body">Reacción bifásica 1–20% · Alta con autoinyector · Derivar a alergología</div></div></div></div></div></div></div><p class="src-line">Fuentes: criterios diagnósticos según World Allergy Organization Anaphylaxis Guidance 2020 (Cardona et al., World Allergy Organ J 2020). Revisión: 2026-11.</p></div><a class="vista-mas" href="../#anafilaxia" data-cta="modulo-anafilaxia">Abrir Anafilaxia en la app</a></div>
+        </div></div>
+      </div>
+      <div class="mdl" data-in>
+        <h3><button type="button" class="mdl-btn" id="mdl-b-hiperkalemia" aria-expanded="false" aria-controls="mdl-p-hiperkalemia" data-mod="hiperkalemia"><span>Hiperkalemia</span><i class="mdl-mas" aria-hidden="true"></i></button></h3>
+        <div class="mdl-panel" id="mdl-p-hiperkalemia" role="region" aria-labelledby="mdl-b-hiperkalemia"><div class="mdl-in">
+          <div class="vista"><div class="vista-in"><div class="cl cl-r"><div class="cl-ico">⚠️</div><div class="cl-body"><span class="cl-title">K⁺ &gt;6,5 mEq/L con cambios en ECG = emergencia. Actuar antes de tener el resultado completo.</span></div></div><div class="tabs"><div class="tab on" data-tab-grp="hpk" data-pane="pv-hpk-dx" role="button" tabindex="0">🔍 Diagnóstico</div><div class="tab" data-tab-grp="hpk" data-pane="pv-hpk-tto" role="button" tabindex="0">💊 Tratamiento</div></div><div id="pv-hpk-dx" class="tab-pane on"><div class="card"><div class="card-body"><div class="sec-hd"><div class="sec-hd-lbl">Reconocer — ECG es clave</div><div class="sec-hd-line"></div></div><div class="algo"><div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">Severidad</div><div class="step-body"><strong>Leve:</strong> 5,5–6,0 mEq/L · <strong>Moderada:</strong> 6,0–6,5 mEq/L · <strong>Grave:</strong> &gt;6,5 mEq/L
+    </div></div></div><div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">ECG — hacer inmediato</div><div class="step-body"><strong>Precoz:</strong> onda T picuda y simétrica (V2–V4)<br><strong>Moderado:</strong> PR largo · QRS ancho · onda P plana o ausente<br><strong>Grave:</strong> QRS sinusoidal → riesgo de FV inminente<br><em>Cualquier cambio en el ECG = tratar de inmediato</em></div></div></div><div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Causas frecuentes</div><div class="step-body">
+      Insuficiencia renal · IECA/ARA-II + espironolactona · Acidosis metabólica · Hemólisis
+    </div></div></div></div></div></div></div><div id="pv-hpk-tto" class="tab-pane"><div class="card"><div class="card-body"><div class="sec-hd"><div class="sec-hd-lbl">Tratamiento escalonado</div><div class="sec-hd-line"></div></div><div class="algo"><div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Proteger el miocardio — si hay cambios en ECG</div><div class="step-body"><span class="drug">Gluconato de Ca²⁺ 10%</span><span class="dose">10–20 ml IV en 2–5 min</span><br>
+      Efecto en 1–3 min · Dura 30–60 min · No baja el K⁺, protege la membrana<br>
+      Repetir en 5 min si ECG persiste alterado
+    </div></div></div><div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">Desplazar K⁺ al intracelular</div><div class="step-body"><span class="drug">Insulina corriente</span><span class="dose">10 UI IV</span> + <span class="drug">Dextrosa 25%</span><span class="dose">100 ml IV</span> (25 g de glucosa; o Dextrosa 50% 50 ml)<br>
+      Baja K⁺ 0,5–1,5 mEq/L en 15–30 min · Dura 4–6h<br>
+      Glucemia capilar cada hora durante 4–6 h: riesgo de hipoglucemia<br><span class="drug">Salbutamol</span><span class="dose">10–20 mg nebulizado</span> — complemento útil
+    </div></div></div><div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Eliminar K⁺</div><div class="step-body"><span class="drug">Furosemida</span><span class="dose">40–80 mg IV</span> si hay diuresis conservada<br>
+      Diálisis si K⁺ &gt;6,5 con insuficiencia renal grave o anuria
+    </div></div></div><div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Todo K⁺ &gt;6 → internar</div><div class="step-body">
+      Monitor cardíaco continuo · K⁺ cada 2–4h<br>
+      Suspender IECA, ARA-II, diuréticos ahorradores · Dieta sin K⁺
+    </div></div></div></div></div></div></div></div><a class="vista-mas" href="../#hiperkalemia" data-cta="modulo-hiperkalemia">Abrir Hiperkalemia en la app</a></div>
+        </div></div>
+      </div>
+      <div class="mdl" data-in>
+        <h3><button type="button" class="mdl-btn" id="mdl-b-convulsiones" aria-expanded="false" aria-controls="mdl-p-convulsiones" data-mod="convulsiones"><span>Convulsiones / Status</span><i class="mdl-mas" aria-hidden="true"></i></button></h3>
+        <div class="mdl-panel" id="mdl-p-convulsiones" role="region" aria-labelledby="mdl-b-convulsiones"><div class="mdl-in">
+          <div class="vista"><div class="vista-in"><div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Status epiléptico = convulsión &gt;5 min o 2 crisis sin recuperación entre ellas — TRATAR INMEDIATAMENTE</span></div></div><div class="tabs"><div class="tab on" data-tab-grp="conv" data-pane="pv-conv-algo" role="button" tabindex="0">⏱️ Algoritmo temporal</div><div class="tab" data-tab-grp="conv" data-pane="pv-conv-dx" role="button" tabindex="0">🔍 Causas</div></div><div id="pv-conv-algo" class="tab-pane on"><div class="card"><div class="card-body"><div class="algo"><div class="step"><div class="step-n crit">0–5'</div><div class="step-c"><div class="step-title">Medidas inmediatas</div><div class="step-body">
+        Posición lateral de seguridad · O₂ · Vía periférica · Glucemia capilar URGENTE<br>
+        Si glucemia &lt;70 → <span class="drug">Glucosa 50%</span><span class="dose">50 ml IV</span> + <span class="drug">Tiamina</span><span class="dose">100 mg IV</span><br>
+        Monitor: ECG, SpO₂, TA<br>
+        Embarazada &gt;20 semanas o puérpera → pensar eclampsia: <span class="drug">Sulfato de magnesio</span> (ver módulo HTA gestacional)
+      </div></div></div><div class="step"><div class="step-n crit">5–20'</div><div class="step-c"><div class="step-title">1ª línea — Benzodiacepinas</div><div class="step-body"><span class="drug">Lorazepam</span><span class="dose">0,1 mg/kg IV</span> (hasta 4 mg por dosis, máx 8 mg) — <strong>de elección</strong><br>
+        O <span class="drug">Diazepam</span><span class="dose">0,15–0,2 mg/kg IV</span> (máx 10 mg por dosis, repetir a los 5 min)<br>
+        O <span class="drug">Midazolam</span><span class="dose">10 mg IM</span> si no hay acceso venoso (nasal/bucal también: 0,2 mg/kg)
+      </div></div></div><div class="step"><div class="step-n crit">20–40'</div><div class="step-c"><div class="step-title">2ª línea — si persiste tras 2 dosis de BDZ</div><div class="step-body"><span class="drug">Levetiracetam</span><span class="dose">60 mg/kg IV en 10 min</span> (máx 4500 mg)<br>
+        O <span class="drug">Valproato sódico</span><span class="dose">40 mg/kg IV en 10 min</span> (máx 3000 mg) — evitar en mujer en edad fértil y hepatopatía<br>
+        O <span class="drug">Fenitoína</span><span class="dose">20 mg/kg IV (máx 50 mg/min)</span> — diluir solo en SF · monitorizar FC/PA<br>
+        Eficacia equivalente entre las tres (ESETT): elegir según paciente y disponibilidad
+      </div></div></div><div class="step"><div class="step-n crit">&gt;40'</div><div class="step-c"><div class="step-title">Status refractario — UCI + sedación</div><div class="step-body"><span class="drug">Midazolam</span><span class="dose">0,2 mg/kg IV (bolo) → infusión 0,05–2 mg/kg/h</span><br>
+        O <span class="drug">Propofol</span><span class="dose">2 mg/kg IV (bolo) → 1–12 mg/kg/h</span> (monitorizar síndrome infusión &gt;48h)<br>
+        O <span class="drug">Fenobarbital</span><span class="dose">20 mg/kg IV (50–100 mg/min)</span><br>
+        IOT + monitoreo EEG continuo si disponible
+      </div></div></div></div></div></div></div><div id="pv-conv-dx" class="tab-pane"><div class="card"><div class="card-body"><div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Mnemotecnia VITAMINS — causas de convulsiones de novo</span></div></div><div class="tbl-wrap mt-8"><table class="tbl"><thead><tr><th>Letra</th><th>Causa</th><th>Clave diagnóstica</th></tr></thead><tbody><tr><td class="tbl-name">V</td><td>Vascular (ACV, HSA, trombosis venosa)</td><td>TC urgente</td></tr><tr><td class="tbl-name">I</td><td>Infeccioso (meningitis, encefalitis)</td><td>Fiebre + rigidez de nuca</td></tr><tr><td class="tbl-name">T</td><td>Traumatismo craneoencefálico</td><td>Historia de trauma</td></tr><tr><td class="tbl-name">A</td><td>Autoinmune / Metabólico</td><td>Ionograma: Na⁺, Ca²⁺, glucosa, Mg²⁺</td></tr><tr><td class="tbl-name">M</td><td>Masas / Metástasis</td><td>Oncológico, TC con contraste</td></tr><tr><td class="tbl-name">I</td><td>Isquemia</td><td>ACV isquémico focal</td></tr><tr><td class="tbl-name">N</td><td>Neonatal / Epilepsia conocida</td><td>Nivel de fármacos antiepilépticos</td></tr><tr><td class="tbl-name">S</td><td>Sustancias / Síndrome de abstinencia</td><td>Alcohol, benzodiacepinas, cocaína</td></tr></tbody></table></div><div class="sec-hd mt-12"><div class="sec-hd-lbl">Laboratorio en primera crisis</div><div class="sec-hd-line"></div></div><ul class="bullets"><li>Glucemia, ionograma completo (Na, K, Ca, Mg), función renal</li><li>Hemograma, coagulación</li><li>Nivel de fármacos antiepilépticos si epilepsia conocida</li><li>Toxicológico si sospecha de intoxicación</li><li>Punción lumbar si sospecha de meningitis (TC previo)</li></ul></div></div></div></div><a class="vista-mas" href="../#convulsiones" data-cta="modulo-convulsiones">Abrir Convulsiones / Status en la app</a></div>
+        </div></div>
+      </div>
+      <div class="mdl" data-in>
+        <h3><button type="button" class="mdl-btn" id="mdl-b-acv" aria-expanded="false" aria-controls="mdl-p-acv" data-mod="acv"><span>ACV / TIA</span><i class="mdl-mas" aria-hidden="true"></i></button></h3>
+        <div class="mdl-panel" id="mdl-p-acv" role="region" aria-labelledby="mdl-b-acv"><div class="mdl-in">
+          <div class="vista"><div class="vista-in"><div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">TIEMPO = NEURONAS — 1.9 millones de neuronas mueren por minuto sin tratamiento</span>Activar protocolo ACV inmediatamente. Objetivo: TC en ≤25 min, decisión de trombolisis en ≤60 min.</div></div><div class="tabs"><div class="tab on" data-tab-grp="acv" data-pane="pv-acv-flags" role="button" tabindex="0">🚩 Reconocimiento</div><div class="tab" data-tab-grp="acv" data-pane="pv-acv-algo" role="button" tabindex="0">🔍 Algoritmo</div><div class="tab" data-tab-grp="acv" data-pane="pv-acv-tto" role="button" tabindex="0">💊 Tratamiento</div></div><div id="pv-acv-flags" class="tab-pane on"><div class="card"><div class="card-body"><div class="sec-hd"><div class="sec-hd-lbl">Escala FAST (reconocimiento prehospitalario)</div><div class="sec-hd-line"></div></div><div class="g2 mt-8"><div class="cl cl-r"><div class="cl-ico">😶</div><div class="cl-body"><strong>F</strong>ace — Asimetría facial</div></div><div class="cl cl-r"><div class="cl-ico">💪</div><div class="cl-body"><strong>A</strong>rm — Debilidad de brazo</div></div><div class="cl cl-r"><div class="cl-ico">🗣️</div><div class="cl-body"><strong>S</strong>peech — Dificultad del habla</div></div><div class="cl cl-r"><div class="cl-ico">⏰</div><div class="cl-body"><strong>T</strong>ime — Tiempo de inicio</div></div></div><div class="sec-hd mt-12"><div class="sec-hd-lbl">Diagnóstico diferencial del ACV</div><div class="sec-hd-line"></div></div><ul class="bullets"><li><strong>Hipoglucemia</strong> → siempre glucemia capilar antes de TC</li><li>Migraña con aura · Crisis epiléptica (parálisis de Todd)</li><li>Tumor cerebral con sangrado · Absceso cerebral</li><li>Encefalopatía hipertensiva · Hematoma subdural</li><li>Parálisis de Bell (solo facial periférica, sin otros síntomas)</li></ul></div></div></div><div id="pv-acv-algo" class="tab-pane"><div class="card"><div class="card-body"><div class="algo"><div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">Tiempo de inicio — establecer EXACTAMENTE</div><div class="step-body">Tiempo desde último bien conocido (last-seen-well). Si despertó con síntomas: última vez visto normal = al acostarse. Este tiempo define la ventana terapéutica.</div></div></div><div class="step"><div class="step-n crit">2</div><div class="step-c"><div class="step-title">TC de cráneo SIN contraste URGENTE</div><div class="step-body">Objetivo: descartar hemorragia (hiperdensa) antes de anticoagulación o trombolisis.<br>TC normal no descarta isquemia precoz (cambios en 24–48h).</div></div></div><div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Laboratorio urgente</div><div class="step-body">Glucemia · Hemograma · Coagulación (KPTT, RIN) · Plaquetas · Ionograma · Función renal<br>Troponina + ECG (FA como causa embólica)</div></div></div><div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">NIHSS — cuantificar déficit</div><div class="step-body">Trombólisis si el déficit es discapacitante y está en ventana, cualquiera sea el puntaje. NIHSS &gt;25 → riesgo de hemorragia elevado. Ver <span class="xref">calculadora NIHSS</span>.</div></div></div><div class="step"><div class="step-n">5</div><div class="step-c"><div class="step-title">Decisión de reperfusión</div><div class="step-body"><strong>tPA IV:</strong> ≤4,5h desde inicio + TC sin hemorragia + criterios de inclusión<br><strong>Trombectomía mecánica:</strong> hasta 24h si TC-perfusión muestra tejido rescatable (oclusión de gran vaso)
+      </div></div></div></div></div></div></div><div id="pv-acv-tto" class="tab-pane"><div class="tabs" style="margin-bottom:14px"><div class="tab on" data-tab-grp="acv2" data-pane="pv-acv-tromb" role="button" tabindex="0">Trombolisis IV</div><div class="tab" data-tab-grp="acv2" data-pane="pv-acv-gen" role="button" tabindex="0">Medidas generales</div><div class="tab" data-tab-grp="acv2" data-pane="pv-acv-hemo" role="button" tabindex="0">ACV Hemorrágico</div></div><div id="pv-acv-tromb" class="tab-pane on"><div class="card"><div class="card-body"><div class="cl cl-b"><div class="cl-ico">ℹ️</div><div class="cl-body"><span class="cl-title">Criterios de inclusión (simplificados)</span>Déficit neurológico medible · Inicio &lt;4,5h · TC sin hemorragia · Edad ≥18 · PA ≤185/110 antes de infusión</div></div><div class="cl cl-r mt-8"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">Contraindicaciones absolutas más importantes</span>Hemorragia intracraneal previa · ACV isquémico &lt;3m · TCE severo &lt;3m · Cirugía intracraneal o espinal &lt;3m · Plaquetas &lt;100.000 · Anticoagulación activa (RIN&gt;1.7 o NACO reciente) · Glucemia &lt;50 o &gt;400 mg/dl</div></div><div class="algo mt-12"><div class="step"><div class="step-n crit">→</div><div class="step-c"><div class="step-title">Alteplase (rtPA) — dosis ACV</div><div class="step-body"><span class="drug">Alteplase</span><span class="dose">0,9 mg/kg IV (máx 90 mg)</span><br><strong>10% en bolo IV en 1 min</strong> → <strong>90% restante en infusión IV en 60 min</strong><br>
+          Ej.: 70 kg → 63 mg → 6,3 mg bolo + 56,7 mg en 60 min<br>
+          Alternativa: <span class="drug">Tenecteplase</span><span class="dose">0,25 mg/kg IV en bolo único (máx 25 mg)</span></div></div></div><div class="step"><div class="step-n">!</div><div class="step-c"><div class="step-title">Post-trombolisis — primeras 24h</div><div class="step-body">
+          NO antiagregantes NI anticoagulantes las primeras 24h<br>
+          Monitoreo neurológico horario · PA &lt;180/105 mmHg<br>
+          TC de control a las 24h antes de iniciar antiagregación
+        </div></div></div></div></div></div></div><div id="pv-acv-gen" class="tab-pane"><div class="card"><div class="card-body"><div class="algo"><div class="step"><div class="step-n">1</div><div class="step-c"><div class="step-title">Tensión arterial — no bajar a menos que</div><div class="step-body">
+          No candidato a trombolisis: no tratar si PA &lt;220/120 (autorregulación cerebral)<br>
+          Candidato a trombolisis: PA &lt;185/110 antes de iniciar. Usar <span class="drug">Labetalol</span><span class="dose">10–20 mg IV</span> o <span class="drug">Nicardipina</span> si no hay labetalol.
+        </div></div></div><div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Glucemia — objetivo 140–180 mg/dl</div><div class="step-body">Hipoglucemia y hiperglucemia empeoran el infarto. Insulina regular si &gt;180 mg/dl. Glucosa 50% si &lt;60 mg/dl.</div></div></div><div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Temperatura — tratar si &gt;37.5°C</div><div class="step-body"><span class="drug">Paracetamol</span><span class="dose">1g c/6h IV o VO</span>. La fiebre empeora la penumbra isquémica.</div></div></div><div class="step"><div class="step-n">4</div><div class="step-c"><div class="step-title">Antiagregación</div><div class="step-body">Sin trombólisis: <span class="drug">AAS</span><span class="dose">160–300 mg</span> de carga dentro de las 24–48 h → 100 mg/día.<br>Con trombólisis: esperar 24 h y TC de control.<br>ACV menor (NIHSS ≤3) o AIT de alto riesgo: <span class="drug">AAS</span> + <span class="drug">Clopidogrel</span><span class="dose">300 mg de carga → 75 mg/día</span> por 21 días.<br>ACV cardioembólico (FA) → anticoagulación diferida 2–14 días según tamaño del infarto.</div></div></div></div></div></div></div><div id="pv-acv-hemo" class="tab-pane"><div class="cl cl-r"><div class="cl-ico">🚨</div><div class="cl-body"><span class="cl-title">ACV hemorrágico — no trombolizar</span>Neurocirugía de urgencia si: sangrado cerebeloso &gt;3cm, hidrocefalia, deterioro neurológico rápido</div></div><div class="card"><div class="card-body"><div class="algo"><div class="step"><div class="step-n crit">1</div><div class="step-c"><div class="step-title">PA — objetivo PAS &lt;140 mmHg (primeras 6h)</div><div class="step-body"><span class="drug">Labetalol</span><span class="dose">10–20 mg IV c/10 min</span> o <span class="drug">Nicardipina</span><span class="dose">5–15 mg/h IV</span></div></div></div><div class="step"><div class="step-n">2</div><div class="step-c"><div class="step-title">Revertir anticoagulación</div><div class="step-body">
+          AVK (Warfarina): <span class="drug">Vitamina K</span><span class="dose">10 mg IV</span> + <span class="drug">CCP 4F</span> (complejo protrombínico) <span class="dose">25–50 UI/kg</span><br>
+          NACO: consultar antídoto específico (Andexanet alfa para anti-Xa, Idarucizumab para dabigatrán)
+        </div></div></div><div class="step"><div class="step-n">3</div><div class="step-c"><div class="step-title">Prevenir hipertensión intracraneal</div><div class="step-body">Cabecera 30° · Analgosedación · Evitar hiponatremia · Manitol si edema significativo<br>UCI para monitoreo estricto</div></div></div></div></div></div></div></div></div><a class="vista-mas" href="../#acv" data-cta="modulo-acv">Abrir ACV / TIA en la app</a></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-hora="06:50">
+  <div class="cont dos">
+    <div>
+      <p class="hora"><span>06:50</span> Interconsulta en el subsuelo</p>
+      <h2 class="grande">En el subsuelo también.</h2>
+      <p class="lead">Una vez que la abriste, queda guardada en el teléfono. <strong>Funciona sin señal y sin wifi.</strong></p>
+    </div>
+    <div class="asc" id="asc" data-in aria-hidden="true">
+      <div class="asc-arriba">
+        <div class="piso"><small>Piso</small><span id="piso">PB</span></div>
+        <div class="senal"><div class="barras" id="barras"><i></i><i></i><i></i><i></i></div><p id="senal">Con señal</p></div>
+      </div>
+      <div class="abierto"><i></i>El Libro de Guardia sigue abierto</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec guias" data-hora="07:30">
+  <div class="cont">
+    <p class="hora"><span>07:30</span> ¿Y esto de dónde sale?</p>
+    <h2 class="grande">La biblioteca, en un libro.</h2>
+    <p class="lead">Los módulos se arman sobre guías vigentes, argentinas e internacionales. Estas son algunas.</p>
+    <div class="biblio" id="biblio">
+      <ul class="estante">
+        <li class="libro r" style="--h:96%;--w:1.1"><b>AHA 2025</b><em>Paro y RCP</em></li>
+        <li class="libro n" style="--h:84%"><b>SSC 2021</b><em>Sepsis</em></li>
+        <li class="libro h" style="--h:91%;--w:1.15"><b>ATLS 11</b><em>Trauma</em></li>
+        <li class="libro v" style="--h:100%"><b>SADI</b><em>Infectología</em></li>
+        <li class="libro g inclinado" style="--h:86%;--lean:7deg" data-lean="7"><b>GINA 2026</b><em>Asma</em></li>
+      </ul>
+      <ul class="estante">
+        <li class="libro h" style="--h:88%"><b>GOLD 2026</b><em>EPOC</em></li>
+        <li class="libro r" style="--h:82%;--w:1.1"><b>ESGE 2026</b><em>HDA</em></li>
+        <li class="libro n" style="--h:94%"><b>Baveno VII</b><em>Várices</em></li>
+        <li class="libro g" style="--h:100%;--w:1.15"><b>IAP 2025</b><em>Pancreatitis</em></li>
+        <li class="libro v" style="--h:97%"><b>Min. Salud</b><em>Monóxido</em></li>
+      </ul>
+    </div>
+    <p class="aviso">El Libro de Guardia es una herramienta de referencia rápida para profesionales de la salud. No reemplaza el juicio clínico, la evaluación de cada paciente ni la consulta de las fuentes primarias.</p>
+  </div>
+</section>
+
+<section class="sec fin" id="cierre" data-hora="08:00">
+  <div class="cont">
+    <p class="hora"><span>08:00</span> Termina la guardia</p>
+    <div id="logo" aria-hidden="true"><div class="splash-in"><svg class="splash-logo" viewBox="40 110 480 380" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="splash-glow-fill">
+          <stop offset="0" stop-color="currentColor" stop-opacity=".38"/>
+          <stop offset="1" stop-color="currentColor" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle class="splash-glow" cx="279.5" cy="270" r="200" fill="url(#splash-glow-fill)" opacity="0"/>
+      <g fill="currentColor">
+        <path class="splash-page" d="M126.2,302.5C131.2,301.9 136.7,301.2 138.5,301C140.3,300.7 143.7,300.3 146,300C148.3,299.7 151.4,299.3 152.8,299C156.7,298.2 166.9,296.9 176.8,296C190,294.8 199.5,294 207.2,293.5C211.9,293.2 215.8,292.9 215.9,292.8C216.7,292 215.2,291.1 212.4,290.5C210.7,290.2 208.6,289.7 207.8,289.5C206.9,289.2 203.9,288.8 201,288.5C198.1,288.2 194.2,287.7 192.2,287.4C187.4,286.5 152.1,286.6 139.2,287.4C133.8,287.8 127.2,288.4 124.8,288.8C113.8,290.6 112,291 108.5,291.9C106.4,292.5 103.5,293.4 102,294C100.5,294.6 98.6,295.3 97.8,295.6C96.9,295.9 95.2,296.8 94,297.6C92.8,298.3 91.1,299.3 90.2,299.8C88.5,300.7 86.5,302.5 86.5,303.1C86.5,303.9 88.7,303.9 102.8,303.8C113.4,303.6 119.7,303.3 126.2,302.5Z"/>
+        <path class="splash-page" d="M250.2,287.7C250.5,287.3 247.5,284 246.8,284C246.6,284 244.5,282.8 242.3,281.3C238.4,278.7 233.2,275.9 227.8,273.5C226.4,272.9 224.1,271.9 222.8,271.2C221.4,270.6 219.6,269.9 218.8,269.7C217.9,269.5 217,269.2 216.8,269C216,268.4 204.2,264.5 201.1,263.7C199.5,263.4 196.7,262.6 194.8,262C192.8,261.4 189.5,260.6 187.4,260.2C185.2,259.9 183.3,259.4 183.1,259.3C182.3,258.8 167.9,256.4 163.5,256C161.2,255.8 155.8,255.2 151.5,254.8C142.4,253.9 115.2,253.7 108.5,254.5C100,255.6 96.9,256.2 96.3,256.9C96,257.3 94.1,259.4 92,261.6C89.9,263.7 87.3,266.6 86.2,268C85.2,269.4 83.6,271.2 82.9,272.1C81.3,274 80.7,275.4 81.3,276C81.6,276.3 84.3,276.2 87.5,276C126.1,272.7 151.7,272 180,273.5C197.2,274.5 213.2,277 230.2,281.4C232.4,282 235,282.8 236,283.2C237,283.6 239,284.3 240.5,284.8C242,285.2 243.8,286 244.5,286.4C246.5,287.7 249.5,288.3 250.2,287.7Z"/>
+        <path class="splash-page" d="M275.4,292C274.7,287.1 272.4,280.1 269.9,275.5C267.1,270.1 260.1,262.9 253,258.2C251.8,257.4 250.3,256.4 249.8,256C247.1,254.2 244.3,252.4 236.8,247.6C236.2,247.3 235.1,246.7 234.2,246.3C233.4,245.9 232.4,245.2 232.1,244.8C231.7,244.4 230.8,243.9 230.1,243.8C229.4,243.6 228.5,243.2 228.1,242.9C227.3,242.2 209,232.9 205,231.1C203.8,230.5 201.4,229.5 199.8,228.8C198.1,228 196,227.1 195.2,226.7C194.3,226.3 193.4,226 193.2,226C192.9,226 192.4,225.7 192.1,225.4C191.8,225.1 190,224.2 188.2,223.5C186.3,222.7 182.5,221.2 179.8,220.1C174.8,218.1 165.9,214.9 162.5,213.9C161.5,213.6 160.3,213.1 159.8,212.7C159.2,212.3 158.4,212 157.9,212C157.4,212 154.6,211.2 151.7,210.2C148.8,209.3 145.7,208.5 144.7,208.5C143.1,208.5 137.8,211.2 133.1,214.4C132.4,214.9 131.3,215.6 130.6,216C123.6,220.1 121.8,222.2 124.9,222.8C125.6,222.9 126.9,223.2 127.8,223.5C128.6,223.7 130.5,224.1 132,224.2C137.4,224.9 156,229.2 159.5,230.6C160.2,230.9 162.3,231.5 164.2,232C169.9,233.5 174.6,234.9 176.3,235.8C177.2,236.2 178.1,236.5 178.4,236.5C179.2,236.5 194.2,242.5 200.5,245.4C202,246 203.7,246.8 204.2,247C205.1,247.3 212,250.7 218.2,253.8C219.4,254.4 220.6,255.2 220.7,255.5C220.9,255.8 221.5,256 222,256C222.5,256 223.4,256.4 224.1,257C224.8,257.5 226.6,258.6 228.3,259.5C231.8,261.3 239.5,266 240.5,266.9C240.9,267.2 243.6,269.1 246.5,271C249.4,272.9 253,275.5 254.5,276.7C256,278 257.8,279.4 258.5,279.9C260.9,281.5 269.8,290.8 271.5,293.4C272.4,294.8 273.3,296 273.5,296C273.7,296 274.1,296.6 274.5,297.4L275.1,298.8L275.6,297.2C275.9,296.3 275.8,294.4 275.4,292Z"/>
+        <path class="splash-page" d="M286,297.3C286,297 286.4,296.5 287,296.1C287.6,295.8 288,295.2 288,294.8C288,294 295.3,285.6 298.8,282.5C300.9,280.5 306.9,275.9 310.3,273.5C310.9,273.1 313.3,271.4 315.6,269.7C317.9,268.1 321.1,265.9 322.8,265C324.4,264.1 325.9,263.1 326,262.9C326.1,262.7 327.5,261.9 329,261.1C332.2,259.4 335,257.7 335.8,257.1C336.1,256.9 337.1,256.4 338.1,256C339.2,255.7 340.1,255.2 340.2,255C340.5,254.6 344.4,252.7 356.8,246.8C366.2,242.2 368.6,241.2 372.2,240C374.2,239.4 376,238.7 376.2,238.5C377.2,237.7 398.7,230.9 407,228.8C408.8,228.3 411.7,227.5 413.5,227C415.3,226.5 417.9,225.9 419.2,225.8C420.6,225.6 422.6,225.2 423.8,225C424.9,224.7 427.8,224.2 430.2,223.7C435.5,222.8 437,222.3 437,221.4C437,220.8 432.9,217.6 430,216C425.6,213.5 423.6,212.4 422.8,211.9C418.8,209.3 417.1,208.5 415.9,208.5C414.3,208.5 409.3,209.8 408,210.4C407.6,210.7 405.7,211.2 403.8,211.7C401.8,212.2 400,212.8 399.8,213C399.5,213.2 396.1,214.4 392.2,215.8C388.4,217.1 381.9,219.6 377.7,221.3C373.5,223.1 369.8,224.5 369.4,224.5C369,224.5 368.3,224.8 368,225.2C367.7,225.7 367.2,226 366.9,226C366.6,226 364.6,226.9 362.3,227.9C360.1,229 356.9,230.4 355.2,231C353.6,231.7 351.2,232.8 350,233.6C348.7,234.3 345.2,236 342.2,237.4C339.2,238.8 336.4,240.2 336,240.5C335.6,240.8 333.7,241.8 331.9,242.7C330,243.6 328.1,244.7 327.7,245C327.3,245.3 326.3,246 325.5,246.4C321.6,248.6 312,254.6 312,255C312,255.2 311.5,255.6 310.8,255.9C308.4,257 301.1,262.8 296.9,267.1C290.5,273.5 287.4,279.4 285.4,288.8C284,295.2 283.8,296.8 284.2,298.3C284.6,299.7 284.6,299.7 285.3,298.8C285.7,298.2 286,297.6 286,297.3Z"/>
+        <path class="splash-page" d="M314.4,287C317.2,285.4 330.8,281.1 338.2,279.3C342.6,278.3 355,276.2 360.5,275.5C363.1,275.2 366.6,274.7 368.2,274.5C377.8,273 410.4,272.2 427.5,273C446.1,273.8 459,274.5 461.2,274.8C462.4,274.9 465.7,275.2 468.7,275.5C471.7,275.8 474.6,276.1 475.1,276.3C476.3,276.7 479.5,276 479.5,275.3C479.5,275 478.7,273.8 477.6,272.6C473.2,267.6 472,266.1 472,265.7C472,265.5 471.3,264.6 470.4,263.7C469.5,262.9 467.6,260.8 466.2,259.1C463.4,255.6 462.3,255.2 454.3,254.5C448.2,253.9 419.6,253.9 413,254.5C398.3,255.7 386.9,257.2 380,258.8C378.2,259.2 375.2,259.9 373.2,260.2C371.3,260.6 367.5,261.5 364.8,262.2C362,263 358.9,263.8 357.9,264C356.9,264.3 353.9,265.3 351.4,266.2C348.8,267.1 346.1,268 345.4,268.2C343.5,268.6 331.3,273.9 326,276.6C319.9,279.6 310,286.2 310,287.2C310,287.7 313.4,287.5 314.4,287Z"/>
+        <path class="splash-page" d="M472.5,303.5C474.5,302.3 468.3,298.1 459,294.4C452,291.6 447.7,290.6 433.5,288.6C418.1,286.4 385.9,285.5 373,287C369.8,287.3 365.4,287.8 363.2,288C359.6,288.3 356.4,288.9 347.8,290.7C344.6,291.3 343.7,292.2 345.6,292.7C346.2,292.9 351,293.2 356.2,293.5C361.5,293.8 366.8,294.2 368,294.5C369.2,294.7 372.8,295.1 376,295.3C384.6,295.7 401.3,297.7 408.2,299C409.6,299.2 412.9,299.7 415.5,300C418.1,300.3 422.5,300.9 425.2,301.3C430.2,302 438.6,302.8 448,303.5C455.1,304 471.6,304.1 472.5,303.5Z"/>
+      </g>
+      <g class="splash-rays" fill="currentColor"></g>
+      <path class="splash-book-base" fill="currentColor" d="M282.4,476.5C285,475.8 287.3,474 288.2,472.1C288.9,470.6 289,463.9 289,407.6C289,373 289.1,344.3 289.3,343.7C289.5,342.9 290.7,342.2 293.7,341C295.9,340.1 298.8,338.7 300,337.8C301.2,336.9 302.5,336.1 302.9,335.9C303.2,335.8 305.1,334.2 307.1,332.2C309.1,330.3 311.3,328.3 311.9,327.8C313.1,326.8 314,326.8 405,326.5L496.8,326.2L498.9,324.9C501.5,323.2 502.5,321.6 502.9,319C503.5,314.5 501.6,311.6 496.8,309.4C495,308.6 489.7,308.5 400.1,308.8C334.4,308.9 304.8,309.2 303.9,309.6C302.4,310.2 300.9,312.1 299,315.7C294.6,324.3 280.3,328.5 270.3,324.1C267.2,322.7 262.7,318.3 260.9,314.9C260,313.2 258.4,311.1 257.3,310.3L255.4,308.8L171.3,308.6C125.1,308.6 81.8,308.7 75.2,308.9C64.8,309.2 63,309.4 61.3,310.3C58,311.9 55.9,316.1 56.7,319.2C57.1,321 60.1,324.6 61.8,325.5C63.1,326.2 74.6,326.3 154.7,326.4L246.2,326.5L248,327.7C249,328.4 251.2,330.3 253,332C258.2,336.9 264.2,340.9 268.4,341.9C269.1,342.1 270,342.9 270.4,343.5C270.9,344.5 271,358.7 271,407.4C271,468.2 271,470.1 272,471.9C272.8,473.6 275.6,476 277.5,476.6C278.7,477.1 280.6,477 282.4,476.5Z"/>
+      <g class="splash-cross" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" opacity="0">
+        <path class="splash-base"/>
+        <path class="splash-stem"/>
+      </g>
+    </svg><div class="splash-title" style="display:none"></div><div class="splash-tag" style="display:none"></div></div></div>
+    <h2 class="grande">Llevalo a tu próxima guardia.</h2>
+    <a class="btn" href="../" data-cta="cierre">Abrir la app</a>
+    <p class="instalar"><strong>Para instalarla,</strong> abrila en Safari o en Chrome. En iPhone: Compartir y «Agregar a inicio». En Android: menú ⋮ e «Instalar app».</p>
+    <footer class="pie"><span>El Libro de Guardia · Di Fonzo L.</span><a href="https://www.instagram.com/ellibro.deguardia/">@ellibro.deguardia</a></footer>
+  </div>
+</section>
+
+</main>
+
+<script>
+// Generado desde js/splash.js de la app: misma geometría y mismos tiempos del logo que se cierra en la cruz.
+(function () {
+// Intro shown before entering the app, once per session. It follows the
+// original animation of the logo: the open book spreads its pages like a hand
+// fan; then the book closes: the pages turn up together and fuse into one
+// line, and that line is the upright of the medical cross (nothing rises on
+// its own from the centre), while the base closes into its arm. Then the
+// title appears and the intro fades into the home. Drawn in SVG (the book is the
+// logo traced from the original animation, in index.html), so it stays sharp
+// at any size and weighs a few KB. About 3 s; a tap or a key skips it. Not
+// shown on deep links or on a reload within the same session (see the inline
+// script in index.html), and reduced to a still frame with
+// prefers-reduced-motion.
+
+const SVG_NS = 'http://www.w3.org/2000/svg';
+const CX = 279.5;                                    // vertical axis of the logo
+const BASE = { left: 65.25, right: 493.75, y: 317, notch: 18, w: 16.5 };
+const STEM = { bottom: 467.25, w: 17.5 };
+const GUTTER = 13;                                   // pages fan from 13 units above the base line
+const CROSS = { y: 270, arm: 125, w: 26 };           // medical cross: equal arms
+
+// Pages, measured on the original animation: degrees above the horizontal,
+// from the cover (outer) to the spine (inner), mirrored on both sides.
+const FAN = [4, 13, 28, 45.5, 65.5, 84.5];           // fully open fan
+const HALF = [1.3, 3.2, 3.4, 4, 4.5, 4.5];           // half the angular width of each page
+const OPEN_FROM = 0.38;                              // the logo is a fan already 38 % open
+const ELLIPSE = { a: 185, b: 148 };                  // outline of the open fan
+const OVERLAP = 3;                                   // closed, each page also covers the next three pages' places
+
+const T = {
+  pagesOut: [100, 320], open: [100, 950], close: [1100, 1750],
+  base: [1500, 1950], notch: [1500, 1630], pulse: [1950, 2300],
+  title: [1800, 2350], tag: [2050, 2500], exit: [2750, 3150],
+};
+const STILL_MS = 900;   // prefers-reduced-motion: how long the still frame stays
+
+const clamp01 = v => Math.min(1, Math.max(0, v));
+const prog = (t, [a, b]) => clamp01((t - a) / (b - a));
+const lerp = (a, b, k) => a + (b - a) * k;
+const easeOut = k => 1 - (1 - k) ** 3;
+const easeIn = k => k ** 3;
+const easeInOut = k => (k < 0.5 ? 4 * k ** 3 : 1 - (-2 * k + 2) ** 3 / 2);
+const r1 = v => Math.round(v * 10) / 10;
+const rad = deg => (deg * Math.PI) / 180;
+
+// Distance from the gutter to the outline of the open fan (an ellipse), along
+// a page `deg` degrees above the horizontal.
+const toEllipse = deg => 1 / Math.hypot(Math.cos(rad(deg)) / ELLIPSE.a, Math.sin(rad(deg)) / ELLIPSE.b);
+
+// One page seen from the spine. Open (`k` 0) it is a wedge from the gutter,
+// arched upwards (`bend`) like the pages of the logo. Closed (`k` 1) it
+// stands up edge-on as one strip of the upright of the cross: from the base
+// line to the round top, between `far` and `near` (its outer and inner edges,
+// measured out from the axis; the cover is the outermost page). Its corners
+// move in the page's own frame (along and across it) while it turns about the
+// gutter, so the pages close like the leaves of a book: they come together
+// side by side, each in its place, and fuse into one bar without a waist.
+function pagePath(gx, gy, side, deg, r, half, bend, k = 0, slot = null) {
+  if (r < 1) return '';
+  const a = rad(deg), h = rad(half);
+  const u = [side * Math.cos(a), -Math.sin(a)];       // along the page, outwards
+  const n = [-side * Math.sin(a), -Math.cos(a)];      // across it, towards the spine
+  const rIn = Math.min(r * 0.12, 16);
+  const { far = 0, near = 0, len = 0, cap = 1 } = slot || {};
+  const top = x => len + Math.sqrt(Math.max(0, cap * cap - x * x));   // the round top of the upright
+  // Open position → closed position, as [along, across] from the gutter
+  const at = ([l0, c0], [l1, c1]) => {
+    const l = lerp(l0, l1, k), c = lerp(c0, c1, k);
+    return [gx + l * u[0] + c * n[0], gy + l * u[1] + c * n[1]];
+  };
+  const ci = Math.cos(0.3 * h), si = Math.sin(0.3 * h), co = Math.cos(h), so = Math.sin(h);
+  const i1 = at([rIn * ci, -rIn * si], [-GUTTER, -far]);
+  const o1 = at([r * co, -r * so], [top(far), -far]);
+  const o2 = at([r * co, r * so], [top(near), -near]);
+  const i2 = at([rIn * ci, rIn * si], [-GUTTER, -near]);
+  const c1 = [(i1[0] + o1[0]) / 2, (i1[1] + o1[1]) / 2 - bend];
+  const c2 = [(i2[0] + o2[0]) / 2, (i2[1] + o2[1]) / 2 - bend];
+  const f = ([x, y]) => `${r1(x)},${r1(y)}`;
+  const arc = r1(1 / lerp(1 / 600, 1 / cap, k));     // the edge of the fan, then the round top
+  return `M${f(i1)}Q${f(c1)} ${f(o1)}A${arc} ${arc} 0 0 ${side > 0 ? 0 : 1} ${f(o2)}Q${f(c2)} ${f(i2)}Z`;
+}
+// The book's base line with the dip at the spine; notch 0 is a straight bar.
+function basePath(left, right, y, notch) {
+  const w = 32;
+  return `M${r1(left)},${r1(y)}L${CX - w},${r1(y)}` +
+    `C${CX - w + 9},${r1(y)} ${CX - 15},${r1(y + notch)} ${CX},${r1(y + notch)}` +
+    `C${CX + 15},${r1(y + notch)} ${CX + w - 9},${r1(y)} ${CX + w},${r1(y)}L${r1(right)},${r1(y)}`;
+}
+
+window.LOGO_T = T;
+window.makeLogo = function (splash) {
+  const inner = splash.querySelector('.splash-in');
+  const logoPages = [...splash.querySelectorAll('.splash-page')];
+  const bookBase = splash.querySelector('.splash-book-base');
+  const cross = splash.querySelector('.splash-cross');
+  const base = splash.querySelector('.splash-base');
+  const stem = splash.querySelector('.splash-stem');
+  const glow = splash.querySelector('.splash-glow');
+  const title = splash.querySelector('.splash-title');
+  const tag = splash.querySelector('.splash-tag');
+  const group = splash.querySelector('.splash-rays');
+  // Left pages then right pages, each from the cover to the spine
+  const pages = [-1, 1].flatMap(side => FAN.map((_, i) => ({
+    side, i, el: group.appendChild(document.createElementNS(SVG_NS, 'path')),
+  })));
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let exitAt = reduced ? STILL_MS : T.exit[0];
+  let exitLen = reduced ? 250 : T.exit[1] - T.exit[0];
+  let start = null;
+  let done = false;
+
+  function draw(t) {
+    // The traced pages of the logo lift a little and hand over to the fan
+    const po = easeOut(prog(t, T.pagesOut));
+    logoPages.forEach((p, i) => {
+      const lift = (i < logoPages.length / 2 ? 1 : -1) * 6 * po;
+      p.setAttribute('transform', `rotate(${r1(lift)} ${CX} ${BASE.y - GUTTER})`);
+      p.style.opacity = 1 - po;
+    });
+
+    // Base and spine: they carry the gutter the pages fan from
+    const b = easeInOut(prog(t, T.base));
+    const baseY = lerp(BASE.y, CROSS.y, b);
+    const gutterY = baseY - GUTTER;
+
+    // Pages: open like a hand fan; then the book closes: every page turns up
+    // (all together, like a hand fan closing) and edge-on, and they come
+    // together side by side, the cover outermost, until they fuse into one
+    // bar: the upright of the cross. Nothing shrinks away downwards: the tips
+    // go up to the top of the upright and stay there while the base rises.
+    const open = lerp(OPEN_FROM, 1, easeInOut(prog(t, T.open)));
+    const openK = (open - OPEN_FROM) / (1 - OPEN_FROM);
+    const close = easeInOut(prog(t, T.close));
+    const closed = t >= T.close[1];
+    const appear = clamp01((t - T.pagesOut[0]) / 160);
+    const topY = CROSS.y - CROSS.arm;
+    const uprightW = lerp(STEM.w, CROSS.w, b);         // the closed pages are exactly as wide as the stem
+    const share = uprightW / 2 / FAN.length;           // each page's share of half the upright
+    pages.forEach(({ side, i, el }) => {
+      const deg = lerp(FAN[i] * open, 90, close);
+      const r = toEllipse(deg);
+      const half = HALF[i] * lerp(0.55, 1, openK);
+      const bend = 0.1 * r * Math.cos(rad(deg)) ** 2;
+      const slot = {
+        far: share * (FAN.length - i),                 // the cover outermost, the last page at the axis
+        near: share * (FAN.length - 1 - i - OVERLAP),  // over the next pages' places: no seams
+        len: gutterY - topY,
+        cap: uprightW / 2,
+      };
+      // Once closed, the upright is drawn whole in their place and they are dropped
+      el.setAttribute('d', closed ? '' : pagePath(CX, gutterY, side, deg, r, half, bend, close, slot));
+      el.style.opacity = appear;
+    });
+
+    // The vector base takes over from the traced one before anything moves
+    const vector = t >= T.close[0];
+    bookBase.style.opacity = vector ? 0 : 1;
+    cross.style.opacity = vector ? 1 : 0;
+
+    // The stem stays below the base (the upright above it is the closed
+    // pages until they have fused); the base closes into the cross's arm
+    const notch = lerp(BASE.notch, 0, easeInOut(prog(t, T.notch)));
+    const top = closed ? topY : baseY + notch;
+    const bottom = lerp(STEM.bottom, CROSS.y + CROSS.arm, b);
+    stem.setAttribute('d', `M${CX},${r1(top)}L${CX},${r1(bottom)}`);
+    stem.setAttribute('stroke-width', r1(uprightW));
+    base.setAttribute('d', basePath(
+      lerp(BASE.left, CX - CROSS.arm, b), lerp(BASE.right, CX + CROSS.arm, b),
+      baseY, notch));
+    base.setAttribute('stroke-width', r1(lerp(BASE.w, CROSS.w, b)));
+
+    // One heartbeat of the cross, with its glow
+    const p = prog(t, T.pulse);
+    const beat = Math.sin(Math.PI * p);
+    cross.setAttribute('transform', `translate(${CX} ${CROSS.y}) scale(${1 + 0.07 * beat}) translate(${-CX} ${-CROSS.y})`);
+    glow.style.opacity = p > 0 ? Math.max(beat, 0.55 * p) : 0;
+
+    // Title and tagline
+    const ti = easeOut(prog(t, T.title));
+    title.style.opacity = ti;
+    title.style.transform = `translateY(${r1(14 * (1 - ti))}px)`;
+    const tg = easeOut(prog(t, T.tag));
+    tag.style.opacity = tg;
+    tag.style.transform = `translateY(${r1(8 * (1 - tg))}px)`;
+  }
+
+  return draw;
+};
+})();
+</script>
+<script>
+(function () {
+  var d = document, w = window;
+  var $ = function (s, c) { return (c || d).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || d).querySelectorAll(s)); };
+  var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+  var ease = function (k) { return 1 - Math.pow(1 - k, 3); };
+  var quieto = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ----- CURB-65: misma lógica que js/calculators/calc-curb65.js ----- */
+  var curb = $('#curb'), cajas = $$('input', curb), num = $('#curb-num'), res = $('#curb-res');
+  function interpretar(n) {
+    if (n >= 3) return ['rojo', 'Neumonía grave', 'Internación en UTI/AR. Mortalidad >20%.'];
+    if (n === 2) return ['ambar', 'Neumonía moderada', 'Internación en sala general.'];
+    return ['verde', 'Neumonía leve', 'Tratamiento ambulatorio posible.'];
+  }
+  curb.addEventListener('change', function () {
+    var n = cajas.filter(function (c) { return c.checked; }).length;
+    var r = n ? interpretar(n) : ['', 'Seleccioná los criterios presentes', '1 punto por cada criterio.'];
+    num.textContent = n;
+    res.dataset.sev = r[0];
+    $('#curb-rot').textContent = r[1];
+    $('#curb-det').textContent = r[2];
+    num.classList.remove('salta'); void num.offsetWidth; num.classList.add('salta');
+    if (w.gtag) w.gtag('event', 'presentacion_curb65', { puntaje: n });
+  });
+  curb.addEventListener('submit', function (e) { e.preventDefault(); });
+  $$('[data-cta]').forEach(function (a) {
+    a.addEventListener('click', function () { if (w.gtag) w.gtag('event', 'presentacion_abrir_app', { lugar: a.dataset.cta }); });
+  });
+
+  /* ----- módulos que se abren, con las pestañas de la app ----- */
+  function medirVista(mdl) {
+    var v = $('.vista', mdl), i = $('.vista-in', mdl);
+    v.classList.toggle('larga', i.scrollHeight > i.clientHeight + 4);
+  }
+  function pestana(mdl, tab) {
+    var grupo = $$('.tab', mdl).filter(function (t) { return t.dataset.tabGrp === tab.dataset.tabGrp; });
+    grupo.forEach(function (t) {
+      var activa = t === tab, panel = d.getElementById(t.dataset.pane);
+      t.classList.toggle('on', activa);
+      if (panel) panel.classList.toggle('on', activa);
+    });
+    medirVista(mdl);
+  }
+  $$('.mdl').forEach(function (mdl) {
+    var boton = $('.mdl-btn', mdl);
+    boton.addEventListener('click', function () {
+      var abre = !mdl.classList.contains('desplegado');
+      mdl.classList.toggle('desplegado', abre);
+      boton.setAttribute('aria-expanded', abre ? 'true' : 'false');
+      if (abre) { medirVista(mdl); if (w.gtag) w.gtag('event', 'presentacion_modulo', { modulo: boton.dataset.mod }); }
+    });
+    mdl.addEventListener('click', function (e) {
+      var tab = e.target.closest ? e.target.closest('.vista .tab') : null;
+      if (tab) pestana(mdl, tab);
+    });
+    mdl.addEventListener('keydown', function (e) {
+      var tab = e.target.classList && e.target.classList.contains('tab') ? e.target : null;
+      if (tab && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pestana(mdl, tab); }
+    });
+    medirVista(mdl);
+  });
+
+  /* ----- texto que se enciende palabra por palabra ----- */
+  var scrub = $('#scrub'), palabras = [];
+  if (!quieto) {
+    var texto = scrub.textContent.trim().split(/\s+/);
+    scrub.setAttribute('aria-label', texto.join(' '));
+    scrub.textContent = '';
+    texto.forEach(function (p, i) {
+      var s = d.createElement('span'); s.className = 'w'; s.setAttribute('aria-hidden', 'true'); s.textContent = p;
+      scrub.appendChild(s); if (i < texto.length - 1) scrub.appendChild(d.createTextNode(' '));
+      palabras.push(s);
+    });
+  }
+
+  /* ----- logo: el libro que se cierra en la cruz (js/splash.js de la app) ----- */
+  var logo = $('#logo'), dibujarLogo = null, FIN_LOGO = 2300;
+  try { dibujarLogo = w.makeLogo(logo); } catch (e) { dibujarLogo = null; }
+
+  var reloj = $('#reloj'), avance = $('#avance'), hero = $('#portada'), lineas = $$('.titular .ln');
+  var tels = $$('#recorrido .tel');
+  var filas = $$('#cinta .fila'), cifras = $$('#cifras b'), asc = $('#asc'), barras = $$('#barras i'), piso = $('#piso'), senal = $('#senal');
+  var libros = $$('#biblio .libro'), biblio = $('#biblio'), entradas = $$('[data-in]');
+  var vh = 0, total = 1, horas = [], m = {}, ultHora = '', ultPiso = -1;
+
+  function arriba(el) { return el.getBoundingClientRect().top + w.scrollY; }
+  function minutos(s) { var p = s.split(':'); return p[0] * 60 + +p[1]; }
+
+  function medir() {
+    vh = w.innerHeight;
+    total = Math.max(1, d.documentElement.scrollHeight - vh);
+    var ant = -1; horas = [];
+    function anotar(y, s) { var t = minutos(s); while (t < ant) t += 1440; ant = t; horas.push([y, t]); }
+    $$('[data-hora]').forEach(function (el, i) {
+      var y = arriba(el);
+      anotar(i ? y + 110 : vh * 0.6, el.dataset.hora);
+    });
+    m = {
+      hero: hero.offsetHeight,
+      scrub: [arriba(scrub), scrub.offsetHeight],
+      tels: tels.map(function (el) { el.style.transform = ''; return arriba(el); }),
+      cinta: arriba($('#cinta')), cifras: arriba($('#cifras')),
+      asc: arriba(asc), biblio: arriba(biblio), logo: arriba(logo),
+      ins: entradas.map(function (el) { el.style.setProperty('--e', 1); var y = arriba(el); return y; })
+    };
+  }
+
+  function cuadro() {
+    pend = false;
+    var y = w.scrollY, lee = y + vh * 0.6, i, k;
+
+    avance.style.transform = 'scaleX(' + clamp(y / total).toFixed(4) + ')';
+
+    /* reloj de guardia */
+    var t = horas[0][1];
+    for (i = 0; i < horas.length; i++) {
+      if (lee >= horas[i][0]) {
+        t = horas[i][1];
+        if (horas[i + 1]) t += (horas[i + 1][1] - horas[i][1]) * Math.pow(clamp((lee - horas[i][0]) / (horas[i + 1][0] - horas[i][0])), 3);
+      }
+    }
+    t = Math.floor(t) % 1440;
+    var hh = ('0' + Math.floor(t / 60)).slice(-2) + ':' + ('0' + t % 60).slice(-2);
+    if (hh !== ultHora) { reloj.textContent = hh; ultHora = hh; }
+
+    /* entradas simples */
+    entradas.forEach(function (el, n) {
+      el.style.setProperty('--e', quieto ? 1 : ease(clamp((y + vh * 0.94 - m.ins[n]) / (vh * 0.3))).toFixed(3));
+    });
+
+    /* cada teléfono sube y crece al entrar */
+    if (!quieto) tels.forEach(function (el, n) {
+      var e = ease(clamp((y + vh - m.tels[n]) / (vh * 0.55)));
+      el.style.transform = 'translateY(' + ((1 - e) * 90).toFixed(1) + 'px) scale(' + (0.86 + 0.14 * e).toFixed(3) + ')';
+    });
+
+    /* sin señal: el ascensor baja y las barras se apagan */
+    var s = clamp((y + vh * 0.6 - m.asc) / (vh * 0.36)), pi = s < 0.3 ? 0 : s < 0.65 ? 1 : 2;
+    if (pi !== ultPiso) {
+      piso.textContent = ['PB', '-1', '-2'][pi];
+      senal.textContent = ['Con señal', 'Poca señal', 'Sin señal'][pi];
+      barras.forEach(function (b, n) { b.classList.toggle('off', n >= [4, 2, 0][pi]); });
+      ultPiso = pi;
+    }
+
+    /* cifras */
+    var c = quieto ? 1 : ease(clamp((y + vh * 0.9 - m.cifras) / (vh * 0.4)));
+    cifras.forEach(function (b) { var v = Math.round(b.dataset.n * c); if (b.textContent != v) b.textContent = v; });
+
+    /* logo */
+    if (dibujarLogo) {
+      var desde = m.logo - vh * 0.86, hasta = Math.max(desde + 1, Math.min(m.logo - vh * 0.24, total - 8));
+      dibujarLogo(quieto ? FIN_LOGO : FIN_LOGO * clamp((y - desde) / (hasta - desde)));
+    }
+
+    if (quieto) return;
+
+    /* portada: las tres líneas se abren */
+    var h = clamp(y / m.hero);
+    if (h < 1) {
+      lineas[0].style.transform = 'translateX(' + (-h * 10).toFixed(2) + '%)';
+      lineas[1].style.transform = 'translateX(' + (h * 8).toFixed(2) + '%)';
+      lineas[2].style.transform = 'translateX(' + (-h * 5).toFixed(2) + '%)';
+    }
+
+    /* manifiesto */
+    var q = clamp((y + vh * 0.82 - m.scrub[0]) / (m.scrub[1] + vh * 0.34)), np = palabras.length;
+    palabras.forEach(function (sp, n) { sp.style.setProperty('--o', (0.22 + 0.78 * clamp(q * (np + 4) - n)).toFixed(2)); });
+
+    /* cinta de módulos */
+    var z = (y + vh - m.cinta) / (vh * 1.6);
+    filas.forEach(function (f, n) {
+      var v = +f.dataset.v;
+      f.style.transform = 'translate3d(' + ((v < 0 ? -z * 62 : -62 + z * 62) - n * 3).toFixed(2) + 'vw,0,0)';
+    });
+
+    /* los libros caen en el estante, uno por uno */
+    var g = clamp((y + vh * 0.92 - m.biblio) / (vh * 0.7));
+    libros.forEach(function (l, n) {
+      k = ease(clamp(g * 2.3 - n * 0.12));
+      var fin = +(l.dataset.lean || 0);
+      l.style.transform = 'translateY(' + (-(1 - k) * 150).toFixed(1) + 'px) rotate(' + (fin + (1 - k) * (n % 2 ? 10 : -10)).toFixed(2) + 'deg)';
+      l.style.opacity = clamp(k * 1.7).toFixed(2);
+    });
+  }
+
+  var pend = false;
+  function pedir() { if (!pend) { pend = true; w.requestAnimationFrame(cuadro); } }
+  function todo() { medir(); cuadro(); }
+  w.addEventListener('scroll', pedir, { passive: true });
+  w.addEventListener('resize', todo);
+  w.addEventListener('load', todo);
+  if (d.fonts && d.fonts.ready) d.fonts.ready.then(todo);
+  /* si cambia el alto de la página (un módulo que se abre), se vuelven a tomar las medidas */
+  if (w.ResizeObserver) {
+    var altoAnt = 0;
+    new ResizeObserver(function () {
+      var alto = d.documentElement.scrollHeight;
+      if (Math.abs(alto - altoAnt) > 2) { altoAnt = alto; w.requestAnimationFrame(todo); }
+    }).observe(d.body);
+  }
+  todo();
+})();
+</script>
+</body>
+</html>

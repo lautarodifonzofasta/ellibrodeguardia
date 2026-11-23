@@ -13,6 +13,8 @@ import { goTo } from './router.js';
 import { compute as computeGestationalAge } from './calculators/gestational-age.js';
 import { calcBISAP, copyBISAP, resetBISAP } from './calculators/bisap.js';
 
+import { imgBuscar, imgZona } from './imagenes.js';
+
 export function installLegacyBridge() {
   window.switchTab = switchTab;
   window.switchHZ = switchHZ;
@@ -24,6 +26,9 @@ export function installLegacyBridge() {
   window.calcBISAP = calcBISAP;
   window.copyBISAP = copyBISAP;
   window.resetBISAP = resetBISAP;
+  // ¿Qué imagen pido? (imagenes-trauma.html): search box and area chips.
+  window.imgBuscar = imgBuscar;
+  window.imgZona = imgZona;
 }
 
 // Ported verbatim from legacy-index.html:1371-1386. Reads sibling tabs'
